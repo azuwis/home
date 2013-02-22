@@ -1,17 +1,38 @@
-[bundle/vim-colors-solarized]
-checkout = git clone 'git://github.com/altercation/vim-colors-solarized.git' 'vim-colors-solarized'
+[bundle/solarized]
+checkout = git clone 'git://github.com/altercation/vim-colors-solarized.git' 'solarized'
 
-[bundle/vim-fugitive]
-checkout = git clone 'git://github.com/tpope/vim-fugitive.git' 'vim-fugitive'
+[bundle/fugitive]
+checkout = git clone 'git://github.com/tpope/vim-fugitive.git' 'fugitive'
 
-[bundle/vim-markdown]
-checkout = git clone 'git://github.com/tpope/vim-markdown.git' 'vim-markdown'
+[bundle/markdown]
+checkout = git clone 'git://github.com/tpope/vim-markdown.git' 'markdown'
 
-[bundle/vim-pathogen]
-checkout = git clone 'git://github.com/tpope/vim-pathogen.git' 'vim-pathogen'
+[bundle/pathogen]
+checkout = git clone 'git://github.com/tpope/vim-pathogen.git' 'pathogen'
 
-[bundle/vim-sensible]
-checkout = git clone 'git://github.com/tpope/vim-sensible.git' 'vim-sensible'
+[bundle/sensible]
+checkout = git clone 'git://github.com/tpope/vim-sensible.git' 'sensible'
 
-[bundle/vim-commentary]
-checkout = git clone 'git://github.com/tpope/vim-commentary.git' 'vim-commentary'
+[bundle/commentary]
+checkout = git clone 'git://github.com/tpope/vim-commentary.git' 'commentary'
+
+[bundle/unimpaired]
+checkout = git clone 'git://github.com/tpope/vim-unimpaired.git' 'unimpaired'
+
+[bundle/nerdtree]
+checkout = git clone 'git://github.com/scrooloose/nerdtree.git' 'nerdtree'
+
+[bundle/command-t]
+checkout = git clone 'git://git.wincent.com/command-t.git' 'command-t'
+
+[bundle/yankring]
+checkout = git clone 'git://github.com/vim-scripts/YankRing.vim.git' 'yankring'
+
+[bundle/slime]
+checkout = git clone 'git://github.com/jpalardy/vim-slime.git' 'slime'
+
+[bundle/gundo]
+checkout = git clone 'git://github.com/sjl/gundo.vim.git' 'gundo'
+
+[bundle/tagbar]
+checkout = git clone 'git://github.com/majutsushi/tagbar.git' 'tagbar'
