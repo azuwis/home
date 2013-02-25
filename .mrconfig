@@ -1,0 +1,62 @@
+[DEFAULT]
+
+git_register = 
+	url="`LC_ALL=C git config --get remote.origin.url`" || true
+	if [ -z "$url" ]; then
+		case "$PWD" in
+			${HOME}/.*)
+				GITHUB_REPO=`echo ${PWD#$HOME/} | sed -e 's/\//_/g'`;;
+			*)
+				GITHUB_REPO="${MR_REPO}";;
+		esac
+		if [ -n "$REPO" ]; then
+			GITHUB_REPO="${REPO}"
+		fi
+		echo "git origin url not found, creating $GITHUB_REPO at github.com"
+		ssh_url="`curl -s -u 'azuwis' https://api.github.com/user/repos -d '{"name":"'$GITHUB_REPO'"}' | awk -F'"' '/ssh_url/ {print $4}'`"
+		if [ -z "$ssh_url" ]; then
+			error "cannot create repo at github.com"
+		else
+			git remote add origin $ssh_url
+			url=$ssh_url
+		fi
+	fi
+	echo "Registering git url: $url in $MR_CONFIG"
+	mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$url' '$MR_REPO'"
+
+git_gc = git gc "$@"
+
+[.oh-my-zsh]
+checkout = git clone 'git://github.com/robbyrussell/oh-my-zsh.git' '.oh-my-zsh'
+
+[.pentadactyl]
+checkout = git clone 'git@github.com:azuwis/.pentadactyl.git' '.pentadactyl'
+chain = true
+
+[.urxvt/ext]
+checkout = git clone 'git://github.com/stepb/urxvt-tabbedex.git' 'ext'
+
+[.asciidoc/backends/dzslides]
+checkout = git clone 'git://github.com/mojavelinux/asciidoc-dzslides-backend.git' 'dzslides'
+
+[.asciidoc/backends/dzslides/dzslides]
+checkout = git clone 'git://github.com/mojavelinux/dzslides.git' 'dzslides'
+
+[.config/awesome]
+checkout = git clone 'git@github.com:azuwis/.config_awesome.git' 'awesome'
+
+[.config/awesome/eminent]
+checkout = git clone 'git://git.glacicle.org/awesome/eminent.git' 'eminent'
+
+[.vim]
+checkout = git clone 'git@github.com:azuwis/.vim.git' '.vim'
+chain = true
+
+[.local/share/vim]
+checkout = mkdir vim vim/backup vim/swap vim/undo; chmod 700 vim
+status = :
+fetch = :
+update = :
+
+[bin]
+checkout = git clone 'git@github.com:azuwis/bin.git' 'bin'
