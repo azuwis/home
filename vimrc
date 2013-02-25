@@ -1,21 +1,23 @@
-set nocompatible
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
-"let g:solarized_diffmode="high"
+let g:solarized_diffmode="high"
 colorscheme solarized
-let mapleader = ","
+let mapleader=","
 set list
 set modeline
 set relativenumber
 set cursorline
+set colorcolumn=85
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set fileencodings=ucs-bom,utf-8,cp936,default,latin1
 nnoremap / /\v
 vnoremap / /\v
 set ignorecase
 set smartcase
 set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <silent> <leader>s :set spell!<CR>
 nnoremap ; :
 "inoremap jj <ESC>
 
@@ -28,6 +30,8 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+"command! CleanSRT %s/{[^}]*}//g<CR>
 
 " http://vimcasts.org/episodes/tabs-and-spaces/
 " Set tabstop, softtabstop and shiftwidth to the same value
@@ -73,5 +77,5 @@ if has("autocmd")
 endif
 
 " {{{
-let g:slime_target = "tmux"
+let g:slime_target="tmux"
 " }}}

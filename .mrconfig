@@ -36,3 +36,12 @@ checkout = git clone 'git://github.com/sjl/gundo.vim.git' 'gundo'
 
 [bundle/tagbar]
 checkout = git clone 'git://github.com/majutsushi/tagbar.git' 'tagbar'
+
+[bundle/mustache]
+checkout = git clone 'git://github.com/juvenn/mustache.vim.git' 'mustache'
+
+[bundle/tabular]
+checkout = git clone 'git://github.com/godlygeek/tabular.git' 'tabular'
+
+[bundle/slim]
+checkout = git clone 'git://github.com/slim-template/vim-slim.git' 'slim'
