@@ -27,19 +27,22 @@ set fileencodings=ucs-bom,utf-8,cp936,default,latin1
 set ignorecase
 set smartcase
 set hlsearch
+set wildignore=
+set noswapfile
 if exists("*fugitive#statusline")
   set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 endif
 
 " Mapping {{{1
 map Q gq
+map <Leader>u :GundoToggle<CR>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <silent> <leader>s :set spell!<CR>
 nnoremap ; :
 "inoremap jj <ESC>
 
-" Disable <up> <down> <left> <right>
+" Disable <up> <down> <left> <right> {{{2
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -49,7 +52,34 @@ inoremap <down> <nop>
 "inoremap <left> <nop>
 inoremap <right> <nop>
 
-" Space & tab {{{1
+" Quick toggles {{{2
+nnoremap <silent> <leader>l :set list!<CR>
+nnoremap <silent> <leader>n :silent :nohlsearch<CR>
+
+" Commands to quickly set >1 option in one go {{{2
+command! -nargs=* Wrap set wrap linebreak nolist
+
+" Window switching {{{2
+nnoremap <C-k> <C-W>k
+nnoremap <C-j> <C-W>j
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+
+" File opening {{{2
+" Shortcuts for opening file in same directory as current file
+cnoremap <expr> %% getcmdtype() == ':' ? escape(expand('%:h'), ' \').'/' : '%%'
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+" Prompt to open file with same name, different extension
+map <leader>er :e <C-R>=expand("%:r")."."<CR>
+
+" Fix the & command in normal+visual modes {{{2
+nnoremap & :&&<Enter>
+xnoremap & :&&<Enter>
+
+" Indentation {{{1
 set ts=8 sts=4 sw=4 et
 " http://vimcasts.org/episodes/tabs-and-spaces/
 " Set tabstop, softtabstop and shiftwidth to the same value
