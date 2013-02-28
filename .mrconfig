@@ -36,16 +36,16 @@ git_push =
 git_gc = git gc "$@"
 
 [.]
-checkout = git clone 'git@github.com:azuwis/home.git' '.'
+checkout = git clone 'git://github.com/azuwis/home.git' '.'
 
 [bin]
-checkout = git clone 'git@github.com:azuwis/bin.git' 'bin'
+checkout = git clone 'git://github.com/azuwis/bin.git' 'bin'
 
 [.oh-my-zsh]
 checkout = git clone 'git://github.com/robbyrussell/oh-my-zsh.git' '.oh-my-zsh'
 
 [.pentadactyl]
-checkout = git clone 'git@github.com:azuwis/.pentadactyl.git' '.pentadactyl'
+checkout = git clone 'git://github.com/azuwis/.pentadactyl.git' '.pentadactyl'
 chain = true
 
 [.urxvt/ext]
@@ -58,13 +58,13 @@ checkout = git clone 'git://github.com/mojavelinux/asciidoc-dzslides-backend.git
 checkout = git clone 'git://github.com/mojavelinux/dzslides.git' 'dzslides'
 
 [.config/awesome]
-checkout = git clone 'git@github.com:azuwis/.config_awesome.git' 'awesome'
+checkout = git clone 'git://github.com/azuwis/.config_awesome.git' 'awesome'
 
 [.config/awesome/eminent]
 checkout = git clone 'git://git.glacicle.org/awesome/eminent.git' 'eminent'
 
 [.vim]
-checkout = git clone 'git@github.com:azuwis/.vim.git' '.vim'
+checkout = git clone 'git://github.com/azuwis/.vim.git' '.vim'
 chain = true
 
 [.local/share/vim]
