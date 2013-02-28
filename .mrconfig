@@ -27,6 +27,12 @@ git_register =
     echo "Registering git url: $url in $MR_CONFIG"
     mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$url' '$MR_REPO'"
 
+git_push =
+    url="`LC_ALL=C git config --get remote.origin.url`" || true
+    if echo $url | grep azuwis >/dev/null 2>&1; then
+        git push "$@"
+    fi
+
 git_gc = git gc "$@"
 
 [.]
