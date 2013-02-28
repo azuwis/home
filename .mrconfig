@@ -6,6 +6,8 @@ git_register =
 		case "$PWD" in
 			${HOME}/.*)
 				GITHUB_REPO=`echo ${PWD#$HOME/} | sed -e 's/\//_/g'`;;
+			${HOME}/debian/*)
+				GITHUB_REPO="deb_${MR_REPO}";;
 			*)
 				GITHUB_REPO="${MR_REPO}";;
 		esac
