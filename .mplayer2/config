@@ -1,9 +1,12 @@
+[default]
 vo=vdpau
 vc=ffh264vdpau,ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffodivxvdpau,
 subcp=enca:zh:cp936
 sub-fuzziness=1
 prefer-ipv4=yes
 stop-xscreensaver=yes
+use-filename-title=yes
+unrarexec=/usr/bin/unrar
 
 [protocol.dvdnav]
 profile-desc="profile for dvdnav:// streams"
