@@ -26,6 +26,12 @@ git_register =
 
 git_gc = git gc "$@"
 
+[.]
+checkout = git clone 'git@github.com:azuwis/home.git' '.'
+
+[bin]
+checkout = git clone 'git@github.com:azuwis/bin.git' 'bin'
+
 [.oh-my-zsh]
 checkout = git clone 'git://github.com/robbyrussell/oh-my-zsh.git' '.oh-my-zsh'
 
@@ -57,6 +63,3 @@ checkout = mkdir vim vim/backup vim/swap vim/undo; chmod 700 vim
 status = :
 fetch = :
 update = :
-
-[bin]
-checkout = git clone 'git@github.com:azuwis/bin.git' 'bin'
