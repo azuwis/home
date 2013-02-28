@@ -1,31 +1,31 @@
 [DEFAULT]
 
-git_register = 
-	url="`LC_ALL=C git config --get remote.origin.url`" || true
-	if [ -z "$url" ]; then
-		case "$PWD" in
-			${HOME}/.*)
-				GITHUB_REPO=`echo ${PWD#$HOME/} | sed -e 's/\//_/g'`;;
-			${HOME}/debian/*)
-				GITHUB_REPO="deb_${MR_REPO}";;
-			*)
-				GITHUB_REPO="${MR_REPO}";;
-		esac
-		if [ -n "$REPO" ]; then
-			GITHUB_REPO="${REPO}"
-		fi
-		echo "git origin url not found, creating $GITHUB_REPO at github.com"
-		read -p "repo description:" GITHUB_DESC
-		ssh_url="`curl -s -u 'azuwis' https://api.github.com/user/repos -d '{"name":"'$GITHUB_REPO'", "description":"'$GITHUB_DESC'"}' | awk -F'"' '/ssh_url/ {print $4}'`"
-		if [ -z "$ssh_url" ]; then
-			error "cannot create repo at github.com"
-		else
-			git remote add origin $ssh_url
-			url=$ssh_url
-		fi
-	fi
-	echo "Registering git url: $url in $MR_CONFIG"
-	mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$url' '$MR_REPO'"
+git_register =
+    url="`LC_ALL=C git config --get remote.origin.url`" || true
+    if [ -z "$url" ]; then
+        case "$PWD" in
+            ${HOME}/.*)
+                GITHUB_REPO=`echo ${PWD#$HOME/} | sed -e 's/\//_/g'`;;
+            ${HOME}/debian/*)
+                GITHUB_REPO="deb_${MR_REPO}";;
+            *)
+                GITHUB_REPO="${MR_REPO}";;
+        esac
+        if [ -n "$REPO" ]; then
+            GITHUB_REPO="${REPO}"
+        fi
+        echo "git origin url not found, creating $GITHUB_REPO at github.com"
+        read -p "repo description:" GITHUB_DESC
+        ssh_url="`curl -s -u 'azuwis' https://api.github.com/user/repos -d '{"name":"'$GITHUB_REPO'", "description":"'$GITHUB_DESC'"}' | awk -F'"' '/ssh_url/ {print $4}'`"
+        if [ -z "$ssh_url" ]; then
+            error "cannot create repo at github.com"
+        else
+            git remote add origin $ssh_url
+            url=$ssh_url
+        fi
+    fi
+    echo "Registering git url: $url in $MR_CONFIG"
+    mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$url' '$MR_REPO'"
 
 git_gc = git gc "$@"
 
