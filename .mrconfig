@@ -63,3 +63,13 @@ checkout = mkdir vim vim/backup vim/swap vim/undo; chmod 700 vim
 status = :
 fetch = :
 update = :
+
+[.instpkg]
+lib =
+    instpkg() {
+        aptitude --disable-columns --display-format "%p - %d" search '~i !~M !~prequired !~pimportant'
+    }
+checkout = mkdir "$MR_REPO" && instpkg > "${MR_REPO}/list"
+status = :
+update = instpkg > list
+fetch = :
