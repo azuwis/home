@@ -1,20 +1,9 @@
 " Pathogen {{{1
+let mapleader=","
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
-runtime ftplugin/man.vim
-if exists('g:loaded_editexisting') || &cp
-else
-  let g:loaded_editexisting = 1
-  runtime macros/editexisting.vim
-endif
-
-" Colorschema {{{1
-let g:solarized_diffmode="high"
-let g:solarized_hitrail=1
-colorscheme solarized
 
 " Options {{{1
-let mapleader=","
 
 set list
 "set listchars+=tab:▸\ 
@@ -41,7 +30,6 @@ endif
 
 " Mappings {{{1
 map Q gq
-map <Leader>u :GundoToggle<CR>
 "nnoremap / /\v
 "vnoremap / /\v
 nnoremap <silent> <leader>s :set spell!<CR>
@@ -61,9 +49,6 @@ inoremap <right> <nop>
 " Quick toggles {{{2
 nnoremap <silent> <leader>l :set list!<CR>
 nnoremap <silent> <leader>n :silent :nohlsearch<CR>
-
-" Commands to quickly set >1 option in one go {{{2
-command! -nargs=* Wrap set wrap linebreak nolist
 
 " Window switching {{{2
 nnoremap <C-k> <C-W>k
@@ -146,13 +131,17 @@ endif
 
 " Command {{{1
 "command! CleanSRT %s/{[^}]*}//g<CR>
+"
+" Commands to quickly set >1 option in one go {{{2
+command! -nargs=* Wrap set wrap linebreak nolist
+
 
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
     \ | wincmd p | diffthis
 endif
 
-" Plugin setting {{{1
+" Plugin {{{1
 " slime
 let g:slime_target="tmux"
 
@@ -166,5 +155,24 @@ let g:yankring_history_file = '.yankring_history'
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+
+" man
+runtime ftplugin/man.vim
+nmap K <Leader>K
+
+" editexisting
+if exists('g:loaded_editexisting') || &cp
+else
+  let g:loaded_editexisting = 1
+  runtime macros/editexisting.vim
+endif
+
+" solarized
+let g:solarized_diffmode="high"
+let g:solarized_hitrail=1
+colorscheme solarized
+
+" gundo
+map <Leader>u :GundoToggle<CR>
 
 " vim: fdm=marker
