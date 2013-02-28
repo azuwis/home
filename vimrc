@@ -115,6 +115,9 @@ if has("autocmd")
     " treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
 
+    " set spell for git commit msg
+    autocmd FileType gitcommit setlocal spell
+
     " auto save file on losing focus
     autocmd FocusLost * silent! wa
 
