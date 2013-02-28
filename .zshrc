@@ -38,6 +38,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 DEFAULT_USER="azuwis"
+unsetopt correct_all
+
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
-unsetopt correct_all
