@@ -2,13 +2,18 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 runtime ftplugin/man.vim
+if exists('g:loaded_editexisting') || &cp
+else
+  let g:loaded_editexisting = 1
+  runtime macros/editexisting.vim
+endif
 
 " Colorschema {{{1
 let g:solarized_diffmode="high"
 let g:solarized_hitrail=1
 colorscheme solarized
 
-" Option {{{1
+" Options {{{1
 let mapleader=","
 
 set list
@@ -20,7 +25,7 @@ set list
 set modeline
 set relativenumber
 set cursorline
-set colorcolumn=85
+"set colorcolumn=85
 " disable startup message
 set shortmess+=I
 set fileencodings=ucs-bom,utf-8,cp936,default,latin1
@@ -29,17 +34,18 @@ set smartcase
 set hlsearch
 set wildignore=
 set noswapfile
+set splitright splitbelow
 if exists("*fugitive#statusline")
   set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 endif
 
-" Mapping {{{1
+" Mappings {{{1
 map Q gq
 map <Leader>u :GundoToggle<CR>
-nnoremap / /\v
-vnoremap / /\v
+"nnoremap / /\v
+"vnoremap / /\v
 nnoremap <silent> <leader>s :set spell!<CR>
-nnoremap ; :
+"nnoremap ; :
 "inoremap jj <ESC>
 
 " Disable <up> <down> <left> <right> {{{2
@@ -152,5 +158,13 @@ let g:slime_target="tmux"
 
 " powerline
 let g:Powerline_symbols='fancy'
+
+" yankring
+let g:yankring_history_file = '.yankring_history'
+
+" javascript & html
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 " vim: fdm=marker
