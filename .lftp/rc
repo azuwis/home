@@ -1,0 +1,19 @@
+alias lls !ls
+debug 4
+set bmk:save-passwords true
+set dns:order "inet inet6"
+#set file:charset "utf-8"
+set ftp:charset "gbk"
+set ftp:anon-pass "mozilla@"
+set ftp:client ""
+set ftp:fix-pasv-address false
+set ftp:use-fxp false
+set http:user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:19.0) Gecko/20100101 Firefox/19.0"
+set mirror:order "*.srt *.idx *.sub *.rar *.nfo */"
+set mirror:set-permissions 0
+set net:limit-rate 4194304
+set net:reconnect-interval-base 28
+set net:reconnect-interval-multiplier 1
+#set ftp:retry-530 "incorrect"
+#set ftp:retry-530-anonymous "incorrect"
+#set net:persist-retries 500
