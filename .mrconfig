@@ -47,7 +47,7 @@ checkout = git clone 'git://github.com/godlygeek/tabular.git' 'tabular'
 checkout = git clone 'git://github.com/slim-template/vim-slim.git' 'slim'
 
 [bundle/powerline]
-checkout = git clone 'git://github.com/Lokaltog/vim-powerline.git' 'powerline'
+checkout = git clone 'git://github.com/Lokaltog/powerline.git' 'powerline'
 
 [bundle/characterize]
 checkout = git clone 'git://github.com/tpope/vim-characterize.git' 'characterize'

@@ -152,7 +152,7 @@ endif
 let g:slime_target="tmux"
 
 " powerline
-let g:Powerline_symbols='fancy'
+set runtimepath+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " yankring
 let g:yankring_history_file = '.yankring_history'
