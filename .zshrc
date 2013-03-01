@@ -43,6 +43,10 @@ unsetopt correct_all
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
 
+if [ -e /usr/share/pyshared/powerline/bindings/zsh/powerline.zsh ]; then
+    source /usr/share/pyshared/powerline/bindings/zsh/powerline.zsh
+fi
+
 if [ $(stat -c%s ${HOME}/.xsession-errors) -gt 1048576 ]; then
     echo > ${HOME}/.xsession-errors
 fi
