@@ -130,6 +130,8 @@ if has("autocmd")
       \ if line("'\"") > 1 && line("'\"") <= line("$") |
       \   exe "normal! g`\"" |
       \ endif
+    " load ~/.Xresources if modified
+    autocmd BufWritePost ~/.Xresources !xrdb ~/.Xresources
 augroup END
 endif
 
