@@ -23,6 +23,7 @@ set smartcase
 set hlsearch
 set wildignore=
 set noswapfile
+set undodir=~/.vim/.undodir
 set splitright splitbelow
 if exists("*fugitive#statusline")
   set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
