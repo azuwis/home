@@ -67,12 +67,6 @@ checkout = git clone 'git://git.glacicle.org/awesome/eminent.git' 'eminent'
 checkout = git clone 'git://github.com/azuwis/.vim.git' '.vim'
 chain = true
 
-[.local/share/vim]
-checkout = mkdir vim vim/backup vim/swap vim/undo; chmod 700 vim
-status = :
-fetch = :
-update = :
-
 [.instpkg]
 lib =
     instpkg() {
