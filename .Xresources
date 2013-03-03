@@ -30,7 +30,7 @@ URxvt.boldFont:     	xft:Cousine for Powerline:Bold:pixelsize=15,xft:文泉驛�
 !URxvt.font:         	xft:Liberation Mono:pixelsize=12,xft:Microsoft Yahei:pixelsize=12
 !URxvt.boldFont:     	xft:Liberation Mono:Bold:pixelsize=12,xft:Microsoft Yahei:Bold:pixelsize=12
 URxvt.title:		Terminal
-URxvt.termName: rxvt
+URxvt.termName: xterm-256color
 !URxvt.termName:	xterm-256color
 !URxvt.loginShell:	true
 !URxvt.modifier:		alt
