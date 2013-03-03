@@ -1,4 +1,4 @@
-URxvt.geometry:		140x54
+URxvt.geometry:		140x58
 !URxvt.geometry:		80x25
 !! true transparent
 URxvt.depth:		32
