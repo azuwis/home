@@ -177,6 +177,7 @@ endif
 let g:solarized_diffmode="high"
 let g:solarized_hitrail=1
 colorscheme solarized
+set background=dark
 
 " gundo
 map <Leader>u :GundoToggle<CR>
