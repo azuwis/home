@@ -33,6 +33,18 @@ git_push =
 	    git push "$@"
 	fi
 
+git_fork = 
+	UPST=`git config --get remote.origin.url`
+	if ! echo $UPST | grep azuwis >/dev/null 2>&1; then
+	    ORIG=`echo $UPST | sed -e 's/\(.*github\.com\/\)[^/]\+\(\/.*\)/\1azuwis\2/'`
+	    echo "forking $UPST ..."
+	    curl -s -X POST -u 'azuwis' `echo $UPST | sed -e 's/git:\/\/github\.com/https:\/\/api\.github.com\/repos/' -e 's/\.git$/\/forks/'` | awk -F'"' '/git_url/ {print $4}' | head -n1
+	    git remote set-url origin $ORIG
+	    git remote add upstream $UPST
+	    BASE_REPO=`basename $MR_REPO`
+	    mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$ORIG' '$BASE_REPO'; git remote add upstream '$UPST'"
+	fi
+
 git_update = 
 	git pull "$@"
 	url=`git config --get remote.upstream.url`
