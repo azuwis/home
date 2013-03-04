@@ -33,6 +33,14 @@ git_push =
 	    git push "$@"
 	fi
 
+git_update = 
+	git pull "$@"
+	url=`git config --get remote.upstream.url`
+	if [ x"$url" != x ]; then
+	    git fetch upstream
+	    git merge upstream/`git rev-parse --abbrev-ref HEAD`
+	fi
+
 git_gc = git gc "$@"
 
 [.]
