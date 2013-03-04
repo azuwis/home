@@ -32,7 +32,7 @@ ZSH_THEME="powerline"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git debian command-not-found history-substring-search last-working-dir per-directory-history)
+plugins=(git debian extract command-not-found history-substring-search last-working-dir per-directory-history)
 
 source $ZSH/oh-my-zsh.sh
 
