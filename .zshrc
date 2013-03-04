@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerline"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -43,9 +43,6 @@ unsetopt correct_all
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
 
-if [ -e /usr/share/pyshared/powerline/bindings/zsh/powerline.zsh ]; then
-    source /usr/share/pyshared/powerline/bindings/zsh/powerline.zsh
-fi
 
 if [ $(stat -c%s ${HOME}/.xsession-errors) -gt 1048576 ]; then
     echo > ${HOME}/.xsession-errors
