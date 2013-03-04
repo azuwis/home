@@ -47,7 +47,7 @@ git_fork =
 
 git_update = 
 	git pull "$@"
-	url=`git config --get remote.upstream.url`
+	url=`git config --get remote.upstream.url` || true
 	if [ x"$url" != x ]; then
 	    git fetch upstream
 	    git merge upstream/`git rev-parse --abbrev-ref HEAD`
