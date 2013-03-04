@@ -16,7 +16,7 @@ git_register =
 	    fi
 	    echo "git origin url not found, creating $GITHUB_REPO at github.com"
 	    read -p "repo description:" GITHUB_DESC
-	    ssh_url="`curl -s -u 'azuwis' https://api.github.com/user/repos -d '{"name":"'$GITHUB_REPO'", "description":"'$GITHUB_DESC'"}' | awk -F'"' '/ssh_url/ {print $4}'`"
+	    ssh_url="`curl -s -u 'azuwis' https://api.github.com/user/repos -d '{"name":"'$GITHUB_REPO'", "description":"'$GITHUB_DESC'"}' | awk -F'"' '/git_url/ {print $4}'`"
 	    if [ -z "$ssh_url" ]; then
 	        error "cannot create repo at github.com"
 	    else
