@@ -103,3 +103,6 @@ status = :
 update = instpkg > list
 fetch = :
 push = :
+
+[.fonts/powerline]
+checkout = git clone 'git://github.com/azuwis/.fonts_powerline.git' 'powerline'
