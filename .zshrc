@@ -46,6 +46,11 @@ unsetopt correct_all
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
 
+# Solarized ls color
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~ZSH_CUSTOM/dircolors-solarized/dircolors.256dark && eval "$(dircolors ~ZSH_CUSTOM/dircolors-solarized/dircolors.256dark)"
+fi
+
 # Auto clear ~/.xsession-errors file
 if [ $(stat -c%s ~/.xsession-errors) -gt 1048576 ]; then
     echo > ~/.xsession-errors
