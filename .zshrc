@@ -38,12 +38,15 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 DEFAULT_USER="azuwis"
+
+# Disable the annoying auto correction
 unsetopt correct_all
 
+# Debian packing staff
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
 
-
-if [ $(stat -c%s ${HOME}/.xsession-errors) -gt 1048576 ]; then
-    echo > ${HOME}/.xsession-errors
+# Auto clear ~/.xsession-errors file
+if [ $(stat -c%s ~/.xsession-errors) -gt 1048576 ]; then
+    echo > ~/.xsession-errors
 fi
