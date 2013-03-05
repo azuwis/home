@@ -42,7 +42,7 @@ git_fork =
 	    git remote set-url origin $ORIG
 	    git remote add upstream $UPST
 	    BASE_REPO=`basename $MR_REPO`
-	    mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$ORIG' '$BASE_REPO'; git remote add upstream '$UPST'"
+	    mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$ORIG' '$BASE_REPO' && cd '$BASE_REPO' && git remote add upstream '$UPST'"
 	fi
 
 git_update = 
