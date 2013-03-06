@@ -1,5 +1,5 @@
 URxvt.geometry:		140x58
-!URxvt.geometry:		80x25
+
 !! true transparent
 URxvt.depth:		32
 
@@ -7,31 +7,12 @@ URxvt.depth:		32
 !URxvt.transparent:  true
 !URxvt.shading:  20
 
-!Xcursor.theme:		DMZ-Black
-!Xcursor.size:		16
 !Xft.dpi:		98
 
-!URxvt.background:	rgba:0000/0000/0000/CCCC
-!URxvt.background:	rgba:0000/0000/0000/E666
-!URxvt.foreground:	white
-!URxvt.background:	rgba:1111/1111/1111/DDDD
-!URxvt.foreground:	rgba:BBBB/BBBB/BBBB/FFFF
-!URxvt.background:	#111111
-!URxvt.foreground:	#AAAAAA
-!URxvt.font:         	xft:Menlo:pixelsize=14,xft:Microsoft Yahei:pixelsize=14
-!URxvt.boldFont:     	xft:Menlo:Bold:pixelsize=14,xft:Microsoft Yahei:Bold:pixelsize=14
-!URxvt.font:         	xft:Droid Sans Mono:pixelsize=14,xft:Microsoft Yahei:pixelsize=14
-!URxvt.font:         	xft:DejaVu Sans Mono:pixelsize=15,xft:Microsoft Yahei:pixelsize=15
-!URxvt.boldFont:     	xft:DejaVu Sans Mono:Bold:pixelsize=15,xft:Microsoft Yahei:Bold:pixelsize=15
 URxvt.font:         	xft:Cousine for Powerline:pixelsize=15,xft:DejaVu Sans:pixelsize=15,xft:文泉驛等寬微米黑:pixelsize=15
 URxvt.boldFont:     	xft:Cousine for Powerline:Bold:pixelsize=15,xft:DejaVu Sans:pixelsize=15,xft:文泉驛等寬微米黑:Bold:pixelsize=15
-!URxvt.font:         	xft:DejaVu Sans Mono:pixelsize=20,xft:Microsoft Yahei:pixelsize=20
-!URxvt.boldFont:     	xft:DejaVu Sans Mono:Bold:pixelsize=20,xft:Microsoft Yahei:Bold:pixelsize=20
-!URxvt.font:         	xft:Liberation Mono:pixelsize=12,xft:Microsoft Yahei:pixelsize=12
-!URxvt.boldFont:     	xft:Liberation Mono:Bold:pixelsize=12,xft:Microsoft Yahei:Bold:pixelsize=12
 URxvt.title:		Terminal
 URxvt.termName: xterm-256color
-!URxvt.termName:	xterm-256color
 !URxvt.loginShell:	true
 !URxvt.modifier:		alt
 URxvt.saveLines:	1024
