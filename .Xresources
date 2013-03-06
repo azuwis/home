@@ -38,3 +38,4 @@ URxvt.colorBD           : #d7d7d7
 URxvt.colorUL           : #87afd7
 
 #include ".Xresources.d/solarized/solarized"
+*fading                 : 20
