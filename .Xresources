@@ -5,29 +5,19 @@ URxvt.depth:		32
 
 !! fake transparent
 !URxvt.transparent:  true
-!URxvt.shading:  20
-
-!Xft.dpi:		98
 
 URxvt.font:         	xft:Cousine for Powerline:pixelsize=15,xft:DejaVu Sans:pixelsize=15,xft:文泉驛等寬微米黑:pixelsize=15
 URxvt.boldFont:     	xft:Cousine for Powerline:Bold:pixelsize=15,xft:DejaVu Sans:pixelsize=15,xft:文泉驛等寬微米黑:Bold:pixelsize=15
 URxvt.title:		Terminal
 URxvt.termName: xterm-256color
-!URxvt.loginShell:	true
-!URxvt.modifier:		alt
 URxvt.saveLines:	1024
-!URxvt.borderLess:	false
-!URxvt.inheritPixmap:	false
-URxvt.scrollBar:	false
+!URxvt.scrollBar:	false
 URxvt.scrollstyle:	plain
+URxvt.scrollBar_right: true
 URxvt.scrollColor:	#444444
-!URxvt.jumpScroll:	true
 URxvt.scrollTtyOutput:	false
 URxvt.scrollWithBuffer:	true
 URxvt.scrollTtyKeypress:true
-!URxvt.utmpInhibit:	false
-!URxvt.cursorUnderline:	true
-!URxvt.cursorBlink:	true
 URxvt.urgentOnBell:	true
 URxvt.perl-ext-common:	default,matcher,tabbedex,xim-onthespot
 URxvt.urlLauncher:	x-www-browser
