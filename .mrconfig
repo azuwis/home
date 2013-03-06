@@ -66,11 +66,10 @@ checkout = git clone 'git://github.com/azuwis/bin.git' 'bin'
 checkout = git clone 'git://github.com/robbyrussell/oh-my-zsh.git' '.oh-my-zsh'
 
 [.oh-my-zsh/custom/powerline-theme]
-checkout = 
-	git clone 'git://github.com/azuwis/oh-my-zsh-powerline-theme.git' 'powerline-theme'
+checkout = git clone 'git://github.com/azuwis/oh-my-zsh-powerline-theme.git' 'powerline-theme'
+post_checkout = 
 	ln -s powerline-theme/powerline.zsh-theme .
-	cd powerline-theme
-	git remote add upstream 'git://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git'
+	cd powerline-theme && git remote add upstream 'git://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git'
 
 [.pentadactyl]
 checkout = git clone 'git://github.com/azuwis/.pentadactyl.git' '.pentadactyl'
