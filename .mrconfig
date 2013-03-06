@@ -80,9 +80,8 @@ checkout = git clone 'git://github.com/stepb/urxvt-tabbedex.git' 'ext'
 
 [.asciidoc/backends/dzslides]
 checkout = git clone 'git://github.com/mojavelinux/asciidoc-dzslides-backend.git' 'dzslides'
-
-[.asciidoc/backends/dzslides/dzslides]
-checkout = git clone 'git://github.com/mojavelinux/dzslides.git' 'dzslides'
+post_checkout = cd dzslides && git submodule update --init
+post_update = git submodule update
 
 [.config/awesome]
 checkout = git clone 'git://github.com/azuwis/.config_awesome.git' 'awesome'
