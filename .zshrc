@@ -46,6 +46,11 @@ unsetopt correct_all
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
 
+# Load custom dircolors
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+
 # Auto clear ~/.xsession-errors file
 if [ $(stat -c%s ~/.xsession-errors) -gt 1048576 ]; then
     echo > ~/.xsession-errors
