@@ -1,4 +1,5 @@
 [DEFAULT]
+delete = mr -c "$MR_CONFIG" config "`pwd`" deleted="true"
 
 git_register = 
 	url="`LC_ALL=C git config --get remote.origin.url`" || true
