@@ -108,6 +108,8 @@ push = :
 
 [.fonts/powerline]
 checkout = git clone 'git://github.com/azuwis/.fonts_powerline.git' 'powerline'
+post_checkout = fc-cache
+post_update = fc-cache
 
 [.Xresources.d/solarized]
 checkout = git clone 'git://github.com/solarized/xresources.git' 'solarized'
