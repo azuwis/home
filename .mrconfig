@@ -111,5 +111,9 @@ push = :
 checkout = git clone 'git://github.com/azuwis/.fonts_powerline.git' 'powerline'
 fixups = fc-cache
 
+[.fonts/croscorefonts]
+checkout = git clone 'git://github.com/azuwis/.fonts_croscorefonts.git' 'croscorefonts'
+fixups = fc-cache
+
 [.Xresources.d/solarized]
 checkout = git clone 'git://github.com/solarized/xresources.git' 'solarized'
