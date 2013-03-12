@@ -56,3 +56,11 @@ fi
 if [ $(stat -c%s ~/.xsession-errors) -gt 1048576 ]; then
     echo > ~/.xsession-errors
 fi
+
+# Set title for ssh in tmux
+if [ -n "$TMUX" ]; then
+    ssh() {
+        tmux rename-window "$*"
+        command ssh "$@"
+    }
+fi
