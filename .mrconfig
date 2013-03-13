@@ -120,3 +120,9 @@ checkout = git clone 'git://github.com/solarized/xresources.git' 'solarized'
 
 [.tmux.conf.d/solarized]
 checkout = git clone 'git://github.com/seebi/tmux-colors-solarized.git' 'solarized'
+
+[.oh-my-zsh/custom/plugins/zsh-syntax-highlighting]
+checkout = git clone 'git://github.com/zsh-users/zsh-syntax-highlighting.git' 'zsh-syntax-highlighting'
+
+[.oh-my-zsh/custom/zsh-completions]
+checkout = git clone 'git://github.com/zsh-users/zsh-completions.git' 'zsh-completions'
