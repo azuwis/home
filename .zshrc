@@ -6,6 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 POWERLINE_NO_BLANK_LINE="true"
+POWERLINE_DETECT_SSH="true"
 ZSH_THEME="powerline"
 
 # Example aliases
