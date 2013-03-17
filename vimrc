@@ -116,6 +116,9 @@ if has("autocmd")
     " treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
 
+    " treat .mrconfig files as cfg
+    autocmd BufNewFile,BufRead */.mrconfig setfiletype cfg
+
     " set spell for git commit msg
     autocmd FileType gitcommit setlocal spell
 
