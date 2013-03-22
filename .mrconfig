@@ -1,6 +1,7 @@
 [DEFAULT]
 delete = mr -c "$MR_CONFIG" config "`pwd`" deleted="true"
 
+# Create repo at github when origin remote is empty
 git_register = 
 	url="`LC_ALL=C git config --get remote.origin.url`" || true
 	if [ -z "$url" ]; then
@@ -28,14 +29,15 @@ git_register =
 	echo "Registering git url: $url in $MR_CONFIG"
 	mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$url' '$MR_REPO'"
 
+# Push only when having unpushed commit
 git_push = 
-	url="`LC_ALL=C git config --get remote.origin.url`" || true
-	if echo $url | grep azuwis >/dev/null 2>&1; then
-	    if [ $(git --no-pager log --branches --not --remotes --simplify-by-decoration  --oneline | wc -l) -gt 0 ]; then
+	if git config --get remote.origin.url | grep azuwis >/dev/null 2>&1; then
+	    if [ $(git --no-pager log --branches --not --remotes --simplify-by-decoration --oneline | wc -l) -gt 0 ]; then
 	        git push "$@"
 	    fi
 	fi
 
+# Fork at github, set origin remote to the fork, and upstream remote to the upstream
 git_fork = 
 	UPST=`git config --get remote.origin.url`
 	if ! echo $UPST | grep azuwis >/dev/null 2>&1; then
@@ -49,6 +51,7 @@ git_fork =
 	    mr -c "$MR_CONFIG" config "`pwd`" post_checkout="cd '$BASE_REPO' && git remote add upstream '$UPST'"
 	fi
 
+# Fetch and merge current branch if upstream remote exist
 git_update = 
 	git pull "$@"
 	url=`git config --get remote.upstream.url` || true
