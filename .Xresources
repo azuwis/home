@@ -8,7 +8,7 @@ URxvt.boldFont          : xft:Cousine for Powerline:Bold:pixelsize=15,xft:DejaVu
 URxvt.title             : Terminal
 URxvt.termName          : xterm-256color
 
-!URxvt.scrollBar        : false
+URxvt.scrollBar        : false
 URxvt.scrollstyle       : plain
 URxvt.scrollBar_right   : true
 URxvt.scrollColor       : #444444
