@@ -116,8 +116,9 @@ if has("autocmd")
     " treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
 
-    " treat .mrconfig files as cfg
+    " treat .mrconfig files as cfg, ~/.mrlib as sh
     autocmd BufNewFile,BufRead */.mrconfig setfiletype cfg
+    autocmd BufNewFile,BufRead ~/.mrlib setfiletype sh
 
     " set spell for git commit msg
     autocmd FileType gitcommit setlocal spell
@@ -133,6 +134,7 @@ if has("autocmd")
       \ if line("'\"") > 1 && line("'\"") <= line("$") |
       \   exe "normal! g`\"" |
       \ endif
+
     " load ~/.Xresources if modified
     autocmd BufWritePost ~/.Xresources !xrdb ~/.Xresources
 augroup END
