@@ -24,6 +24,7 @@ checkout = git clone 'git://github.com/scrooloose/nerdtree.git' 'nerdtree'
 
 [bundle/command-t]
 checkout = git clone 'git://git.wincent.com/command-t.git' 'command-t'
+deleted = true
 
 [bundle/slime]
 checkout = git clone 'git://github.com/jpalardy/vim-slime.git' 'slime'
