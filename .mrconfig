@@ -4,12 +4,71 @@ include = cat ~/.mrlib
 lib = 
 	GITHUB_USER="azuwis"
 
+# common
 [.]
 checkout = git clone 'git://github.com/azuwis/home.git' '.'
 
 [bin]
 checkout = git clone 'git://github.com/azuwis/bin.git' 'bin'
 
+# asciidoc
+[.asciidoc/backends/dzslides]
+checkout = git clone 'git://github.com/mojavelinux/asciidoc-dzslides-backend.git' 'dzslides'
+post_checkout = cd dzslides && git submodule update --init
+post_update = git submodule update
+skip = ! which asciidoc
+
+# awesome
+[.config/awesome]
+checkout = git clone 'git://github.com/azuwis/.config_awesome.git' 'awesome'
+skip = ! which awesome
+
+[.config/awesome/eminent]
+checkout = git clone 'git://git.glacicle.org/awesome/eminent.git' 'eminent'
+skip = ! which awesome
+
+# firefox
+[.pentadactyl]
+checkout = git clone 'git://github.com/azuwis/.pentadactyl.git' '.pentadactyl'
+chain = true
+skip = ! which firefox
+
+[.scrapbook]
+checkout = git clone 'git://github.com/azuwis/scrap.git' '.scrapbook'
+skip = ! which firefox
+
+# tmux
+[.tmux.conf.d/solarized]
+checkout = git clone 'git://github.com/seebi/tmux-colors-solarized.git' 'solarized'
+skip = ! which tmux
+
+# urxvt
+[.urxvt/ext]
+checkout = git clone 'git://github.com/stepb/urxvt-tabbedex.git' 'ext'
+skip = ! which urxvt
+
+# vim
+[.vim]
+checkout = git clone 'git://github.com/azuwis/.vim.git' '.vim'
+chain = true
+skip = ! which vim
+
+[.fonts/powerline]
+checkout = git clone 'git://github.com/azuwis/.fonts_powerline.git' 'powerline'
+fixups = fc-cache
+skip = ! which vim
+
+# Xorg
+[.fonts/croscorefonts]
+checkout = git clone 'git://github.com/azuwis/.fonts_croscorefonts.git' 'croscorefonts'
+fixups = fc-cache
+skip = ! which Xorg
+
+[.Xresources.d/solarized]
+checkout = git clone 'git://github.com/solarized/xresources.git' 'solarized'
+skip = ! which Xorg
+
+# zsh
 [.oh-my-zsh]
 checkout = git clone 'git://github.com/robbyrussell/oh-my-zsh.git' '.oh-my-zsh'
 skip = ! which zsh
@@ -21,34 +80,15 @@ post_checkout =
 	cd powerline-theme && git remote add upstream 'git://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git'
 skip = ! which zsh
 
-[.pentadactyl]
-checkout = git clone 'git://github.com/azuwis/.pentadactyl.git' '.pentadactyl'
-chain = true
-skip = ! which firefox
+[.oh-my-zsh/custom/plugins/zsh-syntax-highlighting]
+checkout = git clone 'git://github.com/zsh-users/zsh-syntax-highlighting.git' 'zsh-syntax-highlighting'
+skip = ! which zsh
 
-[.urxvt/ext]
-checkout = git clone 'git://github.com/stepb/urxvt-tabbedex.git' 'ext'
-skip = ! which urxvt
+[.oh-my-zsh/custom/zsh-completions]
+checkout = git clone 'git://github.com/zsh-users/zsh-completions.git' 'zsh-completions'
+skip = ! which zsh
 
-[.asciidoc/backends/dzslides]
-checkout = git clone 'git://github.com/mojavelinux/asciidoc-dzslides-backend.git' 'dzslides'
-post_checkout = cd dzslides && git submodule update --init
-post_update = git submodule update
-skip = ! which asciidoc
-
-[.config/awesome]
-checkout = git clone 'git://github.com/azuwis/.config_awesome.git' 'awesome'
-skip = ! which awesome
-
-[.config/awesome/eminent]
-checkout = git clone 'git://git.glacicle.org/awesome/eminent.git' 'eminent'
-skip = ! which awesome
-
-[.vim]
-checkout = git clone 'git://github.com/azuwis/.vim.git' '.vim'
-chain = true
-skip = ! which vim
-
+# misc
 [.instpkg]
 lib = 
 	instpkg() {
@@ -60,33 +100,3 @@ update = instpkg > list
 fetch = :
 push = :
 skip = ! which lsb_release || ! test "`lsb_release -si`" = "Debian"
-
-[.fonts/powerline]
-checkout = git clone 'git://github.com/azuwis/.fonts_powerline.git' 'powerline'
-fixups = fc-cache
-skip = ! which vim
-
-[.fonts/croscorefonts]
-checkout = git clone 'git://github.com/azuwis/.fonts_croscorefonts.git' 'croscorefonts'
-fixups = fc-cache
-skip = ! which Xorg
-
-[.Xresources.d/solarized]
-checkout = git clone 'git://github.com/solarized/xresources.git' 'solarized'
-skip = ! which Xorg
-
-[.tmux.conf.d/solarized]
-checkout = git clone 'git://github.com/seebi/tmux-colors-solarized.git' 'solarized'
-skip = ! which tmux
-
-[.oh-my-zsh/custom/plugins/zsh-syntax-highlighting]
-checkout = git clone 'git://github.com/zsh-users/zsh-syntax-highlighting.git' 'zsh-syntax-highlighting'
-skip = ! which zsh
-
-[.oh-my-zsh/custom/zsh-completions]
-checkout = git clone 'git://github.com/zsh-users/zsh-completions.git' 'zsh-completions'
-skip = ! which zsh
-
-[.scrapbook]
-checkout = git clone 'git://github.com/azuwis/scrap.git' '.scrapbook'
-skip = ! which firefox
