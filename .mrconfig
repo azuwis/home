@@ -1,6 +1,9 @@
 [DEFAULT]
 include = cat ~/.mrlib
 
+lib = 
+	GITHUB_USER="azuwis"
+
 [.]
 checkout = git clone 'git://github.com/azuwis/home.git' '.'
 

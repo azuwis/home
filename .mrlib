@@ -18,7 +18,7 @@ git_register =
         fi
         echo "git origin url not found, creating $GITHUB_REPO at github.com"
         read -p "repo description: " GITHUB_DESC
-        ssh_url="`curl -s -u 'azuwis' https://api.github.com/user/repos -d '{"name":"'"$GITHUB_REPO"'", "description":"'"$GITHUB_DESC"'"}' | awk -F'"' '/git_url/ {print $4}'`"
+        ssh_url="`curl -s -u "$GITHUB_USER" https://api.github.com/user/repos -d '{"name":"'"$GITHUB_REPO"'", "description":"'"$GITHUB_DESC"'"}' | awk -F'"' '/git_url/ {print $4}'`"
         if [ -z "$ssh_url" ]; then
             error "cannot create repo at github.com"
         else
@@ -31,7 +31,7 @@ git_register =
 
 # Push only when having unpushed commit
 git_push =
-    if git config --get remote.origin.url | grep azuwis >/dev/null 2>&1; then
+    if git config --get remote.origin.url | grep -F "$GITHUB_USER" >/dev/null 2>&1; then
         if [ $(git --no-pager log --branches --not --remotes --simplify-by-decoration --oneline | wc -l) -gt 0 ]; then
             git push "$@"
         fi
@@ -40,10 +40,10 @@ git_push =
 # Fork at github, set origin remote to the fork, and upstream remote to the upstream
 git_fork =
     UPST=`git config --get remote.origin.url`
-    if ! echo $UPST | grep azuwis >/dev/null 2>&1; then
-        ORIG=`echo $UPST | sed -e 's/\(.*github\.com\/\)[^/]\+\(\/.*\)/\1azuwis\2/'`
+    if ! echo $UPST | grep -F "$GITHUB_USER" >/dev/null 2>&1; then
+        ORIG=`echo $UPST | sed -e 's/\(.*github\.com\/\)[^/]\+\(\/.*\)/\1'"$GITHUB_USER"'\2/'`
         echo "forking $UPST ..."
-        curl -s -X POST -u 'azuwis' `echo $UPST | sed -e 's/git:\/\/github\.com/https:\/\/api\.github.com\/repos/' -e 's/\.git$/\/forks/'` | awk -F'"' '/git_url/ {print $4}' | head -n1
+        curl -s -X POST -u "$GITHUB_USER" `echo $UPST | sed -e 's/git:\/\/github\.com/https:\/\/api\.github.com\/repos/' -e 's/\.git$/\/forks/'` | awk -F'"' '/git_url/ {print $4}' | head -n1
         git remote set-url origin $ORIG
         git remote add upstream $UPST
         BASE_REPO=`basename $MR_REPO`
