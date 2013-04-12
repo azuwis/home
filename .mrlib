@@ -2,62 +2,62 @@
 delete = mr -c "$MR_CONFIG" config "`pwd`" deleted="true"
 
 # Create repo at github when origin remote is empty
-git_register = 
-	url="`LC_ALL=C git config --get remote.origin.url`" || true
-	if [ -z "$url" ]; then
-	    case "$PWD" in
-	        ${HOME}/.*)
-	            GITHUB_REPO=`echo ${PWD#$HOME/} | sed -e 's/\//_/g'`;;
-	        ${HOME}/debian/*)
-	            GITHUB_REPO="deb_${MR_REPO}";;
-	        *)
-	            GITHUB_REPO="${MR_REPO}";;
-	    esac
-	    if [ -n "$REPO" ]; then
-	        GITHUB_REPO="${REPO}"
-	    fi
-	    echo "git origin url not found, creating $GITHUB_REPO at github.com"
-	    read -p "repo description: " GITHUB_DESC
-	    ssh_url="`curl -s -u 'azuwis' https://api.github.com/user/repos -d '{"name":"'"$GITHUB_REPO"'", "description":"'"$GITHUB_DESC"'"}' | awk -F'"' '/git_url/ {print $4}'`"
-	    if [ -z "$ssh_url" ]; then
-	        error "cannot create repo at github.com"
-	    else
-	        git remote add origin $ssh_url
-	        url=$ssh_url
-	    fi
-	fi
-	echo "Registering git url: $url in $MR_CONFIG"
-	mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$url' '$MR_REPO'"
+git_register =
+    url="`LC_ALL=C git config --get remote.origin.url`" || true
+    if [ -z "$url" ]; then
+        case "$PWD" in
+            ${HOME}/.*)
+                GITHUB_REPO=`echo ${PWD#$HOME/} | sed -e 's/\//_/g'`;;
+            ${HOME}/debian/*)
+                GITHUB_REPO="deb_${MR_REPO}";;
+            *)
+                GITHUB_REPO="${MR_REPO}";;
+        esac
+        if [ -n "$REPO" ]; then
+            GITHUB_REPO="${REPO}"
+        fi
+        echo "git origin url not found, creating $GITHUB_REPO at github.com"
+        read -p "repo description: " GITHUB_DESC
+        ssh_url="`curl -s -u 'azuwis' https://api.github.com/user/repos -d '{"name":"'"$GITHUB_REPO"'", "description":"'"$GITHUB_DESC"'"}' | awk -F'"' '/git_url/ {print $4}'`"
+        if [ -z "$ssh_url" ]; then
+            error "cannot create repo at github.com"
+        else
+            git remote add origin $ssh_url
+            url=$ssh_url
+        fi
+    fi
+    echo "Registering git url: $url in $MR_CONFIG"
+    mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$url' '$MR_REPO'"
 
 # Push only when having unpushed commit
-git_push = 
-	if git config --get remote.origin.url | grep azuwis >/dev/null 2>&1; then
-	    if [ $(git --no-pager log --branches --not --remotes --simplify-by-decoration --oneline | wc -l) -gt 0 ]; then
-	        git push "$@"
-	    fi
-	fi
+git_push =
+    if git config --get remote.origin.url | grep azuwis >/dev/null 2>&1; then
+        if [ $(git --no-pager log --branches --not --remotes --simplify-by-decoration --oneline | wc -l) -gt 0 ]; then
+            git push "$@"
+        fi
+    fi
 
 # Fork at github, set origin remote to the fork, and upstream remote to the upstream
-git_fork = 
-	UPST=`git config --get remote.origin.url`
-	if ! echo $UPST | grep azuwis >/dev/null 2>&1; then
-	    ORIG=`echo $UPST | sed -e 's/\(.*github\.com\/\)[^/]\+\(\/.*\)/\1azuwis\2/'`
-	    echo "forking $UPST ..."
-	    curl -s -X POST -u 'azuwis' `echo $UPST | sed -e 's/git:\/\/github\.com/https:\/\/api\.github.com\/repos/' -e 's/\.git$/\/forks/'` | awk -F'"' '/git_url/ {print $4}' | head -n1
-	    git remote set-url origin $ORIG
-	    git remote add upstream $UPST
-	    BASE_REPO=`basename $MR_REPO`
-	    mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$ORIG' '$BASE_REPO'"
-	    mr -c "$MR_CONFIG" config "`pwd`" post_checkout="cd '$BASE_REPO' && git remote add upstream '$UPST'"
-	fi
+git_fork =
+    UPST=`git config --get remote.origin.url`
+    if ! echo $UPST | grep azuwis >/dev/null 2>&1; then
+        ORIG=`echo $UPST | sed -e 's/\(.*github\.com\/\)[^/]\+\(\/.*\)/\1azuwis\2/'`
+        echo "forking $UPST ..."
+        curl -s -X POST -u 'azuwis' `echo $UPST | sed -e 's/git:\/\/github\.com/https:\/\/api\.github.com\/repos/' -e 's/\.git$/\/forks/'` | awk -F'"' '/git_url/ {print $4}' | head -n1
+        git remote set-url origin $ORIG
+        git remote add upstream $UPST
+        BASE_REPO=`basename $MR_REPO`
+        mr -c "$MR_CONFIG" config "`pwd`" checkout="git clone '$ORIG' '$BASE_REPO'"
+        mr -c "$MR_CONFIG" config "`pwd`" post_checkout="cd '$BASE_REPO' && git remote add upstream '$UPST'"
+    fi
 
 # Fetch and merge current branch if upstream remote exist
-git_update = 
-	git pull "$@"
-	url=`git config --get remote.upstream.url` || true
-	if [ x"$url" != x ]; then
-	    git fetch upstream
-	    git merge upstream/`git rev-parse --abbrev-ref HEAD`
-	fi
+git_update =
+    git pull "$@"
+    url=`git config --get remote.upstream.url` || true
+    if [ x"$url" != x ]; then
+        git fetch upstream
+        git merge upstream/`git rev-parse --abbrev-ref HEAD`
+    fi
 
 git_gc = git gc "$@"
