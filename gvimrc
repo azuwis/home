@@ -2,6 +2,7 @@
 set guioptions-=r
 set guioptions-=L
 set guioptions-=T
+set guioptions-=m
 set guioptions+=ac
 set guifont=Cousine\ for\ Powerline\ 11
 set linespace=1
