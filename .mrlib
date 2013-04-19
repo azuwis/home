@@ -2,6 +2,16 @@ lib =
     no_cmd() {
         ! which "$1" >/dev/null 2>&1
     }
+    github_token() {
+        GITHUB_OAUTH="${HOME}/.github_oauth"
+        GITHUB_TOKEN=`cat "$GITHUB_OAUTH"` || true
+        if ! echo -n "$GITHUB_TOKEN" | grep -qE '^[0-9a-f]{40}$'; then
+            GITHUB_TOKEN="`curl -s -u "$GITHUB_USER" -d '{"scopes":["repo"],"note":"for mr"}' https://api.github.com/authorizations | awk -F'"' '/token/ {print $4}'`"
+            echo "$GITHUB_TOKEN" > "$GITHUB_OAUTH"
+            chmod 600 "$GITHUB_OAUTH"
+        fi
+        echo "$GITHUB_TOKEN"
+    }
 
 # Mark as deleted
 delete = mr -c "$MR_CONFIG" config "`pwd`" deleted="true"
@@ -23,7 +33,7 @@ git_register =
         fi
         echo "git origin url not found, creating $GITHUB_REPO at github.com"
         read -p "repo description: " GITHUB_DESC
-        ssh_url="`curl -s -u "$GITHUB_USER" https://api.github.com/user/repos -d '{"name":"'"$GITHUB_REPO"'", "description":"'"$GITHUB_DESC"'"}' | awk -F'"' '/git_url/ {print $4}'`"
+        ssh_url="`curl -s -H "Authorization: token $(github_token)" https://api.github.com/user/repos -d '{"name":"'"$GITHUB_REPO"'", "description":"'"$GITHUB_DESC"'"}' | awk -F'"' '/git_url/ {print $4}'`"
         if [ -z "$ssh_url" ]; then
             error "cannot create repo at github.com"
         else
@@ -48,7 +58,7 @@ git_fork =
     if ! echo $UPST | grep -F "$GITHUB_USER" >/dev/null 2>&1; then
         ORIG=`echo $UPST | sed -e 's/\(.*github\.com\/\)[^/]\+\(\/.*\)/\1'"$GITHUB_USER"'\2/'`
         echo "forking $UPST ..."
-        curl -s -X POST -u "$GITHUB_USER" `echo $UPST | sed -e 's/git:\/\/github\.com/https:\/\/api\.github.com\/repos/' -e 's/\.git$/\/forks/'` | awk -F'"' '/git_url/ {print $4}' | head -n1
+        curl -s -X POST -H "Authorization: token $(github_token)" `echo $UPST | sed -e 's/git:\/\/github\.com/https:\/\/api\.github.com\/repos/' -e 's/\.git$/\/forks/'` | awk -F'"' '/git_url/ {print $4}' | head -n1
         git remote set-url origin $ORIG
         git remote add upstream $UPST
         BASE_REPO=`basename $MR_REPO`
