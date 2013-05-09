@@ -21,6 +21,7 @@ checkout = git clone 'git://github.com/tpope/vim-unimpaired.git' 'unimpaired'
 
 [bundle/nerdtree]
 checkout = git clone 'git://github.com/scrooloose/nerdtree.git' 'nerdtree'
+deleted = true
 
 [bundle/slime]
 checkout = git clone 'git://github.com/jpalardy/vim-slime.git' 'slime'
@@ -75,3 +76,36 @@ checkout = git clone 'git://github.com/hallettj/jslint.vim.git' 'jslint'
 
 [bundle/quickrun]
 checkout = git clone 'git://github.com/thinca/vim-quickrun.git' 'quickrun'
+
+[bundle/ctrlp]
+checkout = git clone 'git://github.com/kien/ctrlp.vim.git' 'ctrlp'
+
+[bundle/easymotion]
+checkout = git clone 'git://github.com/Lokaltog/vim-easymotion.git' 'easymotion'
+
+[bundle/taghighlight]
+checkout = hg clone 'https://bitbucket.org/abudden/taghighlight' 'taghighlight'
+
+[bundle/visual-star-search]
+checkout = git clone 'git://github.com/nelstrom/vim-visual-star-search.git' 'visual-star-search'
+
+[bundle/textobj-entire]
+checkout = git clone 'git://github.com/kana/vim-textobj-entire.git' 'textobj-entire'
+
+[bundle/textobj-indent]
+checkout = git clone 'git://github.com/kana/vim-textobj-indent.git' 'textobj-indent'
+
+[bundle/textobj-user]
+checkout = git clone 'git://github.com/kana/vim-textobj-user.git' 'textobj-user'
+
+[bundle/textobj-lastpat]
+checkout = git clone 'git://github.com/kana/vim-textobj-lastpat.git' 'textobj-lastpat'
+
+[bundle/textobj-line]
+checkout = git clone 'git://github.com/kana/vim-textobj-line.git' 'textobj-line'
+
+[bundle/niceblock]
+checkout = git clone 'git://github.com/kana/vim-niceblock.git' 'niceblock'
+
+[bundle/smartinput]
+checkout = git clone 'git://github.com/kana/vim-smartinput.git' 'smartinput'
