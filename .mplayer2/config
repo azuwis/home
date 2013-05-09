@@ -1,8 +1,10 @@
 [default]
 vo=vdpau
 vc=ffh264vdpau,ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffodivxvdpau,
+ao=alsa
 subcp=enca:zh:cp936
 sub-fuzziness=1
+overlapsub=yes
 prefer-ipv4=yes
 stop-xscreensaver=yes
 use-filename-title=yes
