@@ -159,6 +159,7 @@ endif
 " Plugin {{{1
 " slime
 let g:slime_target="tmux"
+let g:slime_no_mappings=1
 
 " powerline
 set runtimepath+=~/.vim/bundle/powerline/powerline/bindings/vim
