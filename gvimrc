@@ -10,7 +10,6 @@ set linespace=1
 "set guifont=Letter\ Gothic\ Std\ Medium:h14
 "set guifont=Letter\ Gothic\ Std\ Bold:h14
 set guicursor+=a:blinkon0
-set background=dark
 "let g:solarized_contrast="high"
 "let g:solarized_visibility="high"
 "let g:solarized_diffmode="high"
