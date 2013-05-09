@@ -6,6 +6,7 @@ execute pathogen#infect()
 " Options {{{1
 
 set list
+set showbreak=↪
 "set listchars+=tab:▸\ 
 "set listchars+=eol:¬
 "highlight NonText guifg=#4a4a59

@@ -16,3 +16,4 @@ set background=dark
 "let g:solarized_diffmode="high"
 set lines=60
 set columns=104
+set showbreak=
