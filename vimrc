@@ -1,5 +1,5 @@
 " Pathogen {{{1
-let mapleader=","
+"let mapleader=","
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
