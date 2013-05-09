@@ -114,6 +114,9 @@ if has("autocmd")
     autocmd FileType vim,yaml,html,css setlocal ts=2 sts=2 sw=2 et
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 
+    " filetype specific mapping
+    autocmd FileType vim nnoremap <buffer> K :h <C-r><C-w><CR>
+
     " no list and relativenumber for manpages
     autocmd FileType man setlocal nolist norelativenumber colorcolumn=
 
