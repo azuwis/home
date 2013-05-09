@@ -68,3 +68,10 @@ if [ -n "$TMUX" ]; then
         command ssh "$@"
     }
 fi
+
+# Disable <C-s> <C-q> for vim
+vim() {
+    stty -ixon
+    command vim "$@"
+    stty ixon
+}
