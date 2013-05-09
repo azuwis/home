@@ -163,9 +163,6 @@ let g:slime_target="tmux"
 " powerline
 set runtimepath+=~/.vim/bundle/powerline/powerline/bindings/vim
 
-" yankring
-let g:yankring_history_file = '.yankring_history'
-
 " javascript & html
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
