@@ -71,6 +71,10 @@ map <leader>er :e <C-R>=expand("%:r")."."<CR>
 nnoremap & :&&<Enter>
 xnoremap & :&&<Enter>
 
+" Recall command history
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 " Indentation {{{1
 set ts=8 sts=4 sw=4 et
 " http://vimcasts.org/episodes/tabs-and-spaces/
