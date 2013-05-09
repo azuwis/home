@@ -156,6 +156,12 @@ if !exists(":DiffOrig")
     \ | wincmd p | diffthis
 endif
 
+" Recipe {{{1
+" trailing whitespace http://www.bestofvim.com/tip/trailing-whitespace/
+"match ErrorMsg '\s\+$'
+match ErrorMsg /\s\+\%#\@<!$/
+nnoremap <Leader>rtw :%s/\s\+$//e<CR>
+
 " Plugin {{{1
 " slime
 let g:slime_target="tmux"
