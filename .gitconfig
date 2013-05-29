@@ -16,3 +16,5 @@
         pager = less
 [url "git@github.com:"]
         pushInsteadOf = git://github.com/
+[push]
+	default = simple
