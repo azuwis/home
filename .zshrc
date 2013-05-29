@@ -44,6 +44,9 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 DEFAULT_USER="azuwis"
 
+# Alias
+alias au='sudo aptitude -u'
+
 # Disable the annoying auto correction
 unsetopt correct_all
 
