@@ -34,7 +34,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git debian extract command-not-found history-substring-search last-working-dir per-directory-history colored-man zsh-syntax-highlighting)
+plugins=(git debian extract command-not-found history-substring-search last-working-dir per-directory-history colored-man web-search zsh-syntax-highlighting)
 
 # zsh-completions
 fpath=(~/.oh-my-zsh/custom/zsh-completions/src $fpath)
