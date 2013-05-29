@@ -112,3 +112,6 @@ checkout = git clone 'git://github.com/kana/vim-smartinput.git' 'smartinput'
 
 [bundle/rst-tables--Chao]
 checkout = git clone 'git://github.com/vim-scripts/rst-tables--Chao.git' 'rst-tables--Chao'
+
+[bundle/gitgutter]
+checkout = git clone 'git://github.com/airblade/vim-gitgutter.git' 'gitgutter'
