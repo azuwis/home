@@ -1,2 +1,6 @@
 # For QGtkStyle, see https://bugzilla.redhat.com/show_bug.cgi?id=702493
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+# Add ~/bin to PATH
+if [ -d "$HOME/bin" ] ; then
+    export PATH="$HOME/bin:$PATH"
+fi
