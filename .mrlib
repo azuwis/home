@@ -16,6 +16,19 @@ lib =
 # Mark as deleted
 delete = mr -c "$MR_CONFIG" config "`pwd`" deleted="true"
 
+create =
+    GITHUB_REPO="$1"
+    GITHUB_DESC="$2"
+    ssh_url="`curl -s -H "Authorization: token $(github_token)" https://api.github.com/user/repos -d '{"name":"'"$GITHUB_REPO"'", "description":"'"$GITHUB_DESC"'"}' | awk -F'"' '/git_url/ {print $4}'`"
+    if [ -z "$ssh_url" ]; then
+        error "cannot create repo at github.com"
+    else
+        url="`LC_ALL=C git config --get remote.origin.url`" || true
+        if [ -d ".git" -a -z "$url" ]; then
+            git remote add origin $ssh_url
+        fi
+    fi
+
 # Create repo at github when origin remote is empty
 git_register =
     url="`LC_ALL=C git config --get remote.origin.url`" || true
