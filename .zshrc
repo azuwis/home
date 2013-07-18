@@ -46,6 +46,7 @@ DEFAULT_USER="azuwis"
 
 # Alias
 alias au='sudo aptitude -u'
+alias se='sudoedit'
 
 # Disable the annoying auto correction
 unsetopt correct_all
