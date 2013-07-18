@@ -14,7 +14,13 @@
         lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset%Cblue(%an)%Creset' --abbrev-commit --date=relative
 [core]
         pager = less
+        autocrlf = input
 [url "git@github.com:"]
         pushInsteadOf = git://github.com/
 [push]
-	default = simple
+        default = simple
+[filter "strippriv"]
+        clean = perl -lpe 's/^(PRIV_.*)=(.*)/$1=CHANGEME/'
+[rerere]
+        enabled = true
+        autoupdate = true
