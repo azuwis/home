@@ -115,3 +115,6 @@ checkout = git clone 'git://github.com/vim-scripts/rst-tables--Chao.git' 'rst-ta
 
 [bundle/gitgutter]
 checkout = git clone 'git://github.com/airblade/vim-gitgutter.git' 'gitgutter'
+
+[bundle/file-line]
+checkout = git clone 'git://github.com/bogado/file-line.git' 'file-line'
