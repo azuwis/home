@@ -109,6 +109,7 @@ checkout = git clone 'git://github.com/kana/vim-niceblock.git' 'niceblock'
 
 [bundle/smartinput]
 checkout = git clone 'git://github.com/kana/vim-smartinput.git' 'smartinput'
+deleted = true
 
 [bundle/rst-tables--Chao]
 checkout = git clone 'git://github.com/vim-scripts/rst-tables--Chao.git' 'rst-tables--Chao'
