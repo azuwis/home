@@ -56,17 +56,17 @@ skip = no_cmd vim
 [.fonts/powerline]
 checkout = git clone 'git://github.com/azuwis/.fonts_powerline.git' 'powerline'
 fixups = fc-cache
-skip = no_cmd vim
+skip = no_cmd vim && workstation
 
 # Xorg
 [.fonts/croscorefonts]
 checkout = git clone 'git://github.com/azuwis/.fonts_croscorefonts.git' 'croscorefonts'
 fixups = fc-cache
-skip = no_cmd Xorg
+skip = no_cmd Xorg && workstation
 
 [.Xresources.d/solarized]
 checkout = git clone 'git://github.com/solarized/xresources.git' 'solarized'
-skip = no_cmd Xorg
+skip = no_cmd Xorg && workstation
 
 # zsh
 [.oh-my-zsh]
@@ -99,4 +99,4 @@ status = :
 update = instpkg > list
 fetch = :
 push = :
-skip = no_cmd lsb_release || ! test "`lsb_release -si`" = "Debian"
+skip = workstation && (no_cmd lsb_release || ! test "`lsb_release -si`" = "Debian")

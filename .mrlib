@@ -2,6 +2,9 @@ lib =
     no_cmd() {
         ! which "$1" >/dev/null 2>&1
     }
+    workstation() {
+        which awesome >/dev/null 2>&1
+    }
     github_token() {
         GITHUB_OAUTH="${HOME}/.github_oauth"
         GITHUB_TOKEN=`cat "$GITHUB_OAUTH"` || true
@@ -16,6 +19,7 @@ lib =
 # Mark as deleted
 delete = mr -c "$MR_CONFIG" config "`pwd`" deleted="true"
 
+# Create repo at github
 create =
     GITHUB_REPO="$1"
     GITHUB_DESC="$2"
