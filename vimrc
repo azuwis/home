@@ -149,7 +149,7 @@ augroup END
 endif
 
 " Command {{{1
-"command! CleanSRT %s/{[^}]*}//g<CR>
+command! CleanSRT normal :%s/{[^}]*}//g<CR>
 "
 " Commands to quickly set >1 option in one go {{{2
 command! -nargs=* Wrap set wrap linebreak nolist
