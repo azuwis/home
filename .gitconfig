@@ -15,12 +15,18 @@
 [core]
         pager = less
         autocrlf = input
-[url "git@github.com:"]
-        pushInsteadOf = git://github.com/
-[push]
-        default = simple
-[filter "strippriv"]
-        clean = perl -lpe 's/^(PRIV_.*)=(.*)/$1=CHANGEME/'
 [rerere]
         enabled = true
         autoupdate = true
+[rebase]
+        stat = true
+        autosquash = true
+        autostash = true
+[push]
+        default = simple
+[help]
+        autocorrect = true
+[url "git@github.com:"]
+        pushInsteadOf = git://github.com/
+[filter "strippriv"]
+        clean = perl -lpe 's/^(PRIV_.*)=(.*)/$1=CHANGEME/'
