@@ -12,6 +12,9 @@
         mt = mergetool
         sta = stash
         lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset%Cblue(%an)%Creset' --abbrev-commit --date=relative
+        new = !sh -c 'git log $1@{1}..$1@{0} "$@"' -
+        fixup = !sh -c 'git commit --fixup=$1 && git rebase --interactive --autosquash $1~' -
+        sample = "!sh -c 'tmp=`mktemp -d`; git init $tmp; cd $tmp; for i in "$@"; do echo "$i" >"$i"; git add "$i"; git commit -m "$i"; done; echo $tmp' -"
 [core]
         pager = less
         autocrlf = input
