@@ -14,8 +14,10 @@ checkout = git clone 'git://github.com/azuwis/bin.git' 'bin'
 # asciidoc
 [.asciidoc/backends/dzslides]
 checkout = git clone 'git://github.com/mojavelinux/asciidoc-dzslides-backend.git' 'dzslides'
-post_checkout = cd dzslides && git submodule update --init
-post_update = git submodule update
+skip = no_cmd asciidoc
+
+[.asciidoc/backends/dzslides/dzslides]
+checkout = git clone 'git://github.com/mojavelinux/dzslides.git' 'dzslides'
 skip = no_cmd asciidoc
 
 # awesome
