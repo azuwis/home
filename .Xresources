@@ -8,7 +8,7 @@ URxvt.boldFont          : xft:Cousine for Powerline:Bold:pixelsize=15,xft:DejaVu
 URxvt.title             : Terminal
 URxvt.termName          : xterm-256color
 
-URxvt.scrollBar        : false
+URxvt.scrollBar         : false
 URxvt.scrollstyle       : plain
 URxvt.scrollBar_right   : true
 URxvt.scrollColor       : #444444
@@ -20,7 +20,7 @@ URxvt.scrollTtyKeypress : true
 URxvt.saveLines         : 1024
 URxvt.urgentOnBell      : true
 
-URxvt.perl-ext-common   : default,matcher,tabbedex,xim-onthespot
+URxvt.perl-ext-common   : default,matcher,tabbedex/tabbedex,font-size/font-size,xim-onthespot
 URxvt.urlLauncher       : x-www-browser
 URxvt.matcher.button    : 2
 URxvt.preeditType       : OnTheSpot
@@ -31,6 +31,11 @@ URxvt.cursorColor       : #aaaaaa
 URxvt.tabbed.tab-bg     : 2
 URxvt.tabbed.tabbar-fg  : 10
 URxvt.tabbed.autohide   : true
+
+URxvt.keysym.C-Up       : perl:font-size:increase
+URxvt.keysym.C-Down     : perl:font-size:decrease
+URxvt.keysym.C-S-Up     : perl:font-size:incglobal
+URxvt.keysym.C-S-Down   : perl:font-size:decglobal
 
 !! color man
 URxvt.colorIT           : #87af5f

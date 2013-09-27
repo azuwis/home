@@ -43,8 +43,12 @@ checkout = git clone 'git://github.com/seebi/tmux-colors-solarized.git' 'solariz
 skip = no_cmd tmux
 
 # urxvt
-[.urxvt/ext]
-checkout = git clone 'git://github.com/stepb/urxvt-tabbedex.git' 'ext'
+[.urxvt/ext/tabbedex]
+checkout = git clone 'git://github.com/stepb/urxvt-tabbedex.git' 'tabbedex'
+skip = no_cmd urxvt
+
+[.urxvt/ext/font-size]
+checkout = git clone 'git://github.com/majutsushi/urxvt-font-size.git' 'font-size'
 skip = no_cmd urxvt
 
 # vim
