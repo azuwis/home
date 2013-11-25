@@ -27,8 +27,6 @@
         stat = true
         autosquash = true
         autostash = true
-[push]
-        default = simple
 [help]
         autocorrect = true
 [url "git@github.com:"]
