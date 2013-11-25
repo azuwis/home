@@ -29,7 +29,7 @@
         autostash = true
 [help]
         autocorrect = true
-[url "git@github.com:"]
+[url "ssh://git@github.com:22/"]
         pushInsteadOf = git://github.com/
 [filter "strippriv"]
         clean = perl -lpe 's/^(PRIV_.*)=(.*)/$1=CHANGEME/'
