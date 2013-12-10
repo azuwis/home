@@ -1,0 +1,7 @@
+[default]
+vo=vdpau
+cache=auto
+autosub-match=fuzzy
+
+[vo.vdpau]
+hwdec=vdpau
