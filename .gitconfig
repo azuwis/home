@@ -19,7 +19,7 @@
 [core]
         editor = vim
         pager = less
-        autocrlf = input
+        #autocrlf = input
 [rerere]
         enabled = true
         autoupdate = true
@@ -31,5 +31,7 @@
         autocorrect = true
 [url "ssh://git@github.com:22/"]
         pushInsteadOf = git://github.com/
+[url "ssh://git@github.com:22/"]
+        pushInsteadOf = https://github.com/
 [filter "strippriv"]
         clean = perl -lpe 's/^(PRIV_.*)=(.*)/$1=CHANGEME/'
