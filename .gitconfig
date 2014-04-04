@@ -28,7 +28,7 @@
         autosquash = true
         autostash = true
 [help]
-        autocorrect = true
+        autocorrect = 0
 [url "ssh://git@github.com:22/"]
         pushInsteadOf = git://github.com/
 [url "ssh://git@github.com:22/"]
