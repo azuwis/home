@@ -60,11 +60,6 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-# Auto clear ~/.xsession-errors file
-if [ $(stat -c%s ~/.xsession-errors) -gt 1048576 ]; then
-    echo > ~/.xsession-errors
-fi
-
 # Set title for ssh in tmux
 if [ -n "$TMUX" ]; then
     ssh() {
