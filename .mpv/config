@@ -2,6 +2,7 @@
 vo=vdpau
 cache=auto
 autosub-match=fuzzy
+subcp=enca:zh:cp936
 
 [vo.vdpau]
 hwdec=vdpau
