@@ -1,46 +1,34 @@
-URxvt.geometry          : 140x58
+!! Colors
+*background: rgb:00/00/00
+*foreground: rgb:ff/ff/ff
+*color0:     rgb:00/00/00
+*color1:     rgb:d3/62/65
+*color2:     rgb:ae/ce/91
+*color3:     rgb:e7/e1/8c
+*color4:     rgb:7a/7a/b0
+*color5:     rgb:96/3c/59
+*color6:     rgb:41/81/79
+*color7:     rgb:be/be/be
+*color8:     rgb:66/66/66
+*color9:     rgb:ef/81/71
+*color10:    rgb:e5/f7/79
+*color11:    rgb:ff/f7/96
+*color12:    rgb:41/86/be
+*color13:    rgb:ef/9e/be
+*color14:    rgb:71/be/be
+*color15:    rgb:ff/ff/ff
 
-URxvt.depth             : 32
-
-URxvt.font              : xft:Cousine for Powerline:pixelsize=15,xft:DejaVu Sans:pixelsize=15,xft:文泉驛等寬微米黑:pixelsize=15
-URxvt.boldFont          : xft:Cousine for Powerline:Bold:pixelsize=15,xft:DejaVu Sans:pixelsize=15,xft:文泉驛等寬微米黑:Bold:pixelsize=15
-
-URxvt.title             : Terminal
-URxvt.termName          : xterm-256color
-
-URxvt.scrollBar         : false
-URxvt.scrollstyle       : plain
-URxvt.scrollBar_right   : true
-URxvt.scrollColor       : #444444
-
-URxvt.scrollTtyOutput   : false
-URxvt.scrollWithBuffer  : true
-URxvt.scrollTtyKeypress : true
-
-URxvt.saveLines         : 1024
-URxvt.urgentOnBell      : true
-
-URxvt.perl-ext-common   : default,matcher,tabbedex/tabbedex,font-size/font-size,xim-onthespot
-URxvt.urlLauncher       : x-www-browser
-URxvt.matcher.button    : 2
-URxvt.preeditType       : OnTheSpot
-
-URxvt.underlineColor    : #444444
-URxvt.cursorColor       : #aaaaaa
-
-URxvt.tabbed.tab-bg     : 2
-URxvt.tabbed.tabbar-fg  : 10
-URxvt.tabbed.autohide   : true
-
-URxvt.keysym.C-Up       : perl:font-size:increase
-URxvt.keysym.C-Down     : perl:font-size:decrease
-URxvt.keysym.C-S-Up     : perl:font-size:incglobal
-URxvt.keysym.C-S-Down   : perl:font-size:decglobal
-
-!! color man
-URxvt.colorIT           : #87af5f
-URxvt.colorBD           : #d7d7d7
-URxvt.colorUL           : #87afd7
-
-#include ".Xresources.d/solarized/solarized"
-*fading                 : 20
+!! XTerm
+xterm*termName: xterm-256color
+xterm*VT100.geometry: 140x58
+xterm*utf8: 2
+xterm*pointerColor: white
+xterm*pointerColorBackground: black
+xterm*cursorColor: yellow
+xterm*faceName: Cousine:size=15
+xterm*faceNameDoublesize: WenQuanYi Micro Hei Mono:size=15
+xterm*scrollTtyOutput: false
+xterm*fastScroll: true
+xterm*multiScroll: true
+xterm*saveLines: 1024
+xterm*bellIsUrgent: true
