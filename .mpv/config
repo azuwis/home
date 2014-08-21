@@ -1,8 +1,8 @@
 [default]
 vo=vdpau
-cache=auto
-autosub-match=fuzzy
-subcp=enca:zh:cp936
+#cache=51200
+sub-auto=fuzzy
+sub-codepage=enca:zh:cp936
 
 [vo.vdpau]
 hwdec=vdpau
