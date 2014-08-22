@@ -86,3 +86,7 @@ antigen bundle colored-man
 
 # Tell antigen that you're done.
 antigen apply
+
+# Automatically list directory contents on `cd`.
+auto-ls () { ls --classify; }
+chpwd_functions=( auto-ls $chpwd_functions )
