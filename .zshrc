@@ -47,6 +47,7 @@ DEFAULT_USER="azuwis"
 # Alias
 alias au='sudo aptitude -u'
 alias se='sudoedit'
+alias ap='ansible-playbook'
 
 # Disable the annoying auto correction
 unsetopt correct_all
