@@ -58,3 +58,9 @@ alias ls='ls --color'
 alias au='sudo aptitude -u'
 alias se='sudoedit'
 alias ap='ansible-playbook'
+
+# Antigen
+source ~/.antigen/antigen/antigen.zsh
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
