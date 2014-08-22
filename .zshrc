@@ -64,3 +64,25 @@ source ~/.antigen/antigen/antigen.zsh
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Substring search
+antigen bundle zsh-users/zsh-history-substring-search
+# Bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+# Bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+# Bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+# More completions
+antigen bundle zsh-users/zsh-completions
+
+# Colorful manpage
+antigen bundle colored-man
+
+# Tell antigen that you're done.
+antigen apply
