@@ -35,3 +35,26 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# Set title for ssh in tmux
+if [ -n "$TMUX" ]; then
+    ssh() {
+        tmux rename-window "$*"
+        command ssh "$@"
+        tmux rename-window "zsh"
+    }
+fi
+
+# Disable <C-s> <C-q> for vim
+vim() {
+    stty -ixon
+    command vim "$@"
+    stty ixon
+}
+alias vi='vim'
+
+# Alias
+alias ls='ls --color'
+alias au='sudo aptitude -u'
+alias se='sudoedit'
+alias ap='ansible-playbook'
