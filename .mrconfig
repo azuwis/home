@@ -11,24 +11,6 @@ checkout = git clone 'git://github.com/azuwis/home.git' '.'
 [bin]
 checkout = git clone 'git://github.com/azuwis/bin.git' 'bin'
 
-# asciidoc
-[.asciidoc/backends/dzslides]
-checkout = git clone 'git://github.com/mojavelinux/asciidoc-dzslides-backend.git' 'dzslides'
-skip = no_cmd asciidoc
-
-[.asciidoc/backends/dzslides/dzslides]
-checkout = git clone 'git://github.com/mojavelinux/dzslides.git' 'dzslides'
-skip = no_cmd asciidoc
-
-# awesome
-[.config/awesome]
-checkout = git clone 'git://github.com/azuwis/.config_awesome.git' 'awesome'
-skip = no_cmd awesome
-
-[.config/awesome/eminent]
-checkout = git clone 'git://git.glacicle.org/awesome/eminent.git' 'eminent'
-skip = no_cmd awesome
-
 # firefox
 [.pentadactyl]
 checkout = git clone 'git://github.com/azuwis/.pentadactyl.git' '.pentadactyl'
@@ -38,20 +20,6 @@ skip = no_cmd firefox
 [.scrapbook]
 checkout = git clone 'git://github.com/azuwis/scrap.git' '.scrapbook'
 skip = no_cmd firefox
-
-# tmux
-[.tmux.conf.d/solarized]
-checkout = git clone 'git://github.com/seebi/tmux-colors-solarized.git' 'solarized'
-skip = no_cmd tmux
-
-# urxvt
-[.urxvt/ext/tabbedex]
-checkout = git clone 'git://github.com/stepb/urxvt-tabbedex.git' 'tabbedex'
-skip = no_cmd urxvt
-
-[.urxvt/ext/font-size]
-checkout = git clone 'git://github.com/majutsushi/urxvt-font-size.git' 'font-size'
-skip = no_cmd urxvt
 
 # vim
 [.vim]
@@ -63,36 +31,6 @@ skip = no_cmd vim
 checkout = git clone 'git://github.com/azuwis/.fonts_powerline.git' 'powerline'
 fixups = fc-cache
 skip = no_cmd vim && workstation
-
-# Xorg
-[.fonts/croscorefonts]
-checkout = git clone 'git://github.com/azuwis/.fonts_croscorefonts.git' 'croscorefonts'
-fixups = fc-cache
-skip = no_cmd Xorg && workstation
-
-[.Xresources.d/solarized]
-checkout = git clone 'git://github.com/solarized/xresources.git' 'solarized'
-skip = no_cmd Xorg && workstation
-
-# zsh
-[.oh-my-zsh]
-checkout = git clone 'git://github.com/robbyrussell/oh-my-zsh.git' '.oh-my-zsh'
-skip = no_cmd zsh
-
-[.oh-my-zsh/custom/powerline-theme]
-checkout = git clone 'git://github.com/azuwis/oh-my-zsh-powerline-theme.git' 'powerline-theme'
-post_checkout = 
-	ln -s powerline-theme/powerline.zsh-theme .
-	cd powerline-theme && git remote add upstream 'git://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git'
-skip = no_cmd zsh
-
-[.oh-my-zsh/custom/plugins/zsh-syntax-highlighting]
-checkout = git clone 'git://github.com/zsh-users/zsh-syntax-highlighting.git' 'zsh-syntax-highlighting'
-skip = no_cmd zsh
-
-[.oh-my-zsh/custom/zsh-completions]
-checkout = git clone 'git://github.com/zsh-users/zsh-completions.git' 'zsh-completions'
-skip = no_cmd zsh
 
 # misc
 [.instpkg]
