@@ -1,1 +1,21 @@
+# Ensure .Xresources is loaded
 xrdb .Xresources
+
+# Apply color profile
+if [ -x /usr/bin/xcalib ]; then
+    # XXX EDID is a much better way
+    read product < /sys/class/dmi/id/product_name
+    icc=".color/icc/${product}.icc"
+    test -r "$icc" && xcalib "$icc"
+fi
+
+# Help function
+run() {
+    cmd=$1
+    test -x "/usr/bin/${cmd}" && "$@" &
+}
+
+# Auto start
+run devmon
+run parcellite
+run xautolock -time 30 -locker 'i3lock --color=000000'
