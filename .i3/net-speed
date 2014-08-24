@@ -32,23 +32,55 @@
 #   status_command exec /usr/share/doc/i3status/contrib/net-speed
 # }
 
-interfaces="eth0"
+# Single interface
+#ifaces="eth0"
 
-eth0="/sys/class/net/eth0/statistics"
+# Multiple interfaces
+#ifaces="eth0 wlan0"
+
+# Auto detect
+ifaces=$(ls /sys/class/net | grep -E '^(eth|wlan)')
+
+# Interval must be the same as in i3status.conf
+#interval=5
+
+# Auto detect
+if [ -f ~/.i3status.conf ]; then
+  i3status_conf=~/.i3status.conf
+else
+  i3status_conf="/etc/i3status.conf"
+fi
+interval=$(grep -o '^[[:space:]]*interval[[:space:]]*=[[:space:]]*[[:digit:]]\+' $i3status_conf | grep -o '[[:digit:]]\+')
+if [ x"$interval" = x ]; then
+  interval=5
+fi
 
 last_rx=0
 last_tx=0
 rate=""
 
 update_rate() {
-    local rx
-    local tx
-    read rx < "${eth0}/rx_bytes"
-    read tx < "${eth0}/tx_bytes"
-    rate="$(( ((rx - last_rx) >> 10) / 5 ))K↓ $(( ((tx - last_tx) >> 10) / 5 ))K↑"
+    local rx=0
+    local tx=0
+    for iface in $ifaces; do
+        local tmp_rx
+        local tmp_tx
+        local stat="/sys/class/net/${iface}/statistics"
+        read tmp_rx < "${stat}/rx_bytes"
+        read tmp_tx < "${stat}/tx_bytes"
+        rx=$(( rx + tmp_rx ))
+        tx=$(( tx + tmp_tx ))
+    done
+    rate="$(( ((rx - last_rx) >> 10) / $interval ))K↓ $(( ((tx - last_tx) >> 10) / $interval ))K↑"
     last_rx=$rx
     last_tx=$tx
 }
+
+#while :; do
+#    update_rate
+#    echo "$rate"
+#    sleep 2
+#done
 
 i3status | (read line && echo $line && read line && echo $line && read line && echo $line && update_rate && while :
 do
