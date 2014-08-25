@@ -1,6 +1,11 @@
 # Ensure .Xresources is loaded
 xrdb .Xresources
 
+# No blank screen for NUC
+if [ x"$(hostname) = x"nuc" ]; then
+    xset -dpms s noblank s off
+fi
+
 # Apply color profile
 if [ -x /usr/bin/xcalib ]; then
     # XXX EDID is a much better way
