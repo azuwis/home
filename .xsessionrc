@@ -1,6 +1,9 @@
 # Ensure .Xresources is loaded
 xrdb .Xresources
 
+# Wallpaper
+test -r wallpapers/current && xsetbg wallpapers/current
+
 # NUC only settings
 if [ x"$(hostname) = x"nuc" ]; then
     # No blank screen for NUC
