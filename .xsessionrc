@@ -1,16 +1,19 @@
+# Help function
+run() {
+    cmd=$1
+    test -x "/usr/bin/${cmd}" && "$@" &
+}
+
 # Ensure .Xresources is loaded
-xrdb .Xresources
+run xrdb .Xresources
 
 # Wallpaper
-test -r wallpapers/current && xsetbg wallpapers/current
+test -r wallpapers/current && run xsetbg wallpapers/current
 
-# NUC only settings
-if [ x"$(hostname) = x"nuc" ]; then
-    # No blank screen for NUC
-    xset -dpms s noblank s off
-    # Map search key to win key
-    xmodmap -e 'keysym XF86Search = Super_L'
-fi
+# Auto start
+run devmon
+run parcellite
+run xautolock -time 30 -locker 'i3lock --color=000000'
 
 # Apply color profile
 if [ -x /usr/bin/xcalib ]; then
@@ -20,13 +23,10 @@ if [ -x /usr/bin/xcalib ]; then
     test -r "$icc" && xcalib "$icc"
 fi
 
-# Help function
-run() {
-    cmd=$1
-    test -x "/usr/bin/${cmd}" && "$@" &
-}
-
-# Auto start
-run devmon
-run parcellite
-run xautolock -time 30 -locker 'i3lock --color=000000'
+# NUC only settings
+if [ x"$(hostname) = x"nuc" ]; then
+    # No blank screen for NUC
+    xset -dpms s noblank s off
+    # Map search key to win key
+    xmodmap -e 'keysym XF86Search = Super_L'
+fi
