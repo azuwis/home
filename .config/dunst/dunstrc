@@ -1,0 +1,30 @@
+[global]
+    font = "sans 18"
+    geometry = "0x5-30+30"
+    alignment = center
+    padding = 10
+    horizontal_padding = 10
+    transparency = 25
+
+[frame]
+    width = 2
+    color = "#000000"
+
+[shortcuts]
+    close = ctrl+grave
+    history = ctrl+shift+grave
+
+[urgency_low]
+    background = "#ffffff"
+    foreground = "#000000"
+    timeout = 30
+
+[urgency_normal]
+    background = "#94DBFF"
+    foreground = "#000000"
+    timeout = 45
+
+[urgency_critical]
+    background = "#ff9999"
+    foreground = "#000000"
+    timeout = 0
