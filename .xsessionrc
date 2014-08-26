@@ -5,10 +5,10 @@ run() {
 }
 
 # Ensure .Xresources is loaded
-run xrdb .Xresources
+run xrdb ~/.Xresources
 
 # Wallpaper
-test -r wallpapers/current && run xsetbg wallpapers/current
+test -r ~/wallpapers/current && run xsetbg ~/wallpapers/current
 
 # Auto start
 run devmon
@@ -19,7 +19,7 @@ run xautolock -time 30 -locker 'i3lock --color=000000'
 if [ -x /usr/bin/xcalib ]; then
     # XXX EDID is a much better way
     read product < /sys/class/dmi/id/product_name
-    icc=".color/icc/${product}.icc"
+    icc="${HOME}/.color/icc/${product}.icc"
     test -r "$icc" && xcalib "$icc"
 fi
 
