@@ -19,16 +19,16 @@
 *color15    : rgb:ff/ff/ff
 
 !! XTerm
-xterm*termName               : xterm-256color
-xterm*VT100.geometry         : 140x45
-xterm*utf8                   : 2
-xterm*pointerColor           : white
-xterm*pointerColorBackground : black
-xterm*cursorColor            : yellow
-xterm*faceName               : Cousine:pixelsize=20
-xterm*faceNameDoublesize     : WenQuanYi Micro Hei Mono:pixelsize=19
-xterm*scrollTtyOutput        : false
-xterm*fastScroll             : true
-xterm*multiScroll            : true
-xterm*saveLines              : 1024
-xterm*bellIsUrgent           : true
+XTerm*termName               : xterm-256color
+XTerm*VT100.geometry         : 140x45
+XTerm*utf8                   : 2
+XTerm*pointerColor           : white
+XTerm*pointerColorBackground : black
+XTerm*cursorColor            : yellow
+XTerm*faceName               : Cousine:pixelsize=20
+XTerm*faceNameDoublesize     : WenQuanYi Micro Hei Mono:pixelsize=19
+XTerm*scrollTtyOutput        : false
+XTerm*fastScroll             : true
+XTerm*multiScroll            : true
+XTerm*saveLines              : 1024
+XTerm*bellIsUrgent           : true
