@@ -27,6 +27,4 @@ fi
 if [ x"$(hostname)" = x"nuc" ]; then
     # No blank screen for NUC
     xset -dpms s noblank s off
-    # Map search key to win key
-    xmodmap -e 'keysym XF86Search = Super_L'
 fi
