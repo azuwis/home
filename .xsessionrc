@@ -24,7 +24,7 @@ if [ -x /usr/bin/xcalib ]; then
 fi
 
 # NUC only settings
-if [ x"$(hostname) = x"nuc" ]; then
+if [ x"$(hostname)" = x"nuc" ]; then
     # No blank screen for NUC
     xset -dpms s noblank s off
     # Map search key to win key
