@@ -1,0 +1,35 @@
+#!/bin/sh
+# end a command with ; to run in a terminal
+
+DMENU="dmenu.xft -fn sans-12:normal -i"
+TERMI="x-terminal-emulator -e"
+
+CACHEDIR=${XDG_CACHE_HOME:-"$HOME/.cache"}
+BINS="$CACHEDIR/dmenu"
+RECENT="$CACHEDIR/dmenu-recent"
+
+dmenu_bins() {
+	IFS=:
+	if stest -dqr -n "$BINS" $PATH; then
+    PREV_UMASK=$(umask)
+    umask 0077
+		stest -flx $PATH | sort -u | tee "$BINS"
+    umask $PREV_UMASK
+	else
+		cat "$BINS"
+	fi
+}
+
+MOST_USED=$(sort "$RECENT" | uniq -c | sort -r | colrm 1 8)
+RUN=`(echo "$MOST_USED"; dmenu_bins | grep -vxF "$MOST_USED") | $DMENU "$@"`
+test x"$RUN" = x && exit
+PREV_UMASK=$(umask)
+umask 0077
+(echo $RUN; head -n 99 $RECENT) > $RECENT.$$
+umask $PREV_UMASK
+mv $RECENT.$$ $RECENT
+
+case $RUN in
+    *\;) exec `echo $TERMI $RUN | sed -e 's/;$//'`;;
+    *)   exec $RUN;;
+esac
