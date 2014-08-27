@@ -1,30 +1,29 @@
-!! Colors
-XTerm*background : rgb:00/00/00
-XTerm*foreground : rgb:ff/ff/ff
-XTerm*color0     : rgb:00/00/00
-XTerm*color1     : rgb:d3/62/65
-XTerm*color2     : rgb:ae/ce/91
-XTerm*color3     : rgb:e7/e1/8c
-XTerm*color4     : rgb:7a/7a/b0
-XTerm*color5     : rgb:96/3c/59
-XTerm*color6     : rgb:41/81/79
-XTerm*color7     : rgb:be/be/be
-XTerm*color8     : rgb:66/66/66
-XTerm*color9     : rgb:ef/81/71
-XTerm*color10    : rgb:e5/f7/79
-XTerm*color11    : rgb:ff/f7/96
-XTerm*color12    : rgb:41/86/be
-XTerm*color13    : rgb:ef/9e/be
-XTerm*color14    : rgb:71/be/be
-XTerm*color15    : rgb:ff/ff/ff
+!! Zenburn color
+!! https://gist.github.com/cqpx/1436584
+XTerm*background  : #3f3f3f
+XTerm*foreground  : #dcdccc
+XTerm*cursorColor : #aaaaaa
+XTerm*color0      : #3f3f3f
+XTerm*color1      : #cc9393
+XTerm*color2      : #7f9f7f
+XTerm*color3      : #d0bf8f
+XTerm*color4      : #6ca0a3
+XTerm*color5      : #dc8cc3
+XTerm*color6      : #93e0e3
+XTerm*color7      : #dcdccc
+XTerm*color8      : #000000
+XTerm*color9      : #dca3a3
+XTerm*color10     : #bfebbf
+XTerm*color11     : #f0dfaf
+XTerm*color12     : #8cd0d3
+XTerm*color13     : #dc8cc3
+XTerm*color14     : #93e0e3
+XTerm*color15     : #ffffff
 
 !! XTerm
 XTerm*termName               : xterm-256color
 XTerm*VT100.geometry         : 140x45
 XTerm*utf8                   : 2
-XTerm*pointerColor           : white
-XTerm*pointerColorBackground : black
-XTerm*cursorColor            : yellow
 XTerm*faceName               : Cousine:pixelsize=20
 XTerm*faceNameDoublesize     : WenQuanYi Micro Hei Mono:pixelsize=19
 XTerm*scrollTtyOutput        : false
