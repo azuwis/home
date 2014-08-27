@@ -28,7 +28,7 @@ font pango:sans 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return $exec xterm
+bindsym $mod+Return $exec x-terminal-emulator
 
 # kill focused window
 bindsym $mod+Shift+q kill
