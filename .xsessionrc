@@ -4,9 +4,6 @@ run() {
     test -x "/usr/bin/${cmd}" && "$@" &
 }
 
-# Ensure .Xresources is loaded
-run xrdb ~/.Xresources
-
 # Wallpaper
 wallpaper=~/wallpapers/current
 test -r $wallpaper && run xli -fillscreen -onroot -quiet -border black $wallpaper
