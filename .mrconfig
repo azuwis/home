@@ -32,6 +32,10 @@ checkout = git clone 'git://github.com/azuwis/.fonts_powerline.git' 'powerline'
 fixups = fc-cache
 skip = no_cmd vim && workstation
 
+# zsh
+[.antigen/antigen]
+checkout = git clone 'git://github.com/zsh-users/antigen.git' 'antigen'
+
 # misc
 [.instpkg]
 lib = 
