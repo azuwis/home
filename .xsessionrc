@@ -6,7 +6,7 @@ run() {
 
 # Wallpaper
 wallpaper=~/wallpapers/current
-test -r $wallpaper && run xli -fillscreen -onroot -quiet -border black $wallpaper
+test -r $wallpaper && run hsetroot -cover $wallpaper
 
 # Auto start
 run devmon
