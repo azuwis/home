@@ -8,7 +8,8 @@ run() {
 run xrdb ~/.Xresources
 
 # Wallpaper
-test -r ~/wallpapers/current && run xsetbg ~/wallpapers/current
+wallpaper=~/wallpapers/current
+test -r $wallpaper && run xli -fillscreen -onroot -quiet -border black $wallpaper
 
 # Auto start
 run devmon
