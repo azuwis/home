@@ -1,30 +1,31 @@
+# Color kanged from https://github.com/andreatta/config/blob/master/dunst/dunstrc
 [global]
     font = "sans 18"
     geometry = "0x5-30+30"
     alignment = center
     padding = 10
     horizontal_padding = 10
-    transparency = 25
+    transparency = 20
 
 [frame]
     width = 2
-    color = "#000000"
+    color = "#cfcfcf"
 
 [shortcuts]
     close = ctrl+grave
     history = ctrl+shift+grave
 
 [urgency_low]
-    background = "#ffffff"
-    foreground = "#000000"
-    timeout = 30
+    background = "#ccdc90"
+    foreground = "#2c2c2e"
+    timeout = 10
 
 [urgency_normal]
-    background = "#94DBFF"
-    foreground = "#000000"
-    timeout = 45
+    background = "#88b090"
+    foreground = "#efef8f"
+    timeout = 10
 
 [urgency_critical]
-    background = "#ff9999"
-    foreground = "#000000"
+    background = "#e89393"
+    foreground = "#a0afa0"
     timeout = 0
