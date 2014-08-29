@@ -31,3 +31,5 @@ XTerm*fastScroll             : true
 XTerm*multiScroll            : true
 XTerm*saveLines              : 1024
 XTerm*bellIsUrgent           : true
+!! Make alt key works
+XTerm*eightBitInput          : false
