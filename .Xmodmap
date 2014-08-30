@@ -1,1 +1,10 @@
+!! Swap caps lock and left ctrl
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
+!! Map search key to win key
+! Beware of the order, if key does not exist, error will occur and skip the rest content.
 keysym XF86Search = Super_L
