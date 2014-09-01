@@ -14,7 +14,8 @@ run synclient TapButton1=1 TapButton2=3 TapButton3=2 LockedDrags=1 LockedDragTim
 run syndaemon -R -t -i 0.25
 
 # Press and release control to generate esc key
-run xcape -e 'Control_R=Escape'
+# Need to run after xmodmap, so sleep here
+(sleep 5 && run xcape -e 'Control_R=Escape') &
 
 # Auto start
 run clipit
