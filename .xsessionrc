@@ -13,6 +13,9 @@ run synclient TapButton1=1 TapButton2=3 TapButton3=2 LockedDrags=1 LockedDragTim
 # Disable touchpad when keyboard is being used
 run syndaemon -R -t -i 0.25
 
+# Press and release control to generate esc key
+run xcape -e 'Control_R=Escape'
+
 # Auto start
 run devmon
 run parcellite
