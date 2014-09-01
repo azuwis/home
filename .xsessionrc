@@ -17,8 +17,8 @@ run syndaemon -R -t -i 0.25
 run xcape -e 'Control_R=Escape'
 
 # Auto start
+run clipit
 run devmon
-run parcellite
 run xautolock -time 30 -locker 'i3lock --color=000000'
 
 # Apply color profile
