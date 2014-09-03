@@ -201,7 +201,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 bindsym $mod+XF86Eject $exec xautolock -locknow
-bindsym $mod+Shift+u $exec "xterm -title 'Floating: pum' -g 48x18 -e pum"
+bindsym $mod+Shift+u $exec xterm -title 'Floating: pum' -g 48x18 -e pum
 bindsym $mod+Shift+p $exec assword gui
 bindsym XF86MenuKB $exec nucmenu
 
