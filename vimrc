@@ -92,8 +92,8 @@ nnoremap <silent> <leader>s :set spell!<CR>
 "nnoremap ; :
 inoremap kj <ESC>
 " man
-runtime ftplugin/man.vim
-nmap K <Leader>K
+"runtime ftplugin/man.vim
+"nmap K <Leader>K
 
 " Quick toggles {{{2
 nnoremap <silent> <leader>l :set list!<CR>
