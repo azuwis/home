@@ -208,10 +208,24 @@ if !exists(":DiffOrig")
 endif
 
 " Recipe {{{1
-" trailing whitespace http://www.bestofvim.com/tip/trailing-whitespace/
+" Remove trailing whitespace {{{2
+" http://www.bestofvim.com/tip/trailing-whitespace/
 "match ErrorMsg '\s\+$'
 match ErrorMsg /\s\+\%#\@<!$/
 command! RTW normal :%s/\s\+$//e<CR>
+
+" Auto create parent dir {{{2
+" https://github.com/dockyard/vim-easydir
+augroup easydir
+  au!
+  au BufWritePre,FileWritePre * call <SID>create_and_save_directory()
+augroup END
+function <SID>create_and_save_directory()
+  let s:directory = expand('<afile>:p:h')
+  if !isdirectory(s:directory)
+    call mkdir(s:directory, 'p')
+  endif
+endfunction
 
 " General Bundles {{{1
 " airline
