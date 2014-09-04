@@ -54,7 +54,6 @@ inoremap <C-U> <C-G>u<C-U>
 "highlight SpecialKey guifg=#4a4a59
 
 set modeline
-set laststatus=2
 "set relativenumber
 "set cursorline
 set colorcolumn=80
@@ -65,13 +64,23 @@ set ignorecase
 set smartcase
 set hlsearch
 set wildignore=
-set noswapfile
-set undofile
-set undodir=~/.vim/undodir
 set splitright splitbelow
-"if exists("*fugitive#statusline")
-"  set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-"endif
+set lazyredraw
+
+" Always backup {{{2
+let s:savedir = expand('~/.vim/save')
+if !isdirectory(s:savedir)
+  call mkdir(s:savedir, 'p', 0700)
+  call mkdir(s:savedir . '/undo/')
+  call mkdir(s:savedir . '/backup/')
+  call mkdir(s:savedir . '/swap/')
+endif
+set swapfile
+let &directory = s:savedir . '/swap/'
+set undofile
+let &undodir = s:savedir . '/undo/'
+set backup
+let &backupdir = s:savedir . '/backup/'
 
 " Mappings {{{1
 map Q gq
