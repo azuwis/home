@@ -5,17 +5,17 @@ execute pathogen#infect()
 
 " Options {{{1
 
-set list
-set showbreak=↪
+"set list
+"set showbreak=↪
 "set listchars+=tab:▸\ 
 "set listchars+=eol:¬
 "highlight NonText guifg=#4a4a59
 "highlight SpecialKey guifg=#4a4a59
 
 set modeline
-set relativenumber
-set cursorline
-"set colorcolumn=85
+"set relativenumber
+"set cursorline
+set colorcolumn=80
 " disable startup message
 set shortmess+=I
 set fileencodings=ucs-bom,utf-8,cp936,default,latin1
@@ -25,13 +25,16 @@ set hlsearch
 set wildignore=
 set noswapfile
 set undodir=~/.vim/.undodir
+set undofile
 set splitright splitbelow
-if exists("*fugitive#statusline")
-  set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-endif
+"if exists("*fugitive#statusline")
+"  set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+"endif
 
 " Mappings {{{1
 map Q gq
+nnoremap <F5> :update<CR>
+inoremap <F5> <C-o>:update<CR>
 "nnoremap / /\v
 "vnoremap / /\v
 nnoremap <silent> <leader>s :set spell!<CR>
@@ -112,7 +115,7 @@ if has("autocmd")
     autocmd!
     " space and tab
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noet
-    autocmd FileType vim,yaml,html,css setlocal ts=2 sts=2 sw=2 et
+    autocmd FileType vim,yaml,html,css,ruby,eruby,sh setlocal ts=2 sts=2 sw=2 et
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 
     " filetype specific mapping
@@ -128,11 +131,14 @@ if has("autocmd")
     autocmd BufNewFile,BufRead */.mrconfig setfiletype cfg
     autocmd BufNewFile,BufRead ~/.mrlib setfiletype sh
 
+    " .adoc as asciidoc
+    autocmd BufNewFile,BufRead *.adoc,*.asc setfiletype asciidoc
+
     " set spell for git commit msg
     autocmd FileType gitcommit setlocal spell
 
     " auto save file on losing focus
-    autocmd FocusLost * silent! wa
+    autocmd FocusLost * silent! :update
 
     " auto load .vimrc
     autocmd BufWritePost ~/.vimrc source $MYVIMRC
@@ -144,13 +150,13 @@ if has("autocmd")
       \ endif
 
     " load ~/.Xresources if modified
-    autocmd BufWritePost ~/.Xresources !xrdb ~/.Xresources
-augroup END
+    autocmd BufWritePost ~/.Xresources :silent !xrdb ~/.Xresources
+  augroup END
 endif
 
 " Command {{{1
 command! CleanSRT normal :%s/{[^}]*}//g<CR>
-"
+
 " Commands to quickly set >1 option in one go {{{2
 command! -nargs=* Wrap set wrap linebreak nolist
 
@@ -164,15 +170,12 @@ endif
 " trailing whitespace http://www.bestofvim.com/tip/trailing-whitespace/
 "match ErrorMsg '\s\+$'
 match ErrorMsg /\s\+\%#\@<!$/
-nnoremap <Leader>rtw :%s/\s\+$//e<CR>
+command! RTW normal :%s/\s\+$//e<CR>
 
 " Plugin {{{1
 " slime
 let g:slime_target="tmux"
 let g:slime_no_mappings=1
-
-" powerline
-set runtimepath+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " javascript & html
 let g:html_indent_inctags = "html,body,head,tbody"
@@ -183,20 +186,13 @@ let g:html_indent_style1 = "inc"
 runtime ftplugin/man.vim
 nmap K <Leader>K
 
-" editexisting
-if exists('g:loaded_editexisting') || &cp
-else
-  let g:loaded_editexisting = 1
-  runtime macros/editexisting.vim
-endif
-
-" solarized
-let g:solarized_diffmode="high"
-let g:solarized_hitrail=1
-colorscheme solarized
-set background=dark
+" colorscheme
+colorscheme zenburn
 
 " gundo
 map <Leader>u :GundoToggle<CR>
+
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 
 " vim: fdm=marker
