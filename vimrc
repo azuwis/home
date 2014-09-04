@@ -246,6 +246,9 @@ map <Leader>u :GundoToggle<CR>
 " fugitive
 NeoBundle 'tpope/vim-fugitive', {'directory': 'fugitive'}
 
+" signify
+NeoBundle 'mhinz/vim-signify', {'directory': 'signify'}
+
 " NeoBundle End {{{1
 call neobundle#end()
 NeoBundleCheck
