@@ -198,9 +198,6 @@ if has("autocmd")
   augroup END
 endif
 
-" Command {{{1
-command! CleanSRT normal :%s/{[^}]*}//g<CR>
-
 " Commands to quickly set >1 option in one go {{{2
 command! -nargs=* Wrap set wrap linebreak nolist
 
@@ -211,6 +208,9 @@ if !exists(":DiffOrig")
 endif
 
 " Recipe {{{1
+" Clean SRT {{{2
+command! CleanSRT normal :%s/{[^}]*}//g<CR>
+
 " Remove trailing whitespace {{{2
 " http://www.bestofvim.com/tip/trailing-whitespace/
 "match ErrorMsg '\s\+$'
