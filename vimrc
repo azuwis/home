@@ -4,11 +4,49 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle/
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim', {'directory' : 'neobundle'}
+NeoBundleFetch 'Shougo/neobundle.vim', {'directory': 'neobundle'}
+
+" Sensible{{{1
+" https://github.com/tpope/vim-sensible
+set autoindent
+set backspace=indent,eol,start
+set complete-=i
+set smarttab
+
+set nrformats-=octal
+
+set ttimeout
+set ttimeoutlen=100
+
+set incsearch
+
+set laststatus=2
+set ruler
+set showcmd
+set wildmenu
+
+set scrolloff=3
+set sidescrolloff=5
+set display+=lastline
+
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+
+setglobal tags-=./tags tags^=./tags;
+
+set autoread
+set fileformats+=mac
+
+set history=1000
+set tabpagemax=50
+set viminfo^=!
+set sessionoptions-=options
+
+runtime! macros/matchit.vim
+
+inoremap <C-U> <C-G>u<C-U>
 
 " Options {{{1
 
-"set list
 "set showbreak=↪
 "set listchars+=tab:▸\ 
 "set listchars+=eol:¬
@@ -28,8 +66,8 @@ set smartcase
 set hlsearch
 set wildignore=
 set noswapfile
-set undodir=~/.vim/.undodir
 set undofile
+set undodir=~/.vim/undodir
 set splitright splitbelow
 "if exists("*fugitive#statusline")
 "  set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
@@ -43,17 +81,7 @@ inoremap <F5> <C-o>:update<CR>
 "vnoremap / /\v
 nnoremap <silent> <leader>s :set spell!<CR>
 "nnoremap ; :
-"inoremap jj <ESC>
-
-" Disable <up> <down> <left> <right> {{{2
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
-"nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
+inoremap kj <ESC>
 
 " Quick toggles {{{2
 nnoremap <silent> <leader>l :set list!<CR>
@@ -79,7 +107,7 @@ map <leader>er :e <C-R>=expand("%:r")."."<CR>
 nnoremap & :&&<Enter>
 xnoremap & :&&<Enter>
 
-" Recall command history
+" Recall command history {{{2
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
@@ -177,26 +205,31 @@ match ErrorMsg /\s\+\%#\@<!$/
 command! RTW normal :%s/\s\+$//e<CR>
 
 " General Bundles {{{1
+" airline
 NeoBundle 'bling/vim-airline'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
-NeoBundle 'jnurmine/Zenburn', {'directory' : 'zenburn' }
+" zenburn
+NeoBundle 'jnurmine/Zenburn', {'directory': 'zenburn'}
+
+" gundo
+NeoBundle 'sjl/gundo.vim', {'directory': 'gundo'}
+map <Leader>u :GundoToggle<CR>
 
 " man
 runtime ftplugin/man.vim
 nmap K <Leader>K
 
-" colorscheme
 
-" gundo
-map <Leader>u :GundoToggle<CR>
-
-" BeoBundle End {{{1
+" NeoBundle End {{{1
 call neobundle#end()
-filetype plugin indent on
 NeoBundleCheck
 
+" Ending configs {{{1
+" colorscheme
 colorscheme zenburn
+filetype plugin indent on
+syntax enable
 
 " vim: fdm=marker
