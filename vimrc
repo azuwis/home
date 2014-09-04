@@ -91,6 +91,9 @@ inoremap <F5> <C-o>:update<CR>
 nnoremap <silent> <leader>s :set spell!<CR>
 "nnoremap ; :
 inoremap kj <ESC>
+" man
+runtime ftplugin/man.vim
+nmap K <Leader>K
 
 " Quick toggles {{{2
 nnoremap <silent> <leader>l :set list!<CR>
@@ -240,10 +243,8 @@ NeoBundle 'jnurmine/Zenburn', {'directory': 'zenburn'}
 NeoBundle 'sjl/gundo.vim', {'directory': 'gundo'}
 map <Leader>u :GundoToggle<CR>
 
-" man
-runtime ftplugin/man.vim
-nmap K <Leader>K
-
+" fugitive
+NeoBundle 'tpope/vim-fugitive', {'directory': 'fugitive'}
 
 " NeoBundle End {{{1
 call neobundle#end()
