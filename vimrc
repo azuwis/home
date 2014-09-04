@@ -232,9 +232,9 @@ endfunction
 
 " General Bundles {{{1
 " airline
-NeoBundle 'bling/vim-airline'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+NeoBundle 'bling/vim-airline', {'directory': 'airline'}
 
 " zenburn
 NeoBundle 'jnurmine/Zenburn', {'directory': 'zenburn'}
@@ -248,6 +248,19 @@ NeoBundle 'tpope/vim-fugitive', {'directory': 'fugitive'}
 
 " signify
 NeoBundle 'mhinz/vim-signify', {'directory': 'signify'}
+
+" repeat
+NeoBundle 'tpope/vim-repeat', {'directory': 'repeat'}
+
+" surround
+NeoBundle 'tpope/vim-surround', {'directory': 'surround'}
+
+" easymotion
+NeoBundle 'Lokaltog/vim-easymotion', {'directory': 'easymotion'}
+
+" Filetypes {{{1
+" Ansible
+NeoBundle 'chase/vim-ansible-yaml', {'directory': 'ansible'}
 
 " NeoBundle End {{{1
 call neobundle#end()
