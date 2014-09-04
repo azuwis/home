@@ -1,7 +1,10 @@
-" Pathogen {{{1
-"let mapleader=","
-runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+" NeoBundle Start{{{1
+if has('vim_starting')
+  set nocompatible
+  set runtimepath+=~/.vim/bundle/neobundle/
+endif
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim', {'directory' : 'neobundle'}
 
 " Options {{{1
 
@@ -13,6 +16,7 @@ execute pathogen#infect()
 "highlight SpecialKey guifg=#4a4a59
 
 set modeline
+set laststatus=2
 "set relativenumber
 "set cursorline
 set colorcolumn=80
@@ -172,27 +176,27 @@ endif
 match ErrorMsg /\s\+\%#\@<!$/
 command! RTW normal :%s/\s\+$//e<CR>
 
-" Plugin {{{1
-" slime
-let g:slime_target="tmux"
-let g:slime_no_mappings=1
+" General Bundles {{{1
+NeoBundle 'bling/vim-airline'
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 
-" javascript & html
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+NeoBundle 'jnurmine/Zenburn', {'directory' : 'zenburn' }
 
 " man
 runtime ftplugin/man.vim
 nmap K <Leader>K
 
 " colorscheme
-colorscheme zenburn
 
 " gundo
 map <Leader>u :GundoToggle<CR>
 
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" BeoBundle End {{{1
+call neobundle#end()
+filetype plugin indent on
+NeoBundleCheck
+
+colorscheme zenburn
 
 " vim: fdm=marker
