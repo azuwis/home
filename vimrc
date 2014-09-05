@@ -275,7 +275,12 @@ NeoBundleCheck
 
 " Ending configs {{{1
 " colorscheme
-colorscheme zenburn
+try
+  colorscheme zenburn
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme slate
+endtry
+" syntax highlight
 filetype plugin indent on
 syntax enable
 
