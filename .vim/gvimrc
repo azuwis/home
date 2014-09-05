@@ -1,0 +1,17 @@
+"set guioptions=acegmt
+set guioptions-=r
+set guioptions-=L
+set guioptions-=T
+set guioptions-=m
+set guioptions+=ac
+"let g:airline_powerline_fonts=1
+"set guifont=Cousine\ for\ Powerline\ 11
+set guifont=monospace\ 11
+set linespace=1
+"set guifont=Monaco:h14
+"set guifont=Letter\ Gothic\ Std\ Medium:h14
+"set guifont=Letter\ Gothic\ Std\ Bold:h14
+set guicursor+=a:blinkon0
+set lines=47
+set columns=100
+set showbreak=
