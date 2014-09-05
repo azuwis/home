@@ -58,6 +58,8 @@ alias ls='ls --color'
 alias au='sudo aptitude -u'
 alias se='sudoedit'
 alias ap='ansible-playbook'
+alias em='emacsclient -nw'
+alias ew='emacsclient -nc'
 
 # Antigen
 source ~/.antigen/antigen/antigen.zsh
