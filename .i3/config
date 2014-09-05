@@ -150,7 +150,7 @@ bindsym $mod+x mode "resize"
 
 # Zenburn color
 # https://github.com/andreatta/config/blob/master/i3/config
-set $bg #2c2c2e
+set $bg #3f3f3f
 set $fg #9f9f9f
 set $hi #efef8f
 set $ac #a0afa0
@@ -189,6 +189,7 @@ hide_edge_borders both
 # Per app settings
 for_window [class="^mpv"] floating enable
 for_window [class="^feh"] floating enable
+for_window [class="^Emacs"] floating enable
 for_window [class="^Assword"] floating enable
 for_window [class="^Screenkey"] floating enable border none
 for_window [class="^Key-mony"] floating enable border none
@@ -201,7 +202,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 bindsym $mod+XF86Eject $exec xautolock -locknow
-bindsym $mod+Shift+u $exec "xterm -title 'Floating: pum' -g 48x18 -e pum"
+bindsym $mod+Shift+u $exec xterm -title 'Floating: pum' -g 48x18 -e pum
 bindsym $mod+Shift+p $exec assword gui
 bindsym XF86MenuKB $exec nucmenu
 

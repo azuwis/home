@@ -58,8 +58,18 @@ alias ls='ls --color'
 alias au='sudo aptitude -u'
 alias se='sudoedit'
 alias ap='ansible-playbook'
+alias em='emacsclient -nw'
+alias ew='emacsclient -nc'
+
+# Debian packaging staff
+export DEBEMAIL="azuwis@gmail.com"
+export DEBFULLNAME="Zhong Jianxin"
 
 # Antigen
+if [ ! -d ~/.antigen ]; then
+    mkdir ~/.antigen
+    git clone https://github.com/zsh-users/antigen.git ~/.antigen/antigen
+fi
 source ~/.antigen/antigen/antigen.zsh
 
 # Syntax highlighting bundle.

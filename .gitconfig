@@ -13,6 +13,7 @@
         cp = cherry-pick
         sta = stash
         lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset%Cblue(%an)%Creset' --abbrev-commit --date=relative
+        purge = gc --aggressive --prune=all
         new = !sh -c 'git log --no-merges $1@{1}..$1@{0} "$@"' -
         rewind = !sh -c 'git update-ref refs/heads/$1 ${2:-HEAD}' -
         fixup = !sh -c 'git commit --fixup=$1 && git rebase --interactive --autosquash $1~' -
