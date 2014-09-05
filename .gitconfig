@@ -3,6 +3,9 @@
         name = Zhong Jianxin
 [color]
         ui = auto
+[log]
+	abbrevCommit = true
+	decorate = short
 [alias]
         co = checkout
         st = status
@@ -12,7 +15,7 @@
         mt = mergetool
         cp = cherry-pick
         sta = stash
-        lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset%Cblue(%an)%Creset' --abbrev-commit --date=relative
+        lg = log --graph --oneline
         purge = gc --aggressive --prune=all
         new = !sh -c 'git log --no-merges $1@{1}..$1@{0} "$@"' -
         rewind = !sh -c 'git update-ref refs/heads/$1 ${2:-HEAD}' -
