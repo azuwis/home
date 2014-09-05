@@ -2,7 +2,7 @@
 if has('vim_starting')
   let s:neobundledir = expand('~/.vim/bundle/neobundle/')
   if !isdirectory(expand(s:neobundledir))
-    let s:initcmd = 'git clone git://github.com/Shougo/neobundle.vim.git ' . s:neobundledir
+    let s:initcmd = 'git clone https://github.com/Shougo/neobundle.vim.git ' . s:neobundledir
     echomsg '[neobundle/install] (0): |neobundle| ' . s:initcmd
     call mkdir(expand('~/.vim/bundle/'), 'p')
     call system(s:initcmd)
