@@ -62,6 +62,10 @@ alias em='emacsclient -nw'
 alias ew='emacsclient -nc'
 
 # Antigen
+if [ ! -d ~/.antigen ]; then
+    mkdir ~/.antigen
+    git clone https://github.com/zsh-users/antigen.git ~/.antigen/antigen
+fi
 source ~/.antigen/antigen/antigen.zsh
 
 # Syntax highlighting bundle.
