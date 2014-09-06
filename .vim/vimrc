@@ -265,6 +265,14 @@ NeoBundle 'tpope/vim-surround', {'directory': 'surround'}
 " easymotion
 NeoBundle 'Lokaltog/vim-easymotion', {'directory': 'easymotion'}
 
+" syntastic
+NeoBundleLazy 'scrooloose/syntastic', {'filetypes': [
+      \ 'sh',
+      \ 'python',
+      \ 'ruby',
+      \ 'vim',
+      \ ]}
+
 " Filetypes {{{1
 " Ansible
 NeoBundle 'chase/vim-ansible-yaml', {'directory': 'ansible'}
