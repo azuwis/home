@@ -191,8 +191,8 @@ if has("autocmd")
     " auto save file on losing focus
     autocmd FocusLost * silent! :update
 
-    " auto load .vimrc
-    autocmd BufWritePost ~/.vimrc source $MYVIMRC
+    " auto load vimrc
+    autocmd BufWritePost ~/.vim/vimrc source $MYVIMRC
 
     " restore cursor position
     autocmd BufReadPost *
@@ -230,7 +230,7 @@ augroup easydir
   au!
   au BufWritePre,FileWritePre * call <SID>create_and_save_directory()
 augroup END
-function <SID>create_and_save_directory()
+function! <SID>create_and_save_directory()
   let s:directory = expand('<afile>:p:h')
   if !isdirectory(s:directory)
     call mkdir(s:directory, 'p')
