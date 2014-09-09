@@ -285,6 +285,15 @@ NeoBundleLazy 'scrooloose/syntastic', {'filetypes': [
       \ 'vim',
       \ ]}
 
+" neocomplete
+if has("lua")
+  let g:neocomplete#enable_at_startup = 1
+  NeoBundle 'Shougo/neocomplete.vim', {'directory': 'neocomplete'}
+else
+  let g:neocomplcache_enable_at_startup = 1
+  NeoBundle 'Shougo/neocomplcache.vim', {'directory': 'neocomplcache'}
+endif
+
 " Filetypes {{{1
 " Ansible
 NeoBundle 'chase/vim-ansible-yaml', {'directory': 'ansible'}
