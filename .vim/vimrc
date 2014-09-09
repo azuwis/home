@@ -238,6 +238,16 @@ function! <SID>create_and_save_directory()
 endfunction
 
 " General Bundles {{{1
+" vimproc
+NeoBundle 'Shougo/vimproc.vim', {'directory': 'vimproc',
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
 " airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
