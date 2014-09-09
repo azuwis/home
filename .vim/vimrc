@@ -1,16 +1,18 @@
 " NeoBundle Start{{{1
+let s:bundledir = expand('~/.vim/bundle/')
 if has('vim_starting')
-  let s:neobundledir = expand('~/.vim/bundle/neobundle/')
-  if !isdirectory(expand(s:neobundledir))
-    let s:initcmd = 'git clone https://github.com/Shougo/neobundle.vim.git ' . s:neobundledir
+  if !isdirectory(s:bundledir . '/neobundle/')
+    let s:initcmd = 'git clone https://github.com/Shougo/neobundle.vim.git ' . s:bundledir . '/neobundle/'
     echomsg '[neobundle/install] (0): |neobundle| ' . s:initcmd
-    call mkdir(expand('~/.vim/bundle/'), 'p')
+    if !isdirectory(s:bundledir)
+      call mkdir(s:bundledir)
+    endif
     call system(s:initcmd)
   endif
   set nocompatible
   set runtimepath+=~/.vim/bundle/neobundle/
 endif
-call neobundle#begin(expand('~/.vim/bundle/'))
+call neobundle#begin(s:bundledir)
 NeoBundleFetch 'Shougo/neobundle.vim', {'directory': 'neobundle'}
 
 " Sensible{{{1
