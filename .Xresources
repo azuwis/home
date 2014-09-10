@@ -21,16 +21,16 @@ XTerm*color14     : #93e0e3
 XTerm*color15     : #ffffff
 
 !! XTerm
-XTerm*termName               : xterm-256color
-XTerm*VT100.geometry         : 140x45
-XTerm*utf8                   : 2
-XTerm*faceName               : Cousine:pixelsize=20
-XTerm*faceNameDoublesize     : WenQuanYi Micro Hei Mono:pixelsize=19
-XTerm*scrollTtyOutput        : false
-XTerm*scrollKey              : true
-XTerm*fastScroll             : true
-XTerm*multiScroll            : true
-XTerm*saveLines              : 1024
-XTerm*bellIsUrgent           : true
+XTerm*termName           : xterm-256color
+XTerm*VT100.geometry     : 140x45
+XTerm*utf8               : 2
+XTerm*faceName           : Cousine:pixelsize=20
+XTerm*faceNameDoublesize : WenQuanYi Micro Hei Mono:pixelsize=19
+XTerm*scrollTtyOutput    : false
+XTerm*scrollKey          : true
+XTerm*fastScroll         : true
+XTerm*multiScroll        : true
+XTerm*saveLines          : 1024
+XTerm*bellIsUrgent       : true
 !! Make alt key works
-XTerm*eightBitInput          : false
+XTerm*eightBitInput      : false
