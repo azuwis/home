@@ -278,6 +278,9 @@ NeoBundle 'tpope/vim-repeat', {'directory': 'repeat'}
 " surround
 NeoBundle 'tpope/vim-surround', {'directory': 'surround'}
 
+" unimpaired
+NeoBundle 'tpope/vim-unimpaired', {'directory': 'unimpaired'}
+
 " commentary
 NeoBundle 'tpope/vim-commentary', {'directory': 'commentary'}
 
