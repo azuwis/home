@@ -182,6 +182,9 @@ if has("autocmd")
     " .adoc as asciidoc
     autocmd BufNewFile,BufRead *.adoc,*.asc setfiletype asciidoc
 
+    " .md as markdown
+    autocmd BufNewFile,BufRead *.md setfiletype markdown
+
     " set spell for git commit msg
     autocmd FileType gitcommit setlocal spell
 
