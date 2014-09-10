@@ -279,6 +279,11 @@ NeoBundle 'tpope/vim-unimpaired', {'directory': 'unimpaired'}
 " commentary
 NeoBundle 'tpope/vim-commentary', {'directory': 'commentary'}
 
+" easy-align
+NeoBundle 'junegunn/vim-easy-align', {'directory': 'easy-align'}
+vmap ga <Plug>(LiveEasyAlign)
+nmap ga <Plug>(LiveEasyAlign)
+
 " easymotion
 NeoBundle 'Lokaltog/vim-easymotion', {'directory': 'easymotion'}
 
