@@ -278,6 +278,9 @@ NeoBundle 'tpope/vim-repeat', {'directory': 'repeat'}
 " surround
 NeoBundle 'tpope/vim-surround', {'directory': 'surround'}
 
+" commentary
+NeoBundle 'tpope/vim-commentary', {'directory': 'commentary'}
+
 " easymotion
 NeoBundle 'Lokaltog/vim-easymotion', {'directory': 'easymotion'}
 
