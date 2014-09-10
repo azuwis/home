@@ -27,6 +27,7 @@ XTerm*utf8                   : 2
 XTerm*faceName               : Cousine:pixelsize=20
 XTerm*faceNameDoublesize     : WenQuanYi Micro Hei Mono:pixelsize=19
 XTerm*scrollTtyOutput        : false
+XTerm*scrollKey              : true
 XTerm*fastScroll             : true
 XTerm*multiScroll            : true
 XTerm*saveLines              : 1024
