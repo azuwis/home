@@ -97,16 +97,11 @@ nnoremap <F5> :update<CR>
 inoremap <F5> <C-o>:update<CR>
 "nnoremap / /\v
 "vnoremap / /\v
-nnoremap <silent> <leader>s :set spell!<CR>
 "nnoremap ; :
 inoremap kj <ESC>
 " man
 "runtime ftplugin/man.vim
 "nmap K <Leader>K
-
-" Quick toggles {{{2
-nnoremap <silent> <leader>l :set list!<CR>
-nnoremap <silent> <leader>n :silent :nohlsearch<CR>
 
 " Window switching {{{2
 nnoremap <C-k> <C-W>k
