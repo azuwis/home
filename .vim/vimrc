@@ -201,7 +201,7 @@ if has("autocmd")
       \ endif
 
     " load ~/.Xresources if modified
-    autocmd BufWritePost ~/.Xresources :silent !xrdb ~/.Xresources
+    autocmd BufWritePost ~/.Xresources :silent !xrdb -merge ~/.Xresources
   augroup END
 endif
 
