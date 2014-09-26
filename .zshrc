@@ -2,7 +2,6 @@
 
 autoload -Uz promptinit
 promptinit
-prompt bart
 
 setopt histignorealldups sharehistory
 
@@ -96,6 +95,10 @@ antigen bundle zsh-users/zsh-completions
 
 # Colorful manpage
 antigen bundle colored-man
+
+# Pure prompt
+PURE_GIT_PULL_IGNORE=($HOME)
+antigen bundle azuwis/pure
 
 # Tell antigen that you're done.
 antigen apply
