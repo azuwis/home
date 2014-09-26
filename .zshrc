@@ -65,7 +65,7 @@ alias ew='emacsclient -nc'
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
 
-# Workaround for lilyterm
+# Workaround for lilyterm/lxterminal
 test $TERM = "xterm" && export TERM="xterm-256color"
 
 # Antigen
