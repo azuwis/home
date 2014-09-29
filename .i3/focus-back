@@ -2,16 +2,8 @@
 
 # Give focus back to Firefox after enter flash
 
-eval "$(xdotool getmouselocation --shell)"
-mouse_x=$X
-mouse_y=$Y
-
 window=$(xdotool getwindowfocus)
 # window=$(xdotool search --onlyvisible --class iceweasel)
 eval "$(xdotool getwindowgeometry --shell "$window")"
 
-xdotool mousemove --window "$window" $((WIDTH - 1)) $((HEIGHT - 1)) click 1
-
-# Need to sleep or bind to mod+esc will no restore mouse
-sleep 0.2
-xdotool mousemove "$mouse_x" "$mouse_y"
+xdotool mousemove --window "$window" $((WIDTH - 10)) $((HEIGHT - 10)) click 1
