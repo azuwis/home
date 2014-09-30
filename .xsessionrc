@@ -18,7 +18,7 @@ run syndaemon -R -t -i 0.25
 
 # Press and release control to generate esc key
 # Need to run after xmodmap, so sleep here
-(sleep 5 && run xcape -e 'Control_R=Escape') &
+(sleep 10 && run xcape -e 'Control_R=Escape') &
 
 # Auto start
 run clipit
