@@ -97,8 +97,7 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle colored-man
 
 # Pure prompt
-PURE_GIT_PULL_IGNORE=($HOME)
-antigen bundle azuwis/pure
+antigen bundle sindresorhus/pure
 
 # Tell antigen that you're done.
 antigen apply
