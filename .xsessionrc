@@ -21,6 +21,7 @@ run syndaemon -R -t -i 0.25
 (sleep 10 && run xcape -e 'Control_R=Escape') &
 
 # Auto start
+run compton
 run clipit
 run devmon
 run xautolock -time 30 -locker 'i3lock --color=000000'
