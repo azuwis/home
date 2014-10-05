@@ -1,4 +1,4 @@
-" NeoBundle Start{{{1
+" NeoBundle Start {{{1
 let s:bundledir = expand('~/.vim/bundle/')
 if has('vim_starting')
   if !isdirectory(s:bundledir . '/neobundle/')
@@ -15,7 +15,7 @@ endif
 call neobundle#begin(s:bundledir)
 NeoBundleFetch 'Shougo/neobundle.vim', {'directory': 'neobundle'}
 
-" Sensible{{{1
+" Sensible {{{1
 " https://github.com/tpope/vim-sensible
 set autoindent
 set backspace=indent,eol,start
