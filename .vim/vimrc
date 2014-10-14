@@ -248,8 +248,8 @@ Plug 'bling/vim-bufferline'
 Plug 'jnurmine/Zenburn'
 
 " gundo
-Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
-map <Leader>u :GundoToggle<CR>
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+map <Leader>u :UndotreeToggle<CR>
 
 " fugitive
 Plug 'tpope/vim-fugitive'
