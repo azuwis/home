@@ -3,6 +3,10 @@ let s:vimplug = expand('~/.vim/autoload/plug.vim')
 let s:vimplug_src = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 if has('vim_starting')
   if !filereadable(s:vimplug)
+    let s:autoload_dir = expand('~/.vim/autoload/')
+    if !isdirectory(s:autoload_dir)
+        call mkdir(s:autoload_dir)
+    endif
     let s:installplug = 'wget -q -O ' . s:vimplug . ' ' . s:vimplug_src
     echomsg 'Install vim-plug: ' . s:installplug
     call system(s:installplug)
