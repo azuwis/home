@@ -75,6 +75,8 @@ set hlsearch
 set wildignore=
 set splitright splitbelow
 set lazyredraw
+" for multi-type formating
+set formatoptions+=mM
 
 " Always backup {{{2
 let s:savedir = expand('~/.vim/save')
