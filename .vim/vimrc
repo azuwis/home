@@ -1,22 +1,18 @@
-" NeoBundle Start {{{1
-let s:bundledir = expand('~/.vim/bundle/')
+" Vim-plug Start {{{1
+let s:vimplug = expand('~/.vim/autoload/plug.vim')
+let s:vimplug_src = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 if has('vim_starting')
-  if !isdirectory(s:bundledir . '/neobundle/')
-    let s:initcmd = 'git clone https://github.com/Shougo/neobundle.vim.git ' . s:bundledir . '/neobundle/'
-    echomsg '[neobundle/install] (0): |neobundle| ' . s:initcmd
-    if !isdirectory(s:bundledir)
-      call mkdir(s:bundledir)
-    endif
-    call system(s:initcmd)
+  if !filereadable(s:vimplug)
+    let s:installplug = 'wget -q -O ' . s:vimplug . ' ' . s:vimplug_src
+    echomsg 'Install vim-plug: ' . s:installplug
+    call system(s:installplug)
   endif
-  set nocompatible
-  set runtimepath+=~/.vim/bundle/neobundle/
 endif
-call neobundle#begin(s:bundledir)
-NeoBundleFetch 'Shougo/neobundle.vim', {'directory': 'neobundle'}
+call plug#begin('~/.vim/plugged')
 
 " Sensible {{{1
 " https://github.com/tpope/vim-sensible
+set nocompatible
 set autoindent
 set backspace=indent,eol,start
 set complete-=i
@@ -237,61 +233,55 @@ function! <SID>create_and_save_directory()
   endif
 endfunction
 
-" General Bundles {{{1
-" vimproc
-NeoBundle 'Shougo/vimproc.vim', {'directory': 'vimproc',
-      \ 'build' : {
-      \     'windows' : 'tools\\update-dll-mingw',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
+" General plugins {{{1
 
 " airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-NeoBundle 'bling/vim-airline', {'directory': 'airline'}
+Plug 'bling/vim-airline'
 
 " bufferline
 let g:bufferline_echo = 0
-NeoBundle 'bling/vim-bufferline', {'directory': 'bufferline'}
+Plug 'bling/vim-bufferline'
 
 " zenburn
-NeoBundle 'jnurmine/Zenburn', {'directory': 'zenburn'}
+Plug 'jnurmine/Zenburn'
 
 " gundo
-NeoBundle 'sjl/gundo.vim', {'directory': 'gundo'}
+Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 map <Leader>u :GundoToggle<CR>
 
 " fugitive
-NeoBundle 'tpope/vim-fugitive', {'directory': 'fugitive'}
+Plug 'tpope/vim-fugitive'
 
 " signify
-NeoBundle 'mhinz/vim-signify', {'directory': 'signify'}
+Plug 'mhinz/vim-signify'
 
 " repeat
-NeoBundle 'tpope/vim-repeat', {'directory': 'repeat'}
+Plug 'tpope/vim-repeat'
 
 " surround
-NeoBundle 'tpope/vim-surround', {'directory': 'surround'}
+Plug 'tpope/vim-surround'
 
 " unimpaired
-NeoBundle 'tpope/vim-unimpaired', {'directory': 'unimpaired'}
+Plug 'tpope/vim-unimpaired'
 
 " commentary
-NeoBundle 'tpope/vim-commentary', {'directory': 'commentary'}
+Plug 'tpope/vim-commentary', { 'on': '<Plug>Commentary' }
+map gc <Plug>Commentary
+nmap gcc <Plug>CommentaryLine
 
 " easy-align
-NeoBundle 'junegunn/vim-easy-align', {'directory': 'easy-align'}
+Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign', '<Plug>(LiveEasyAlign)', 'LiveEasyAlign'] }
 vmap ga <Plug>(LiveEasyAlign)
 nmap ga <Plug>(LiveEasyAlign)
 
 " easymotion
-NeoBundle 'Lokaltog/vim-easymotion', {'directory': 'easymotion'}
+Plug 'Lokaltog/vim-easymotion', { 'on': '<Plug>(easymotion-prefix)' }
+map <Leader><Leader> <Plug>(easymotion-prefix)
 
 " syntastic
-NeoBundleLazy 'scrooloose/syntastic', {'filetypes': [
+Plug 'scrooloose/syntastic', { 'for': [
       \ 'sh',
       \ 'python',
       \ 'ruby',
@@ -301,19 +291,18 @@ NeoBundleLazy 'scrooloose/syntastic', {'filetypes': [
 " neocomplete
 if has("lua")
   let g:neocomplete#enable_at_startup = 1
-  NeoBundle 'Shougo/neocomplete.vim', {'directory': 'neocomplete'}
+  Plug 'Shougo/neocomplete.vim'
 else
   let g:neocomplcache_enable_at_startup = 1
-  NeoBundle 'Shougo/neocomplcache.vim', {'directory': 'neocomplcache'}
+  Plug 'Shougo/neocomplcache.vim'
 endif
 
 " Filetypes {{{1
 " Ansible
-NeoBundle 'chase/vim-ansible-yaml', {'directory': 'ansible'}
+Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 
-" NeoBundle End {{{1
-call neobundle#end()
-NeoBundleCheck
+" Vim-plug End {{{1
+call plug#end()
 
 " Ending configs {{{1
 " colorscheme
