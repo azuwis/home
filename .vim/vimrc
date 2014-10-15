@@ -303,6 +303,14 @@ else
   Plug 'Shougo/neocomplcache.vim'
 endif
 
+" tagbar
+if v:version >= 703
+  " disable airline tagbar support, airline check if :TagbarToggle function
+  " exist, but vim-plug provide a fake function, lead to exception
+  let g:airline#extensions#tagbar#enabled = 0
+  Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+endif
+
 " Filetypes {{{1
 " Ansible
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
