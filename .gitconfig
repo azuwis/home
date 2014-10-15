@@ -16,7 +16,7 @@
         cp = cherry-pick
         sta = stash
         lg = log --graph --oneline
-        purge = gc --aggressive --prune=all
+        gcap = gc --aggressive --prune=all
         new = !sh -c 'git log --no-merges $1@{1}..$1@{0} "$@"' -
         rewind = !sh -c 'git update-ref refs/heads/$1 ${2:-HEAD}' -
         fixup = !sh -c 'git commit --fixup=$1 && git rebase --interactive --autosquash $1~' -
