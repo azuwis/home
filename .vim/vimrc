@@ -295,7 +295,7 @@ Plug 'scrooloose/syntastic', { 'for': [
       \ ]}
 
 " neocomplete
-if has("lua")
+if (has('lua') && (v:version > 703 || v:version == 703 && has('patch885')))
   let g:neocomplete#enable_at_startup = 1
   Plug 'Shougo/neocomplete.vim'
 else
