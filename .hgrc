@@ -1,0 +1,8 @@
+[extensions]
+color =
+pager =
+progress =
+purge =
+
+[pager]
+pager = less -FRX
