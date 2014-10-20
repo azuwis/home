@@ -208,4 +208,4 @@ bindsym $mod+Shift+p $exec assword gui
 bindsym XF86MenuKB $exec nucmenu
 bindsym $mod+Escape $exec ~/.i3/focus-back
 
-assign [class="^XTerm" title="^Cross Notify"] 8
+assign [class="^X-terminal-emulator" title="^Cross Notify"] 8
