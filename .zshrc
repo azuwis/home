@@ -97,6 +97,7 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle colored-man
 
 # Pure prompt
+PURE_GIT_PULL=0
 antigen bundle sindresorhus/pure
 
 # Tell antigen that you're done.
