@@ -1,4 +1,7 @@
-# Help function
+# Notice: xsessionrc run before ssh-agent and other scripts (see
+# /etc/X11/Xsession.d), some important envs are missing here.
+
+# Helper function
 run() {
     cmd=$1
     test -x "/usr/bin/${cmd}" && "$@" &
