@@ -10,6 +10,7 @@ if has('vim_starting')
     let s:installplug = 'wget -q -O ' . s:vimplug . ' ' . s:vimplug_src
     echomsg 'Install vim-plug: ' . s:installplug
     call system(s:installplug)
+    autocmd VimEnter * PlugInstall
   endif
 endif
 call plug#begin('~/.vim/plugged')
