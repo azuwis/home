@@ -230,8 +230,8 @@ command! RTW normal :%s/\s\+$//e<CR>
 " Auto create parent dir {{{2
 " https://github.com/dockyard/vim-easydir
 augroup easydir
-  au!
-  au BufWritePre,FileWritePre * call <SID>create_and_save_directory()
+  autocmd!
+  autocmd BufWritePre,FileWritePre * call <SID>create_and_save_directory()
 augroup END
 function! <SID>create_and_save_directory()
   let s:directory = expand('<afile>:p:h')
