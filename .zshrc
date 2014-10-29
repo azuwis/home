@@ -66,6 +66,8 @@ export DEBFULLNAME="Zhong Jianxin"
 
 # Workaround for lilyterm/lxterminal
 test $TERM = "xterm" && export TERM="xterm-256color"
+# Set terminal color scheme
+xtermcontrol
 
 # Antigen
 if [ ! -d ~/.antigen ]; then
