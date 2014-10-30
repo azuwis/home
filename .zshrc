@@ -68,6 +68,8 @@ test $TERM = "xterm" && {
     # Workaround for lilyterm/lxterminal
     export TERM="xterm-256color"
     # Set terminal color scheme
+    # Note: Hack here, xtermcontrol will only run once when lxterminal
+    # startup, as TERM is set to xterm-256color after this
     xtermcontrol
 }
 
