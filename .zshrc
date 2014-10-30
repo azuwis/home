@@ -64,10 +64,12 @@ alias ew='emacsclient -nc'
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
 
-# Workaround for lilyterm/lxterminal
-test $TERM = "xterm" && export TERM="xterm-256color"
-# Set terminal color scheme
-test -n $DISPLAY && xtermcontrol
+test $TERM = "xterm" && {
+    # Workaround for lilyterm/lxterminal
+    export TERM="xterm-256color"
+    # Set terminal color scheme
+    xtermcontrol
+}
 
 # Antigen
 if [ ! -d ~/.antigen ]; then
