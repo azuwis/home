@@ -21,7 +21,7 @@ run syndaemon -R -t -k -i 0.25
 
 # Auto start
 run compton
-run clipit
+run xfce4-clipman
 run devmon
 run xautolock -time 30 -locker 'i3lock --color=000000'
 test -d ~/src/cross-notify && tmux -L autostart new-session -d ~/src/cross-notify/server.py

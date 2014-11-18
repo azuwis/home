@@ -199,6 +199,7 @@ for_window [class="^X-terminal-emulator" title="^Floating:"] floating enable
 # Key binding
 bindsym $mod+c move absolute position center
 bindsym $mod+u [urgent="oldest"] focus
+bindsym $mod+p $exec xfce4-popup-clipman
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
