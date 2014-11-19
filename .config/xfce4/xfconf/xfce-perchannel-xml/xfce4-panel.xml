@@ -8,6 +8,7 @@
       </property>
       <property name="settings" type="empty">
         <property name="history-ignore-primary-clipboard" type="bool" value="false"/>
+        <property name="max-texts-in-history" type="uint" value="20"/>
       </property>
     </property>
   </property>
