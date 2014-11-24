@@ -328,6 +328,9 @@ endif
 " Ansible
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 
+" Salt
+Plug 'saltstack/salt-vim', { 'for': 'sls' }
+
 " Vim-plug End {{{1
 call plug#end()
 
