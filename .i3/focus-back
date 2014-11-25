@@ -13,6 +13,11 @@ escape_from_flash() {
   xdotool mousemove --window "$window" $((WIDTH - 10)) $((HEIGHT - 10)) click 1
 }
 
+if [ x"$1" = x"-e" ]; then
+  escape_from_flash
+  exit 0
+fi
+
 window_name="$(get_window_name)"
 
 case "$window_name" in

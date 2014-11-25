@@ -207,6 +207,7 @@ bindsym $mod+XF86Eject $exec xautolock -locknow
 bindsym $mod+Shift+u $exec x-terminal-emulator -T 'Floating: pum' --geometry=48x18 -e pum
 bindsym $mod+Shift+p $exec assword gui
 bindsym XF86MenuKB $exec nucmenu
+bindsym $mod+Escape $exec ~/.i3/focus-back -e
 # --release is needed or xdotool will not work
 bindsym --release $mod+m $exec ~/.i3/focus-back
 
