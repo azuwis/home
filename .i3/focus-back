@@ -27,9 +27,10 @@ case "$window_name" in
     ;;
   *bilibili*)
     escape_from_flash
-    xdotool key --clearmodifiers g g j j mousemove 1443 1008 click --repeat 2 1
+    xdotool key --clearmodifiers Escape Home j j mousemove 1443 1008 click --repeat 2 1
     ;;
-  *)
-    xdotool mousemove --polar 0 0 click --repeat 2 1
+  *Pentadactyl)
+    escape_from_flash
+    xdotool key --clearmodifiers Escape Home mousemove --polar 0 0 click --repeat 2 1
     ;;
 esac
