@@ -32,10 +32,23 @@ case "$window_name" in
     ;;
   *bilibili*)
     escape_from_flash
-    xdotool key --clearmodifiers Escape Home j j mousemove 1443 1008 click --repeat 2 1
+    if [ x"$(hostname)" = x"nuc" ]; then
+      xdotool key --clearmodifiers g e \
+        mousemove 1569 999 \
+        click 1 \
+        mousemove --polar 0 0
+    else
+      xdotool key --clearmodifiers Home j j mousemove 1443 1008 click 1
+    fi
     ;;
   *Pentadactyl)
     escape_from_flash
-    xdotool key --clearmodifiers Escape Home mousemove --polar 0 0 click --repeat 2 1
+    xdotool key --clearmodifiers Home \
+      mousemove --polar 0 0 \
+      click --repeat 2 1 \
+      sleep 0.1 \
+      mousemove --polar 180 1000 \
+      sleep 0.1 \
+      mousemove --polar 0 0
     ;;
 esac
