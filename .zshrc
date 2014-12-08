@@ -35,6 +35,36 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+# Generate hosts from ansible
+# Set ansible_hostfiles in ~/.zshenv
+# e.g ansible_hostfiles=( ~/ansible/playbook1/hosts ~/ansible/playbook2/hosts )
+local hosts_cache=~/.zsh_hosts_cache
+local -a ansible_hostfiles_new
+for hostfile in $ansible_hostfiles
+do
+    if [ ! -e $hosts_cache -o "$hostfile" -nt $hosts_cache ]; then
+        ansible_hostfiles_new=( $ansible_hostfiles_new $hostfile )
+    fi
+done
+if [ "$#ansible_hostfiles_new" -gt 0 ]; then
+    echo -n > $hosts_cache
+    for hostfile in $ansible_hostfiles
+    do
+        local ansible_dir=$(dirname $hostfile)
+        pushd "$ansible_dir" >& /dev/null
+        local vault=''
+        if [ -e 'vault_password' ]; then
+            vault='vault_password'
+        fi
+        ansible \* --inventory-file="$hostfile" --list-hosts --vault-password-file="$vault" | sed -e 's/ //g' >> $hosts_cache
+        popd
+    done
+fi
+zmodload zsh/mapfile
+local hosts
+hosts=( "${(f)mapfile[$hosts_cache]}" )
+zstyle ':completion:*:*:*' hosts $hosts
+
 # Set title for ssh in tmux
 if [ -n "$TMUX" ]; then
     ssh() {
