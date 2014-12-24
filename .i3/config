@@ -195,6 +195,7 @@ for_window [class="^Screenkey"] floating enable border none
 for_window [class="^Key-mony"] floating enable border none
 for_window [class="^XTerm" title="^Floating:"] floating enable
 for_window [class="^X-terminal-emulator" title="^Floating:"] floating enable
+assign [class="^Iceweasel"] 2
 
 # Key binding
 bindsym $mod+c move absolute position center
@@ -212,5 +213,3 @@ bindsym $mod+Escape $exec ~/.i3/focus-back -e
 bindsym --release $mod+m $exec ~/.i3/focus-back
 bindsym --release XF86HomePage $exec ~/.i3/focus-back
 bindsym --release XF86Back $exec xdotool key Shift+Insert
-
-assign [class="^X-terminal-emulator" title="^Cross Notify"] 8
