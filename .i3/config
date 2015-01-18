@@ -211,5 +211,6 @@ bindsym $mod+Escape $exec ~/.i3/focus-back -e
 # --release is needed or xdotool will not work
 bindsym --release $mod+m $exec ~/.i3/focus-back
 bindsym --release XF86HomePage $exec ~/.i3/focus-back
+bindsym --release XF86Back $exec xdotool key Shift+Insert
 
 assign [class="^X-terminal-emulator" title="^Cross Notify"] 8
