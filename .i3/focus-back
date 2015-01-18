@@ -41,10 +41,10 @@ case "$window_name" in
       xdotool key --clearmodifiers Home j j mousemove 1443 1008 click 1
     fi
     ;;
-  *Pentadactyl)
+  *Pentadactyl|*Chromium*)
     escape_from_flash
     xdotool key --clearmodifiers Home \
-      mousemove --polar 0 0 \
+      mousemove --polar 180 170 \
       click --repeat 2 1 \
       sleep 0.1 \
       mousemove --polar 180 1000 \
