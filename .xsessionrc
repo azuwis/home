@@ -25,7 +25,6 @@ run xfce4-clipman
 run devmon
 run xautolock -time 30 -locker 'i3lock --color=000000'
 test -d ~/src/cross-notify && tmux -L autostart new-session -d ~/src/cross-notify/server.py
-test -r ~/.ss/config.json && tmux -L autostart split-window -d 'sslocal -qq -c ~/.ss/config.json'
 
 # Apply color profile
 if [ -x /usr/bin/xcalib ]; then
