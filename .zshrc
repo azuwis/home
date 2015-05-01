@@ -82,11 +82,19 @@ vim() {
 }
 alias vi='vim'
 
+ap() {
+    local vault=''
+    if [ -e 'vault_password' ]; then
+        vault='vault_password'
+    fi
+    ansible-playbook --vault-password-file="$vault" "$@"
+}
+alias apl='ap --list-tasks --list-hosts'
+
 # Alias
 alias ls='ls --color'
 alias au='sudo aptitude -u'
 alias se='sudoedit'
-alias ap='ansible-playbook'
 alias em='emacsclient -nw'
 alias ew='emacsclient -nc'
 
