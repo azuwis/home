@@ -194,8 +194,10 @@ for_window [class="^Assword"] floating enable
 for_window [class="^Screenkey"] floating enable border none
 for_window [class="^Key-mony"] floating enable border none
 for_window [class="^XTerm" title="^Floating:"] floating enable
+for_window [class="^LXTerminal" title="^Floating:"] floating enable
 for_window [class="^X-terminal-emulator" title="^Floating:"] floating enable
 assign [class="^Iceweasel"] 2
+assign [class="^Chromium"] 3
 
 # Key binding
 bindsym $mod+c move absolute position center
@@ -205,7 +207,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show
 bindsym $mod+XF86Eject $exec xautolock -locknow
-bindsym $mod+Shift+u $exec x-terminal-emulator -T 'Floating: pum' --geometry=48x18 -e pum
+bindsym $mod+Shift+u $exec x-terminal-emulator --title='Floating: pum' --geometry=48x18 -e pum
 bindsym $mod+Shift+p $exec assword gui
 bindsym XF86MenuKB $exec nucmenu
 bindsym $mod+Escape $exec ~/.i3/focus-back -e
