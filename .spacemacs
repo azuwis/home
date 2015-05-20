@@ -20,6 +20,7 @@
      ansible
      auto-completion
      better-defaults
+     clojure
      emacs-lisp
      (git :variables
           git-gutter-use-fringe t)
