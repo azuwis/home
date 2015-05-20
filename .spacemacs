@@ -156,6 +156,7 @@ before layers configuration."
 layers configuration."
   (setq powerline-default-separator 'zigzag)
   (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
+  (setq x-select-enable-clipboard-manager nil)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
