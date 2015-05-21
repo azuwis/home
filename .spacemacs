@@ -158,6 +158,7 @@ layers configuration."
   (setq x-select-enable-clipboard-manager nil)
   (setq ansible/ansible-filename-re
         "\\(site\.yml\\|roles/.+\.yml\\|playbooks/.+\.yml\\|group_vars/.+\\|host_vars/.+\\)")
+  (setq-default major-mode 'text-mode)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
