@@ -213,6 +213,8 @@ for_window [class="^XTerm" title="^Floating:"] floating enable
 for_window [class="^LXTerminal" title="^Floating:"] floating enable
 for_window [class="^X-terminal-emulator" title="^Floating:"] floating enable
 assign [class="^Iceweasel"] 2
+# google chrome
+for_window [window_role="bubble"] floating enable
 assign [class="^Chromium"] 3
 
 # Key binding
