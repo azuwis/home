@@ -297,15 +297,6 @@ Plug 'scrooloose/syntastic', { 'for': [
       \ 'vim',
       \ ]}
 
-" neocomplete
-if (has('lua') && (v:version > 703 || v:version == 703 && has('patch885')))
-  let g:neocomplete#enable_at_startup = 1
-  Plug 'Shougo/neocomplete.vim'
-else
-  let g:neocomplcache_enable_at_startup = 1
-  Plug 'Shougo/neocomplcache.vim'
-endif
-
 " tagbar
 if v:version >= 703
   " disable airline tagbar support, airline check if :TagbarToggle function
