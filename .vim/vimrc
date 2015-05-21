@@ -256,7 +256,7 @@ Plug 'bling/vim-bufferline'
 " zenburn
 Plug 'jnurmine/Zenburn'
 
-" gundo
+" undotree
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 map <Leader>u :UndotreeToggle<CR>
 
