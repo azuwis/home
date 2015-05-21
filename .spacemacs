@@ -159,6 +159,8 @@ layers configuration."
   (setq ansible/ansible-filename-re
         "\\(site\.yml\\|roles/.+\.yml\\|playbooks/.+\.yml\\|group_vars/.+\\|host_vars/.+\\)")
   (setq-default major-mode 'text-mode)
+  (add-to-list 'default-frame-alist '(width . 100))
+  (add-to-list 'default-frame-alist '(height . 48))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
