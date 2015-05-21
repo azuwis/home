@@ -340,7 +340,7 @@ Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 
 " Filetypes {{{1
 " Ansible
-Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
+Plug 'chase/vim-ansible-yaml'
 
 " Salt
 Plug 'saltstack/salt-vim', { 'for': 'sls' }
