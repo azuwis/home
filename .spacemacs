@@ -156,6 +156,8 @@ layers configuration."
   (setq powerline-default-separator 'zigzag)
   (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
   (setq x-select-enable-clipboard-manager nil)
+  (setq ansible/ansible-filename-re
+        "\\(site\.yml\\|roles/.+\.yml\\|playbooks/.+\.yml\\|group_vars/.+\\|host_vars/.+\\)")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
