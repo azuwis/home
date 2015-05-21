@@ -79,6 +79,8 @@ set lazyredraw
 " for multi-type formating
 set formatoptions+=mM
 
+let g:netrw_liststyle = 3
+
 " Always backup {{{2
 let s:savedir = expand('~/.vim/save')
 if !isdirectory(s:savedir)
