@@ -22,8 +22,7 @@
      better-defaults
      clojure
      emacs-lisp
-     (git :variables
-          git-gutter-use-fringe t)
+     git
      markdown
      org
      syntax-checking
