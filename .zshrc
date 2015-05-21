@@ -80,7 +80,6 @@ vim() {
     command vim "$@"
     stty ixon
 }
-alias vi='vim'
 
 ap() {
     local vault=''
@@ -91,12 +90,15 @@ ap() {
 }
 alias apl='ap --list-tasks --list-hosts'
 
+# Editor
+export EDITOR="emacsclient -c -a ''"
+export GIT_EDITOR=$EDITOR
+
 # Alias
 alias ls='ls --color'
 alias au='sudo aptitude -u'
 alias se='sudoedit'
-alias em='emacsclient -nw'
-alias ew='emacsclient -nc'
+alias vi=$EDITOR
 
 # Debian packaging staff
 export DEBEMAIL="azuwis@gmail.com"
