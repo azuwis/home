@@ -23,7 +23,6 @@
         fixup = !sh -c 'git commit --fixup=$1 && git rebase --interactive --autosquash $1~' -
         sample = "!sh -c 'tmp=`mktemp -d`; git init $tmp; cd $tmp; for i in "$@"; do echo "$i" >"$i"; git add "$i"; git commit -m "$i"; done; echo $tmp' -"
 [core]
-        editor = vim
         pager = less
         #autocrlf = input
 [rerere]
