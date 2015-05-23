@@ -153,7 +153,7 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (setq powerline-default-separator 'zigzag)
+  (setq powerline-default-separator 'slant)
   (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
   (setq x-select-enable-clipboard-manager nil)
   (setq ansible/ansible-filename-re
