@@ -23,6 +23,7 @@
      clojure
      emacs-lisp
      git
+     jinja2
      markdown
      org
      syntax-checking
