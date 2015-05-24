@@ -35,8 +35,9 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# Generate hosts from ansible
-# Set ansible_hostfiles in ~/.zshenv
+# Ansible
+# generate hosts from ansible
+# set ansible_hostfiles in ~/.zshenv
 # e.g ansible_hostfiles=( ~/ansible/playbook1/hosts ~/ansible/playbook2/hosts )
 local hosts_cache=~/.zsh_hosts_cache
 local -a ansible_hostfiles_new
@@ -64,6 +65,16 @@ zmodload zsh/mapfile
 local hosts
 hosts=( "${(f)mapfile[$hosts_cache]}" )
 zstyle ':completion:*:*:*' hosts $hosts
+# short function and alias
+ap() {
+    local vault=''
+    if [ -e 'vault_password' ]; then
+        vault='vault_password'
+    fi
+    ansible-playbook --vault-password-file="$vault" "$@"
+}
+alias apl='ap --list-tasks --list-hosts'
+
 
 # Set title for ssh in tmux
 if [ -n "$TMUX" ]; then
@@ -73,22 +84,6 @@ if [ -n "$TMUX" ]; then
         tmux rename-window "zsh"
     }
 fi
-
-# Disable <C-s> <C-q> for vim
-vim() {
-    stty -ixon
-    command vim "$@"
-    stty ixon
-}
-
-ap() {
-    local vault=''
-    if [ -e 'vault_password' ]; then
-        vault='vault_password'
-    fi
-    ansible-playbook --vault-password-file="$vault" "$@"
-}
-alias apl='ap --list-tasks --list-hosts'
 
 # Editor
 export EDITOR="emacsclient"
@@ -100,6 +95,12 @@ vi() {
     else
         emacsclient --no-wait "$@"
     fi
+}
+# disable <C-s> <C-q> for vim
+vim() {
+    stty -ixon
+    command vim "$@"
+    stty ixon
 }
 
 # Alias
