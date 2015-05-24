@@ -91,14 +91,22 @@ ap() {
 alias apl='ap --list-tasks --list-hosts'
 
 # Editor
-export EDITOR="emacsclient -c -a ''"
+export EDITOR="emacsclient"
+export ALTERNATE_EDITOR="vim"
 export GIT_EDITOR=$EDITOR
+vi() {
+    if [ ! -e /tmp/emacs$(id -u)/server ]; then
+        nohup emacs "$@" >& /dev/null &
+    else
+        emacsclient --no-wait "$@"
+    fi
+}
 
 # Alias
 alias ls='ls --color'
 alias au='sudo aptitude -u'
 alias se='sudoedit'
-alias vi=$EDITOR
+# alias vi=$EDITOR
 
 # Debian packaging staff
 export DEBEMAIL="azuwis@gmail.com"
