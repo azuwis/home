@@ -29,3 +29,8 @@
     background = "#e89393"
     foreground = "#a0afa0"
     timeout = 0
+
+[popo]
+    appname = notify-send
+    summary = POPO*
+    timeout = 0
