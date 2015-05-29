@@ -26,6 +26,8 @@
      jinja2
      markdown
      org
+     (shell :variables
+            shell-default-shell eshell)
      syntax-checking
      )
    ;; List of additional packages that will be installed wihout being
