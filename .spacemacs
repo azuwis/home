@@ -26,6 +26,7 @@
      jinja2
      markdown
      org
+     python
      (shell :variables
             shell-default-shell eshell)
      syntax-checking
