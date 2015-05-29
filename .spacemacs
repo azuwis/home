@@ -149,13 +149,26 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (setq powerline-default-separator 'slant)
+  ;; Common
   (setq x-select-enable-clipboard-manager nil)
+  (setq-default major-mode 'text-mode)
+  ;; Ansible
   (setq ansible/ansible-filename-re
         "\\(site\.yml\\|roles/.+\.yml\\|playbooks/.+\.yml\\|group_vars/.+\\|host_vars/.+\\)")
-  (setq-default major-mode 'text-mode)
+  (add-to-list 'auto-mode-alist '("\\.asciidoc\\'" . adoc-mode))
+  ;; Display
+  (setq powerline-default-separator 'zigzag)
   (add-to-list 'default-frame-alist '(width . 100))
   (add-to-list 'default-frame-alist '(height . 48))
+  ;; (setq git-gutter-fr:side 'left-fringe)
+  ;; Font
+  (setq face-font-rescale-alist '(("WenQuanYi Micro Hei" . 1.2)))
+  ;; (when window-system
+  ;;   ;; "CJK Unified Ideographs" (han) U+4E00 - U+9FFF
+  ;;   (set-fontset-font "fontset-default"
+  ;;                     (cons (decode-char 'ucs #x4e00)
+  ;;                           (decode-char 'ucs #x9fff))
+  ;;                     "-*-WenQuanYi Micro Hei-*-*-*-*-24-*-*-*-*-*-*-*"))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
