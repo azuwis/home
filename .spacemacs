@@ -28,7 +28,7 @@
      org
      python
      (shell :variables
-            shell-default-shell eshell)
+            shell-default-shell 'eshell)
      syntax-checking
      )
    ;; List of additional packages that will be installed wihout being
