@@ -1,0 +1,53 @@
+FSync no
+MaxMessages 200
+Create Both
+Expunge Both
+SyncState *
+
+IMAPAccount gmail
+Host imap.gmail.com
+User azuwis@gmail.com
+UseIMAPS yes
+PassCmd "pass show email/azuwis@gmail.com"
+
+IMAPStore gmail
+Account gmail
+
+MaildirStore local
+Path ~/Maildir/
+Inbox ~/Maildir/inbox/
+
+Channel gmail-inbox
+Master :gmail:
+Slave :local:
+
+Channel gmail-corp
+Master :gmail:corp
+Slave :local:corp
+
+Channel gmail-sent
+Master :gmail:"[Gmail]/Sent Mail"
+Slave :local:sent
+MaxMessages 100
+
+Channel gmail-drafts
+Master :gmail:"[Gmail]/Drafts"
+Slave :local:drafts
+MaxMessages 100
+
+Channel gmail-trash
+Master :gmail:"[Gmail]/Trash"
+Slave :local:trash
+MaxMessages 50
+
+# Channel gmail-test
+# Master :gmail:
+# Slave :local:
+# Patterns *
+
+Group gmail
+Channel gmail-inbox
+Channel gmail-corp
+Channel gmail-sent
+Channel gmail-drafts
+Channel gmail-trash
