@@ -6,6 +6,7 @@
     padding = 10
     horizontal_padding = 10
     transparency = 20
+    idle_threshold = 30
 
 [frame]
     width = 0
@@ -33,4 +34,4 @@
 [popo]
     appname = notify-send
     summary = POPO*
-    timeout = 0
+    timeout = 30
