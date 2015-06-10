@@ -155,17 +155,26 @@ before layers configuration."
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
   ;; Common
+  ;; clipboard manager cause slow quitting
   (setq x-select-enable-clipboard-manager nil)
-  (setq-default major-mode 'text-mode)
+  ;; default major mode
+  ;; (setq-default major-mode 'text-mode)
+  ;; set title to 'buffer @ file'
+  (setq frame-title-format "%b @ %f")
+
   ;; Ansible
   (setq ansible/ansible-filename-re
         "\\(site\.yml\\|roles/.+\.yml\\|playbooks/.+\.yml\\|group_vars/.+\\|host_vars/.+\\)")
+
+  ;; AsciiDoc
   (add-to-list 'auto-mode-alist '("\\.asciidoc\\'" . adoc-mode))
+
   ;; Display
-  (setq powerline-default-separator 'zigzag)
+  ;; (setq powerline-default-separator 'zigzag)
   (add-to-list 'default-frame-alist '(width . 100))
   (add-to-list 'default-frame-alist '(height . 48))
   ;; (setq git-gutter-fr:side 'left-fringe)
+
   ;; Font
   (setq face-font-rescale-alist '(("WenQuanYi Micro Hei" . 1.2)))
   ;; (when window-system
