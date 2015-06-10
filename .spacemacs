@@ -213,10 +213,23 @@ layers configuration."
                              (:mailing-list . 10)
                              (:from-or-to . 22)
                              (:subject))
-       mu4e-user-mail-address-list '("azuwis@gmail.com")
+       mu4e-user-mail-address-list (list user-mail-address)
        )
+      (add-to-list 'mu4e-view-actions
+                   '("browser view" . mu4e-action-view-in-browser) t)
+      ;; http://www.djcbsoftware.nl/code/mu/mu4e/Compose-hooks.html
+      (defun my-mu4e-set-from-address ()
+        "Set the From address based on the To address of the original."
+        (let ((msg mu4e-compose-parent-message))
+          (when msg
+            (setq user-mail-address
+                  (cond
+                   ((mu4e-message-contact-field-matches msg :to "me@bar.com")
+                    "me@bar.com")
+                   (t user-mail-address))))))
+      (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-from-address)
       ;; https://groups.google.com/forum/#!msg/mu-discuss/u3Fy86-N-rg/zcdvIlnV0L8J
-      (defun mu4e-view-toggle-html ()
+      (defun my-mu4e-view-toggle-html ()
         "Toggle between html and non-html views of a message. The current
  message is refreshed with the new setting, but the setting applies to all
  messages."
