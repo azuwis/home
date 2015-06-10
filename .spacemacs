@@ -184,6 +184,13 @@ layers configuration."
   ;;                           (decode-char 'ucs #x9fff))
   ;;                     "-*-WenQuanYi Micro Hei-*-*-*-*-24-*-*-*-*-*-*-*"))
 
+  ;; Msmtp
+  (setq message-send-mail-function 'message-send-mail-with-sendmail
+        sendmail-program "msmtp"
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-sendmail-f-is-evil t
+        user-mail-address "azuwis@gmail.com")
+
   ;; Mu4e
   (use-package mu4e
     :defer t
