@@ -17,19 +17,21 @@
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ansible
      auto-completion
      better-defaults
-     clojure
      emacs-lisp
      git
-     jinja2
      markdown
      org
-     python
      (shell :variables
             shell-default-shell 'eshell)
      syntax-checking
+     version-control
+     ;; Additional layers
+     ansible
+     clojure
+     jinja2
+     python
      )
    ;; List of additional packages that will be installed wihout being
    ;; wrapped in a layer. If you need some configuration for these
