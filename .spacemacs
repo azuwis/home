@@ -76,8 +76,8 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Monospace"
-                               :size 20
+   dotspacemacs-default-font '("Inconsolata"
+                               :size 24
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -176,7 +176,7 @@ layers configuration."
   ;; (setq git-gutter-fr:side 'left-fringe)
 
   ;; Font
-  (setq face-font-rescale-alist '(("WenQuanYi Micro Hei" . 1.2)))
+  ;; (setq face-font-rescale-alist '(("WenQuanYi Micro Hei" . 1.2)))
   ;; (when window-system
   ;;   ;; "CJK Unified Ideographs" (han) U+4E00 - U+9FFF
   ;;   (set-fontset-font "fontset-default"
