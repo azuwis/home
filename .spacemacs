@@ -170,7 +170,7 @@ layers configuration."
   (add-to-list 'auto-mode-alist '("\\.asciidoc\\'" . adoc-mode))
 
   ;; Display
-  ;; (setq powerline-default-separator 'zigzag)
+  (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
   (add-to-list 'default-frame-alist '(width . 100))
   (add-to-list 'default-frame-alist '(height . 48))
   ;; (setq git-gutter-fr:side 'left-fringe)
