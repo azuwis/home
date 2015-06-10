@@ -183,6 +183,41 @@ layers configuration."
   ;;                     (cons (decode-char 'ucs #x4e00)
   ;;                           (decode-char 'ucs #x9fff))
   ;;                     "-*-WenQuanYi Micro Hei-*-*-*-*-24-*-*-*-*-*-*-*"))
+
+  ;; Mu4e
+  (use-package mu4e
+    :defer t
+    :commands mu4e
+    :init
+    (evil-leader/set-key "am" 'mu4e)
+    :config
+    (progn
+      (setenv "XAPIAN_CJK_NGRAM" "1")
+      (require 'mu4e-contrib)
+      (setq
+       mu4e-get-mail-command "mbsync -a"
+       mu4e-update-interval 300
+       mu4e-sent-messages-behavior 'delete
+       mu4e-view-show-images t
+       mu4e-html2text-command 'mu4e-shr2text
+       ;; mu4e-html2text-command "w3m -dump -T text/html"
+       mu4e-headers-fields '((:human-date . 12)
+                             (:flags . 6)
+                             (:mailing-list . 10)
+                             (:from-or-to . 22)
+                             (:subject))
+       mu4e-user-mail-address-list '("azuwis@gmail.com")
+       )
+      ;; https://groups.google.com/forum/#!msg/mu-discuss/u3Fy86-N-rg/zcdvIlnV0L8J
+      (defun mu4e-view-toggle-html ()
+        "Toggle between html and non-html views of a message. The current
+ message is refreshed with the new setting, but the setting applies to all
+ messages."
+        (interactive)
+        (setq mu4e-view-prefer-html (not mu4e-view-prefer-html))
+        (mu4e-view-refresh))
+      )
+    )
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
