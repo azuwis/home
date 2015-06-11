@@ -13,31 +13,35 @@ PassCmd "pass show email/azuwis@gmail.com"
 IMAPStore gmail
 Account gmail
 
-MaildirStore local
-Path ~/Maildir/
-Inbox ~/Maildir/inbox/
-
-Channel gmail-inbox
-Master :gmail:
-Slave :local:
+MaildirStore corp-local
+Path ~/Maildir/corp/
+Inbox ~/Maildir/corp/inbox/
 
 Channel gmail-corp
 Master :gmail:corp
-Slave :local:corp
+Slave :corp-local:
+
+MaildirStore gmail-local
+Path ~/Maildir/gmail/
+Inbox ~/Maildir/gmail/inbox/
+
+Channel gmail-inbox
+Master :gmail:
+Slave :gmail-local:
 
 Channel gmail-sent
 Master :gmail:"[Gmail]/Sent Mail"
-Slave :local:sent
+Slave :gmail-local:sent
 MaxMessages 100
 
 Channel gmail-drafts
 Master :gmail:"[Gmail]/Drafts"
-Slave :local:drafts
+Slave :gmail-local:drafts
 MaxMessages 100
 
 # Channel gmail-test
 # Master :gmail:
-# Slave :local:
+# Slave :gmail-local:
 # Patterns *
 
 Group gmail
@@ -45,4 +49,3 @@ Channel gmail-inbox
 Channel gmail-corp
 Channel gmail-sent
 Channel gmail-drafts
-Channel gmail-trash
