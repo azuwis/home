@@ -202,22 +202,20 @@ layers configuration."
     (progn
       (setenv "XAPIAN_CJK_NGRAM" "1")
       (require 'mu4e-contrib)
-      (setq
-       mu4e-get-mail-command "mbsync -a"
-       mu4e-update-interval 300
-       mu4e-sent-messages-behavior 'delete
-       mu4e-view-show-images t
-       ;; Show related mails in search
-       mu4e-headers-include-related t
-       mu4e-html2text-command 'mu4e-shr2text
-       ;; mu4e-html2text-command "w3m -dump -T text/html"
-       mu4e-headers-fields '((:human-date . 12)
-                             (:flags . 6)
-                             (:mailing-list . 10)
-                             (:from-or-to . 22)
-                             (:subject))
-       mu4e-compose-signature-auto-include nil
-       )
+      (setq mu4e-get-mail-command "mbsync -a"
+            mu4e-update-interval 300
+            mu4e-sent-messages-behavior 'delete
+            mu4e-view-show-images t
+            ;; Show related mails in search
+            mu4e-headers-include-related t
+            mu4e-html2text-command 'mu4e-shr2text
+            ;; mu4e-html2text-command "w3m -dump -T text/html"
+            mu4e-headers-fields '((:human-date . 12)
+                                  (:flags . 6)
+                                  (:mailing-list . 10)
+                                  (:from-or-to . 22)
+                                  (:subject))
+            mu4e-compose-signature-auto-include nil)
       (add-to-list 'mu4e-view-actions
                    '("browser view" . mu4e-action-view-in-browser) t)
 
