@@ -268,6 +268,12 @@ layers configuration."
         (interactive)
         (setq mu4e-view-prefer-html (not mu4e-view-prefer-html))
         (mu4e-view-refresh))
+
+      ;; Org-mu4e
+      ;; http://www.brool.com/index.php/using-mu4e
+      (require 'org-mu4e)
+      (setq org-mu4e-convert-to-html t)
+      (defalias 'org-mail 'org-mu4e-compose-org-mode)
       )
     )
 )
