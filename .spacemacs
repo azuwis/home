@@ -208,6 +208,8 @@ layers configuration."
        mu4e-update-interval 300
        mu4e-sent-messages-behavior 'delete
        mu4e-view-show-images t
+       ;; Show related mails in search
+       mu4e-headers-include-related t
        mu4e-html2text-command 'mu4e-shr2text
        ;; mu4e-html2text-command "w3m -dump -T text/html"
        mu4e-headers-fields '((:human-date . 12)
