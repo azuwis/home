@@ -190,8 +190,7 @@ layers configuration."
   (setq message-send-mail-function 'message-send-mail-with-sendmail
         sendmail-program "msmtp"
         message-sendmail-extra-arguments '("--read-envelope-from")
-        message-sendmail-f-is-evil t
-        user-mail-address "azuwis@gmail.com")
+        message-sendmail-f-is-evil t)
 
   ;; Mu4e
   (use-package mu4e
@@ -217,21 +216,52 @@ layers configuration."
                              (:mailing-list . 10)
                              (:from-or-to . 22)
                              (:subject))
-       mu4e-user-mail-address-list (list user-mail-address)
+       mu4e-compose-signature-auto-include nil
        )
       (add-to-list 'mu4e-view-actions
                    '("browser view" . mu4e-action-view-in-browser) t)
-      ;; http://www.djcbsoftware.nl/code/mu/mu4e/Compose-hooks.html
-      (defun my-mu4e-set-from-address ()
-        "Set the From address based on the To address of the original."
-        (let ((msg mu4e-compose-parent-message))
-          (when msg
-            (setq user-mail-address
-                  (cond
-                   ((mu4e-message-contact-field-matches msg :to "me@bar.com")
-                    "me@bar.com")
-                   (t user-mail-address))))))
-      (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-from-address)
+
+      ;; Multiple accounts
+      ;; http://www.djcbsoftware.nl/code/mu/mu4e/Multiple-accounts.html
+      (defvar my-mu4e-account-alist
+        '(("gmail"
+           (user-full-name "Zhong Jianxin")
+           (user-mail-address "azuwis@gmail.com")
+           (mu4e-sent-folder "/gmail/sent")
+           (mu4e-drafts-folder "/gmail/drafts"))
+          ))
+      ;; https://github.com/jonEbird/dotfiles/blob/master/.emacs.d/my_configs/email_config.el
+      (setq mu4e-user-mail-address-list (mapcar (lambda (account) (cadr (assq 'user-mail-address account)))
+                                          my-mu4e-account-alist))
+      (defun my-mu4e-set-account ()
+        "Set the account for composing a message."
+        (let* ((account
+                (if mu4e-compose-parent-message
+                    (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
+                      (string-match "/\\(.*?\\)/" maildir)
+                      (match-string 1 maildir))
+                  (completing-read (format "Compose with account: (%s) "
+                                           (mapconcat #'(lambda (var) (car var))
+                                                      my-mu4e-account-alist "/"))
+                                   (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
+                                   nil t nil nil (caar my-mu4e-account-alist))))
+               (account-vars (cdr (assoc account my-mu4e-account-alist))))
+          (if account-vars
+              (mapc #'(lambda (var)
+                        (set (car var) (cadr var)))
+                    account-vars)
+            (error "No email account found"))))
+      (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+
+      ;; Init default account and reset when compose
+      (defun my-mu4e-reset-account ()
+        (mapc #'(lambda (var)
+                  (set (car var) (cadr var)))
+              (cdr (car my-mu4e-account-alist))))
+      (my-mu4e-reset-account)
+      (add-hook 'mu4e-compose-mode-hook 'my-mu4e-reset-account)
+
+      ;; Toggle plain text and html
       ;; https://groups.google.com/forum/#!msg/mu-discuss/u3Fy86-N-rg/zcdvIlnV0L8J
       (defun my-mu4e-view-toggle-html ()
         "Toggle between html and non-html views of a message. The current
