@@ -35,11 +35,6 @@ Master :gmail:"[Gmail]/Drafts"
 Slave :local:drafts
 MaxMessages 100
 
-Channel gmail-trash
-Master :gmail:"[Gmail]/Trash"
-Slave :local:trash
-MaxMessages 50
-
 # Channel gmail-test
 # Master :gmail:
 # Slave :local:
