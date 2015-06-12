@@ -163,6 +163,8 @@ layers configuration."
   ;; (setq-default major-mode 'text-mode)
   ;; set title to 'buffer @ file'
   (setq frame-title-format "%b @ %f")
+  ;; always add new line at the end of file
+  (setq require-final-newline t)
 
   ;; Ansible
   (setq ansible/ansible-filename-re
