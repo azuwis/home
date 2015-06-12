@@ -215,7 +215,8 @@ layers configuration."
                                   (:mailing-list . 10)
                                   (:from-or-to . 22)
                                   (:subject))
-            mu4e-compose-signature-auto-include nil)
+            mu4e-compose-signature-auto-include nil
+            message-kill-buffer-on-exit t)
       (add-to-list 'mu4e-view-actions
                    '("browser view" . mu4e-action-view-in-browser) t)
 
