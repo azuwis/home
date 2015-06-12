@@ -30,7 +30,7 @@
      ;; Additional layers
      ansible
      clojure
-     jinja2
+     eyebrowse
      python
      )
    ;; List of additional packages that will be installed wihout being
