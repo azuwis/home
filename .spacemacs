@@ -217,6 +217,8 @@ layers configuration."
                                   (:subject))
             mu4e-compose-signature-auto-include nil
             message-kill-buffer-on-exit t)
+      ;; (when (fboundp 'imagemagick-register-types)
+      ;;   (imagemagick-register-types))
       (add-to-list 'mu4e-view-actions
                    '("browser view" . mu4e-action-view-in-browser) t)
 
