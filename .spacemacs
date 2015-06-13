@@ -267,6 +267,15 @@ layers configuration."
       (my-mu4e-reset-account)
       (add-hook 'mu4e-compose-mode-hook 'my-mu4e-reset-account)
 
+      ;; Desktop notification
+      ;; http://www.tokle.us/tools/2014/06/28/taking-email-offline-ii/
+      (defun my-mu4e-notify-new-mail ()
+        (call-process-shell-command (concat "subject=\"$(mu find flag:unread --fields s --after="
+                                            (number-to-string (- (truncate (float-time)) mu4e-update-interval))
+                                            " 2>/dev/null)\"; test -n \"$subject\" && notify-send \"New Mail\n\" \"$subject\" &")
+                                    nil 0))
+      (add-hook 'mu4e-index-updated-hook 'my-mu4e-notify-new-mail)
+
       ;; Toggle plain text and html
       ;; https://groups.google.com/forum/#!msg/mu-discuss/u3Fy86-N-rg/zcdvIlnV0L8J
       (defun my-mu4e-view-toggle-html ()
