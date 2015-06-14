@@ -220,6 +220,7 @@ layers configuration."
                                   (:mailing-list . 10)
                                   (:from-or-to . 22)
                                   (:subject))
+            mu4e-compose-dont-reply-to-self t
             mu4e-compose-signature-auto-include nil
             message-kill-buffer-on-exit t)
       ;; (when (fboundp 'imagemagick-register-types)
