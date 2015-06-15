@@ -1,11 +1,15 @@
 [user]
 	email = azuwis@gmail.com
 	name = Zhong Jianxin
-[color]
-	ui = auto
-[log]
-	abbrevCommit = true
-	decorate = short
+[rerere]
+	enabled = true
+	autoupdate = true
+[rebase]
+	stat = true
+	autosquash = true
+	autostash = true
+[merge]
+	tool = gvimdiff
 [alias]
 	co = checkout
 	st = status
@@ -15,28 +19,19 @@
 	mt = mergetool
 	cp = cherry-pick
 	sta = stash
-	lg = log --graph --oneline
+	lg = log --abbrev-commit --graph --oneline --decorate=short
 	gcap = gc --aggressive --prune=all
 	new = !sh -c 'git log --no-merges $1@{1}..$1@{0} "$@"' -
 	mdiff = !sh -c 'git merge-tree $(git merge-base ${2:-HEAD} $1) ${2:-HEAD} $1' -
 	rewind = !sh -c 'git update-ref refs/heads/$1 ${2:-HEAD}' -
 	fixup = !sh -c 'git commit --fixup=$1 && git rebase --interactive --autosquash $1~' -
-	sample = "!sh -c 'tmp=`mktemp -d`; git init $tmp; cd $tmp; for i in "$@"; do echo "$i" >"$i"; git add "$i"; git commit -m "$i"; done; echo $tmp' -"
+	sample = "!sh -c 'tmp=$(mktemp -d); git init $tmp; cd $tmp; for i in "$@"; do echo "$i" >"$i"; git add "$i"; git commit -m "$i"; done; echo $tmp' -"
+[color]
+	ui = auto
 [core]
 	pager = less
 	#autocrlf = input
-[rerere]
-	enabled = true
-	autoupdate = true
-[rebase]
-	stat = true
-	autosquash = true
-	autostash = true
-[help]
-	autocorrect = 0
 [url "ssh://git@github.com:22/"]
 	pushInsteadOf = git://github.com/
 [url "ssh://git@github.com:22/"]
 	pushInsteadOf = https://github.com/
-[filter "strippriv"]
-	clean = perl -lpe 's/^(PRIV_.*)=(.*)/$1=CHANGEME/'
