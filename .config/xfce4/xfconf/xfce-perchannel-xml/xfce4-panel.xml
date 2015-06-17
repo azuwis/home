@@ -5,6 +5,7 @@
     <property name="clipman" type="empty">
       <property name="tweaks" type="empty">
         <property name="paste-on-activate" type="uint" value="2"/>
+        <property name="popup-at-pointer" type="bool" value="true"/>
       </property>
       <property name="settings" type="empty">
         <property name="history-ignore-primary-clipboard" type="bool" value="false"/>
