@@ -228,6 +228,8 @@ layers configuration."
       ;;   (imagemagick-register-types))
       (add-to-list 'mu4e-view-actions
                    '("browser view" . mu4e-action-view-in-browser) t)
+      (add-to-list 'mu4e-view-actions
+                   '("toggle html" . (lambda (MSG) (my-mu4e-view-toggle-html))) t)
 
       ;; Multiple accounts
       ;; http://www.djcbsoftware.nl/code/mu/mu4e/Multiple-accounts.html
