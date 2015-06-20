@@ -182,6 +182,14 @@ layers configuration."
     :defer t
     :mode "\\.j2\\'")
 
+  ;; Magit
+  (setq magit-repo-dirs '("~/src/"))
+  ;; Enable commit --verbose switch by default
+  ;; https://emacs.stackexchange.com/questions/3893/how-can-i-make-verbose-flag-be-enabled-by-default-in-magit-commit-screen
+  (advice-add #'magit-key-mode-popup-committing :after
+              (lambda ()
+                (magit-key-mode-toggle-option (quote committing) "--verbose")))
+
   ;; Display
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
   (add-to-list 'default-frame-alist '(width . 100))
