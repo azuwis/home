@@ -318,6 +318,8 @@ if !has('gui_running')
   augroup END
 endif
 
+Plug 'tpope/vim-vinegar'
+
 " goyo and limelight
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'gray'
