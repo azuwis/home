@@ -295,6 +295,7 @@ Plug 'scrooloose/syntastic', { 'for': [
       \ 'python',
       \ 'ruby',
       \ 'vim',
+      \ 'zsh',
       \ ]}
 
 " tagbar
