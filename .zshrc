@@ -90,7 +90,9 @@ export EDITOR="emacsclient"
 export ALTERNATE_EDITOR="vim"
 export GIT_EDITOR=$EDITOR
 vi() {
-    if [ ! -e /tmp/emacs$(id -u)/server ]; then
+    if [ ! -e /usr/bin/emacs ]; then
+        vim "$@"
+    elif [ ! -e /tmp/emacs$(id -u)/server ]; then
         nohup emacs "$@" >& /dev/null &
     else
         emacsclient --no-wait "$@"
