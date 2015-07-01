@@ -21,6 +21,7 @@
      better-defaults
      emacs-lisp
      (git :variables
+          git-use-magit-next t
           git-magit-status-fullscreen t)
      markdown
      org
@@ -183,12 +184,9 @@ layers configuration."
     :mode "\\.j2\\'")
 
   ;; Magit
-  (setq magit-repo-dirs '("~/src/"))
-  ;; Enable commit --verbose switch by default
-  ;; https://emacs.stackexchange.com/questions/3893/how-can-i-make-verbose-flag-be-enabled-by-default-in-magit-commit-screen
-  (advice-add #'magit-key-mode-popup-committing :after
-              (lambda ()
-                (magit-key-mode-toggle-option (quote committing) "--verbose")))
+  (setq magit-repository-directories '("~/src/"))
+  (setq magit-section-show-child-count t)
+  (setq magit-log-auto-more t)
 
   ;; Display
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
