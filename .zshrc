@@ -93,7 +93,11 @@ vi() {
     if [ ! -e /usr/bin/emacs ]; then
         vim "$@"
     elif [ ! -e /tmp/emacs$(id -u)/server ]; then
-        nohup emacs "$@" >& /dev/null &
+        if [ x"$DISPLAY" = x ]; then
+            emacs "$@"
+        else
+            nohup emacs "$@" >& /dev/null &
+        fi
     else
         emacsclient --no-wait "$@"
     fi
