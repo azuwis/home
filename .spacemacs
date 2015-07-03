@@ -170,6 +170,20 @@ layers configuration."
   ;; always add new line at the end of file
   (setq require-final-newline t)
 
+  ;; Org
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (require 'org-protocol)
+  (setq org-capture-templates
+        (quote
+         (("w"
+           "Default template"
+           entry
+           (file+headline (concat org-directory "/capture.org") "Notes")
+           "* %^{Title}\n\n  Source: %u, %c\n\n  %i"
+           :empty-lines 1)
+          ;; ... more templates here ...
+          )))
+
   ;; Ansible
   (setq ansible/ansible-filename-re
         "\\(site\.yml\\|roles/.+\.yml\\|playbooks/.+\.yml\\|group_vars/.+\\|host_vars/.+\\)")
