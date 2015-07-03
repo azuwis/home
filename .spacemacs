@@ -204,7 +204,7 @@ layers configuration."
   ;; Display
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
   (add-to-list 'default-frame-alist '(width . 100))
-  (add-to-list 'default-frame-alist '(height . 48))
+  (add-to-list 'default-frame-alist '(height . 43))
   ;; (setq git-gutter-fr:side 'left-fringe)
 
   ;; Font
