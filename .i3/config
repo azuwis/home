@@ -199,23 +199,27 @@ bar {
 }
 
 # Window border
+# new_window none
 new_window 1pixel
 hide_edge_borders both
 
 # Per app settings
 for_window [class="^mpv"] floating enable
 for_window [class="^feh"] floating enable
-for_window [class="^Emacs"] floating enable
 for_window [class="^Assword"] floating enable
 for_window [class="^Screenkey"] floating enable border none
 for_window [class="^Key-mony"] floating enable border none
 for_window [class="^XTerm" title="^Floating:"] floating enable
 for_window [class="^LXTerminal" title="^Floating:"] floating enable
 for_window [class="^X-terminal-emulator" title="^Floating:"] floating enable
+# firefox
 assign [class="^Iceweasel"] 2
 # google chrome
 for_window [window_role="bubble"] floating enable
 assign [class="^Chromium"] 3
+# emacs
+# assign [class="^Emacs"] 4
+# for_window [class="^Emacs"] floating enable
 
 # Key binding
 bindsym $mod+c move absolute position center
@@ -223,8 +227,10 @@ bindsym $mod+u [urgent="oldest"] focus
 bindsym $mod+p $exec xfce4-popup-clipman
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+XF86Eject $exec xautolock -locknow
+bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
 bindsym $mod+Shift+u $exec x-terminal-emulator --title='Floating: pum' --geometry=48x15 -e pum
-bindsym $mod+Shift+p $exec assword gui
+# bindsym $mod+Shift+p $exec assword gui
+bindsym $mod+Shift+p $exec /usr/share/doc/pass/examples/dmenu/passmenu --type
 bindsym XF86MenuKB $exec nucmenu
 bindsym $mod+Escape $exec ~/.i3/focus-back -e
 # --release is needed or xdotool will not work
