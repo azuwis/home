@@ -11,6 +11,7 @@
 
 set $mod Mod4
 set $exec exec --no-startup-id exec
+set $scripts ~/.config/i3
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -186,7 +187,7 @@ client.urgent            $rd  $rd  $tx
 # finds out, if available)
 bar {
         i3bar_command exec i3bar
-        status_command exec ~/.config/i3/net-speed
+        status_command exec $scripts/net-speed
         colors {
                 background          $bg
                 statusline          $fg
@@ -232,8 +233,8 @@ bindsym $mod+Shift+u $exec x-terminal-emulator --title='Floating: pum' --geometr
 # bindsym $mod+Shift+p $exec assword gui
 bindsym $mod+Shift+p $exec /usr/share/doc/pass/examples/dmenu/passmenu --type
 bindsym XF86MenuKB $exec nucmenu
-bindsym $mod+Escape $exec ~/.config/i3/focus-back -e
+bindsym $mod+Escape $exec $scripts/focus-back -e
 # --release is needed or xdotool will not work
-bindsym --release $mod+m $exec ~/.config/i3/focus-back
-bindsym --release XF86HomePage $exec ~/.config/i3/focus-back
+bindsym --release $mod+m $exec $scripts/focus-back
+bindsym --release XF86HomePage $exec $scripts/focus-back
 bindsym --release XF86Back $exec xdotool key Shift+Insert
