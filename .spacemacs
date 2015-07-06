@@ -215,7 +215,6 @@ layers configuration."
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
   (add-to-list 'default-frame-alist '(width . 100))
   (add-to-list 'default-frame-alist '(height . 43))
-  ;; (setq git-gutter-fr:side 'left-fringe)
 
   ;; Font
   ;; (setq face-font-rescale-alist '(("WenQuanYi Micro Hei" . 1.2)))
