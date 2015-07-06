@@ -332,13 +332,13 @@ layers configuration."
 
       ;; Evilify
       (evilify mu4e-main-mode mu4e-main-mode-map
-               "g" 'mu4e~headers-jump-to-maildir)
+               "f" 'mu4e~headers-jump-to-maildir)
       (evilify mu4e-headers-mode mu4e-headers-mode-map
-               "g" 'mu4e~headers-jump-to-maildir
+               "f" 'mu4e~headers-jump-to-maildir
                "J" 'mu4e-headers-view-message
                "K" 'mu4e-headers-view-message)
       (evilify mu4e-view-mode mu4e-view-mode-map
-               "g" 'mu4e~headers-jump-to-maildir
+               "f" 'mu4e~headers-jump-to-maildir
                "J" 'mu4e-view-headers-next
                "K" 'mu4e-view-headers-prev)
       )
