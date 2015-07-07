@@ -175,7 +175,6 @@ layers configuration."
 
   ;; Org
   (setq org-default-notes-file (concat org-directory "/notes.org"))
-  (require 'org-protocol)
   (setq org-capture-templates
         (quote
          (("w"
@@ -186,6 +185,8 @@ layers configuration."
            :empty-lines 1)
           ;; ... more templates here ...
           )))
+  (use-package org-protocol
+    :defer 3)
 
   ;; Ansible
   (setq ansible/ansible-filename-re
