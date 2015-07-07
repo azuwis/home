@@ -174,6 +174,7 @@ layers configuration."
   (setq require-final-newline t)
 
   ;; Org
+  (setq org-directory "~/org")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
         (quote
