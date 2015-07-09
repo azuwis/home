@@ -177,15 +177,14 @@ layers configuration."
   (setq org-directory "~/org")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
-        (quote
-         (("w"
-           "Default template"
+        '(
+          ("b"
+           "Bookmark"
            entry
-           (file+headline (concat org-directory "/capture.org") "Notes")
-           "* %^{Title}\n\n  Source: %u, %c\n\n  %i"
+           (file+headline (concat org-directory "/notes.org") "Bookmarks")
+           "* %c\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%i"
            :empty-lines 1)
-          ;; ... more templates here ...
-          )))
+          ))
   (use-package org-protocol
     :defer 3)
 
