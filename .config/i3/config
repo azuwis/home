@@ -221,6 +221,8 @@ assign [class="^Chromium"] 3
 # emacs
 # assign [class="^Emacs"] 4
 # for_window [class="^Emacs"] floating enable
+# goldendict
+for_window [class="^Goldendict"] floating enable
 
 # Key binding
 bindsym $mod+c move absolute position center
