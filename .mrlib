@@ -7,6 +7,24 @@ lib =
     workstation() {
         which awesome >/dev/null 2>&1
     }
+    download() {
+        local url="$1"
+        local file="$2"
+        local mode="$3"
+        local now="$(date +%s)"
+        if [ -e "$file" ]; then
+           local mtime="$(stat -c %Y "$file")"
+           if [ "$((now - mtime))" -lt 86400 ]; then
+               return
+           fi
+        fi
+        echo "download $url to $file"
+        curl --silent --fail --show-error --location --time-cond "$file" --output "$file" "$url"
+        if [ x"$mode" != x ]; then
+            echo "change $file mode to $mode"
+            chmod "$mode" "$file"
+        fi
+    }
     github_token() {
         GITHUB_OAUTH="${HOME}/.github_oauth"
         GITHUB_TOKEN=`cat "$GITHUB_OAUTH"` || true
