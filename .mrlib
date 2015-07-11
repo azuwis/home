@@ -14,7 +14,8 @@ lib =
         local now="$(date +%s)"
         if [ -e "$file" ]; then
            local mtime="$(stat -c %Y "$file")"
-           if [ "$((now - mtime))" -lt 86400 ]; then
+           # skip if file newer than 7 days
+           if [ "$((now - mtime))" -lt 604800 ]; then
                return
            fi
         fi
