@@ -20,6 +20,9 @@ lib =
         fi
         echo "download $url to $file"
         curl --silent --fail --show-error --location --time-cond "$file" --output "$file" "$url"
+        if [ "$?" -eq 0 ]; then
+            touch "$file"
+        fi
         if [ x"$mode" != x ]; then
             echo "change $file mode to $mode"
             chmod "$mode" "$file"
