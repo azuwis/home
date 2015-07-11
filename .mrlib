@@ -12,21 +12,27 @@ lib =
         local file="$2"
         local mode="$3"
         local now="$(date +%s)"
+        local mtime=0
         if [ -e "$file" ]; then
-           local mtime="$(stat -c %Y "$file")"
+           mtime="$(stat -c %Y "$file")"
            # skip if file newer than 7 days
            if [ "$((now - mtime))" -lt 604800 ]; then
                return
            fi
         fi
-        echo "download $url to $file"
+        echo "$file: updating"
         curl --silent --fail --show-error --location --time-cond "$file" --output "$file" "$url"
+        if [ "$mtime" -ne "$(stat -c %Y "$file")" ]; then
+            echo "$file: updated"
+            if [ x"$mode" != x ]; then
+                echo "$file: mode changed to $mode"
+                chmod "$mode" "$file"
+            fi
+        else
+            echo "$file: unchanged"
+        fi
         if [ "$?" -eq 0 ]; then
             touch "$file"
-        fi
-        if [ x"$mode" != x ]; then
-            echo "change $file mode to $mode"
-            chmod "$mode" "$file"
         fi
     }
     github_token() {
