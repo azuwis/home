@@ -125,7 +125,7 @@ test $TERM = "xterm" && {
     # Set terminal color scheme
     # Note: Hack here, xtermcontrol will only run once when lxterminal
     # startup, as TERM is set to xterm-256color after this
-    xtermcontrol
+    xtermcontrol --file=~/.config/xtermcontrol/zenburn.conf
 }
 
 # Antigen
