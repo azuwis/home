@@ -1,3 +1,7 @@
+# For emacs tramp
+# see http://www.emacswiki.org/emacs/TrampMode#toc8
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 # Set up the prompt
 
 autoload -Uz promptinit
