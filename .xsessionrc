@@ -12,7 +12,7 @@ wallpaper=~/wallpapers/current
 test -r $wallpaper && run hsetroot -cover $wallpaper
 
 # Turn keyboard auto repeat off
-xset r off
+# xset r off
 
 # Touchpad see synaptics(4)
 run synclient TapButton1=1 TapButton2=3 TapButton3=2 LockedDrags=1 LockedDragTimeout=2000 VertScrollDelta=100 PalmDetect=1
