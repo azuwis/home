@@ -172,6 +172,8 @@ layers configuration."
   (setq frame-title-format "%b @ %f")
   ;; always add new line at the end of file
   (setq require-final-newline t)
+  ;; faster tramp
+  (setq tramp-default-method "ssh")
 
   ;; Org
   (setq org-directory "~/org")
