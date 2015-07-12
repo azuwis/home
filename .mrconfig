@@ -29,10 +29,5 @@ skip = no_cmd firefox
 # misc
 [org]
 checkout = git clone 'git://github.com/azuwis/org.git' 'org'
-pre_update =
-    sudo aptitude --disable-columns --display-format "%p - %d" search '!~M ~ainstall' >> useful-pkgs.txt
-    sudo aptitude keep-all
 pre_push =
     git commit -am 'Auto commit'
-pre_clean =
-    sudo aptitude forget-new
