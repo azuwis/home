@@ -35,3 +35,5 @@
 	pushInsteadOf = git://github.com/
 [url "ssh://git@github.com:22/"]
 	pushInsteadOf = https://github.com/
+[include]
+	path = ~/.gitconfig.local
