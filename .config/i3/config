@@ -236,7 +236,7 @@ bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
 bindsym $mod+Shift+u $exec x-terminal-emulator --title='Floating: pum' --geometry=48x15 -e pum
 # bindsym $mod+Shift+p $exec assword gui
 bindsym $mod+Shift+p $exec /usr/share/doc/pass/examples/dmenu/passmenu --type
-bindsym XF86MenuKB $exec nucmenu
+bindsym XF86MenuKB $exec quick-menu
 bindsym $mod+Escape $exec $scripts/focus-back -e
 # --release is needed or xdotool will not work
 bindsym --release $mod+m $exec $scripts/focus-back
