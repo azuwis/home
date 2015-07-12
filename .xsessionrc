@@ -1,3 +1,5 @@
+# -*- mode: shell-script -*-
+
 # Notice: xsessionrc run before ssh-agent and other scripts (see
 # /etc/X11/Xsession.d), some important envs are missing here.
 
