@@ -30,4 +30,4 @@ skip = no_cmd firefox
 [org]
 checkout = git clone 'git://github.com/azuwis/org.git' 'org'
 pre_push =
-    git commit -am 'Auto commit'
+    git commit -am 'Auto commit' || true
