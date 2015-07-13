@@ -93,10 +93,8 @@ git_register =
 
 # Push only when having unpushed commit
 git_push =
-    if git config --get remote.origin.url | grep -F "$GITHUB_USER" >/dev/null 2>&1; then
-        if [ $(git --no-pager log --branches --not --remotes --simplify-by-decoration --oneline | wc -l) -gt 0 ]; then
-            git push "$@"
-        fi
+    if [ $(git --no-pager log --branches --not --remotes --simplify-by-decoration --oneline | wc -l) -gt 0 ]; then
+        git push "$@"
     fi
 
 # Fork at github, set origin remote to the fork, and upstream remote to the upstream
