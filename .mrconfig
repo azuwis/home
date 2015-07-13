@@ -33,6 +33,7 @@ post_update =
     git submodule init
     git submodule sync
     git submodule update
+skip = no_cmd emacs
 
 # misc
 [org]
