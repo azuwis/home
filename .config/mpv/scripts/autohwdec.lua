@@ -1,9 +1,9 @@
-function on_vo_change(name, value)
+function on_vo_change(name, vo)
     hwdec = mp.get_property("hwdec")
     if hwdec == "auto" then
-        if value == "vdpau" then
+        if vo == "vdpau" then
             hwdec = "vdpau"
-        elseif value == "vaapi" then
+        elseif vo == "vaapi" then
             hwdec = "vaapi"
         end
         if hwdec ~= "auto" then
