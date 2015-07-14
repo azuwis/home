@@ -19,7 +19,7 @@
 	mt = mergetool
 	cp = cherry-pick
 	sta = stash
-	lg = log --abbrev-commit --graph --oneline --decorate=short
+	lg = log --abbrev-commit --graph --date=relative --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset'
 	gcap = gc --aggressive --prune=all
 	new = !sh -c 'git log --no-merges $1@{1}..$1@{0} "$@"' -
 	mdiff = !sh -c 'git merge-tree $(git merge-base ${2:-HEAD} $1) ${2:-HEAD} $1' -
