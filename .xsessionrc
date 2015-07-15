@@ -22,7 +22,7 @@ run synclient TapButton1=1 TapButton2=3 TapButton3=2 LockedDrags=1 LockedDragTim
 run syndaemon -R -t -k -i 0.25
 
 # Auto start
-run compton
+# run compton
 run xfce4-clipman
 run devmon
 run xautolock -time 30 -locker 'i3lock --color=000000'
