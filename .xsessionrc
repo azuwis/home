@@ -37,11 +37,12 @@ if [ -x /usr/bin/xcalib ]; then
     test -r "$icc" && xcalib "$icc"
 fi
 
-# Auto ajust color temperature according to current time
-run redshift
-
 # NUC only settings
 if [ x"$(hostname)" = x"nuc" ]; then
     # No blank screen for NUC
     xset -dpms s noblank s off
+else
+    # NUC excluded settings
+    # Auto ajust color temperature according to current time
+    run redshift
 fi
