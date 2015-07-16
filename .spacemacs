@@ -323,7 +323,9 @@ layers configuration."
  message is refreshed with the new setting, but the setting applies to all
  messages."
         (interactive)
-        (setq mu4e-view-prefer-html (not mu4e-view-prefer-html))
+        (message (if (setq mu4e-view-prefer-html (not mu4e-view-prefer-html))
+                     "html view"
+                   "text view"))
         (mu4e-view-refresh))
 
       ;; Org-mu4e
