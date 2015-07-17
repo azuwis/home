@@ -176,6 +176,22 @@ layers configuration."
   ;; faster tramp
   (setq tramp-default-method "ssh")
 
+  ;; Display
+  (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
+  (add-to-list 'default-frame-alist '(width . 100))
+  (add-to-list 'default-frame-alist '(height . 43))
+  ;; font
+  ;; (setq face-font-rescale-alist '(("WenQuanYi Micro Hei" . 1.2)))
+  ;; (when window-system
+  ;;   ;; "CJK Unified Ideographs" (han) U+4E00 - U+9FFF
+  ;;   (set-fontset-font "fontset-default"
+  ;;                     (cons (decode-char 'ucs #x4e00)
+  ;;                           (decode-char 'ucs #x9fff))
+  ;;                     "-*-WenQuanYi Micro Hei-*-*-*-*-24-*-*-*-*-*-*-*"))
+
+  ;; Which-key
+  ;; (setq which-key-idle-delay 0.4)
+
   ;; Org
   (setq org-directory "~/org")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -217,20 +233,6 @@ layers configuration."
 
   ;; Evil-ranger
   (setq evil-ranger-cleanup-eagerly t)
-
-  ;; Display
-  (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
-  (add-to-list 'default-frame-alist '(width . 100))
-  (add-to-list 'default-frame-alist '(height . 43))
-
-  ;; Font
-  ;; (setq face-font-rescale-alist '(("WenQuanYi Micro Hei" . 1.2)))
-  ;; (when window-system
-  ;;   ;; "CJK Unified Ideographs" (han) U+4E00 - U+9FFF
-  ;;   (set-fontset-font "fontset-default"
-  ;;                     (cons (decode-char 'ucs #x4e00)
-  ;;                           (decode-char 'ucs #x9fff))
-  ;;                     "-*-WenQuanYi Micro Hei-*-*-*-*-24-*-*-*-*-*-*-*"))
 
   ;; Msmtp
   (setq message-send-mail-function 'message-send-mail-with-sendmail
