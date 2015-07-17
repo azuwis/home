@@ -21,7 +21,7 @@ fi
 window_name="$(get_window_name)"
 
 case "$window_name" in
-  plugin-container)
+  plugin-container|freshwrapper*)
     # flash player fullscreen
     xdotool key --clearmodifiers Escape
     while [ x"$(get_window_name)" = x"plugin-container" ]
