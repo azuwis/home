@@ -39,6 +39,7 @@
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(jinja2-mode
+                                      evil-ranger
                                       howdoi)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -213,6 +214,9 @@ layers configuration."
     :commands howdoi-query
     :init
     (evil-leader/set-key "ah" 'howdoi-query))
+
+  ;; Evil-ranger
+  (setq evil-ranger-cleanup-eagerly t)
 
   ;; Display
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
