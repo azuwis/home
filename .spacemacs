@@ -175,6 +175,10 @@ layers configuration."
   (setq require-final-newline t)
   ;; faster tramp
   (setq tramp-default-method "ssh")
+  ;; manually set tramp-ssh-controlmaster-options to avoid hanging
+  ;; https://github.com/emacs-helm/helm/issues/1000#issuecomment-119487649
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 
   ;; Display
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
