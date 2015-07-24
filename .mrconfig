@@ -17,7 +17,7 @@ fixups =
 checkout = git clone 'git://github.com/azuwis/bin.git' 'bin'
 fixups =
     download https://sevenever.googlecode.com/svn/trunk/misc/fetchsub.py fetchsub +x
-    download https://github.com/mpv-player/mpv/raw/master/TOOLS/mpv_identify.sh midentify +x
+    download https://raw.githubusercontent.com/mpv-player/mpv/master/TOOLS/mpv_identify.sh mpv_identify.sh +x
     download https://github.com/sivel/speedtest-cli/raw/master/speedtest_cli.py speedtest +x
 
 # firefox
@@ -40,3 +40,5 @@ skip = no_cmd emacs
 checkout = git clone 'git://github.com/azuwis/org.git' 'org'
 pre_push =
     git commit -am 'Auto commit' || true
+
+include = test -e ~/.mrconfig.local && cat ~/.mrconfig.local || true

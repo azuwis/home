@@ -39,7 +39,7 @@
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(jinja2-mode
-                                      evil-ranger
+                                      ranger
                                       howdoi)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -175,6 +175,10 @@ layers configuration."
   (setq require-final-newline t)
   ;; faster tramp
   (setq tramp-default-method "ssh")
+  ;; manually set tramp-ssh-controlmaster-options to avoid hanging
+  ;; https://github.com/emacs-helm/helm/issues/1000#issuecomment-119487649
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 
   ;; Display
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
@@ -238,8 +242,8 @@ layers configuration."
     :init
     (evil-leader/set-key "ah" 'howdoi-query))
 
-  ;; Evil-ranger
-  (setq evil-ranger-cleanup-eagerly t)
+  ;; Ranger
+  (setq ranger-cleanup-eagerly t)
 
   ;; Msmtp
   (setq message-send-mail-function 'message-send-mail-with-sendmail
