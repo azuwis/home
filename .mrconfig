@@ -40,3 +40,5 @@ skip = no_cmd emacs
 checkout = git clone 'git://github.com/azuwis/org.git' 'org'
 pre_push =
     git commit -am 'Auto commit' || true
+
+include = test -e ~/.mrconfig.local && cat ~/.mrconfig.local || true
