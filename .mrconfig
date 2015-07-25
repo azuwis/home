@@ -41,5 +41,15 @@ checkout = git clone 'git://github.com/azuwis/org.git' 'org'
 pre_push =
     git commit -am 'Auto commit' || true
 
+# rime
+[.config/fcitx/rime]
+checkout = git clone 'git://github.com/azuwis/.config_fcitx_rime.git' 'rime'
+fixups =
+	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.extended.dict.yaml
+	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.hanyu.dict.yaml
+	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.poetry.dict.yaml
+	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.cn_en.dict.yaml
+skip = no_cmd rime_dict_manager
+
 # include ~/.mrconfig.local
 include = test -e ~/.mrconfig.local && cat ~/.mrconfig.local || true
