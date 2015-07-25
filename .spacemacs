@@ -145,8 +145,9 @@ before layers configuration."
    dotspacemacs-smooth-scrolling t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    dotspacemacs-smartparens-strict-mode nil
-   ;; Select a scope to highlight delimiters. Possible value is `all',
-   ;; `current' or `nil'. Default is `all'
+   ;; Select a scope to highlight delimiters. Possible values are `any',
+   ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
+   ;; emphasis the current one).
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil advises quit functions to keep server open when quitting.
    dotspacemacs-persistent-server nil
@@ -193,6 +194,13 @@ layers configuration."
   ;;                     (cons (decode-char 'ucs #x4e00)
   ;;                           (decode-char 'ucs #x9fff))
   ;;                     "-*-WenQuanYi Micro Hei-*-*-*-*-24-*-*-*-*-*-*-*"))
+
+  ;; Dired
+  (defun dired-copy-file-here (file)
+    (interactive "Copy file here: ")
+    (copy-file file default-directory))
+  (eval-after-load "dired"
+    '(define-key dired-mode-map "c" 'dired-copy-file-here))
 
   ;; Which-key
   ;; (setq which-key-idle-delay 0.4)
