@@ -275,6 +275,9 @@ Plug 'tpope/vim-surround'
 " unimpaired
 Plug 'tpope/vim-unimpaired'
 
+" vinegar
+Plug 'tpope/vim-vinegar'
+
 " commentary
 Plug 'tpope/vim-commentary', { 'on': '<Plug>Commentary' }
 map gc <Plug>Commentary
@@ -317,8 +320,6 @@ if !has('gui_running')
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
   augroup END
 endif
-
-Plug 'tpope/vim-vinegar'
 
 " Filetypes {{{1
 " Ansible
