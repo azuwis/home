@@ -47,6 +47,7 @@ pre_push =
 checkout = git clone 'git://github.com/azuwis/.config_fcitx_rime.git' 'rime'
 fixups =
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.extended.dict.yaml
+	   sed -i '/^  - luna_pinyin\.cn_en$/d' luna_pinyin.extended.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.hanyu.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.poetry.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.cn_en.dict.yaml
