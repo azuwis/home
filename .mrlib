@@ -9,15 +9,19 @@ lib =
     }
     download() {
         # download <url> <file> <mode>
+        set -eu
         local url="$1"
-        local file="$2"
-        local mode="$3"
+        local file="${2:--}"
+        if [ x"$file" = x"-" ]; then
+            file="$(basename "$url")"
+        fi
+        local mode="${3:--}"
         local now="$(date +%s)"
         local mtime=0
         local header_file=".header_${file}"
         local newer_file=".newer_${file}"
         local update_timestamp=0
-        local etag
+        local etag="-"
         if [ -e "$file" ]; then
            mtime="$(stat -c %Y "$file")"
            # skip if file newer than 7 days
@@ -29,7 +33,7 @@ lib =
         if [ -e "$header_file" -a -e "$file" ]; then
             etag="$(awk '/^[Ee][Tt][Aa][Gg]:/ {print $2}' "$header_file" | tr -d '\r')"
         fi
-        if [ x"$etag" != x ]; then
+        if [ x"$etag" != x"-" ]; then
             # use etag
             curl --header "If-None-Match: $etag" \
                  --silent --fail --show-error --location \
@@ -50,7 +54,7 @@ lib =
         fi
         if [ "$mtime" -ne "$(stat -c %Y "$file")" ]; then
             echo "$file: updated"
-            if [ x"$mode" != x ]; then
+            if [ x"$mode" != x"-" ]; then
                 echo "$file: mode changed to $mode"
                 chmod "$mode" "$file"
             fi
