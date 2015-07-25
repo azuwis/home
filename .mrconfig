@@ -9,16 +9,17 @@ lib =
 # common
 [.]
 checkout = git clone 'git://github.com/azuwis/home.git' '.'
-fixups =
-    git --version | grep -qF 'git version 2.' && git config --file=.gitconfig.local push.default simple
-    download https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua .config/mpv/scripts/autoload.lua
+fixups = 
+	   git --version | grep -qF 'git version 2.' && git config --file=.gitconfig.local push.default simple
+	   download https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua .config/mpv/scripts/autoload.lua
 
 [bin]
 checkout = git clone 'git://github.com/azuwis/bin.git' 'bin'
-fixups =
-    download https://sevenever.googlecode.com/svn/trunk/misc/fetchsub.py fetchsub +x
-    download https://raw.githubusercontent.com/mpv-player/mpv/master/TOOLS/mpv_identify.sh mpv_identify.sh +x
-    download https://github.com/sivel/speedtest-cli/raw/master/speedtest_cli.py speedtest +x
+fixups = 
+	   download https://sevenever.googlecode.com/svn/trunk/misc/fetchsub.py fetchsub +x
+	   download https://raw.githubusercontent.com/mpv-player/mpv/master/TOOLS/mpv_identify.sh mpv_identify.sh +x
+	   download https://github.com/sivel/speedtest-cli/raw/master/speedtest_cli.py speedtest +x
+	   download https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein lein +x
 
 # firefox
 [.pentadactyl]
@@ -29,17 +30,17 @@ skip = no_cmd firefox
 # spacemacs
 [.emacs.d]
 checkout = git clone --branch develop --recursive https://github.com/syl20bnr/spacemacs .emacs.d
-post_update =
-    git submodule init
-    git submodule sync
-    git submodule update
+post_update = 
+	   git submodule init
+	   git submodule sync
+	   git submodule update
 skip = no_cmd emacs
 
 # misc
 [org]
 checkout = git clone 'git://github.com/azuwis/org.git' 'org'
-pre_push =
-    git commit -am 'Auto commit' || true
+pre_push = 
+	   git commit -am 'Auto commit' || true
 
 # rime
 [.config/fcitx/rime]
