@@ -18,8 +18,8 @@ lib =
         local mode="${3:--}"
         local now="$(date +%s)"
         local mtime=0
-        local header_file=".header_${file}"
-        local newer_file=".newer_${file}"
+        local header_file="$(dirname "$file")/.header_$(basename "$file")"
+        local newer_file="$(dirname "$file")/.newer_$(basename "$file")"
         local update_timestamp=0
         local etag="-"
         if [ -e "$file" ]; then
