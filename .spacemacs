@@ -203,7 +203,7 @@ layers configuration."
     '(define-key dired-mode-map "c" 'dired-copy-file-here))
 
   ;; Which-key
-  ;; (setq which-key-idle-delay 0.4)
+  (setq which-key-idle-delay 0.3)
 
   ;; Org
   (setq org-directory "~/org")
