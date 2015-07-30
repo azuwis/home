@@ -53,9 +53,6 @@ fixups =
 	   sed -i '/^  - luna_pinyin\.cn_en$/d' luna_pinyin.extended.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.hanyu.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.poetry.dict.yaml
-     # hepy
-     download https://github.com/nlimpid/rime-hepy/raw/master/hepy.schema.yaml
-     download https://github.com/nlimpid/rime-hepy/raw/master/hepy.dict.yaml
 skip = ! test -d /usr/share/doc/fcitx-rime
 
 # include ~/.mrconfig.local
