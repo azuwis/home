@@ -236,6 +236,7 @@ layers configuration."
   (setq magit-repository-directories '("~/src/"))
   (setq magit-section-show-child-count t)
   (setq magit-log-auto-more t)
+  (setq magit-push-always-verify nil)
 
   ;; Howdoi
   (use-package howdoi
