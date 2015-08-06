@@ -31,7 +31,7 @@ lib =
         fi
         echo "$file: updating"
         if [ -e "$header_file" -a -e "$file" ]; then
-            etag="$(awk '/^[Ee][Tt][Aa][Gg]:/ {print $2}' "$header_file" | tr -d '\r')"
+            etag="$(awk '/^[Ee][Tt][Aa][Gg]:/ {print $2}' "$header_file" | head -n 1 | tr -d '\r')"
         fi
         if [ x"$etag" != x"-" ]; then
             # use etag
