@@ -29,11 +29,16 @@ lib =
                return
            fi
         fi
-        echo "$file: updating"
+        echo -n "$file| updating: "
         if [ -e "$header_file" -a -e "$file" ]; then
             etag="$(awk '/^[Ee][Tt][Aa][Gg]:/ {print $2}' "$header_file" | head -n 1 | tr -d '\r')"
         fi
-        if [ x"$etag" != x"-" ]; then
+        if [ ! -e "$file" ]; then
+            curl --silent --fail --show-error --location \
+                 --dump-header "$header_file" \
+                 --output "$file" "$url"
+            test "$?" -eq 0 && update_timestamp=1
+        elif [ x"$etag" != x"-" ]; then
             # use etag
             curl --header "If-None-Match: $etag" \
                  --silent --fail --show-error --location \
@@ -53,14 +58,15 @@ lib =
             test "$?" -eq 0 && update_timestamp=1
         fi
         if [ "$mtime" -ne "$(stat -c %Y "$file")" ]; then
-            echo "$file: updated"
+            echo -n "updated"
             if [ x"$mode" != x"-" ]; then
-                echo "$file: mode changed to $mode"
+                echo -n ", mode: $mode"
                 chmod "$mode" "$file"
             fi
         else
-            echo "$file: unchanged"
+            echo -n "unchanged"
         fi
+        echo
         # update file timestamp if curl success
         if [ "$update_timestamp" -eq 1 ]; then
             touch "$file"
