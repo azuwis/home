@@ -253,8 +253,8 @@ Plug 'bling/vim-airline'
 let g:bufferline_echo = 0
 Plug 'bling/vim-bufferline'
 
-" solarized
-Plug 'altercation/vim-colors-solarized'
+" zenburn
+Plug 'jnurmine/Zenburn'
 
 " undotree
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
@@ -334,7 +334,7 @@ call plug#end()
 " Ending configs {{{1
 " colorscheme
 try
-  colorscheme solarized
+  colorscheme zenburn
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme slate
 endtry
