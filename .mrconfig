@@ -27,6 +27,8 @@ fixups =
 checkout = git clone 'https://github.com/azuwis/.pentadactyl.git' '.pentadactyl'
 chain = true
 skip = no_cmd firefox
+fixups =
+	   download https://github.com/dylanaraps/dotfiles/raw/master/.config/firefox/firefox.css plugins/css/firefox.css
 
 # spacemacs
 [.emacs.d]
