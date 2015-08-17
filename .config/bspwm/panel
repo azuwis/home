@@ -45,40 +45,7 @@ bspc config top_padding $PANEL_HEIGHT
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 clock -sf 'S %H:%M' > "$PANEL_FIFO" &
-
-battery() {
-    local batt="BAT0"
-    local batt_dir="/sys/class/power_supply/${batt}"
-    local capacity=0
-    local status="Unknown"
-    local icon=""
-    while : ; do
-        read capacity < "${batt_dir}/capacity"
-        read status < "${batt_dir}/status"
-        case "$status" in
-            Full)
-                icon=""
-                ;;
-            Charging|Discharging)
-                if [ "$capacity" -gt 85 ]; then
-                    icon=""
-                elif [ "$capacity" -gt 60 ]; then
-                    icon=""
-                elif [ "$capacity" -gt 35 ]; then
-                    icon=""
-                else
-                    icon=""
-                fi
-                if [ x"$status" = x"Charging" ]; then
-                    icon="${icon}"
-                fi
-                ;;
-        esac
-        echo "B${icon} ${capacity}%"
-        sleep 5
-    done
-}
-battery > "$PANEL_FIFO" &
+battery -sf 'B%s:%i' > "$PANEL_FIFO" &
 
 panel_bar() {
     num_mon=$(bspc query -M | wc -l)
@@ -95,7 +62,30 @@ panel_bar() {
                 ;;
             B*)
                 # battery info
-                batt_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
+                local batt="${line#?}"
+                local status="${batt%:*}"
+                local capacity="${batt#*:}"
+                local icon=""
+                case "$status" in
+                    Full)
+                        icon=""
+                        ;;
+                    Charging|Discharging)
+                        if [ "$capacity" -gt 85 ]; then
+                            icon=""
+                        elif [ "$capacity" -gt 60 ]; then
+                            icon=""
+                        elif [ "$capacity" -gt 35 ]; then
+                            icon=""
+                        else
+                            icon=""
+                        fi
+                        if [ x"$status" = x"Charging" ]; then
+                            icon="${icon} "
+                        fi
+                        ;;
+                esac
+                batt_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${icon} ${capacity}% %{B-}%{F-}"
                 ;;
             W*)
                 # bspwm internal state
