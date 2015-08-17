@@ -105,7 +105,15 @@ panel_bar() {
                             ;;
                         L*)
                             # layout
-                            wm_infos="$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${name} %{B-}%{F-}"
+                            local layout
+                            if [ x"${name}" = x"T" ]; then
+                                layout=""
+                            elif [ x"${name}" = x"M" ]; then
+                                layout=""
+                            else
+                                layout="${name}"
+                            fi
+                            wm_infos="$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${layout} %{B-}%{F-}"
                             ;;
                     esac
                     shift
