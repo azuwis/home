@@ -46,6 +46,7 @@ bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 clock -sf 'S %H:%M' > "$PANEL_FIFO" &
 battery -sf 'B%s:%i' > "$PANEL_FIFO" &
+essid -sf 'E %s' > "$PANEL_FIFO" &
 
 panel_bar() {
     num_mon=$(bspc query -M | wc -l)
@@ -59,6 +60,10 @@ panel_bar() {
             T*)
                 # xtitle output
                 title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG} ${line#?} %{B-}%{F-}"
+                ;;
+            E*)
+                # wifi output
+                essid_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
                 ;;
             B*)
                 # battery info
@@ -149,7 +154,7 @@ panel_bar() {
                 done
                 ;;
         esac
-        printf "%s\n" "%{l}${wm_infos}%{c}${title}%{r}${batt_infos}${sys_infos}"
+        printf "%s\n" "%{l}${wm_infos}%{c}${title}%{r}${essid_infos}${batt_infos}${sys_infos}"
     done
 }
 
