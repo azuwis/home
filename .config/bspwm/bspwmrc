@@ -9,7 +9,7 @@ bspc config gapless_monocle     true
 bspc config focus_by_distance   true
 
 bspc monitor --reset-desktops         
-bscp desktop ^2 --layout monocle
+bspc desktop ^2 --layout monocle
 
 bspc rule --add Chromium desktop=^3
 bspc rule --add Gimp desktop=^6
