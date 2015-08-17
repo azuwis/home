@@ -2,7 +2,8 @@
 
 PANEL_FIFO=/tmp/panel-fifo
 PANEL_HEIGHT=26
-PANEL_FONT_FAMILY="Sans-9"
+PANEL_FONT_FAMILY="WenQuanYi Micro Hei:size=9"
+ICON_FONT="FontAwesome:size=9"
 
 COLOR_FOREGROUND='#FFA3A6AB'
 COLOR_BACKGROUND='#FF080808'
@@ -115,6 +116,6 @@ panel_bar() {
     done
 }
 
-panel_bar < "$PANEL_FIFO" | lemonbar -g x$PANEL_HEIGHT -f "$PANEL_FONT_FAMILY" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" &
+panel_bar < "$PANEL_FIFO" | lemonbar -g x$PANEL_HEIGHT -f "$PANEL_FONT_FAMILY" -f "$ICON_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" &
 
 wait
