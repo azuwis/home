@@ -19,3 +19,4 @@ bspc rule --add Screenkey manage=off
 bspc rule --add mpv desktop=^7 floating=on
 
 xsetroot -cursor_name left_ptr &
+"$(dirname "$0")/panel" &
