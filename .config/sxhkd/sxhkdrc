@@ -2,8 +2,8 @@
 # bspwm hotkeys
 #
 
-super + alt + Escape
-	pkill -x panel; bspc quit
+super + {alt,shift} + Escape
+	pkill -x panel; {bspc quit,~/.config/bspwm/panel}
 
 super + w
 	bspc window -c
