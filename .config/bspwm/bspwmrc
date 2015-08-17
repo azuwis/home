@@ -8,11 +8,11 @@ bspc config borderless_monocle  true
 bspc config gapless_monocle     true
 bspc config focus_by_distance   true
 
-bspc monitor --reset-desktops         
+bspc monitor --reset-desktops         
 bscp desktop ^2 --layout monocle
 
 bspc rule --add Chromium desktop=^3
-bspc rule --add Gimp desktop=^8
+bspc rule --add Gimp desktop=^6
 bspc rule --add Gpick floating=on
 bspc rule --add Iceweasel desktop=^2
 bspc rule --add Screenkey manage=off
