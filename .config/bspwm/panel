@@ -76,12 +76,14 @@ panel_bar() {
                         icon=""
                         ;;
                     Charging|Discharging)
-                        if [ "$capacity" -gt 85 ]; then
+                        if [ "$capacity" -gt 90 ]; then
                             icon=""
-                        elif [ "$capacity" -gt 60 ]; then
+                        elif [ "$capacity" -gt 65 ]; then
                             icon=""
-                        elif [ "$capacity" -gt 35 ]; then
+                        elif [ "$capacity" -gt 40 ]; then
                             icon=""
+                        elif [ "$capacity" -gt 15 ]; then
+                            icon=""
                         else
                             icon=""
                         fi
