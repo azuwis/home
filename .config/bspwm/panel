@@ -48,6 +48,16 @@ clock -i60 -sf 'S %d %b  %H:%M' > "$PANEL_FIFO" &
 battery -i60 -sf 'B%s:%i' > "$PANEL_FIFO" &
 essid -i60 -sf 'E %s' > "$PANEL_FIFO" &
 
+disk() {
+    while : ;do
+        local diskinfo
+        diskinfo="$(df --human-readable --output=avail "${HOME}")"
+        echo "D ${diskinfo#* }"
+        sleep 600
+    done
+}
+disk > "$PANEL_FIFO" &
+
 panel_bar() {
     num_mon=$(bspc query -M | wc -l)
 
@@ -64,6 +74,10 @@ panel_bar() {
             E*)
                 # wifi output
                 essid_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
+                ;;
+            D*)
+                # disk info
+                disk_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
                 ;;
             B*)
                 # battery info
@@ -156,7 +170,7 @@ panel_bar() {
                 done
                 ;;
         esac
-        printf "%s\n" "%{l}${wm_infos}%{c}${title}%{r}${essid_infos}${batt_infos}${sys_infos}"
+        printf "%s\n" "%{l}${wm_infos}%{c}${title}%{r}${disk_infos}${essid_infos}${batt_infos}${sys_infos}"
     done
 }
 
