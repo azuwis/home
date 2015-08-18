@@ -44,7 +44,7 @@ mkfifo "$PANEL_FIFO"
 bspc config top_padding $PANEL_HEIGHT
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
-clock -sf 'S %H:%M' > "$PANEL_FIFO" &
+clock -sf 'S %d %b  %H:%M' > "$PANEL_FIFO" &
 battery -sf 'B%s:%i' > "$PANEL_FIFO" &
 essid -sf 'E %s' > "$PANEL_FIFO" &
 
