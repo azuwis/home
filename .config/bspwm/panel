@@ -44,19 +44,75 @@ mkfifo "$PANEL_FIFO"
 bspc config top_padding $PANEL_HEIGHT
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
-clock -i60 -sf 'S %d %b  %H:%M' > "$PANEL_FIFO" &
-battery -i60 -sf 'B%s:%i' > "$PANEL_FIFO" &
-essid -i60 -sf 'E %s' > "$PANEL_FIFO" &
+
+clock() {
+    date '+ %d %b  %H:%M'
+}
+
+batt_dir="/sys/class/power_supply/BAT0"
+battery() {
+    local capacity=0
+    local status="Unknown"
+    local icon=""
+    read capacity < "${batt_dir}/capacity"
+    read status < "${batt_dir}/status"
+    case "$status" in
+        Full)
+            icon=""
+            ;;
+        Charging|Discharging)
+            if [ "$capacity" -gt 90 ]; then
+                icon=""
+            elif [ "$capacity" -gt 65 ]; then
+                icon=""
+            elif [ "$capacity" -gt 40 ]; then
+                icon=""
+            elif [ "$capacity" -gt 15 ]; then
+                icon=""
+            else
+                icon=""
+            fi
+            if [ x"$status" = x"Charging" ]; then
+                icon="${icon} "
+            fi
+            ;;
+    esac
+    echo "${icon} ${capacity}%"
+}
+
+loadavg() {
+    local loadinfo tmp
+    read loadinfo tmp < /proc/loadavg
+    echo " ${loadinfo}"
+}
 
 disk() {
+    local diskinfo
+    diskinfo="$(df --human-readable --output=avail "${HOME}")"
+    echo " ${diskinfo#* }"
+}
+
+temp_input="$(find /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input 2>/dev/null | head -n1)"
+temp() {
+    if [ x"$temp_input" = x ]; then
+        return
+    fi
+    local tempinfo
+    read tempinfo < "$temp_input"
+    echo " ${tempinfo%???}°C"
+}
+
+essid() {
+    echo " $(/sbin/iwgetid -r)"
+}
+
+loop60() {
     while : ;do
-        local diskinfo
-        diskinfo="$(df --human-readable --output=avail "${HOME}")"
-        echo "D ${diskinfo#* }"
-        sleep 600
+        echo "S$(essid) $(disk) $(temp) $(loadavg) $(battery) $(clock)"
+        sleep 60
     done
 }
-disk > "$PANEL_FIFO" &
+loop60 > "$PANEL_FIFO" &
 
 panel_bar() {
     num_mon=$(bspc query -M | wc -l)
@@ -64,49 +120,12 @@ panel_bar() {
     while read -r line ; do
         case $line in
             S*)
-                # clock output
+                # system info
                 sys_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
                 ;;
             T*)
                 # xtitle output
                 title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG} ${line#?} %{B-}%{F-}"
-                ;;
-            E*)
-                # wifi output
-                essid_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
-                ;;
-            D*)
-                # disk info
-                disk_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
-                ;;
-            B*)
-                # battery info
-                local batt="${line#?}"
-                local status="${batt%:*}"
-                local capacity="${batt#*:}"
-                local icon=""
-                case "$status" in
-                    Full)
-                        icon=""
-                        ;;
-                    Charging|Discharging)
-                        if [ "$capacity" -gt 90 ]; then
-                            icon=""
-                        elif [ "$capacity" -gt 65 ]; then
-                            icon=""
-                        elif [ "$capacity" -gt 40 ]; then
-                            icon=""
-                        elif [ "$capacity" -gt 15 ]; then
-                            icon=""
-                        else
-                            icon=""
-                        fi
-                        if [ x"$status" = x"Charging" ]; then
-                            icon="${icon} "
-                        fi
-                        ;;
-                esac
-                batt_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${icon} ${capacity}% %{B-}%{F-}"
                 ;;
             W*)
                 # bspwm internal state
@@ -170,7 +189,7 @@ panel_bar() {
                 done
                 ;;
         esac
-        printf "%s\n" "%{l}${wm_infos}%{c}${title}%{r}${disk_infos}${essid_infos}${batt_infos}${sys_infos}"
+        printf "%s\n" "%{l}${wm_infos}%{c}${title}%{r}${sys_infos}"
     done
 }
 
