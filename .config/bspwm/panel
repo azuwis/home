@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PANEL_HEIGHT=26
-PANEL_FONT_FAMILY1="Sans:size=9"
+PANEL_FONT_FAMILY1="Sans:style=italic:size=9"
 PANEL_FONT_FAMILY2="WenQuanYi Micro Hei:size=9"
 PANEL_FONT_FAMILY3="FontAwesome:size=9"
 PANEL_FIFO="${XDG_CACHE_HOME:-"$HOME/.cache"}/panel-info"
