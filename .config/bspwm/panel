@@ -106,15 +106,52 @@ essid() {
     echo " $(/sbin/iwgetid -r)"
 }
 
+ifaces=$(ls /sys/class/net | grep -E '^(eth|wlan)')
+last_rx=0
+last_tx=0
+rate=""
+readable() {
+    local byte=$1
+    local kib=$(( byte >> 10 ))
+    if [ "$kib" -gt 1024 ]; then
+        local mib_int=$(( kib >> 10 ))
+        local mib_dec=$(( kib % 1024 * 976 / 10000 ))
+        if [ "$mib_dec" -lt 10 ]; then
+            mib_dec="0${mib_dec}"
+        fi
+        echo "${mib_int}.${mib_dec}M"
+    else
+        echo "${kib}K"
+    fi
+}
+update_rate() {
+    local rx=0
+    local tx=0
+    for iface in $ifaces; do
+        local tmp_rx
+        local tmp_tx
+        local stat="/sys/class/net/${iface}/statistics"
+        read tmp_rx < "${stat}/rx_bytes"
+        read tmp_tx < "${stat}/tx_bytes"
+        rx=$(( rx + tmp_rx ))
+        tx=$(( tx + tmp_tx ))
+    done
+    rate="$(readable $(( (rx - last_rx) / 10 )))↓ $(readable $(( (tx - last_tx) / 10 )))↑"
+    last_rx=$rx
+    last_tx=$tx
+}
+
 sysinfo() {
     while : ;do
         local sysinfo="S"
+        update_rate
+        sysinfo="${sysinfo}${rate} "
         test x"${enable_essid}" = x"true" && sysinfo="${sysinfo}$(essid) "
         test x"${enable_battery}" = x"true" && sysinfo="${sysinfo}$(battery) "
         test x"${enable_temp}" = x"true" && sysinfo="${sysinfo}$(temp) "
         sysinfo="${sysinfo} $(disk) $(loadavg) $(clock)"
         echo "${sysinfo}"
-        sleep 60
+        sleep 10
     done
 }
 sysinfo > "$PANEL_FIFO" &
