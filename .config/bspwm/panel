@@ -105,7 +105,7 @@ essid() {
     echo " $(/sbin/iwgetid -r)"
 }
 
-loop60() {
+sysinfo() {
     while : ;do
         sysinfo="S"
         test x"${enable_essid}" = x"true" && sysinfo="${sysinfo}$(essid) "
@@ -115,7 +115,7 @@ loop60() {
         sleep 60
     done
 }
-loop60 > "$PANEL_FIFO" &
+sysinfo > "$PANEL_FIFO" &
 
 panel_bar() {
     num_mon=$(bspc query -M | wc -l)
