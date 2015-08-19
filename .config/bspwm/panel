@@ -108,7 +108,7 @@ essid() {
 
 sysinfo() {
     while : ;do
-        sysinfo="S"
+        local sysinfo="S"
         test x"${enable_essid}" = x"true" && sysinfo="${sysinfo}$(essid) "
         test x"${enable_battery}" = x"true" && sysinfo="${sysinfo}$(battery) "
         test x"${enable_temp}" = x"true" && sysinfo="${sysinfo}$(temp) "
