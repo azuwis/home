@@ -103,7 +103,13 @@ temp() {
 
 test x"$(/sbin/iwgetid)" != x && enable_essid="true"
 essid() {
-    echo " $(/sbin/iwgetid -r)"
+    local essid
+    essid="$(/sbin/iwgetid -r)"
+    if [ x"$(/sbin/iwgetid)" != x ]; then
+        echo " ${essid}"
+    else
+        enable_essid="false"
+    fi
 }
 
 ifaces=$(ls /sys/class/net | grep -E '^(eth|wlan)')
