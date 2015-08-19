@@ -50,6 +50,7 @@ clock() {
 }
 
 batt_dir="/sys/class/power_supply/BAT0"
+test -e "$batt_dir" && enable_battery="true"
 battery() {
     local capacity=0
     local status="Unknown"
@@ -94,21 +95,23 @@ disk() {
 
 temp_input="$(find /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input 2>/dev/null | head -n1)"
 temp() {
-    if [ x"$temp_input" = x ]; then
-        return
-    fi
     local tempinfo
     read tempinfo < "$temp_input"
     echo " ${tempinfo%???}°C"
 }
 
+test x"$(/sbin/iwgetid)" != x && enable_essid="true"
 essid() {
     echo " $(/sbin/iwgetid -r)"
 }
 
 loop60() {
     while : ;do
-        echo "S$(essid) $(disk) $(temp) $(loadavg) $(battery) $(clock)"
+        sysinfo="S"
+        test x"${enable_essid}" = x"true" && sysinfo="${sysinfo}$(essid) "
+        test x"${enable_battery}" = x"true" && sysinfo="${sysinfo}$(battery) "
+        sysinfo="${sysinfo} $(disk) $(temp) $(loadavg) $(clock)"
+        echo "${sysinfo}"
         sleep 60
     done
 }
