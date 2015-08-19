@@ -94,6 +94,7 @@ disk() {
 }
 
 temp_input="$(find /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input 2>/dev/null | head -n1)"
+test x"${temp_input}" != x && enable_temp="true"
 temp() {
     local tempinfo
     read tempinfo < "$temp_input"
@@ -110,7 +111,8 @@ sysinfo() {
         sysinfo="S"
         test x"${enable_essid}" = x"true" && sysinfo="${sysinfo}$(essid) "
         test x"${enable_battery}" = x"true" && sysinfo="${sysinfo}$(battery) "
-        sysinfo="${sysinfo} $(disk) $(temp) $(loadavg) $(clock)"
+        test x"${enable_temp}" = x"true" && sysinfo="${sysinfo}$(temp) "
+        sysinfo="${sysinfo} $(disk) $(loadavg) $(clock)"
         echo "${sysinfo}"
         sleep 60
     done
