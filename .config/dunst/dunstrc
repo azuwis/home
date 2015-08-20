@@ -1,34 +1,37 @@
-# Color kanged from https://github.com/andreatta/config/blob/master/dunst/dunstrc
 [global]
     font = "sans 18"
-    geometry = "0x5-30+30"
+    geometry = "0x5-10+36"
     alignment = center
-    padding = 10
-    horizontal_padding = 10
+    padding = 12
+    horizontal_padding = 15
+    separator_height = 5
+    separator_color = frame
+    allow_markup = yes
+    format = "<i>%s</i>\n%b"
     transparency = 20
     idle_threshold = 30
 
 [frame]
-    width = 0
-    color = "#cfcfcf"
+    width = 5
+    color = "#5f5f5f"
 
-[shortcuts]
-    close = ctrl+grave
-    history = ctrl+shift+grave
+# [shortcuts]
+#     close = ctrl+grave
+#     history = ctrl+shift+grave
 
 [urgency_low]
-    background = "#ccdc90"
-    foreground = "#2c2c2e"
+    background = "#080808"
+    foreground = "#dcdccc"
     timeout = 10
 
 [urgency_normal]
-    background = "#88b090"
-    foreground = "#efef8f"
+    background = "#3f3f3f"
+    foreground = "#dcdccc"
     timeout = 10
 
 [urgency_critical]
-    background = "#e89393"
-    foreground = "#a0afa0"
+    background = "#3f3f3f"
+    foreground = "#f9a299"
     timeout = 0
 
 [popo]
