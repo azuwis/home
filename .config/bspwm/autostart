@@ -1,0 +1,2 @@
+# Let sxhkd use dash as shell
+export SXHKD_SHELL="/bin/sh"
