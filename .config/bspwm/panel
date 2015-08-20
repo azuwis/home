@@ -169,11 +169,16 @@ panel_bar() {
         case $line in
             S*)
                 # system info
+                notification=""
                 sys_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
                 ;;
             T*)
                 # xtitle output
                 title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG} ${line#?} %{B-}%{F-}"
+                ;;
+            N*)
+                # notification
+                notification="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG} ${line#?} %{B-}%{F-}"
                 ;;
             W*)
                 # bspwm internal state
@@ -237,7 +242,7 @@ panel_bar() {
                 done
                 ;;
         esac
-        printf "%s\n" "%{l}${wm_infos}%{c}${title}%{r}${sys_infos}"
+        printf "%s\n" "%{l}${wm_infos}%{c}${title}%{r}${notification}${sys_infos}"
     done
 }
 
