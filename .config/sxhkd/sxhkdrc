@@ -3,7 +3,7 @@
 #
 
 super + {alt,shift} + Escape
-	pkill -x panel; {bspc quit,~/.config/bspwm/panel}
+	pkill -x panel; {bspc quit,exec ~/.config/bspwm/panel}
 
 super + w
 	bspc window -c
