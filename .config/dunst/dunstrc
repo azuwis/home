@@ -10,6 +10,7 @@
     format = "<i>%s</i>\n%b"
     transparency = 20
     idle_threshold = 30
+    follow = keyboard
 
 [frame]
     width = 5
