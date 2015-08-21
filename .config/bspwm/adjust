@@ -7,7 +7,7 @@ volume() {
     amixer sget Master > /dev/null 2>&1 && item="Master"
 
     local result
-    result="$(amixer sset Master "$action")"
+    result="$(amixer sset "$item" "$action")"
 
     local volume="${result#*\[}"
     volume="${volume%%\%\]*}"
