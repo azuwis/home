@@ -333,7 +333,7 @@ layers configuration."
       (defun my-mu4e-notify-new-mail ()
         (call-process-shell-command (concat "subject=\"$(mu find flag:unread --fields s --after="
                                             (number-to-string (- (truncate (float-time)) mu4e-update-interval))
-                                            " 2>/dev/null)\"; test -n \"$subject\" && notify-send \"New Mail\n\" \"$subject\" &")
+                                            " 2>/dev/null)\"; test -n \"$subject\" && notify-send \"New Mail\" \"$subject\" &")
                                     nil 0))
       (add-hook 'mu4e-index-updated-hook 'my-mu4e-notify-new-mail)
 
