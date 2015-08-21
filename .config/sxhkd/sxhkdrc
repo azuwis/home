@@ -106,7 +106,7 @@ XF86MenuKB
   xdotool key Shift+Insert
 
 XF86Audio{Mute,LowerVolume,RaiseVolume}
-  ~/.config/bspwm/adjust volumn {toggle,3%-,3%+}
+  ~/.config/bspwm/adjust volume {toggle,3%-,3%+}
 
 XF86MonBrightness{Up,Down}
   sudo backlight {+,-}5%

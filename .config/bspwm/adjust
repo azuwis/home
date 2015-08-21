@@ -1,30 +1,27 @@
 #!/bin/sh
 
-PANEL_FIFO="${XDG_CACHE_HOME:-"$HOME/.cache"}/panel-fifo"
-
-volumn() {
+volume() {
     local action="$1"
 
-    local result
-    result="$(amixer set Master "$action")"
+    local item="PCM"
+    amixer sget Master > /dev/null 2>&1 && item="Master"
 
-    local volumn="${result#*\[}"
-    volumn="${volumn%%\]*}"
+    local result
+    result="$(amixer sset Master "$action")"
+
+    local volume="${result#*\[}"
+    volume="${volume%%\%\]*}"
 
     local status="${result##*\[}"
     status="${status%\]}"
 
-    local info="N"
-    if [ x"$status" = x"on" ]; then
-        if [ x"${action#*%}" = x"-" ]; then
-            info="${info}"
-        else
-            info="${info}"
-        fi
+    local icon
+    if [ x"$status" = x"off" ]; then
+        icon=" Mute"
     else
-        info="${info}"
+        icon=""
     fi
-    echo "${info} ${volumn}" > "$PANEL_FIFO"
+    notify-send ":Adjust:" -i "${icon}" -h int:value:"${volume}"
 }
 
 "$@"

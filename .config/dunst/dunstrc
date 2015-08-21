@@ -38,3 +38,9 @@
     appname = notify-send
     summary = POPO*
     timeout = 30
+
+[adjust]
+    appname = notify-send
+    summary = :Adjust:
+    format = "%I %p"
+    timeout = 1
