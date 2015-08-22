@@ -94,7 +94,7 @@ super + space
 	rofi -show run
 
 super + r; {f,e,c,s,w}
-	{firefox,emacs,chromium,scrotclip,wallpaper}
+	exec {firefox,emacs,chromium,scrotclip,wallpaper}
 
 super + {_,shift + }p
   {xfce4-popup-clipman,/usr/share/doc/pass/examples/dmenu/passmenu --type}
