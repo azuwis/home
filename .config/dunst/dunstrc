@@ -43,5 +43,5 @@
 [adjust]
     appname = notify-send
     summary = :Adjust:
-    format = "%I %p"
+    format = "%I <i>%p</i>"
     timeout = 1
