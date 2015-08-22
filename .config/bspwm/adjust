@@ -17,7 +17,7 @@ volume() {
 
     local icon
     if [ x"$status" = x"off" ]; then
-        icon=" Mute"
+        icon="  Mute"
     else
         icon=""
     fi
