@@ -101,7 +101,7 @@ temp() {
     echo " ${tempinfo%???}°C"
 }
 
-test x"$(/sbin/iwgetid)" != x && enable_essid="true"
+test x"$(/sbin/iwgetid 2>/dev/null)" != x && enable_essid="true"
 essid() {
     local essid
     essid="$(/sbin/iwgetid -r)"
