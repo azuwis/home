@@ -109,7 +109,7 @@ XF86Audio{Mute,LowerVolume,RaiseVolume}
   ~/.config/bspwm/adjust volume {toggle,3%-,3%+}
 
 XF86MonBrightness{Up,Down}
-  sudo backlight {+,-}5%
+  backlight {+,-}5%
 
 super + {_,shift + }XF86Eject
   {xautolock -locknow,sudo systemctl suspend}
