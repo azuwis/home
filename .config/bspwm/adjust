@@ -40,7 +40,19 @@ backlight() {
     local max_brightness
     read max_brightness < "${max_brightness_file}"
 
-    local wanted_brightness="$(( brightness + max_brightness * action / 100 ))"
+    local wanted_brightness
+    case "$action" in
+        +[0-9]|+[0-9][0-9]|-[0-9]|-[0-9][0-9])
+            wanted_brightness="$(( brightness + max_brightness * action / 100 ))"
+            ;;
+        [0-9]|[0-9][0-9]|100)
+            wanted_brightness="$(( max_brightness * action / 100 ))"
+            ;;
+        *)
+            return
+            ;;
+    esac
+
     test "${wanted_brightness}" -gt "${max_brightness}" && wanted_brightness="${max_brightness}"
     test "${wanted_brightness}" -lt 0 && wanted_brightness=0
 
