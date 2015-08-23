@@ -24,15 +24,13 @@ volume() {
     notify-send ":Adjust:" -i "${icon}" -h int:value:"${volume}"
 }
 
-backlight() {
+brightness() {
     local action="$1"
+    local brightness_syspath="$2"
+    local icon="$3"
 
-    local brightness_file
-    brightness_file="$(find /sys/class/backlight/*/brightness 2>/dev/null | head -n1)"
-
-    test x"${brightness_file}" = x && return
-
-    local max_brightness_file="${brightness_file%/*}/max_brightness"
+    local brightness_file="${brightness_syspath}/brightness"
+    local max_brightness_file="${brightness_syspath}/max_brightness"
 
     local brightness
     read brightness < "${brightness_file}"
@@ -58,7 +56,15 @@ backlight() {
 
     echo "${wanted_brightness}" > "${brightness_file}"
 
-    notify-send ":Adjust:" -i  -h int:value:"$(( wanted_brightness * 100 / max_brightness ))"
+    notify-send ":Adjust:" -i "$icon" -h int:value:"$(( wanted_brightness * 100 / max_brightness ))"
+}
+
+backlight() {
+    local action="$1"
+    brightness_file="$(find /sys/class/backlight/*/brightness 2>/dev/null | head -n1)"
+    test x"${brightness_file}" = x && return
+    local brightness_syspath="${brightness_file%/*}"
+    brightness "$action" "$brightness_syspath" 
 }
 
 "$@"
