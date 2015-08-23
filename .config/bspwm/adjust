@@ -67,4 +67,11 @@ backlight() {
     brightness "$action" "$brightness_syspath" 
 }
 
+kbdlight() {
+    local action="$1"
+    local brightness_syspath="/sys/class/leds/smc::kbd_backlight"
+    test ! -e "${brightness_syspath}" && return
+    brightness "$action" "$brightness_syspath" 
+}
+
 "$@"
