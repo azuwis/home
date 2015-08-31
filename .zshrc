@@ -66,8 +66,10 @@ local hosts
 hosts=( "${(f)mapfile[$hosts_cache]}" )
 zstyle ':completion:*:*:*' hosts $hosts
 # short function and alias
-alias ap='ansible-playbook'
-alias apl='ansible-playbook --list-tasks --list-hosts'
+ap() {
+    ansible-playbook "$@"
+}
+alias apl='ap --list-tasks --list-hosts'
 
 
 # Set title for ssh in tmux
