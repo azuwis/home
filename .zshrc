@@ -57,11 +57,7 @@ if [ "$#ansible_hostfiles_new" -gt 0 ]; then
     do
         local ansible_dir=$(dirname $hostfile)
         pushd "$ansible_dir" >& /dev/null
-        local vault=''
-        if [ -e 'vault_password' ]; then
-            vault='vault_password'
-        fi
-        ansible \* --inventory-file="$hostfile" --list-hosts --vault-password-file="$vault" | sed -e 's/ //g' >> $hosts_cache
+        ansible \* --inventory-file="$hostfile" --list-hosts | sed -e 's/ //g' >> $hosts_cache
         popd
     done
 fi
@@ -70,14 +66,8 @@ local hosts
 hosts=( "${(f)mapfile[$hosts_cache]}" )
 zstyle ':completion:*:*:*' hosts $hosts
 # short function and alias
-ap() {
-    local vault=''
-    if [ -e 'vault_password' ]; then
-        vault='vault_password'
-    fi
-    ansible-playbook --vault-password-file="$vault" "$@"
-}
-alias apl='ap --list-tasks --list-hosts'
+alias ap='ansible-playbook'
+alias apl='ansible-playbook --list-tasks --list-hosts'
 
 
 # Set title for ssh in tmux
