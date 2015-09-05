@@ -199,10 +199,32 @@ panel_bar() {
                         O*)
                             # focused occupied desktop
                             wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$COLOR_FOCUSED_OCCUPIED_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+                            case "${name}" in
+                                1) desktop='';;
+                                2) desktop='';;
+                                3) desktop='';;
+                                4) desktop='';;
+                                5) desktop='';;
+                                6) desktop='';;
+                                7) desktop='';;
+                                8) desktop='';;
+                                9) desktop='';;
+                            esac
                             ;;
                         F*)
                             # focused free desktop
                             wm_infos="${wm_infos}%{F$COLOR_FOCUSED_FREE_FG}%{B$COLOR_FOCUSED_FREE_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+                            case "${name}" in
+                                1) desktop='';;
+                                2) desktop='';;
+                                3) desktop='';;
+                                4) desktop='';;
+                                5) desktop='';;
+                                6) desktop='';;
+                                7) desktop='';;
+                                8) desktop='';;
+                                9) desktop='';;
+                            esac
                             ;;
                         U*)
                             # focused urgent desktop
@@ -222,15 +244,15 @@ panel_bar() {
                             ;;
                         L*)
                             # layout
-                            local layout
-                            if [ x"${name}" = x"T" ]; then
-                                layout=""
-                            elif [ x"${name}" = x"M" ]; then
-                                layout=""
-                            else
-                                layout="${name}"
-                            fi
-                            wm_infos="$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${layout} %{B-}%{F-}"
+                            # local layout
+                            # if [ x"${name}" = x"T" ]; then
+                            #     layout=""
+                            # elif [ x"${name}" = x"M" ]; then
+                            #     layout=""
+                            # else
+                            #     layout="${name}"
+                            # fi
+                            wm_infos="$wm_infos %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${desktop} %{B-}%{F-}"
                             ;;
                     esac
                     shift
