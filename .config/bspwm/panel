@@ -252,7 +252,7 @@ panel_bar() {
                             # else
                             #     layout="${name}"
                             # fi
-                            wm_infos="$wm_infos %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${desktop} %{B-}%{F-}"
+                            wm_infos="$wm_infos%{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${desktop} %{B-}%{F-}"
                             ;;
                     esac
                     shift
