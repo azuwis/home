@@ -232,15 +232,15 @@ panel_bar() {
                             ;;
                         o*)
                             # occupied desktop
-                            wm_infos="${wm_infos}%{F$COLOR_OCCUPIED_FG}%{B$COLOR_OCCUPIED_BG} ${name} %{B-}%{F-}"
+                            wm_infos="${wm_infos}%{F$COLOR_OCCUPIED_FG}%{B$COLOR_OCCUPIED_BG} %{A:bspc desktop --focus ${name}:}${name}%{A} %{B-}%{F-}"
                             ;;
                         f*)
                             # free desktop
-                            wm_infos="${wm_infos}%{F$COLOR_FREE_FG}%{B$COLOR_FREE_BG} ${name} %{B-}%{F-}"
+                            wm_infos="${wm_infos}%{F$COLOR_FREE_FG}%{B$COLOR_FREE_BG} %{A:bspc desktop --focus ${name}:}${name}%{A} %{B-}%{F-}"
                             ;;
                         u*)
                             # urgent desktop
-                            wm_infos="${wm_infos}%{F$COLOR_URGENT_FG}%{B$COLOR_URGENT_BG} ${name} %{B-}%{F-}"
+                            wm_infos="${wm_infos}%{F$COLOR_URGENT_FG}%{B$COLOR_URGENT_BG} %{A:bspc desktop --focus ${name}:}${name}%{A} %{B-}%{F-}"
                             ;;
                         L*)
                             # layout
@@ -263,6 +263,6 @@ panel_bar() {
     done
 }
 
-panel_bar < "$PANEL_FIFO" | lemonbar -g x$PANEL_HEIGHT -f "$PANEL_FONT_FAMILY1" -f "$PANEL_FONT_FAMILY2" -f "$PANEL_FONT_FAMILY3" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" &
+panel_bar < "$PANEL_FIFO" | lemonbar -g x$PANEL_HEIGHT -f "$PANEL_FONT_FAMILY1" -f "$PANEL_FONT_FAMILY2" -f "$PANEL_FONT_FAMILY3" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" | sh &
 
 wait
