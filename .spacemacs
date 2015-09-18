@@ -273,11 +273,11 @@ layers configuration."
             mu4e-headers-include-related t
             mu4e-html2text-command 'mu4e-shr2text
             ;; mu4e-html2text-command "w3m -dump -T text/html"
-            mu4e-headers-fields '((:human-date . 12)
-                                  (:flags . 6)
-                                  (:mailing-list . 10)
-                                  (:from-or-to . 22)
-                                  (:subject))
+            ;; mu4e-headers-fields '((:human-date . 12)
+            ;;                       (:flags . 6)
+            ;;                       (:mailing-list . 10)
+            ;;                       (:from-or-to . 22)
+            ;;                       (:subject))
             mu4e-compose-dont-reply-to-self t
             mu4e-compose-signature-auto-include nil
             message-kill-buffer-on-exit t)
