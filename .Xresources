@@ -46,6 +46,6 @@ rofi.bg               : argb:f03f3f3f
 rofi.bgalt            : argb:f03f3f3f
 rofi.hlfg             : #3f3f48
 rofi.hlbg             : #dcdccc
-rofi.bc               : #a0afa0
-rofi.bw               : 0
+rofi.bc               : #5f5f5f
+rofi.bw               : 5
 rofi.levenshtein-sort : false
