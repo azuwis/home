@@ -10,7 +10,7 @@ lib =
 [.]
 checkout = git clone 'https://github.com/azuwis/home.git' '.'
 fixups = 
-	   git --version | grep -qF 'git version 2.' && git config --file=~/.gitconfig.local push.default simple
+	   git --version | grep -qF 'git version 2.' && git config --file=$HOME/.gitconfig.local push.default simple
 	   download https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua .config/mpv/scripts/autoload.lua
 	   chmod 700 .config/fcitx
 
