@@ -50,10 +50,10 @@ skip = ! workstation
 [.config/fcitx/rime]
 checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'rime'
 fixups =
-	   chmod 700 .
+	   chmod 700 "${MR_REPO}"
      # luna pinyin extended dict
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.extended.dict.yaml
-	   sed -i '/^  - luna_pinyin\.cn_en$/d' luna_pinyin.extended.dict.yaml
+	   sed -i '/^  - luna_pinyin\.cn_en$/d' "${MR_REPO}/luna_pinyin.extended.dict.yaml"
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.hanyu.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.poetry.dict.yaml
 skip = ! test -d /usr/share/doc/fcitx-rime

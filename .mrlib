@@ -15,6 +15,7 @@ lib =
         if [ x"$file" = x"-" ]; then
             file="$(basename "$url")"
         fi
+        file="${MR_REPO}/${file}"
         local mode="${3:--}"
         local now="$(date +%s)"
         local mtime=0
