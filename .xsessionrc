@@ -27,7 +27,11 @@ run xfce4-clipman
 run devmon
 run xautolock -time 30 -locker 'i3lock --color=000000'
 run goldendict >/dev/null 2>&1
-test -d ~/src/cross-notify && tmux -L autostart new-session -d ~/src/cross-notify/server.py
+if [ -d ~/src/cross-notify ]; then
+    if ! tmux -L autostart ls >/dev/null 2>&1; then
+        tmux -L autostart new-session -d ~/src/cross-notify/server.py
+    fi
+fi
 
 # Apply color profile
 if [ -x /usr/bin/xcalib ]; then
