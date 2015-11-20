@@ -1,4 +1,4 @@
-function on_vo_change(name, current_vo)
+function auto_hwdec(name, current_vo)
     local current_hwdec = mp.get_property("hwdec")
     local wanted_hwdec = nil
     if current_hwdec == "auto" then
@@ -15,4 +15,4 @@ function on_vo_change(name, current_vo)
         end
     end
 end
-mp.observe_property("current-vo", "string", on_vo_change)
+mp.observe_property("current-vo", "string", auto_hwdec)
