@@ -16,7 +16,7 @@ function auto_video_stereo_mode()
       mp.msg.info("Set vo to opengl-hq")
       mp.set_property("options/vo", "opengl-hq")
     end
-    mp.msg.info("Set video-stereo-mode to " .. stereo_mode)
+    mp.msg.info("Set video stereo mode to " .. stereo_mode)
     mp.set_property("options/video-stereo-mode", stereo_mode)
   end
 end
