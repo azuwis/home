@@ -11,8 +11,12 @@ function auto_video_stereo_mode()
     stereo_mode = "ab2l"
   end
   if stereo_mode then
+    local option_vo = mp.get_property("options/vo")
+    if string.match(option_vo, "vaapi") or string.match(option_vo, "vdpau") then
+      mp.msg.info("Set vo to opengl-hq")
+      mp.set_property("options/vo", "opengl-hq")
+    end
     mp.msg.info("Set video-stereo-mode to " .. stereo_mode)
-    mp.set_property("options/vo", "opengl-hq")
     mp.set_property("options/video-stereo-mode", stereo_mode)
   end
 end
