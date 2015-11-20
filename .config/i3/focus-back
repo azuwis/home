@@ -3,11 +3,11 @@
 # Toggle flash player fullscreen, and give focus back to Firefox after exit
 
 get_window_name() {
-  xdotool getwindowfocus getwindowname
+  xdotool getactivewindow getwindowname
 }
 
 escape_from_flash() {
-  window=$(xdotool getwindowfocus)
+  window=$(xdotool getactivewindow)
   # window=$(xdotool search --onlyvisible --class iceweasel)
   eval "$(xdotool getwindowgeometry --shell "$window")"
   xdotool mousemove --window "$window" $((WIDTH - 15)) $((HEIGHT - 15)) click 1
@@ -34,7 +34,7 @@ case "$window_name" in
     escape_from_flash
     if [ x"$(hostname)" = x"nuc" ]; then
       xdotool key --clearmodifiers g e \
-        mousemove 1569 999 \
+        mousemove 1575 1028 \
         click 1 \
         mousemove --polar 0 0
     else
