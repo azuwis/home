@@ -5,9 +5,9 @@ function auto_video_stereo_mode()
     return
   end
   local stereo_mode = nil
-  if string.match(path, "%W[Hh][Aa]?[Ll]?[Ff]?-? ?[Ss][Bb][Ss]") then
+  if string.match(path, "%W[Hh][Aa]?[Ll]?[Ff]?-? ?[Ss][Bb][Ss]%W") then
     stereo_mode = "sbs2l"
-  elseif string.match(path, "%W[Hh][Aa]?[Ll]?[Ff]?-? ?[Oo][Uu]") then
+  elseif string.match(path, "%W[Hh][Aa]?[Ll]?[Ff]?-? ?[Oo][Uu]%W") then
     stereo_mode = "ab2l"
   end
   if stereo_mode then
