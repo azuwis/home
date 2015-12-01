@@ -25,7 +25,7 @@ XTerm*termName           : xterm-256color
 XTerm*VT100.geometry     : 140x45
 XTerm*utf8               : 2
 XTerm*faceName           : Cousine
-XTerm*faceNameDoublesize : WenQuanYi Micro Hei Mono
+XTerm*faceNameDoublesize : Noto Sans Mono CJK SC
 XTerm*faceSize           : 11
 XTerm*scrollTtyOutput    : false
 XTerm*scrollKey          : true
