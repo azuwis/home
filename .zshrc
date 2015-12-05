@@ -43,28 +43,28 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # generate hosts from ansible
 # set ansible_hostfiles in ~/.zshenv
 # e.g ansible_hostfiles=( ~/ansible/playbook1/hosts ~/ansible/playbook2/hosts )
-local hosts_cache=~/.zsh_hosts_cache
-local -a ansible_hostfiles_new
-for hostfile in $ansible_hostfiles
-do
-    if [ ! -e $hosts_cache -o "$hostfile" -nt $hosts_cache ]; then
-        ansible_hostfiles_new=( $ansible_hostfiles_new $hostfile )
-    fi
-done
-if [ "$#ansible_hostfiles_new" -gt 0 ]; then
-    echo -n > $hosts_cache
-    for hostfile in $ansible_hostfiles
-    do
-        local ansible_dir=$(dirname $hostfile)
-        pushd "$ansible_dir" >& /dev/null
-        ansible \* --inventory-file="$hostfile" --list-hosts | sed -e 's/ //g' >> $hosts_cache
-        popd
-    done
-fi
-zmodload zsh/mapfile
-local hosts
-hosts=( "${(f)mapfile[$hosts_cache]}" )
-zstyle ':completion:*:*:*' hosts $hosts
+# local hosts_cache=~/.zsh_hosts_cache
+# local -a ansible_hostfiles_new
+# for hostfile in $ansible_hostfiles
+# do
+#     if [ ! -e $hosts_cache -o "$hostfile" -nt $hosts_cache ]; then
+#         ansible_hostfiles_new=( $ansible_hostfiles_new $hostfile )
+#     fi
+# done
+# if [ "$#ansible_hostfiles_new" -gt 0 ]; then
+#     echo -n > $hosts_cache
+#     for hostfile in $ansible_hostfiles
+#     do
+#         local ansible_dir=$(dirname $hostfile)
+#         pushd "$ansible_dir" >& /dev/null
+#         ansible \* --inventory-file="$hostfile" --list-hosts | sed -e 's/ //g' >> $hosts_cache
+#         popd
+#     done
+# fi
+# zmodload zsh/mapfile
+# local hosts
+# hosts=( "${(f)mapfile[$hosts_cache]}" )
+# zstyle ':completion:*:*:*' hosts $hosts
 # short function and alias
 ap() {
     ansible-playbook "$@"
