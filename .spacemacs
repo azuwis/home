@@ -339,6 +339,7 @@ layers configuration. You are free to put any user code."
             mu4e-update-interval 300
             mu4e-sent-messages-behavior 'delete
             mu4e-view-show-images t
+            mu4e-view-show-addresses t
             ;; Show related mails in search
             mu4e-headers-include-related t
             mu4e-html2text-command 'mu4e-shr2text
