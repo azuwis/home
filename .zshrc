@@ -131,9 +131,6 @@ if [ ! -d ~/.antigen ]; then
 fi
 source ~/.antigen/antigen/antigen.zsh
 
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-
 # Substring search
 antigen bundle zsh-users/zsh-history-substring-search
 # Bind UP and DOWN arrow keys
@@ -159,3 +156,8 @@ antigen bundle sindresorhus/pure
 
 # Tell antigen that you're done.
 antigen apply
+
+syntax_highlighting="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+if [ -e "$syntax_highlighting" ]; then
+    source "$syntax_highlighting"
+fi
