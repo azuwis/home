@@ -40,6 +40,7 @@ values."
      ansible
      clojure
      eyebrowse
+     mu4e
      python
      ranger
      yaml
@@ -138,7 +139,7 @@ values."
    ;; (default 'cache)
    dotspacemacs-auto-save-file-location 'cache
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
-   dotspacemacs-max-rollback-slots 5
+   dotspacemacs-max-rollback-slots 2
    ;; If non nil then `ido' replaces `helm' for some commands. For now only
    ;; `find-files' (SPC f f), `find-spacemacs-file' (SPC f e s), and
    ;; `find-contrib-file' (SPC f e c) are replaced. (default nil)
@@ -315,19 +316,30 @@ layers configuration. You are free to put any user code."
         message-sendmail-f-is-evil t)
 
   ;; Mu4e
-  (use-package mu4e
-    :defer t
-    :commands mu4e
-    :init
-    (evil-leader/set-key "am" 'mu4e)
-    :config
+  (spacemacs|use-package-add-hook mu4e
+    :post-config
     (progn
+      ;; Accounts
+      (setq mu4e-account-alist
+            '(("gmail"
+               (user-full-name "Zhong Jianxin")
+               (user-mail-address "azuwis@gmail.com")
+               (mu4e-sent-folder "/gmail/sent")
+               (mu4e-drafts-folder "/gmail/drafts"))
+              ))
+      (mu4e/mail-account-reset)
+      ;; My Email addresses
+      ;; https://github.com/jonEbird/dotfiles/blob/master/.emacs.d/my_configs/email_config.el
+      (setq mu4e-user-mail-address-list (mapcar (lambda (account) (cadr (assq 'user-mail-address account)))
+                                                mu4e-account-alist))
+
       (setenv "XAPIAN_CJK_NGRAM" "1")
       (require 'mu4e-contrib)
       (setq mu4e-get-mail-command "mbsync -a"
             mu4e-update-interval 300
             mu4e-sent-messages-behavior 'delete
             mu4e-view-show-images t
+            mu4e-view-show-addresses t
             ;; Show related mails in search
             mu4e-headers-include-related t
             mu4e-html2text-command 'mu4e-shr2text
@@ -342,50 +354,6 @@ layers configuration. You are free to put any user code."
             message-kill-buffer-on-exit t)
       ;; (when (fboundp 'imagemagick-register-types)
       ;;   (imagemagick-register-types))
-      (add-to-list 'mu4e-view-actions
-                   '("browser view" . mu4e-action-view-in-browser) t)
-      (add-to-list 'mu4e-view-actions
-                   '("toggle html" . (lambda (MSG) (my-mu4e-view-toggle-html))) t)
-
-      ;; Multiple accounts
-      ;; http://www.djcbsoftware.nl/code/mu/mu4e/Multiple-accounts.html
-      (defvar my-mu4e-account-alist
-        '(("gmail"
-           (user-full-name "Zhong Jianxin")
-           (user-mail-address "azuwis@gmail.com")
-           (mu4e-sent-folder "/gmail/sent")
-           (mu4e-drafts-folder "/gmail/drafts"))
-          ))
-      ;; https://github.com/jonEbird/dotfiles/blob/master/.emacs.d/my_configs/email_config.el
-      (setq mu4e-user-mail-address-list (mapcar (lambda (account) (cadr (assq 'user-mail-address account)))
-                                          my-mu4e-account-alist))
-      (defun my-mu4e-set-account ()
-        "Set the account for composing a message."
-        (let* ((account
-                (if mu4e-compose-parent-message
-                    (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
-                      (string-match "/\\(.*?\\)/" maildir)
-                      (match-string 1 maildir))
-                  (completing-read (format "Compose with account: (%s) "
-                                           (mapconcat #'(lambda (var) (car var))
-                                                      my-mu4e-account-alist "/"))
-                                   (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
-                                   nil t nil nil (caar my-mu4e-account-alist))))
-               (account-vars (cdr (assoc account my-mu4e-account-alist))))
-          (if account-vars
-              (mapc #'(lambda (var)
-                        (set (car var) (cadr var)))
-                    account-vars)
-            (error "No email account found"))))
-      (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
-
-      ;; Init default account and reset when compose
-      (defun my-mu4e-reset-account ()
-        (mapc #'(lambda (var)
-                  (set (car var) (cadr var)))
-              (cdr (car my-mu4e-account-alist))))
-      (my-mu4e-reset-account)
-      (add-hook 'mu4e-compose-mode-hook 'my-mu4e-reset-account)
 
       ;; Desktop notification
       ;; http://www.tokle.us/tools/2014/06/28/taking-email-offline-ii/
@@ -407,27 +375,16 @@ layers configuration. You are free to put any user code."
                      "html view"
                    "text view"))
         (mu4e-view-refresh))
+      (add-to-list 'mu4e-view-actions
+                   '("toggle html" . (lambda (MSG) (my-mu4e-view-toggle-html))) t)
 
       ;; Org-mu4e
       ;; http://www.brool.com/index.php/using-mu4e
       (require 'org-mu4e)
       (setq org-mu4e-convert-to-html t)
       (defalias 'org-mail 'org-mu4e-compose-org-mode)
-
-      ;; Evilify
-      (evilify mu4e-main-mode mu4e-main-mode-map
-               "f" 'mu4e~headers-jump-to-maildir)
-      (evilify mu4e-headers-mode mu4e-headers-mode-map
-               "f" 'mu4e~headers-jump-to-maildir
-               "J" 'mu4e-headers-view-message
-               "K" 'mu4e-headers-view-message)
-      (evilify mu4e-view-mode mu4e-view-mode-map
-               "f" 'mu4e~headers-jump-to-maildir
-               "J" 'mu4e-view-headers-next
-               "K" 'mu4e-view-headers-prev)
-      )
-    )
-)
+      ))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

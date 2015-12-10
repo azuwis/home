@@ -253,8 +253,8 @@ Plug 'bling/vim-airline'
 let g:bufferline_echo = 0
 Plug 'bling/vim-bufferline'
 
-" zenburn
-Plug 'jnurmine/Zenburn'
+" gruvbox
+Plug 'morhetz/gruvbox'
 
 " undotree
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
@@ -334,7 +334,8 @@ call plug#end()
 " Ending configs {{{1
 " colorscheme
 try
-  colorscheme zenburn
+  set bg=dark
+  colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme slate
 endtry
