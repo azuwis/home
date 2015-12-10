@@ -108,6 +108,9 @@ XF86MenuKB
 @XF86Back
   xdotool key Shift+Insert
 
+@XF86HomePage
+  ~/.config/i3/focus-back
+
 XF86Audio{Mute,LowerVolume,RaiseVolume}
   ~/.config/bspwm/adjust volume {toggle,3%-,3%+}
 
