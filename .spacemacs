@@ -41,6 +41,7 @@ values."
      clojure
      eyebrowse
      github
+     lua
      mu4e
      python
      ranger
