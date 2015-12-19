@@ -40,6 +40,7 @@ values."
      ansible
      clojure
      eyebrowse
+     github
      mu4e
      python
      ranger
