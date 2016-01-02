@@ -226,6 +226,10 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost any
 user code here.  The exception is org related code, which should be placed in
 `dotspacemacs/user-config'."
+  ;; manually set tramp-ssh-controlmaster-options to avoid hanging
+  ;; https://github.com/emacs-helm/helm/issues/1000#issuecomment-119487649
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   )
 
 (defun dotspacemacs/user-config ()
@@ -243,10 +247,6 @@ layers configuration. You are free to put any user code."
   (setq require-final-newline t)
   ;; faster tramp
   (setq tramp-default-method "ssh")
-  ;; manually set tramp-ssh-controlmaster-options to avoid hanging
-  ;; https://github.com/emacs-helm/helm/issues/1000#issuecomment-119487649
-  (setq tramp-ssh-controlmaster-options
-        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 
   ;; Display
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
