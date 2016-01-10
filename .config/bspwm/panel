@@ -89,8 +89,8 @@ loadavg() {
 
 disk() {
     local diskinfo
-    diskinfo="$(df --human-readable --output=avail "${HOME}")"
-    echo " ${diskinfo#* }"
+    diskinfo="$(df --human-readable --output=avail "${HOME}" | tail -n1)"
+    echo " ${diskinfo}"
 }
 
 temp_input="$(find /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input 2>/dev/null | head -n1)"
