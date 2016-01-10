@@ -24,6 +24,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      (auto-completion :variables
+                      auto-completion-return-key-behavior nil
                       auto-completion-show-snippets-in-popup t)
      better-defaults
      emacs-lisp
