@@ -155,7 +155,7 @@ sysinfo() {
         test x"${enable_essid}" = x"true" && sysinfo="${sysinfo}$(essid) "
         test x"${enable_battery}" = x"true" && sysinfo="${sysinfo}$(battery) "
         test x"${enable_temp}" = x"true" && sysinfo="${sysinfo}$(temp) "
-        sysinfo="${sysinfo} $(disk) $(loadavg) $(clock)"
+        sysinfo="${sysinfo} $(disk) $(loadavg) %{A:gsimplecal &:}$(clock)%{A}"
         echo "${sysinfo}"
         sleep 10
     done
