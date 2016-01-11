@@ -49,7 +49,7 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+r $exec rofi -show run
+bindsym $mod+space $exec rofi -show run
 
 # change focus
 bindsym $mod+$left focus left
@@ -93,7 +93,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+d focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -227,6 +227,19 @@ assign [class="^Chromium"] 3
 for_window [class="^Goldendict"] floating enable
 
 # Key binding
+set $run_mode Chromium, Emacs, Firefox, Wallpaper
+set $nexec mode "default"; exec --no-startup-id sh -c 'notify-send --urgency=low "Starting $1..." && exec "$1" 2>/dev/null' --
+mode "$run_mode" {
+        bindsym c $nexec chromium
+        bindsym e $nexec emacs
+        bindsym f $nexec firefox
+        bindsym w $nexec wallpaper
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "$run_mode"
+
 bindsym $mod+c move absolute position center
 bindsym $mod+u [urgent="oldest"] focus
 bindsym $mod+p $exec xfce4-popup-clipman
@@ -238,6 +251,16 @@ bindsym $mod+Shift+u $exec x-terminal-emulator --title='Floating: pum' --geometr
 bindsym $mod+Shift+p $exec /usr/share/doc/pass/examples/dmenu/passmenu --type
 bindsym XF86MenuKB $exec quick-menu
 bindsym $mod+Escape $exec $scripts/focus-back -e
+# volume
+bindsym XF86AudioMute $exec $scripts/adjust volume toggle
+bindsym XF86AudioLowerVolume $exec $scripts/adjust volume 3%-
+bindsym XF86AudioRaiseVolume $exec $scripts/adjust volume 3%+
+# backlight
+bindsym XF86MonBrightnessDown $exec $scripts/adjust backlight -3
+bindsym XF86MonBrightnessUp $exec $scripts/adjust backlight +3
+# kbdlight
+bindsym XF86KbdBrightnessDown $exec $scripts/adjust kbdlight -10
+bindsym XF86KbdBrightnessUp $exec $scripts/adjust kbdlight +10
 # --release is needed or xdotool will not work
 bindsym --release $mod+m $exec $scripts/focus-back
 bindsym --release XF86HomePage $exec $scripts/focus-back
