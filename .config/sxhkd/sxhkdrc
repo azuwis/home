@@ -109,16 +109,16 @@ XF86MenuKB
   xdotool key Shift+Insert
 
 @XF86HomePage
-  ~/.config/i3/focus-back
+  ~/.local/bin/focus-back
 
 XF86Audio{Mute,LowerVolume,RaiseVolume}
-  ~/.config/bspwm/adjust volume {toggle,3%-,3%+}
+  ~/.local/bin/adjust volume {toggle,3%-,3%+}
 
 XF86MonBrightness{Up,Down}
-  ~/.config/bspwm/adjust backlight {+3,-3}
+  ~/.local/bin/adjust backlight {+3,-3}
 
 XF86KbdBrightness{Up,Down}
-  ~/.config/bspwm/adjust kbdlight {+10,-10}
+  ~/.local/bin/adjust kbdlight {+10,-10}
 
 super + {_,shift + }XF86Eject
   {xautolock -locknow,sudo systemctl suspend}
