@@ -211,7 +211,7 @@ for_window [class="^mpv"] floating enable
 for_window [class="^feh"] floating enable
 for_window [class="^Assword"] floating enable
 for_window [class="^Screenkey"] floating enable border none
-for_window [class="^Key-mony"] floating enable border none
+for_window [class="^Key-mon"] floating enable border none
 for_window [class="^XTerm" title="^Floating:"] floating enable
 for_window [class="^LXTerminal" title="^Floating:"] floating enable
 for_window [class="^X-terminal-emulator" title="^Floating:"] floating enable
