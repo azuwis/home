@@ -307,7 +307,7 @@ layers configuration. You are free to put any user code."
     :defer t
     :commands howdoi-query
     :init
-    (evil-leader/set-key "ah" 'howdoi-query))
+    (spacemacs/set-leader-keys "a h" 'howdoi-query))
 
   ;; Ranger
   (setq ranger-cleanup-eagerly t)
