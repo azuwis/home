@@ -383,7 +383,7 @@ layers configuration. You are free to put any user code."
 
       ;; Org-mu4e
       ;; http://www.brool.com/index.php/using-mu4e
-      (require 'org-mu4e)
+      ;; (require 'org-mu4e)
       (setq org-mu4e-convert-to-html t)
       (defalias 'org-mail 'org-mu4e-compose-org-mode)
       ))
