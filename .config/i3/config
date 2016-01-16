@@ -209,6 +209,7 @@ client.urgent            $rd  $rd  $tx
 # finds out, if available)
 bar {
         position top
+        tray_output none
         # strip_workspace_numbers yes
         i3bar_command exec i3bar
         status_command exec ~/.config/i3/net-speed
