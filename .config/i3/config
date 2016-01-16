@@ -250,7 +250,7 @@ for_window [class="^Goldendict"] floating enable
 
 # Key binding
 set $run_mode Chromium, Emacs, Firefox, Wallpaper
-set $nexec mode "default"; exec --no-startup-id sh -c 'notify-send --urgency=low "Starting $1..." && exec "$1" 2>/dev/null' --
+set $nexec mode "default"; exec --no-startup-id exec sh -c 'notify-send --urgency=low "Starting $1..." && exec "$1" 2>/dev/null' --
 mode "$run_mode" {
         bindsym c $nexec chromium
         bindsym e $nexec emacs
