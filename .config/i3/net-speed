@@ -39,7 +39,7 @@
 #ifaces="eth0 wlan0"
 
 # Auto detect
-ifaces=$(ls /sys/class/net | grep -E '^(eth|wlan)')
+ifaces=$(ls /sys/class/net | grep -Ev '^(lo|usb)')
 
 # Interval must be the same as in i3status.conf
 #interval=5
@@ -78,11 +78,11 @@ update_rate() {
     local rx=0
     local tx=0
     for iface in $ifaces; do
-        local tmp_rx
-        local tmp_tx
+        local tmp_rx=0
+        local tmp_tx=0
         local stat="/sys/class/net/${iface}/statistics"
-        read tmp_rx < "${stat}/rx_bytes"
-        read tmp_tx < "${stat}/tx_bytes"
+        test -d "$stat" && read tmp_rx < "${stat}/rx_bytes"
+        test -d "$stat" && read tmp_tx < "${stat}/tx_bytes"
         rx=$(( rx + tmp_rx ))
         tx=$(( tx + tmp_tx ))
     done
