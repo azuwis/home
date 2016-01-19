@@ -31,6 +31,9 @@ wireless wlan0 {
 battery 0 {
     format = "<span style='normal'>%status</span> %percentage %remaining %consumption"
     integer_battery_capacity = true
+    hide_seconds = true
+    low_threshold = 30
+    threshold_type = percentage
     status_chr = " "
     status_bat = ""
     status_full = ""
