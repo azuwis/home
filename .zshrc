@@ -152,7 +152,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 antigen bundle zsh-users/zsh-completions
 
 # Colorful manpage
-antigen bundle colored-man
+#antigen bundle colored-man
 
 # Pure prompt
 PURE_GIT_PULL=0
