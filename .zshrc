@@ -81,6 +81,10 @@ if [ -n "$TMUX" ]; then
     }
 fi
 
+# Pager
+export PAGER="less"
+export LESS="-isMR# 5"
+
 # Editor
 export EDITOR="emacsclient"
 export ALTERNATE_EDITOR="vim"
