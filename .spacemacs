@@ -309,6 +309,13 @@ layers configuration. You are free to put any user code."
     :init
     (spacemacs/set-leader-keys "a h" 'howdoi-query))
 
+  ;; FontAwesome
+  ;; (use-package fontawesome
+  ;;   :defer t
+  ;;   :commands helm-fontawesome
+  ;;   :init
+  ;;   (spacemacs/set-leader-keys "a f" 'helm-fontawesome))
+
   ;; Ranger
   (setq ranger-cleanup-eagerly t)
 
