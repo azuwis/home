@@ -83,7 +83,7 @@ fi
 
 # Pager
 export PAGER="less"
-export LESS="-isMR# 5"
+export LESS="-isMR# 10"
 
 # Editor
 export EDITOR="emacsclient"
