@@ -3,4 +3,4 @@
 # More at https://www.reddit.com/r/unixporn/comments/3358vu/i3lock_unixpornworthy_lock_screen/
 
 (sleep 3; xset dpms force off) &
-i3lock -u -i <(import -screen -window root -silent png:- | convert png:- -scale 10% -scale 1000% png:-)
+i3lock -u -i <(import -screen -window root -silent png:- | convert png:- -scale 16% -scale 625% png:-)
