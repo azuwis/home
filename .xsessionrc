@@ -24,7 +24,6 @@ run syndaemon -R -t -k -i 0.25
 # Auto start
 run xfce4-clipman
 run devmon
-run xautolock -time 30 -locker 'i3lock --color=000000'
 run goldendict >/dev/null 2>&1
 if [ -d ~/src/cross-notify ]; then
     if ! tmux -L autostart ls >/dev/null 2>&1; then
@@ -55,4 +54,5 @@ else
     # NUC excluded settings
     # Auto ajust color temperature according to current time
     run redshift
+    run xautolock
 fi
