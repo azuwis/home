@@ -268,8 +268,8 @@ bindsym $mod+c move absolute position center
 bindsym $mod+u [urgent="oldest"] focus
 bindsym $mod+p $exec xfce4-popup-clipman
 bindsym $mod+Tab workspace back_and_forth
-bindsym Print $exec xautolock -locknow
-bindsym $mod+XF86Eject $exec xautolock -locknow
+bindsym Print $exec $scripts/lockx
+bindsym $mod+XF86Eject $exec $scripts/lockx
 bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
 bindsym $mod+Shift+u $exec x-terminal-emulator --title='Floating: pum' --geometry=48x15 -e pum
 # bindsym $mod+Shift+p $exec assword gui
