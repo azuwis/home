@@ -5,4 +5,4 @@
 lock_image=$(dirname "$0")/lock.png
 
 (sleep 3; xset dpms force off) &
-i3lock -u -i <(import -screen -window root -silent png:- | convert png:- -scale 16% -scale 625% "$lock_image" -gravity center -composite -matte png:-)
+i3lock -u -i <(convert x:root -scale 16% -scale 625% "$lock_image" -gravity center -composite -matte png:-)
