@@ -5,5 +5,4 @@
 lock_image=$(dirname "$0")/lock.png
 
 i3lock -u -i <(convert x:root -scale 16% -scale 625% "$lock_image" -gravity center -composite -matte png:-)
-sleep 60
-pgrep -x i3lock >&/dev/null && xset dpms force off
+(sleep 60 && pgrep -x i3lock >&/dev/null && xset dpms force off) &
