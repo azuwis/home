@@ -212,7 +212,7 @@ bar {
         tray_output none
         # strip_workspace_numbers yes
         i3bar_command exec i3bar
-        status_command exec ~/.config/i3/net-speed
+        status_command exec ~/.config/i3status/net-speed
         colors {
                 background          $bg
                 statusline          $fg
