@@ -50,7 +50,7 @@ fi
 if [ x"$(hostname)" = x"nuc" ]; then
     # No blank screen for NUC
     xset -dpms s noblank s off
-else
+#else
     # NUC excluded settings
     # run xautolock
     # Auto ajust color temperature according to current time
