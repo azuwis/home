@@ -258,7 +258,7 @@ mode "$run_mode" {
         bindsym c $nexec chromium
         bindsym e $nexec emacs
         bindsym f $nexec firefox
-        bindsym w $nexec wallpaper
+        bindsym w $nexec $scripts/wallpaper
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -275,7 +275,7 @@ bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
 bindsym $mod+Shift+u $exec x-terminal-emulator --title='Floating: pum' --geometry=48x15 -e pum
 # bindsym $mod+Shift+p $exec assword gui
 bindsym $mod+Shift+p $exec /usr/share/doc/pass/examples/dmenu/passmenu --type
-bindsym XF86MenuKB $exec quick-menu
+bindsym XF86MenuKB $exec $scripts/quick-menu
 bindsym $mod+Escape $exec $scripts/focus-back -e
 # volume
 bindsym XF86AudioMute $exec $scripts/adjust volume toggle
