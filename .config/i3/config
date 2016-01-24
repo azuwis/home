@@ -251,9 +251,10 @@ assign [class="^Chromium"] $ws3
 for_window [class="^Goldendict"] floating enable
 
 # Key binding
-set $run_mode Chromium, Emacs, Firefox, Wallpaper
-set $nexec mode "default"; exec --no-startup-id exec sh -c 'notify-send --urgency=low "Starting $1..." && exec "$1" 2>/dev/null' --
+set $run_mode Ansible, Chromium, Emacs, Firefox, Wallpaper
+set $nexec mode "default"; exec --no-startup-id exec sh -c 'notify-send --urgency=low "Starting $(basename "$1")..." && exec "$1" 2>/dev/null' --
 mode "$run_mode" {
+        bindsym a $nexec $scripts/ansible-menu
         bindsym c $nexec chromium
         bindsym e $nexec emacs
         bindsym f $nexec firefox
