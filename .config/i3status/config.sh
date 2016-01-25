@@ -1,8 +1,5 @@
 #!/bin/sh
 
-wireless_iface=$(/sbin/iwgetid)
-wireless_iface=${wireless_iface%% *}
-
 temperature_path=$(ls -1 /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input | head -n 1)
 
 cat >"${0%.sh}" <<EOF
@@ -16,7 +13,7 @@ general {
     color_degraded = "#b58900"
 }
 
-order += "wireless ${wireless_iface}"
+order += "wireless _first_"
 order += "battery 0"
 order += "cpu_temperature 0"
 order += "cpu_usage"
@@ -29,7 +26,7 @@ disk "/" {
     format = "<span style='normal'></span> <span style='italic'>%avail</span>"
 }
 
-wireless ${wireless_iface} {
+wireless _first_ {
     format_up = "<span style='normal'></span> %essid %quality"
     format_down = "<span style='normal'></span> Off"
     color_good = "#9f9f9f"
@@ -37,7 +34,7 @@ wireless ${wireless_iface} {
 }
 
 battery 0 {
-    format = "<span style='normal'>%status</span> %percentage %remaining %consumption"
+    format = "<span style='normal'>%status</span> %percentage %remaining"
     integer_battery_capacity = true
     hide_seconds = true
     low_threshold = 30
