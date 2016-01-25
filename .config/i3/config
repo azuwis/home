@@ -189,20 +189,20 @@ bindsym $mod+x mode "Resize"
 
 # Zenburn color
 # https://github.com/andreatta/config/blob/master/i3/config
-set $bg #3f3f3f
+set $bg #202227
 set $fg #9f9f9f
 set $hi #efef8f
 set $ac #a0afa0
 set $tx #040404
-set $ia #8f8f8f
+set $ia #606060
 set $be #8faf9f
 set $yw #ccdc90
 set $gn #88b090
 set $rd #e89393
 
-client.focused           $ac  $ac  $tx
+client.focused           $bg  $bg  $fg
 client.unfocused         $bg  $bg  $ia
-client.focused_inactive  $bg  $bg  $ac
+client.focused_inactive  $bg  $bg  $ia
 client.urgent            $rd  $rd  $tx
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -217,11 +217,12 @@ bar {
         colors {
                 background          $bg
                 statusline          $fg
-                separator           $hi
-                focused_workspace   $gn  $bg  $ac
+                separator           $bg
+                focused_workspace   $bg  $bg  $hi
                 active_workspace    $gn  $ac  $tx
-                inactive_workspace  $bg  $bg  $ia
-                urgent_workspace    $rd  $bg  $ac
+                inactive_workspace  $bg  $bg  $fg
+                urgent_workspace    $bg  $bg  $rd
+                binding_mode        $bg  $bg  $fg
         }
 }
 
