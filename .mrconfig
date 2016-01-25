@@ -64,7 +64,7 @@ skip = ! test -d /usr/share/doc/fcitx-rime
 checkout = git clone 'https://github.com/azuwis/cross-notify.git' 'cross-notify'
 skip = ! workstation
 
-[src/pc]
+[src/ansible-pc]
 checkout = git clone 'https://github.com/azuwis/ansible-pc.git' 'ansible-pc'
 skip = ! workstation
 
