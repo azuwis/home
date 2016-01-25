@@ -185,7 +185,7 @@ mode "Resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+x mode "resize"
+bindsym $mod+x mode "Resize"
 
 # Zenburn color
 # https://github.com/andreatta/config/blob/master/i3/config
