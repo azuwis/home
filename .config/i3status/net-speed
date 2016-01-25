@@ -97,7 +97,7 @@ update_rate() {
 #     sleep "$interval"
 # done
 
-${0%net-speed}/config.sh
+"$(dirname "$0")"/config.sh
 i3status | (read line && echo "$line" && read line && echo "$line" && read line && echo "$line" && update_rate && while :
 do
     read line
