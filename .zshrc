@@ -2,25 +2,13 @@
 # see http://www.emacswiki.org/emacs/TrampMode#toc8
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
-# Set up the prompt
-
-autoload -Uz promptinit
-promptinit
-
+# History
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
 setopt histignorealldups sharehistory
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
-
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=20000
-SAVEHIST=20000
-HISTFILE=~/.zsh_history
-
-# Use modern completion system
-autoload -Uz compinit
-compinit
-
+# Completion
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -70,7 +58,6 @@ ap() {
     ansible-playbook "$@"
 }
 alias apl='ap --list-tasks --list-hosts'
-
 
 # Set title for ssh in tmux
 if [ -n "$TMUX" ]; then
@@ -128,15 +115,26 @@ test $TERM = "xterm" && {
     xtermcontrol --file=~/.config/xtermcontrol/zenburn.conf
 }
 
-# Antigen
-if [ ! -d ~/.antigen ]; then
-    mkdir ~/.antigen
-    git clone https://github.com/zsh-users/antigen.git ~/.antigen/antigen
+# Zgen
+source /usr/share/zgen/zgen.zsh
+
+if ! zgen saved; then
+    echo "Creating a zgen save"
+
+    # Substring search
+    zgen load zsh-users/zsh-history-substring-search
+    # More completions
+    zgen load zsh-users/zsh-completions src
+    # Pure prompt
+    zgen load mafredri/zsh-async
+    zgen load sindresorhus/pure
+    # Syntax highlight
+    zgen load /usr/share/zsh-syntax-highlighting
+
+    zgen save
 fi
-source ~/.antigen/antigen/antigen.zsh
 
 # Substring search
-antigen bundle zsh-users/zsh-history-substring-search
 # Bind UP and DOWN arrow keys
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -148,20 +146,5 @@ bindkey -M emacs '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-# More completions
-antigen bundle zsh-users/zsh-completions
-
-# Colorful manpage
-#antigen bundle colored-man
-
 # Pure prompt
 PURE_GIT_PULL=0
-antigen bundle sindresorhus/pure
-
-# Tell antigen that you're done.
-antigen apply
-
-syntax_highlighting="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-if [ -e "$syntax_highlighting" ]; then
-    source "$syntax_highlighting"
-fi
