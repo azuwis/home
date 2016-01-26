@@ -1,3 +1,8 @@
+#!/bin/sh
+
+temperature_path=$(ls -1 /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input | head -n 1)
+
+cat >"${0%.sh}" <<EOF
 general {
     colors = true
     interval  = 5
@@ -8,12 +13,12 @@ general {
     color_degraded = "#b58900"
 }
 
-order += "disk /"
-order += "wireless wlan0"
+order += "wireless _first_"
 order += "battery 0"
 order += "cpu_temperature 0"
 order += "cpu_usage"
 order += "tztime local"
+# order += "disk /"
 # order += "load"
 # order += "volume Master"
 
@@ -21,7 +26,7 @@ disk "/" {
     format = "<span style='normal'></span> <span style='italic'>%avail</span>"
 }
 
-wireless wlan0 {
+wireless _first_ {
     format_up = "<span style='normal'></span> %essid %quality"
     format_down = "<span style='normal'></span> Off"
     color_good = "#9f9f9f"
@@ -29,8 +34,11 @@ wireless wlan0 {
 }
 
 battery 0 {
-    format = "<span style='normal'>%status</span> %percentage %remaining %consumption"
+    format = "<span style='normal'>%status</span> %percentage %remaining"
     integer_battery_capacity = true
+    hide_seconds = true
+    low_threshold = 30
+    threshold_type = percentage
     status_chr = " "
     status_bat = ""
     status_full = ""
@@ -38,7 +46,7 @@ battery 0 {
 
 cpu_temperature 0 {
     format = "<span style='normal'></span> %degrees°C"
-    # path = "/sys/devices/platform/applesmc.768/temp5_input"
+    path = "$temperature_path"
 }
 
 cpu_usage {
@@ -60,3 +68,4 @@ volume Master {
     format_muted = "<span style='normal'></span> %volume"
     mixer = "Master"
 }
+EOF

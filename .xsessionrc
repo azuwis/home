@@ -19,12 +19,11 @@ test -r $wallpaper && run hsetroot -cover $wallpaper
 # Touchpad see synaptics(4)
 run synclient TapButton1=1 TapButton2=3 TapButton3=2 LockedDrags=1 LockedDragTimeout=2000 VertScrollDelta=100 PalmDetect=1
 # Disable touchpad when keyboard is being used
-run syndaemon -R -t -k -i 0.25
+run syndaemon -R -t -k -i 1
 
 # Auto start
 run xfce4-clipman
 run devmon
-run xautolock -time 30 -locker 'i3lock --color=000000'
 run goldendict >/dev/null 2>&1
 if [ -d ~/src/cross-notify ]; then
     if ! tmux -L autostart ls >/dev/null 2>&1; then
@@ -51,8 +50,9 @@ fi
 if [ x"$(hostname)" = x"nuc" ]; then
     # No blank screen for NUC
     xset -dpms s noblank s off
-else
+#else
     # NUC excluded settings
+    # run xautolock
     # Auto ajust color temperature according to current time
-    run redshift
+    # run redshift
 fi

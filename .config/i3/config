@@ -162,7 +162,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exit
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
+mode "Resize" {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -185,24 +185,24 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+x mode "resize"
+bindsym $mod+x mode "Resize"
 
 # Zenburn color
 # https://github.com/andreatta/config/blob/master/i3/config
-set $bg #3f3f3f
+set $bg #202227
 set $fg #9f9f9f
 set $hi #efef8f
 set $ac #a0afa0
 set $tx #040404
-set $ia #8f8f8f
+set $ia #606060
 set $be #8faf9f
 set $yw #ccdc90
 set $gn #88b090
 set $rd #e89393
 
-client.focused           $ac  $ac  $tx
+client.focused           $bg  $bg  $fg
 client.unfocused         $bg  $bg  $ia
-client.focused_inactive  $bg  $bg  $ac
+client.focused_inactive  $bg  $bg  $ia
 client.urgent            $rd  $rd  $tx
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -210,17 +210,19 @@ client.urgent            $rd  $rd  $tx
 bar {
         position top
         tray_output none
+        # mode hide
         # strip_workspace_numbers yes
         i3bar_command exec i3bar
-        status_command exec ~/.config/i3/net-speed
+        status_command exec ~/.config/i3status/net-speed
         colors {
                 background          $bg
                 statusline          $fg
-                separator           $hi
-                focused_workspace   $gn  $bg  $ac
+                separator           $bg
+                focused_workspace   $bg  $bg  $hi
                 active_workspace    $gn  $ac  $tx
-                inactive_workspace  $bg  $bg  $ia
-                urgent_workspace    $rd  $bg  $ac
+                inactive_workspace  $bg  $bg  $fg
+                urgent_workspace    $bg  $bg  $rd
+                binding_mode        $bg  $bg  $fg
         }
 }
 
@@ -233,6 +235,7 @@ hide_edge_borders both
 for_window [class="^mpv"] floating enable
 for_window [class="^feh"] floating enable
 for_window [class="^Assword"] floating enable
+for_window [class="^Gpick"] floating enable
 for_window [class="^Screenkey"] floating enable border none
 for_window [class="^Key-mon"] floating enable border none
 for_window [class="^XTerm" title="^Floating:"] floating enable
@@ -250,13 +253,14 @@ assign [class="^Chromium"] $ws3
 for_window [class="^Goldendict"] floating enable
 
 # Key binding
-set $run_mode Chromium, Emacs, Firefox, Wallpaper
-set $nexec mode "default"; exec --no-startup-id exec sh -c 'notify-send --urgency=low "Starting $1..." && exec "$1" 2>/dev/null' --
+set $run_mode Ansible, Chromium, Emacs, Firefox, Wallpaper
+set $nexec mode "default"; exec --no-startup-id exec sh -c 'notify-send --urgency=low "Starting $(basename "$1")..." && exec "$1" 2>/dev/null' --
 mode "$run_mode" {
+        bindsym a $nexec $scripts/ansible-menu
         bindsym c $nexec chromium
         bindsym e $nexec emacs
         bindsym f $nexec firefox
-        bindsym w $nexec wallpaper
+        bindsym w $nexec $scripts/wallpaper
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -267,12 +271,13 @@ bindsym $mod+c move absolute position center
 bindsym $mod+u [urgent="oldest"] focus
 bindsym $mod+p $exec xfce4-popup-clipman
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+XF86Eject $exec xautolock -locknow
+bindsym Print $exec $scripts/lockx
+bindsym $mod+XF86Eject $exec $scripts/lockx
 bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
 bindsym $mod+Shift+u $exec x-terminal-emulator --title='Floating: pum' --geometry=48x15 -e pum
 # bindsym $mod+Shift+p $exec assword gui
 bindsym $mod+Shift+p $exec /usr/share/doc/pass/examples/dmenu/passmenu --type
-bindsym XF86MenuKB $exec quick-menu
+bindsym XF86MenuKB $exec $scripts/quick-menu
 bindsym $mod+Escape $exec $scripts/focus-back -e
 # volume
 bindsym XF86AudioMute $exec $scripts/adjust volume toggle

@@ -169,7 +169,7 @@ values."
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar t
+   dotspacemacs-loading-progress-bar nil
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
    dotspacemacs-fullscreen-at-startup nil
@@ -308,6 +308,13 @@ layers configuration. You are free to put any user code."
     :commands howdoi-query
     :init
     (spacemacs/set-leader-keys "a h" 'howdoi-query))
+
+  ;; FontAwesome
+  ;; (use-package fontawesome
+  ;;   :defer t
+  ;;   :commands helm-fontawesome
+  ;;   :init
+  ;;   (spacemacs/set-leader-keys "a f" 'helm-fontawesome))
 
   ;; Ranger
   (setq ranger-cleanup-eagerly t)

@@ -49,3 +49,9 @@ rofi.hlbg             : #dcdccc
 rofi.bc               : #5f5f5f
 rofi.bw               : 5
 rofi.levenshtein-sort : false
+
+!! Xautolock
+Xautolock.time     : 30
+Xautolock.locker   : .local/bin/lockx
+Xautolock.notify   : 30
+Xautolock.notifier : notify-send "Locking screen in 30 seconds"

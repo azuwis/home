@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+
+DMENU='rofi -dmenu'
+
+ls -1d ~/src/ansible-* | $DMENU | (
+    read dir
+    x-terminal-emulator --working-directory="$dir"
+)

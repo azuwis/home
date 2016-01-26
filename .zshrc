@@ -81,6 +81,10 @@ if [ -n "$TMUX" ]; then
     }
 fi
 
+# Pager
+export PAGER="less"
+export LESS="-isMR# 10"
+
 # Editor
 export EDITOR="emacsclient"
 export ALTERNATE_EDITOR="vim"
@@ -148,7 +152,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 antigen bundle zsh-users/zsh-completions
 
 # Colorful manpage
-antigen bundle colored-man
+#antigen bundle colored-man
 
 # Pure prompt
 PURE_GIT_PULL=0
