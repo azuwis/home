@@ -1,6 +1,6 @@
 [global]
     font = "sans 18"
-    geometry = "0x5-10+36"
+    geometry = "0x5-10+46"
     alignment = center
     padding = 12
     horizontal_padding = 15
@@ -13,7 +13,7 @@
     follow = keyboard
 
 [frame]
-    width = 5
+    width = 3
     color = "#5f5f5f"
 
 # [shortcuts]
@@ -21,17 +21,17 @@
 #     history = ctrl+shift+grave
 
 [urgency_low]
-    background = "#080808"
+    background = "#202227"
     foreground = "#dcdccc"
     timeout = 2
 
 [urgency_normal]
-    background = "#3f3f3f"
+    background = "#202227"
     foreground = "#dcdccc"
     timeout = 10
 
 [urgency_critical]
-    background = "#3f3f3f"
+    background = "#202227"
     foreground = "#f9a299"
     timeout = 0
 
