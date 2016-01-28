@@ -263,13 +263,6 @@ layers configuration. You are free to put any user code."
   ;;                           (decode-char 'ucs #x9fff))
   ;;                     "-*-WenQuanYi Micro Hei-*-*-*-*-24-*-*-*-*-*-*-*"))
 
-  ;; Dired
-  (defun dired-copy-file-here (file)
-    (interactive "Copy file here: ")
-    (copy-file file default-directory))
-  (eval-after-load "dired"
-    '(define-key dired-mode-map "c" 'dired-copy-file-here))
-
   ;; Org
   (setq org-directory "~/org")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
