@@ -28,8 +28,7 @@ values."
                       auto-completion-show-snippets-in-popup t)
      better-defaults
      emacs-lisp
-     (git :variables
-          git-magit-status-fullscreen t)
+     git
      markdown
      org
      (shell :variables
@@ -231,6 +230,8 @@ user code here.  The exception is org related code, which should be placed in
   ;; https://github.com/emacs-helm/helm/issues/1000#issuecomment-119487649
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+  ;; Magit
+  ;; (setq-default git-magit-status-fullscreen t)
   )
 
 (defun dotspacemacs/user-config ()
