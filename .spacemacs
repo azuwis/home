@@ -330,6 +330,8 @@ layers configuration. You are free to put any user code."
                (mu4e-sent-folder "/gmail/sent")
                (mu4e-drafts-folder "/gmail/drafts"))
               ))
+      (let ((mu4erc (concat user-home-directory ".mu4e.local")))
+        (if (file-exists-p mu4erc) (load mu4erc)))
       (mu4e/mail-account-reset)
       ;; My Email addresses
       ;; https://github.com/jonEbird/dotfiles/blob/master/.emacs.d/my_configs/email_config.el
