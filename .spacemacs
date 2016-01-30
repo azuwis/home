@@ -51,8 +51,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(jinja2-mode
-                                      howdoi)
+   dotspacemacs-additional-packages '(howdoi)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -284,11 +283,6 @@ layers configuration. You are free to put any user code."
 
   ;; AsciiDoc
   (add-to-list 'auto-mode-alist '("\\.asciidoc\\'" . adoc-mode))
-
-  ;; Jinja2
-  (use-package jinja2-mode
-    :defer t
-    :mode "\\.j2\\'")
 
   ;; Magit
   (global-git-commit-mode t)
