@@ -1,9 +1,3 @@
-!! Caps lock as control, disable left control
-remove Lock = Caps_Lock
-remove Control = Control_L
-keysym Caps_Lock = Control_R
-add Control = Control_R
-
 !! Map search key to win key
 ! Beware of the order, if key does not exist, error will occur and the rest
 ! will be skipped.
