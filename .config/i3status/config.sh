@@ -1,8 +1,15 @@
 #!/bin/sh
 
+config_sh="$0"
+config_file="${0%.sh}"
+
+if [ -e "$config_file" -a "$config_file" -nt "$config_sh" ]; then
+    exit 0
+fi
+
 temperature_path=$(ls -1 /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input | head -n 1)
 
-cat >"${0%.sh}" <<EOF
+cat >"$config_file" <<EOF
 general {
     colors = true
     interval  = 5
