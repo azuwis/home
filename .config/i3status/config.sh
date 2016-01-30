@@ -7,22 +7,14 @@ if [ -e "$config_file" -a "$config_file" -nt "$config_sh" ]; then
     exit 0
 fi
 
-# Wireless
-if [ -e /sbin/iwconfig -a x"$(/sbin/iwconfig 2>/dev/null)" != x ]; then
-    enable_wireless="true"
-fi
-
-# Battery
-if [ -e /sys/class/power_supply/BAT0 ]; then
-    enable_battery="true"
-fi
-
 # Temperature
 temperature_path=$(ls -1 /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input | head -n 1)
 
 (
-test x"$enable_wireless" = x"true" && echo 'order += "wireless _first_"'
-test x"$enable_battery" = x"true" && echo 'order += "battery 0"'
+# Wireless
+test -e /sbin/iwconfig -a x"$(/sbin/iwconfig 2>/dev/null)" != x && echo 'order += "wireless _first_"'
+# Battery
+test -e /sys/class/power_supply/BAT0 && echo 'order += "battery 0"'
 cat <<EOF
 order += "cpu_temperature 0"
 order += "cpu_usage"
