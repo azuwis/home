@@ -228,11 +228,11 @@ bar {
 }
 
 # Window border
-# new_window none
-new_window 1pixel
+new_window none
 hide_edge_borders both
 
 # Per app settings
+for_window [class="^X-terminal-emulator"] border 1pixel
 for_window [class="^mpv"] floating enable
 for_window [class="^feh"] floating enable
 for_window [class="^Assword"] floating enable
