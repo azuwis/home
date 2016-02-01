@@ -9,6 +9,10 @@ run() {
     test -x "/usr/bin/${cmd}" && "$@" &
 }
 
+# Auto set DPI
+# https://bugs.freedesktop.org/show_bug.cgi?id=23705#c10
+# run xrandr --fbmm $(xrandr | sed -n '/ connected / {s/.* \([0-9]\+\)mm x \([0-9]\+\)mm/\1x\2/p;q}')
+
 # Wallpaper
 wallpaper=~/wallpapers/current
 test -r $wallpaper && run hsetroot -cover $wallpaper
