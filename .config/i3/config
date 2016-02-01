@@ -239,6 +239,7 @@ for_window [class="^Assword"] floating enable
 for_window [class="^Gpick"] floating enable
 for_window [class="^Screenkey"] floating enable
 for_window [class="^Key-mon"] floating enable
+for_window [class="^Fcitx-config-gtk3$"] floating enable
 # firefox
 assign [class="^Iceweasel"] $ws2
 # google chrome
