@@ -13,7 +13,7 @@
     follow = keyboard
 
 [frame]
-    width = 3
+    width = 2
     color = "#5f5f5f"
 
 # [shortcuts]

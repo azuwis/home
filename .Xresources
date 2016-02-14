@@ -48,7 +48,7 @@ XTerm*translations       : #override \
 
 rofi.lines:            5
 rofi.width:            32
-rofi.bw:               3
+rofi.bw:               2
 rofi.separator-style:  none
 rofi.hide-scrollbar:   true
 rofi.color-enabled:    true
