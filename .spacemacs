@@ -313,76 +313,74 @@ layers configuration. You are free to put any user code."
         message-sendmail-f-is-evil t)
 
   ;; Mu4e
-  (spacemacs|use-package-add-hook mu4e
-    :post-config
-    (progn
-      ;; Accounts
-      (setq mu4e-account-alist
-            '(("gmail"
-               (user-full-name "Zhong Jianxin")
-               (user-mail-address "azuwis@gmail.com")
-               (mu4e-sent-folder "/gmail/sent")
-               (mu4e-drafts-folder "/gmail/drafts"))
-              ))
-      (let ((mu4erc (concat user-home-directory ".mu4e.local")))
-        (if (file-exists-p mu4erc) (load mu4erc)))
-      (mu4e/mail-account-reset)
-      ;; My Email addresses
-      ;; https://github.com/jonEbird/dotfiles/blob/master/.emacs.d/my_configs/email_config.el
-      (setq mu4e-user-mail-address-list (mapcar (lambda (account) (cadr (assq 'user-mail-address account)))
-                                                mu4e-account-alist))
+  (with-eval-after-load 'mu4e
+    ;; Accounts
+    (setq mu4e-account-alist
+          '(("gmail"
+             (user-full-name "Zhong Jianxin")
+             (user-mail-address "azuwis@gmail.com")
+             (mu4e-sent-folder "/gmail/sent")
+             (mu4e-drafts-folder "/gmail/drafts"))
+            ))
+    (let ((mu4erc (concat user-home-directory ".mu4e.local")))
+      (if (file-exists-p mu4erc) (load mu4erc)))
+    (mu4e/mail-account-reset)
+    ;; My Email addresses
+    ;; https://github.com/jonEbird/dotfiles/blob/master/.emacs.d/my_configs/email_config.el
+    (setq mu4e-user-mail-address-list (mapcar (lambda (account) (cadr (assq 'user-mail-address account)))
+                                              mu4e-account-alist))
 
-      (setenv "XAPIAN_CJK_NGRAM" "1")
-      (require 'mu4e-contrib)
-      (setq mu4e-get-mail-command "mbsync -a"
-            mu4e-update-interval 300
-            mu4e-sent-messages-behavior 'delete
-            mu4e-view-show-images t
-            mu4e-view-show-addresses t
-            ;; Show related mails in search
-            mu4e-headers-include-related t
-            mu4e-html2text-command 'mu4e-shr2text
-            ;; mu4e-html2text-command "w3m -dump -T text/html"
-            ;; mu4e-headers-fields '((:human-date . 12)
-            ;;                       (:flags . 6)
-            ;;                       (:mailing-list . 10)
-            ;;                       (:from-or-to . 22)
-            ;;                       (:subject))
-            mu4e-compose-dont-reply-to-self t
-            mu4e-compose-signature-auto-include nil
-            message-kill-buffer-on-exit t)
-      ;; (when (fboundp 'imagemagick-register-types)
-      ;;   (imagemagick-register-types))
+    (setenv "XAPIAN_CJK_NGRAM" "1")
+    (require 'mu4e-contrib)
+    (setq mu4e-get-mail-command "mbsync -a"
+          mu4e-update-interval 300
+          mu4e-sent-messages-behavior 'delete
+          mu4e-view-show-images t
+          mu4e-view-show-addresses t
+          ;; Show related mails in search
+          mu4e-headers-include-related t
+          mu4e-html2text-command 'mu4e-shr2text
+          ;; mu4e-html2text-command "w3m -dump -T text/html"
+          ;; mu4e-headers-fields '((:human-date . 12)
+          ;;                       (:flags . 6)
+          ;;                       (:mailing-list . 10)
+          ;;                       (:from-or-to . 22)
+          ;;                       (:subject))
+          mu4e-compose-dont-reply-to-self t
+          mu4e-compose-signature-auto-include nil
+          message-kill-buffer-on-exit t)
+    ;; (when (fboundp 'imagemagick-register-types)
+    ;;   (imagemagick-register-types))
 
-      ;; Desktop notification
-      ;; http://www.tokle.us/tools/2014/06/28/taking-email-offline-ii/
-      (defun my-mu4e-notify-new-mail ()
-        (call-process-shell-command (concat "subject=\"$(mu find flag:unread --fields s --after="
-                                            (number-to-string (- (truncate (float-time)) mu4e-update-interval))
-                                            " 2>/dev/null)\"; test -n \"$subject\" && notify-send \"New Mail\" \"$subject\" &")
-                                    nil 0))
-      (add-hook 'mu4e-index-updated-hook 'my-mu4e-notify-new-mail)
+    ;; Desktop notification
+    ;; http://www.tokle.us/tools/2014/06/28/taking-email-offline-ii/
+    (defun my-mu4e-notify-new-mail ()
+      (call-process-shell-command (concat "subject=\"$(mu find flag:unread --fields s --after="
+                                          (number-to-string (- (truncate (float-time)) mu4e-update-interval))
+                                          " 2>/dev/null)\"; test -n \"$subject\" && notify-send \"New Mail\" \"$subject\" &")
+                                  nil 0))
+    (add-hook 'mu4e-index-updated-hook 'my-mu4e-notify-new-mail)
 
-      ;; Toggle plain text and html
-      ;; https://groups.google.com/forum/#!msg/mu-discuss/u3Fy86-N-rg/zcdvIlnV0L8J
-      (defun my-mu4e-view-toggle-html ()
-        "Toggle between html and non-html views of a message. The current
+    ;; Toggle plain text and html
+    ;; https://groups.google.com/forum/#!msg/mu-discuss/u3Fy86-N-rg/zcdvIlnV0L8J
+    (defun my-mu4e-view-toggle-html ()
+      "Toggle between html and non-html views of a message. The current
  message is refreshed with the new setting, but the setting applies to all
  messages."
-        (interactive)
-        (message (if (setq mu4e-view-prefer-html (not mu4e-view-prefer-html))
-                     "html view"
-                   "text view"))
-        (mu4e-view-refresh))
-      (add-to-list 'mu4e-view-actions
-                   '("toggle html" . (lambda (MSG) (my-mu4e-view-toggle-html))) t)
+      (interactive)
+      (message (if (setq mu4e-view-prefer-html (not mu4e-view-prefer-html))
+                   "html view"
+                 "text view"))
+      (mu4e-view-refresh))
+    (add-to-list 'mu4e-view-actions
+                 '("toggle html" . (lambda (MSG) (my-mu4e-view-toggle-html))) t)
 
-      ;; Org-mu4e
-      ;; http://www.brool.com/index.php/using-mu4e
-      ;; (require 'org-mu4e)
-      (setq org-mu4e-convert-to-html t)
-      (defalias 'org-mail 'org-mu4e-compose-org-mode)
-      ))
+    ;; Org-mu4e
+    ;; http://www.brool.com/index.php/using-mu4e
+    ;; (require 'org-mu4e)
+    (setq org-mu4e-convert-to-html t)
+    (defalias 'org-mail 'org-mu4e-compose-org-mode)
+    )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
