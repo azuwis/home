@@ -32,6 +32,12 @@ checkout = git clone 'https://github.com/azuwis/.pentadactyl.git' '.pentadactyl'
 chain = true
 skip = no_cmd firefox
 
+[.mozilla/firefox]
+checkout = git clone 'https://github.com/azuwis/.mozilla_firefox.git' 'firefox'
+fixups = 
+	   chmod 700 "${MR_REPO}/" "${MR_REPO}/../"
+skip = no_cmd firefox
+
 # spacemacs
 [.emacs.d]
 checkout = git clone --branch develop --recursive https://github.com/syl20bnr/spacemacs .emacs.d
