@@ -13,7 +13,7 @@ fixups =
 	   git --version | grep -qF 'git version 2.' && git config --file=$HOME/.gitconfig.local push.default simple
 	   download https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua .config/mpv/scripts/autoload.lua
 	   cat "${MR_REPO}/.msmtprc.in" "${MR_REPO}/.msmtprc.local" > "${MR_REPO}/.msmtprc"
-     chmod 700 "${MR_REPO}/" "${MR_REPO}/.config/" "${MR_REPO}/.config/fcitx/"
+	   chmod 700 "${MR_REPO}/" "${MR_REPO}/.config/" "${MR_REPO}/.config/fcitx/"
 	   mkdir -p "${MR_REPO}/Maildir/gmail/"
 	   mkdir -p "${MR_REPO}/Maildir/corp/"
 	   chmod 700 "${MR_REPO}/Maildir/"
