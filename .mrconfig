@@ -35,7 +35,13 @@ skip = no_cmd firefox
 [.mozilla/firefox]
 checkout = git clone 'https://github.com/azuwis/.mozilla_firefox.git' 'firefox'
 fixups = 
-	   chmod 700 "${MR_REPO}/" "${MR_REPO}/../"
+	   chmod 700 "${MR_REPO}/default/" "${MR_REPO}/" "${MR_REPO}/../"
+skip = no_cmd firefox
+
+[.mozilla/firefox/default/extensions/VimFx-config@vimfx.org]
+checkout = git clone 'https://github.com/azuwis/.vimfx.git' 'VimFx-config@vimfx.org'
+fixups = 
+	   chmod 700 "${MR_REPO}/../"
 skip = no_cmd firefox
 
 # spacemacs
