@@ -70,7 +70,7 @@ fi
 
 # Pager
 export PAGER="less"
-export LESS="-isMR# 10"
+export LESS="-isFMRX# 10"
 
 # Editor
 export EDITOR="emacsclient"
