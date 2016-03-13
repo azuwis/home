@@ -21,6 +21,7 @@ bspc rule --add crx_knipolnnllmklapflnccelgolnpehhpl sticky=off
 bspc rule --add Gimp desktop=^6
 bspc rule --add Goldendict floating=on
 bspc rule --add Gpick floating=on
+bspc rule --add Firefox desktop=^2
 bspc rule --add Iceweasel desktop=^2
 bspc rule --add Screenkey manage=off
 bspc rule --add mpv floating=on

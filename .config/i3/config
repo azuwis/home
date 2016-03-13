@@ -241,6 +241,7 @@ for_window [class="^Screenkey"] floating enable
 for_window [class="^Key-mon"] floating enable
 for_window [class="^Fcitx-config-gtk3$"] floating enable
 # firefox
+assign [class="^Firefox"] $ws2
 assign [class="^Iceweasel"] $ws2
 # google chrome
 for_window [window_role="bubble"] floating enable

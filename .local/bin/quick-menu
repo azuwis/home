@@ -9,12 +9,12 @@ refresh() {
 
 chrome() {
     i3-msg 'workspace 3'
-    chromium "$1" &
+    chromium "$@" &
 }
 
 firefox() {
     i3-msg 'workspace 2'
-    iceweasel "$1" &
+    command firefox "${@-about:newtab}" &
 }
 
 _play() {

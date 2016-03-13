@@ -27,7 +27,7 @@
   "percent": 0.6,
   "swallows": [
     {
-      "class": "^Iceweasel$"
+      "class": "^Firefox$"
     }
   ]
 }

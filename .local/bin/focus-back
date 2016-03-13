@@ -8,7 +8,7 @@ get_window_name() {
 
 escape_from_flash() {
   window=$(xdotool getactivewindow)
-  # window=$(xdotool search --onlyvisible --class iceweasel)
+  # window=$(xdotool search --onlyvisible --class firefox)
   eval "$(xdotool getwindowgeometry --shell "$window")"
   xdotool mousemove --window "$window" $((WIDTH - 15)) $((HEIGHT - 15)) click 1
 }
