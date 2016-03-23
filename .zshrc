@@ -100,6 +100,7 @@ vim() {
 alias ls='ls --color'
 alias au='sudo aptitude -u'
 alias se='sudoedit'
+alias eg='GIT_DIR=${HOME}/.eg GIT_WORK_TREE=${HOME} git'
 # alias vi=$EDITOR
 
 # Debian packaging staff
