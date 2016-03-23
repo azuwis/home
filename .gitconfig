@@ -20,7 +20,7 @@
 	cp = cherry-pick
 	sta = stash
 	lg = log --abbrev-commit --graph --date=relative --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset'
-	gcap = gc --aggressive --prune=all
+	gch = !sh -c 'git reflog expire --expire=now --all && git gc --prune=now --aggressive'
 	new = !sh -c 'git log --no-merges $1@{1}..$1@{0} "$@"' -
 	mdiff = !sh -c 'git merge-tree $(git merge-base ${2:-HEAD} $1) ${2:-HEAD} $1' -
 	rewind = !sh -c 'git update-ref refs/heads/$1 ${2:-HEAD}' -
