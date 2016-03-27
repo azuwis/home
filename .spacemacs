@@ -41,6 +41,7 @@ values."
      clojure
      eyebrowse
      github
+     javascript
      lua
      mu4e
      python
