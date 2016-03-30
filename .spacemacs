@@ -40,7 +40,8 @@ values."
      spacemacs-helm
      (auto-completion :variables
                       auto-completion-return-key-behavior nil
-                      auto-completion-show-snippets-in-popup t)
+                      auto-completion-show-snippets-in-popup t
+                      auto-completion-tab-key-behavior 'complete)
      better-defaults
      emacs-lisp
      git
