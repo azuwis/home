@@ -55,8 +55,8 @@ values."
      ;; Additional layers
      ansible
      clojure
-     eyebrowse
      github
+     html
      javascript
      lua
      mu4e
