@@ -300,6 +300,9 @@ you should place you code here."
   ;; faster tramp
   (setq tramp-default-method "ssh")
 
+  ;; auto complete
+  (global-company-mode)
+
   ;; Display
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
   (add-to-list 'default-frame-alist '(width . 100))
