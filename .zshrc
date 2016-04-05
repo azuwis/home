@@ -73,9 +73,9 @@ export PAGER="less"
 export LESS="-isFMRX# 10"
 
 # Editor
-export EDITOR="emacsclient"
-export ALTERNATE_EDITOR="vim"
-export GIT_EDITOR=$EDITOR
+#export EDITOR="emacsclient"
+#export ALTERNATE_EDITOR="vim"
+#export GIT_EDITOR=$EDITOR
 vi() {
     if [ ! -e /usr/bin/emacs ]; then
         vim "$@"
