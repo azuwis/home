@@ -45,9 +45,3 @@
     summary = :Adjust:
     format = "<i>%I %p</i>"
     timeout = 1
-
-[live_chat]
-    appname = notify-send
-    summary = :LiveChat:
-    format = "<i>%b</i>"
-    timeout = 1
