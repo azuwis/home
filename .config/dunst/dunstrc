@@ -1,7 +1,9 @@
 [global]
     font = "sans 18"
-    geometry = "0x5-10+46"
-    alignment = center
+    geometry = "360x5-10+46"
+    alignment = left
+    word_wrap = yes
+    shrink = yes
     padding = 12
     horizontal_padding = 15
     separator_height = 2
