@@ -27,11 +27,6 @@ fixups =
 	   download https://github.com/technomancy/leiningen/raw/stable/bin/lein lein +x
 
 # firefox
-[.pentadactyl]
-checkout = git clone 'https://github.com/azuwis/.pentadactyl.git' '.pentadactyl'
-chain = true
-skip = no_cmd firefox
-
 [.mozilla/firefox]
 checkout = git clone 'https://github.com/azuwis/.mozilla_firefox.git' 'firefox'
 fixups = 
