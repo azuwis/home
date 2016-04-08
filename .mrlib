@@ -5,7 +5,7 @@ lib =
         ! which "$1" >/dev/null 2>&1
     }
     workstation() {
-        test -e /etc/fonts/local.conf
+        test -e ~/.ssh/id_rsa
     }
     download() {
         # download <url> <file> <mode>
