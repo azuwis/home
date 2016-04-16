@@ -304,7 +304,7 @@ you should place your code here."
   (global-company-mode)
 
   ;; Smooth scrolling
-  (setq smooth-scroll-margin 1)
+  (setq smooth-scroll-margin 3)
 
   ;; Display
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
