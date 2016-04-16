@@ -300,7 +300,7 @@ you should place your code here."
   ;; faster tramp
   (setq tramp-default-method "ssh")
 
-  ;; auto complete
+  ;; Auto complete
   (global-company-mode)
 
   ;; Display
