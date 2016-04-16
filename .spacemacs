@@ -303,6 +303,9 @@ you should place your code here."
   ;; Auto complete
   (global-company-mode)
 
+  ;; Smooth scrolling
+  (setq smooth-scroll-margin 1)
+
   ;; Display
   (setq powerline-default-separator (if (display-graphic-p) 'zigzag nil))
   (add-to-list 'default-frame-alist '(width . 100))
