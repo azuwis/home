@@ -394,6 +394,7 @@ you should place your code here."
           mu4e-sent-messages-behavior 'delete
           mu4e-view-show-images t
           mu4e-view-show-addresses t
+          mu4e-attachment-dir  "~/Downloads"
           ;; Show related mails in search
           mu4e-headers-include-related t
           mu4e-html2text-command 'mu4e-shr2text
