@@ -1,4 +1,0 @@
-!! Map search key to win key
-! Beware of the order, if key does not exist, error will occur and the rest
-! will be skipped.
-keysym XF86Search = Super_L
