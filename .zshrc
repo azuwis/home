@@ -117,6 +117,25 @@ test $TERM = "xterm" && {
     xtermcontrol --file=~/.config/xtermcontrol/zenburn.conf
 }
 
+# SSH agent
+sa() {
+    if [ x"$SSH_AUTH_SOCK" = x ]; then
+        SSH_AUTH_SOCK="$(find /tmp/ssh-*/ -maxdepth 1 -type s -name 'agent.*' -user "$USER" -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2)"
+        if [ x"$SSH_AUTH_SOCK" != x ]; then
+            export SSH_AUTH_SOCK
+        else
+            eval "$(ssh-agent -s)"
+        fi
+    fi
+    if ! ssh-add -l >/dev/null; then
+        ssh-add
+    fi
+    # if [ -S ${HOME}/.gnupg/S.gpg-agent ]; then
+    #     GPG_AGENT_INFO="${HOME}/.gnupg/S.gpg-agent:0:1"
+    #     export GPG_AGENT_INFO
+    # fi
+}
+
 # Zgen
 source /usr/share/zgen/zgen.zsh
 
