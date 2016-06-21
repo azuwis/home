@@ -53,6 +53,7 @@ values."
      version-control
      ;; Additional layers
      ansible
+     asciidoc
      clojure
      github
      html
@@ -61,6 +62,7 @@ values."
      mu4e
      python
      ranger
+     ruby
      yaml
      )
    ;; List of additional packages that will be installed without being
