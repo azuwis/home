@@ -232,26 +232,23 @@ new_window none
 hide_edge_borders both
 
 # Per app settings
-for_window [class="^Assword"] floating enable
 for_window [class="^Fcitx-config-gtk3$"] floating enable
-for_window [class="^Gpick"] floating enable
-for_window [class="^Key-mon"] floating enable
+for_window [class="^Goldendict$"] floating enable
+for_window [class="^Gpick$"] floating enable
+for_window [class="^Key-mon$"] floating enable
 for_window [class="^Pqiv$"] floating enable
-for_window [class="^Screenkey"] floating enable
-for_window [class="^X-terminal-emulator"] border 1pixel
-for_window [class="^feh"] floating enable
-for_window [class="^mpv"] floating enable
+for_window [class="^Screenkey$"] floating enable
+for_window [class="^X-terminal-emulator$"] border 1pixel
+for_window [class="^mpv$"] floating enable
 # firefox
-assign [class="^Firefox"] $ws2
-assign [class="^Iceweasel"] $ws2
+assign [class="^Firefox$"] $ws2
+for_window [class="^Firefox$" instance="^Places$"] floating enable
 # google chrome
-for_window [window_role="bubble"] floating enable
-assign [class="^Chromium"] $ws3
+assign [class="^Chromium$"] $ws3
+for_window [class="^Chromium$" window_role="^bubble$"] floating enable
 # emacs
 # assign [class="^Emacs"] $ws4
 # for_window [class="^Emacs"] floating enable
-# goldendict
-for_window [class="^Goldendict"] floating enable
 
 # Key binding
 set $run_mode Ansible, Chromium, Emacs, Firefox, Wallpaper
