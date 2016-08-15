@@ -249,10 +249,6 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 Plug 'bling/vim-airline'
 
-" bufferline
-let g:bufferline_echo = 0
-Plug 'bling/vim-bufferline'
-
 " gruvbox
 " let g:gruvbox_contrast_light = 'soft'
 " let g:gruvbox_contrast_dark = 'soft'
