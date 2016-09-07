@@ -73,5 +73,9 @@ skip = ! workstation
 checkout = git clone 'https://github.com/azuwis/ansible-pc.git' 'ansible-pc'
 skip = ! workstation
 
+[src/openwrt-config]
+checkout = git clone 'https://github.com/azuwis/openwrt-config.git' 'openwrt-config'
+skip = ! workstation
+
 # include ~/.mrconfig.local
 include = test -e ~/.mrconfig.local && cat ~/.mrconfig.local || true
