@@ -55,6 +55,7 @@ values."
      ansible
      asciidoc
      clojure
+     csv
      github
      html
      javascript
