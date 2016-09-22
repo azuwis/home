@@ -1,0 +1,55 @@
+#!/usr/bin/python
+
+# 1) pip install danmu
+# 2) add `input-ipc-server=~~home/mpv.socket` to ~/.config/mpv/mpv.conf
+
+import json
+import os
+import socket
+import sys
+
+from danmu import DanMuClient
+
+mpv_socket = os.path.expanduser('~/.config/mpv/mpv.socket')
+mpv_client = socket.socket(socket.AF_UNIX)
+mpv_client.connect(mpv_socket)
+
+class MPVError(Exception):
+    pass
+
+def pp(msg):
+    print(msg.encode(sys.stdin.encoding, 'ignore').
+          decode(sys.stdin.encoding))
+
+def mpv_cmd(cmd):
+    data = json.dumps(cmd).encode('utf8', 'strict') + b"\n"
+    while data:
+        size = mpv_client.send(data)
+        if size == 0:
+            raise MPVError('broken sender socket')
+        data = data[size:]
+    data = mpv_client.recv(4096)
+    return data
+
+def mpv_danmu(user, text):
+    # pp(msg)
+    cmd = {
+        'command': ['script-message', 'danmu', user, text]
+        # 'command': ['script-message', 'osc-message', msg]
+    }
+    mpv_cmd(cmd)
+
+def get_url():
+    resp = mpv_cmd({'command': ['get_property', 'path']})
+    resp = json.loads(resp)
+    return resp['data']
+
+dmc = DanMuClient(get_url())
+if not dmc.isValid():
+    mpv_danmu('danmu: Url not valid')
+
+@dmc.danmu
+def danmu_fn(msg):
+    mpv_danmu(msg['NickName'], msg['Content'])
+
+dmc.start(blockThread = True)
