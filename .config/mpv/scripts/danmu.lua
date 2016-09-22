@@ -2,7 +2,7 @@ local options = require 'mp.options'
 
 local osd_ass_cc = mp.get_property_osd('osd-ass-cc/0')
 local chat
-local display
+local messages
 local streamer
 
 local opt = {
@@ -122,7 +122,7 @@ function txt_username(s)
 end
 
 function ev_redraw()
-	-- if chat == nil or chat.display:empty() then return end
+	-- if chat == nil or chat.messages:empty() then return end
 	local message = ''
 	if not has_vo() then return end
 	message = string.format(
@@ -136,12 +136,12 @@ function ev_redraw()
 		opt.font_colour,
 		opt.alpha
 	)
-	for idx=display.head, display.tail do
-		if idx - display.head == opt.message_limit then
-			display:lpop()
+	for idx=messages.head, messages.tail do
+		if idx - messages.head == opt.message_limit then
+			messages:lpop()
 			break
 		end
-		local msg = display[idx]
+		local msg = messages[idx]
     message = message .. string.format(
 			'%s %s\\N',
 			txt_username(msg.user),
@@ -153,7 +153,7 @@ end
 
 function danmu(user, text)
   -- mp.msg.info(msg)
-  display:rpush({user=user, text=text})
+  messages:rpush({user=user, text=text})
   ev_redraw()
 end
 
@@ -169,7 +169,7 @@ function ev_start_file()
 	for k,v in pairs(pat_vod) do
     streamer = string.match(path, v)
     if streamer ~= nil then
-      display = Deque.new()
+      messages = Deque.new()
       mp.register_script_message('danmu', danmu)
       -- mp.add_key_binding(opt.toggle_key, 'toggle', ev_toggle, {repeatable=false})
       break
@@ -179,8 +179,8 @@ end
 mp.register_event('start-file', ev_start_file)
 
 function ev_end_file()
-  if display ~= nil then
-    display:flush()
+  if messages ~= nil then
+    messages:flush()
   end
   mp.unregister_script_message('danmu')
 	-- mp.remove_key_binding('toggle')
