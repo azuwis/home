@@ -1,7 +1,7 @@
 local options = require 'mp.options'
 
 local osd_ass_cc = mp.get_property_osd('osd-ass-cc/0')
-local chat
+local enabled = true
 local messages
 local streamer
 
@@ -122,7 +122,7 @@ function txt_username(s)
 end
 
 function ev_redraw()
-	-- if chat == nil or chat.messages:empty() then return end
+	if enabled == false or messages:empty() then return end
 	local message = ''
 	if not has_vo() then return end
 	message = string.format(
@@ -157,6 +157,14 @@ function danmu(user, text)
   ev_redraw()
 end
 
+function ev_toggle()
+  enabled = not(enabled)
+  if enabled == false then
+    mp.osd_message('Danmu: disabled')
+  end
+  ev_redraw()
+end
+
 function ev_start_file()
 	local path = mp.get_property('path')
 	if path == nil then
@@ -171,7 +179,7 @@ function ev_start_file()
     if streamer ~= nil then
       messages = Deque.new()
       mp.register_script_message('danmu', danmu)
-      -- mp.add_key_binding(opt.toggle_key, 'toggle', ev_toggle, {repeatable=false})
+      mp.add_key_binding(opt.toggle_key, 'toggle', ev_toggle, {repeatable=false})
       break
     end
   end
@@ -183,6 +191,6 @@ function ev_end_file()
     messages:flush()
   end
   mp.unregister_script_message('danmu')
-	-- mp.remove_key_binding('toggle')
+	mp.remove_key_binding('toggle')
 end
 mp.register_event('end-file', ev_end_file)
