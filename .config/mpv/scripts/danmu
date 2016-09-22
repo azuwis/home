@@ -35,18 +35,27 @@ def mpv_danmu(user, text):
     # pp(msg)
     cmd = {
         'command': ['script-message', 'danmu', user, text]
-        # 'command': ['script-message', 'osc-message', msg]
+        # 'command': ['script-message', 'osc-message', user .. ': ' .. text]
     }
-    mpv_cmd(cmd)
+    try:
+        mpv_cmd(cmd)
+    except:
+        os._exit(0)
 
 def get_url():
     resp = mpv_cmd({'command': ['get_property', 'path']})
     resp = json.loads(resp)
     return resp['data']
 
-dmc = DanMuClient(get_url())
+url = get_url()
+dmc = DanMuClient(url)
+dmc.default(None)
+dmc.gift(None)
+
 if not dmc.isValid():
-    mpv_danmu('danmu: Url not valid')
+    mpv_danmu('danmu', 'Url not valid')
+else:
+    mpv_danmu('danmu', url)
 
 @dmc.danmu
 def danmu_fn(msg):
