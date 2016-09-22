@@ -152,10 +152,7 @@ end
 
 function danmu(user, text)
   -- mp.msg.info(msg)
-  local message = {}
-  message.user = user
-  message.text = text
-  display:rpush(message)
+  display:rpush({user=user, text=text})
   ev_redraw()
 end
 
