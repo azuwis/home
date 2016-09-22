@@ -9,9 +9,7 @@ local opt = {
   toggle_key = 'c',
   enable_position_binds = true,
   osd_position = 6, -- osd_position uses 'numpad values'
-  message_duration = 10, -- in seconds
   message_limit = 10,
-  update_interval = 0.3,
   redraw_interval = 10.0,
 
   -- text styling
