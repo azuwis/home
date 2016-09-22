@@ -3,6 +3,7 @@ local options = require 'mp.options'
 local osd_ass_cc = mp.get_property_osd('osd-ass-cc/0')
 local chat
 local display
+local streamer
 
 local opt = {
   toggle_key = 'c',
@@ -105,7 +106,7 @@ function txt_username(s)
 	if s == nil then
 		return ''
 	end
-	if s:lower() == 'test' then
+	if s == streamer then
 		s = string.format(
 			'{\\1c&H%s&}{\\3c&H%s&}%s:{\\1c&H%s&}{\\3c&H%s&}',
 			opt.streamer_font_colour,
@@ -156,6 +157,32 @@ function danmu(user, text)
   ev_redraw()
 end
 
-mp.register_script_message("danmu", danmu)
+function ev_start_file()
+	local path = mp.get_property('path')
+	if path == nil then
+		return
+	end
+	local pat_vod = {
+    '^https?://www%.douyu%.com/(.+)$',
+    '^https?://www%.panda%.tv/(.+)$'
+  }
+	for k,v in pairs(pat_vod) do
+    streamer = string.match(path, v)
+    if streamer ~= nil then
+      display = Deque.new()
+      mp.register_script_message('danmu', danmu)
+      -- mp.add_key_binding(opt.toggle_key, 'toggle', ev_toggle, {repeatable=false})
+      break
+    end
+  end
+end
+mp.register_event('start-file', ev_start_file)
 
-display = Deque.new()
+function ev_end_file()
+  if display ~= nil then
+    display:flush()
+  end
+  mp.unregister_script_message('danmu')
+	-- mp.remove_key_binding('toggle')
+end
+mp.register_event('end-file', ev_end_file)
