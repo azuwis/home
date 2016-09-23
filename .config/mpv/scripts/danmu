@@ -10,7 +10,7 @@ import sys
 
 from danmu import DanMuClient
 
-mpv_socket = os.path.expanduser('~/.config/mpv/mpv.socket')
+mpv_socket = os.path.join(os.path.dirname(__file__), '../mpv.socket')
 mpv_client = socket.socket(socket.AF_UNIX)
 mpv_client.connect(mpv_socket)
 
