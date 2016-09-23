@@ -53,9 +53,9 @@ dmc.default(None)
 dmc.gift(None)
 
 if not dmc.isValid():
-    mpv_danmu('danmu', 'Url not valid')
+    mpv_danmu('Danmu', 'Url not valid')
 else:
-    mpv_danmu('danmu', url)
+    mpv_danmu('Danmu', url)
 
 @dmc.danmu
 def danmu_fn(msg):
