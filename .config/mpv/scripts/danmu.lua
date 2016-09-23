@@ -95,58 +95,58 @@ function Deque:empty()
 end
 
 function has_vo()
-	local vo_conf = mp.get_property("vo-configured")
-	local video = mp.get_property("video")
-	return vo_conf == "yes" and (video and video ~= "no" and video ~= "")
+  local vo_conf = mp.get_property("vo-configured")
+  local video = mp.get_property("video")
+  return vo_conf == "yes" and (video and video ~= "no" and video ~= "")
 end
 
 function txt_username(s)
-	if s == nil then
-		return ''
-	end
-	if s == streamer then
-		s = string.format(
-			'{\\1c&H%s&}{\\3c&H%s&}%s:{\\1c&H%s&}{\\3c&H%s&}',
-			opt.streamer_font_colour,
-			opt.streamer_border_colour,
-			s,
-			opt.font_colour,
-			opt.border_colour
-		)
-	else
-		s = s .. ':'
-	end
-	return string.format('{\\b1}%s{\\b0}', s)
+  if s == nil then
+    return ''
+  end
+  if s == streamer then
+    s = string.format(
+      '{\\1c&H%s&}{\\3c&H%s&}%s:{\\1c&H%s&}{\\3c&H%s&}',
+      opt.streamer_font_colour,
+      opt.streamer_border_colour,
+      s,
+      opt.font_colour,
+      opt.border_colour
+    )
+  else
+    s = s .. ':'
+  end
+  return string.format('{\\b1}%s{\\b0}', s)
 end
 
 function ev_redraw()
-	if enabled == false or messages:empty() then return end
-	local message = ''
-	if not has_vo() then return end
-	message = string.format(
-		'%s{\\an%d}{\\fs%d}{\\fn%s}{\\bord%f}{\\3c&H%s&}{\\1c&H%s&}{\\alpha&H%s&}',
-		osd_ass_cc,
-		opt.osd_position,
-		opt.font_size,
-		opt.font,
-		opt.border_size,
-		opt.border_colour,
-		opt.font_colour,
-		opt.alpha
-	)
-	for idx=messages.head, messages.tail do
-		if idx - messages.head == opt.message_limit then
-			messages:lpop()
-			break
-		end
-		local msg = messages[idx]
+  if enabled == false or messages:empty() then return end
+  local message = ''
+  if not has_vo() then return end
+  message = string.format(
+    '%s{\\an%d}{\\fs%d}{\\fn%s}{\\bord%f}{\\3c&H%s&}{\\1c&H%s&}{\\alpha&H%s&}',
+    osd_ass_cc,
+    opt.osd_position,
+    opt.font_size,
+    opt.font,
+    opt.border_size,
+    opt.border_colour,
+    opt.font_colour,
+    opt.alpha
+  )
+  for idx=messages.head, messages.tail do
+    if idx - messages.head == opt.message_limit then
+      messages:lpop()
+      break
+    end
+    local msg = messages[idx]
     message = message .. string.format(
-			'%s %s\\N',
-			txt_username(msg.user),
-			msg.text
+      '%s %s\\N',
+      txt_username(msg.user),
+      msg.text
                                       )
-	end
-	mp.osd_message(message, opt.redraw_interval + 0.1)
+  end
+  mp.osd_message(message, opt.redraw_interval + 0.1)
 end
 
 function danmu(user, text)
@@ -164,15 +164,15 @@ function ev_toggle()
 end
 
 function ev_start_file()
-	local path = mp.get_property('path')
-	if path == nil then
-		return
-	end
-	local pat_vod = {
+  local path = mp.get_property('path')
+  if path == nil then
+    return
+  end
+  local pat_vod = {
     '^https?://www%.douyu%.com/(.+)$',
     '^https?://www%.panda%.tv/(.+)$'
   }
-	for k,v in pairs(pat_vod) do
+  for k,v in pairs(pat_vod) do
     streamer = string.match(path, v)
     if streamer ~= nil then
       messages = Deque.new()
@@ -189,6 +189,6 @@ function ev_end_file()
     messages:flush()
   end
   mp.unregister_script_message('danmu')
-	mp.remove_key_binding('toggle')
+  mp.remove_key_binding('toggle')
 end
 mp.register_event('end-file', ev_end_file)
