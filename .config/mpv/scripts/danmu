@@ -34,7 +34,7 @@ def mpv_cmd(cmd):
 def mpv_danmu(user, text):
     # pp(msg)
     cmd = {
-        'command': ['script-message', 'danmu', user, text]
+        'command': ['script-message-to', 'danmu', 'danmu', user, text]
         # 'command': ['script-message', 'osc-message', user .. ': ' .. text]
     }
     try:
