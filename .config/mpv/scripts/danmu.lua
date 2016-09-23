@@ -10,7 +10,7 @@ local opt = {
   enable_position_binds = true,
   osd_position = 6, -- osd_position uses 'numpad values'
   message_limit = 10,
-  redraw_interval = 10.0,
+  redraw_interval = 20.0,
 
   -- text styling
   font = 'Noto Sans CJK SC',
