@@ -1,6 +1,6 @@
 local utils = require 'mp.utils'
 
-function ev_start_file()
+function ev_file_loaded()
   local path = mp.get_property('path')
   if path == nil then
     return
@@ -20,4 +20,4 @@ function ev_start_file()
     end
   end
 end
-mp.register_event('start-file', ev_start_file)
+mp.register_event('file-loaded', ev_file_loaded)
