@@ -123,7 +123,7 @@ end
 function ev_redraw()
   if enabled == false or messages:empty() then return end
   local message = ''
-  if not has_vo() then return end
+  -- if not has_vo() then return end
   message = string.format(
     '%s{\\an%d}{\\fs%d}{\\fn%s}{\\bord%f}{\\3c&H%s&}{\\1c&H%s&}{\\alpha&H%s&}',
     osd_ass_cc,
