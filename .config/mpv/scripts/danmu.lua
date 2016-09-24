@@ -6,7 +6,8 @@ local messages
 local streamer
 
 local opt = {
-  toggle_key = 'c',
+  redraw_key = 'c',
+  toggle_key = 'C',
   enable_position_binds = true,
   osd_position = 6, -- osd_position uses 'numpad values'
   message_limit = 10,
@@ -177,6 +178,7 @@ function ev_start_file()
     if streamer ~= nil then
       messages = Deque.new()
       mp.register_script_message('danmu', danmu)
+      mp.add_key_binding(opt.redraw_key, 'redraw', ev_redraw, {repeatable=false})
       mp.add_key_binding(opt.toggle_key, 'toggle', ev_toggle, {repeatable=false})
       break
     end
@@ -189,6 +191,7 @@ function ev_end_file()
     messages:flush()
   end
   mp.unregister_script_message('danmu')
+  mp.remove_key_binding('redraw')
   mp.remove_key_binding('toggle')
 end
 mp.register_event('end-file', ev_end_file)
