@@ -59,6 +59,8 @@ else:
 
 @dmc.danmu
 def danmu_fn(msg):
+    if msg['Content'].isdigit():
+        return
     mpv_danmu(msg['NickName'], msg['Content'])
 
 dmc.start(blockThread = True)
