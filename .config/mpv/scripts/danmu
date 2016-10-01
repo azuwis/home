@@ -14,12 +14,15 @@ mpv_socket = os.path.join(os.path.dirname(__file__), '../mpv.socket')
 mpv_client = socket.socket(socket.AF_UNIX)
 mpv_client.connect(mpv_socket)
 
+
 class MPVError(Exception):
     pass
+
 
 def pp(msg):
     print(msg.encode(sys.stdin.encoding, 'ignore').
           decode(sys.stdin.encoding))
+
 
 def mpv_cmd(cmd):
     data = json.dumps(cmd).encode('utf8', 'strict') + b"\n"
@@ -31,6 +34,7 @@ def mpv_cmd(cmd):
     data = mpv_client.recv(4096)
     return data
 
+
 def mpv_danmu(user, text):
     # pp(msg)
     cmd = {
@@ -41,6 +45,7 @@ def mpv_danmu(user, text):
         mpv_cmd(cmd)
     except:
         os._exit(0)
+
 
 def get_url():
     resp = mpv_cmd({'command': ['get_property', 'path']})
@@ -57,10 +62,12 @@ if not dmc.isValid():
 else:
     mpv_danmu('Danmu', url)
 
+
 @dmc.danmu
 def danmu_fn(msg):
     if msg['Content'].isdigit():
         return
     mpv_danmu(msg['NickName'], msg['Content'])
 
-dmc.start(blockThread = True)
+
+dmc.start(blockThread=True)
