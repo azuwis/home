@@ -261,6 +261,9 @@ map <Leader>u :UndotreeToggle<CR>
 " fugitive
 Plug 'tpope/vim-fugitive'
 
+" committia
+Plug 'rhysd/committia.vim'
+
 " signify
 Plug 'mhinz/vim-signify'
 
