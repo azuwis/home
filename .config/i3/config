@@ -240,6 +240,7 @@ for_window [class="^Pqiv$"] floating enable
 for_window [class="^Screenkey$"] floating enable
 for_window [class="^X-terminal-emulator$"] border 1pixel
 for_window [class="^mpv$"] floating enable
+for_window [title="^Floating: "] floating enable
 # firefox
 assign [class="^Firefox$"] $ws2
 for_window [class="^Firefox$" instance="^Places$"] floating enable
@@ -272,7 +273,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym Print $exec $scripts/lockx
 bindsym $mod+XF86Eject $exec $scripts/lockx
 bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
-bindsym $mod+Shift+u $exec x-terminal-emulator --title='Floating: pum' --geometry=48x15 -e pum
+bindsym $mod+Shift+u $exec x-terminal-emulator --title 'Floating: pum' --geometry 48x13 --execute pum
 # bindsym $mod+Shift+p $exec assword gui
 bindsym $mod+Shift+p $exec /usr/share/doc/pass/examples/dmenu/passmenu --type
 bindsym XF86MenuKB $exec $scripts/quick-menu
