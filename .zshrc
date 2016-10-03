@@ -108,13 +108,9 @@ alias p='ps aux | grep -v grep | grep'
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
 
-test $TERM = "xterm" && {
+test $TERM = "xterm" -o $TERM = "linux" && {
     # Workaround for lilyterm/lxterminal
     export TERM="xterm-256color"
-    # Set terminal color scheme
-    # Note: Hack here, xtermcontrol will only run once when lxterminal
-    # startup, as TERM is set to xterm-256color after this
-    xtermcontrol --file=~/.config/xtermcontrol/zenburn.conf
 }
 
 # SSH agent
