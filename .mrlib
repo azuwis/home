@@ -10,6 +10,9 @@ lib =
     workstation() {
         test -e ~/.ssh/id_rsa
     }
+    laptop() {
+      grep -q Battery /sys/class/power_supply/*/type 2>/dev/null
+    }
     download() {
         # download <url> <file> <mode>
         set -eu
