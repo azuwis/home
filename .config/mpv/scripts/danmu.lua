@@ -1,4 +1,5 @@
 local options = require 'mp.options'
+local utils = require 'mp.utils'
 
 local osd_ass_cc = mp.get_property_osd('osd-ass-cc/0')
 local enabled = true
@@ -164,7 +165,7 @@ function ev_toggle()
   ev_redraw()
 end
 
-function ev_start_file()
+function ev_file_loaded()
   local path = mp.get_property('path')
   if path == nil then
     return
@@ -180,11 +181,16 @@ function ev_start_file()
       mp.register_script_message('danmu', danmu)
       mp.add_key_binding(opt.redraw_key, 'redraw', ev_redraw, {repeatable=false})
       mp.add_key_binding(opt.toggle_key, 'toggle', ev_toggle, {repeatable=false})
+
+      local danmu_script = mp.find_config_file('scripts/danmu')
+      if danmu_script ~= nil then
+        utils.subprocess_detached({args={danmu_script}})
+      end
       break
     end
   end
 end
-mp.register_event('start-file', ev_start_file)
+mp.register_event('file-loaded', ev_file_loaded)
 
 function ev_end_file()
   if messages ~= nil then
