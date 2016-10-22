@@ -199,5 +199,13 @@ function ev_end_file()
   mp.unregister_script_message('danmu')
   mp.remove_key_binding('redraw')
   mp.remove_key_binding('toggle')
+
+  local file = io.open('/proc/self/stat', 'rb')
+  local line = file:read()
+  file:close()
+  local pid = line:match('(%d+) ')
+  if pid ~= nil then
+    utils.subprocess_detached({args={'pkill', '-P', pid, 'danmu'}})
+  end
 end
 mp.register_event('end-file', ev_end_file)
