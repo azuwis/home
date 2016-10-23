@@ -5,6 +5,7 @@ local osd_ass_cc = mp.get_property_osd('osd-ass-cc/0')
 local enabled = true
 local messages
 local streamer
+local danmu_script_running = false
 
 local opt = {
   redraw_key = 'c',
@@ -185,6 +186,7 @@ function ev_file_loaded()
       local danmu_script = mp.find_config_file('scripts/danmu')
       if danmu_script ~= nil then
         utils.subprocess_detached({args={danmu_script}})
+        danmu_script_running = true
       end
       break
     end
@@ -200,12 +202,15 @@ function ev_end_file()
   mp.remove_key_binding('redraw')
   mp.remove_key_binding('toggle')
 
-  local file = io.open('/proc/self/stat', 'rb')
-  local line = file:read()
-  file:close()
-  local pid = line:match('(%d+) ')
-  if pid ~= nil then
-    utils.subprocess_detached({args={'pkill', '-P', pid, 'danmu'}})
+  if danmu_script_running == true then
+    local file = io.open('/proc/self/stat', 'rb')
+    local line = file:read()
+    file:close()
+    local pid = line:match('(%d+) ')
+    if pid ~= nil then
+      utils.subprocess_detached({args={'pkill', '-P', pid, 'danmu'}})
+      danmu_script_running = false
+    end
   end
 end
 mp.register_event('end-file', ev_end_file)
