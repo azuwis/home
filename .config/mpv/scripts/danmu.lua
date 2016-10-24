@@ -208,7 +208,7 @@ function ev_end_file()
     file:close()
     local pid = line:match('(%d+) ')
     if pid ~= nil then
-      utils.subprocess_detached({args={'pkill', '-P', pid, 'danmu'}})
+      utils.subprocess_detached({args={'pkill', '--signal', 'SIGINT', '--parent', pid, 'danmu'}})
       danmu_script_running = false
     end
   end
