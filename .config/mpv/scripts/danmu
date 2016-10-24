@@ -47,12 +47,16 @@ def mpv_danmu(user, text):
         os._exit(0)
 
 
-def get_url():
-    resp = mpv_cmd({'command': ['get_property', 'path']})
-    resp = json.loads(resp)
-    return resp['data']
+def get_info():
+    url = mpv_cmd({'command': ['get_property', 'path']})
+    url = json.loads(url)
+    url = url['data']
+    title = mpv_cmd({'command': ['get_property', 'media-title']})
+    title = json.loads(title)
+    title = title['data']
+    return (url, title)
 
-url = get_url()
+url, title = get_info()
 dmc = DanMuClient(url)
 dmc.default(None)
 dmc.gift(None)
@@ -60,7 +64,8 @@ dmc.gift(None)
 if not dmc.isValid():
     mpv_danmu('Danmu', 'Url not valid')
 else:
-    mpv_danmu('Danmu', url)
+    mpv_danmu('', title)
+    mpv_danmu('', url)
 
 
 @dmc.danmu

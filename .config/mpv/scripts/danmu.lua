@@ -104,7 +104,7 @@ function has_vo()
 end
 
 function txt_username(s)
-  if s == nil then
+  if s == nil or s == '' then
     return ''
   end
   if s == streamer then
