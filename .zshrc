@@ -58,6 +58,9 @@ ap() {
     ansible-playbook "$@"
 }
 alias apl='ap --list-tasks --list-hosts'
+kas() {
+    pkill -f "ssh: ${HOME}/.ansible/cp/"
+}
 
 # Set title for ssh in tmux
 if [ -n "$TMUX" ]; then
