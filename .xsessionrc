@@ -58,7 +58,7 @@ if [ x"$(hostname)" = x"nuc" ]; then
     xset -dpms s noblank s off
 #else
     # NUC excluded settings
-    # run xautolock
+    run xidle -timeout 480 -program "${HOME}/.local/bin/lockx"
     # Auto ajust color temperature according to current time
     # run redshift
 fi
