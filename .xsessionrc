@@ -15,7 +15,11 @@ run() {
 
 # Wallpaper
 wallpaper=~/wallpapers/current
-test -r $wallpaper && run hsetroot -cover $wallpaper
+if [ -r $wallpaper ]; then
+    run hsetroot -cover $wallpaper
+else
+    run hsetroot -solid '#202227'
+fi
 
 # Turn keyboard auto repeat off
 # xset r off
