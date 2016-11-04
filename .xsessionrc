@@ -56,7 +56,7 @@ fi
 if [ x"$(hostname)" = x"nuc" ]; then
     # No blank screen for NUC
     xset -dpms s noblank s off
-#else
+else
     # NUC excluded settings
     run xidle -timeout 480 -program "${HOME}/.local/bin/lockx"
     # Auto ajust color temperature according to current time
