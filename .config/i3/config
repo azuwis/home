@@ -269,7 +269,6 @@ bindsym $mod+r mode "$run_mode"
 
 bindsym $mod+c move absolute position center
 bindsym $mod+u [urgent="oldest"] focus
-bindsym $mod+p $exec xfce4-popup-clipman
 bindsym $mod+Tab workspace back_and_forth
 bindsym Print $exec $scripts/lockx
 bindsym $mod+XF86Eject $exec $scripts/lockx

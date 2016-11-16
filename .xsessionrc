@@ -28,7 +28,7 @@ fi
 #run syndaemon -R -t -k -i 1
 
 # Auto start
-run xfce4-clipman
+run qlipper
 run devmon
 run goldendict >/dev/null 2>&1
 if [ -d ~/src/cross-notify ]; then
