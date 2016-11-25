@@ -22,7 +22,7 @@ fixups =
 checkout = git clone 'https://github.com/azuwis/bin.git' 'bin'
 fixups = 
 	   download https://github.com/mpv-player/mpv/raw/master/TOOLS/mpv_identify.sh mpv_identify.sh +x
-	   download https://github.com/sivel/speedtest-cli/raw/master/speedtest_cli.py speedtest +x
+	   download https://github.com/sivel/speedtest-cli/raw/master/speedtest.py speedtest +x
 	   download https://github.com/technomancy/leiningen/raw/stable/bin/lein lein +x
 
 # firefox
