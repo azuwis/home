@@ -7,12 +7,12 @@ DMENU='rofi -dmenu'
 #     xdotool key ctrl+F5
 # }
 
-chrome() {
+_chrome() {
     i3-msg 'workspace 3'
     chromium "$@" &
 }
 
-firefox() {
+_firefox() {
     i3-msg 'workspace 2'
     command firefox "${@-about:newtab}" &
 }
