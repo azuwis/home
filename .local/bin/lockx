@@ -2,6 +2,13 @@
 # Kanged from https://github.com/cyphar/dotfiles/blob/master/.local/bin/lockmyi3
 # More at https://www.reddit.com/r/unixporn/comments/3358vu/i3lock_unixpornworthy_lock_screen/
 
+if [ x"$1" = x"-a" ] && [ -x /sbin/iwgetid ]; then
+  essid="$(/sbin/iwgetid -r)"
+  case "$essid" in
+    Zion-5G) exit;;
+  esac
+fi
+
 lock_image=$(dirname "$0")/lock.png
 
 revert() {
