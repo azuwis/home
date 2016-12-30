@@ -2,11 +2,26 @@
 # Kanged from https://github.com/cyphar/dotfiles/blob/master/.local/bin/lockmyi3
 # More at https://www.reddit.com/r/unixporn/comments/3358vu/i3lock_unixpornworthy_lock_screen/
 
-if [ x"$1" = x"-a" ] && [ -x /sbin/iwgetid ]; then
-  essid="$(/sbin/iwgetid -r)"
-  case "$essid" in
-    Zion-5G) exit;;
-  esac
+# setcap cap_net_raw+ep /usr/bin/l2ping
+
+if [ x"$1" = x"-a" ]; then
+    conf=$(dirname "$0")/lockx.conf
+    if [ -e "$conf" ]; then
+        . "$conf"
+        if [ -n "$essid" ] && [ -x /sbin/iwgetid ]; then
+            current_essid="$(/sbin/iwgetid -r)"
+            if [ x"$current_essid" = x"$essid" ]; then
+                exit
+            fi
+        fi
+        if [ -n "$bluetooth_mac" ] && [ -x /usr/bin/l2ping ]; then
+            for i in $bluetooth_mac; do
+                if l2ping -c 1 -t 0 "$i" >/dev/null 2>&1; then
+                    exit
+                fi
+            done
+        fi
+    fi
 fi
 
 lock_image=$(dirname "$0")/lock.png
