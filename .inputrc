@@ -1,0 +1,10 @@
+$include /etc/inputrc
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set skip-completed-text on
+set visible-stats on
+"\C-n": history-search-forward
+"\C-p": history-search-backward
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+"\C-j": menu-complete
