@@ -1,5 +1,6 @@
 $include /etc/inputrc
 set completion-ignore-case on
+set history-size 10000
 set show-all-if-ambiguous on
 set skip-completed-text on
 set visible-stats on
