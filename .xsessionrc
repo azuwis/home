@@ -29,6 +29,7 @@ fi
 
 # Auto start
 run qlipper
+run devmon
 run goldendict >/dev/null 2>&1
 if [ -d ~/src/cross-notify ]; then
     if ! tmux -L autostart ls >/dev/null 2>&1; then
