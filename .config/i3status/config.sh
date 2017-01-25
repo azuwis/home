@@ -7,9 +7,6 @@ if [ -e "$config_file" -a "$config_file" -nt "$config_sh" ]; then
     exit 0
 fi
 
-# Temperature
-temperature_path=$(ls -1 /sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input | head -n 1)
-
 (
 # Wireless
 test -e /sbin/iwconfig -a x"$(/sbin/iwconfig 2>/dev/null)" != x && echo 'order += "wireless _first_"'
@@ -57,7 +54,7 @@ battery 0 {
 
 cpu_temperature 0 {
     format = "<span style='normal'></span> %degrees°C"
-    path = "$temperature_path"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input"
 }
 
 cpu_usage {
