@@ -137,6 +137,8 @@ sa() {
     # fi
 }
 
+export ENHANCD_COMMAND=f
+
 # Zgen
 source /usr/share/zgen/zgen.zsh
 
