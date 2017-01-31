@@ -154,6 +154,8 @@ if ! zgen saved; then
     zgen load b4b4r07/enhancd
     # Syntax highlight
     zgen load /usr/share/zsh-syntax-highlighting
+    # Auto suggestions
+    zgen load zsh-users/zsh-autosuggestions
 
     zgen save
 fi
