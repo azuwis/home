@@ -36,7 +36,6 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
      (auto-completion :variables
                       auto-completion-return-key-behavior nil
                       auto-completion-show-snippets-in-popup t
@@ -44,6 +43,7 @@ values."
      better-defaults
      emacs-lisp
      git
+     ivy
      markdown
      org
      (shell :variables
