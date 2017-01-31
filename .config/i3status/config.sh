@@ -53,8 +53,9 @@ battery 0 {
 }
 
 cpu_temperature 0 {
-    format = "<span style='normal'></span> %degrees°C"
+    format = "<span style='normal'></span> %degrees°"
     path = "/sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input"
+    separator_block_width = 1
 }
 
 cpu_usage {
