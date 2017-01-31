@@ -473,6 +473,9 @@ you should place your code here."
     (add-to-list 'mu4e-view-actions
                  '("toggle html" . (lambda (MSG) (my-mu4e-view-toggle-html))) t)
 
+    (add-to-list 'mu4e-view-actions
+                 '("xWidget" . mu4e-action-view-with-xwidget) t)
+
     ;; Org-mu4e
     ;; http://www.brool.com/index.php/using-mu4e
     ;; (require 'org-mu4e)
