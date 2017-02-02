@@ -29,7 +29,7 @@ fi
 
 # Auto start
 run qlipper
-run devmon --exec-on-label Sony_RX100 'lilyterm -H -e sony-rx100'
+run devmon --exec-on-label Sony_RX100 'i3-msg "workspace 10"; lilyterm -H -e sony-rx100'
 run goldendict >/dev/null 2>&1
 if [ -d ~/src/cross-notify ]; then
     if ! tmux -L autostart ls >/dev/null 2>&1; then
