@@ -35,7 +35,7 @@ disk "/" {
 }
 
 wireless _first_ {
-    format_up = "<span style='normal'></span> %essid %quality"
+    format_up = "<span style='normal'></span> %essid%quality"
     format_down = "<span style='normal'></span> Off"
     color_good = "#9f9f9f"
     color_bad = "#9f9f9f"
