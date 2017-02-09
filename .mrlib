@@ -28,7 +28,7 @@ lib =
         local cache_dir="${HOME}/.mrcache/"
         mkdir -p "$cache_dir"
         local cache_path="$(readlink -f "$file")"
-        cache_path="$(echo "$cache_path" | sed 's/\//::/g')"
+        cache_path="$(echo "$cache_path" | sed 's/\//+/g')"
         cache_path="${cache_dir}/${cache_path}"
         local header_file="${cache_path}.header"
         local newer_file="${cache_path}.newer"
