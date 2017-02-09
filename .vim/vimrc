@@ -7,7 +7,7 @@ if has('vim_starting')
     if !isdirectory(s:autoload_dir)
         call mkdir(s:autoload_dir)
     endif
-    let s:installplug = 'wget -q -O ' . s:vimplug . ' ' . s:vimplug_src
+    let s:installplug = 'curl -LSfso ' . s:vimplug . ' ' . s:vimplug_src
     echomsg 'Install vim-plug: ' . s:installplug
     call system(s:installplug)
     "autocmd VimEnter * PlugInstall
