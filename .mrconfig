@@ -38,11 +38,7 @@ skip = no_cmd firefox
 
 # spacemacs
 [.emacs.d]
-checkout = git clone --branch develop --recursive https://github.com/syl20bnr/spacemacs .emacs.d
-post_update = 
-	   git submodule init
-	   git submodule sync
-	   git submodule update
+checkout = git clone --branch develop https://github.com/syl20bnr/spacemacs .emacs.d
 skip = no_cmd emacs
 
 # misc
