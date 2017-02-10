@@ -1,77 +1,37 @@
-# -*- mode: conf -*-
-
 [DEFAULT]
 include = cat ~/.mrlib
 
-lib = 
-	GITHUB_USER="azuwis"
-
 # common
 [.]
-checkout = git clone 'https://github.com/azuwis/home.git' '.'
+checkout = git clone --branch windows 'https://github.com/azuwis/home.git' '.'
 fixups = 
 	   git --version | grep -qF 'git version 2.' && git config --file=$HOME/.gitconfig.local push.default simple
-	   download https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua .config/mpv/scripts/autoload.lua
-	   cat "${MR_REPO}/.msmtprc.in" "${MR_REPO}/.msmtprc.local" > "${MR_REPO}/.msmtprc"
-	   chmod 700 "${MR_REPO}/" "${MR_REPO}/.config/" "${MR_REPO}/.config/fcitx/" "${MR_REPO}/.gnupg/"
-	   mkdir -p "${MR_REPO}/Maildir/gmail/"
-	   mkdir -p "${MR_REPO}/Maildir/corp/"
-	   chmod 700 "${MR_REPO}/Maildir/"
-
-[bin]
-checkout = git clone 'https://github.com/azuwis/bin.git' 'bin'
-fixups = 
-	   download https://github.com/mpv-player/mpv/raw/master/TOOLS/mpv_identify.sh mpv_identify.sh +x
-	   download https://github.com/sivel/speedtest-cli/raw/master/speedtest.py speedtest +x
-	   download https://github.com/technomancy/leiningen/raw/stable/bin/lein lein +x
+	   echo -e ".gitconfig\n.inputrc\n.mrconfig\n.mrlib\n.spacemacs\n.vim/vimrc\nREADME" >.git/info/sparse-checkout
+	   git config core.sparsecheckout true
+	   git read-tree -mu HEAD
 
 # firefox
-[.mozilla/firefox]
-checkout = git clone 'https://github.com/azuwis/.mozilla_firefox.git' 'firefox'
-fixups = 
-	   chmod 700 "${MR_REPO}/default/" "${MR_REPO}/" "${MR_REPO}/../"
-skip = no_cmd firefox
-
 [.vimfx]
 checkout = git clone 'https://github.com/azuwis/.vimfx.git' '.vimfx'
-skip = no_cmd firefox
+
+[Application Data/Mozilla/Firefox]
+checkout = git clone 'https://github.com/azuwis/.mozilla_firefox.git' 'Firefox'
 
 # spacemacs
-[.emacs.d]
+[Application Data/.emacs.d]
 checkout = git clone --branch develop https://github.com/syl20bnr/spacemacs .emacs.d
-skip = no_cmd emacs
 
 # misc
 [org]
 checkout = git clone 'https://github.com/azuwis/org.git' 'org'
 pre_push = 
 	   git commit -am 'Auto commit' || true
-skip = ! workstation
 
 # rime
-[.config/fcitx/rime]
-checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'rime'
+[Application Data/PIME/Rime]
+checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'Rime'
 fixups = 
-	   chmod 700 "${MR_REPO}"
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.cn_en.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.extended.dict.yaml
-	   # sed -i '/^  - luna_pinyin\.cn_en$/d' "${MR_REPO}/luna_pinyin.extended.dict.yaml"
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.hanyu.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.poetry.dict.yaml
-skip = ! test -d /usr/share/doc/fcitx-rime
-
-# src
-[src/cross-notify]
-checkout = git clone 'https://github.com/azuwis/cross-notify.git' 'cross-notify'
-skip = ! laptop
-
-[src/ansible-pc]
-checkout = git clone 'https://github.com/azuwis/ansible-pc.git' 'ansible-pc'
-skip = ! workstation
-
-[src/openwrt-config]
-checkout = git clone 'https://github.com/azuwis/openwrt-config.git' 'openwrt-config'
-skip = ! workstation
-
-# include ~/.mrconfig.local
-include = test -e ~/.mrconfig.local && cat ~/.mrconfig.local || true
