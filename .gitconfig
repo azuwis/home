@@ -26,6 +26,7 @@
 	rewind = !sh -c 'git update-ref refs/heads/$1 ${2:-HEAD}' -
 	fixup = !sh -c 'git commit --fixup=$1 && git rebase --interactive --autosquash $1~' -
 	sample = "!sh -c 'tmp=$(mktemp -d); git init $tmp; cd $tmp; for i in "$@"; do echo "$i" >"$i"; git add "$i"; git commit -m "$i"; done; echo $tmp' -"
+	serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 [color]
 	ui = auto
 [core]
