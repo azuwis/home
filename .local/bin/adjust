@@ -52,7 +52,7 @@ brightness() {
     esac
 
     test "${wanted_brightness}" -gt "${max_brightness}" && wanted_brightness="${max_brightness}"
-    test "${wanted_brightness}" -lt 0 && wanted_brightness=0
+    test "${wanted_brightness}" -lt 0 && wanted_brightness=1
 
     echo "${wanted_brightness}" > "${brightness_file}"
 

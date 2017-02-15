@@ -285,8 +285,8 @@ bindsym XF86AudioMute $exec $scripts/adjust volume toggle
 bindsym XF86AudioLowerVolume $exec $scripts/adjust volume 3%-
 bindsym XF86AudioRaiseVolume $exec $scripts/adjust volume 3%+
 # backlight
-bindsym XF86MonBrightnessDown $exec $scripts/adjust backlight -3
-bindsym XF86MonBrightnessUp $exec $scripts/adjust backlight +3
+bindsym XF86MonBrightnessDown $exec $scripts/adjust backlight -8
+bindsym XF86MonBrightnessUp $exec $scripts/adjust backlight +8
 # kbdlight
 bindsym XF86KbdBrightnessDown $exec $scripts/adjust kbdlight -10
 bindsym XF86KbdBrightnessUp $exec $scripts/adjust kbdlight +10
