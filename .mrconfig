@@ -6,6 +6,7 @@ include = cat ~/.mrlib
 checkout = git clone --branch windows 'https://github.com/azuwis/home.git' '.'
 fixups = 
 	   git --version | grep -qF 'git version 2.' && git config --file=$HOME/.gitconfig.local push.default simple
+	   uname | grep -qF 'MINGW' && git config --file=$HOME/.gitconfig.local core.autocrlf false
 	   echo -e ".gitconfig\n.inputrc\n.mrconfig\n.mrlib\n.spacemacs\n.vim/vimrc\nREADME" >.git/info/sparse-checkout
 	   git config core.sparsecheckout true
 	   git read-tree -mu HEAD
