@@ -36,3 +36,6 @@ fixups =
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.extended.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.hanyu.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.poetry.dict.yaml
+
+[/d/Programs/cmder]
+checkout = git clone 'https://github.com/azuwis/windows_cmder.git' 'cmder'
