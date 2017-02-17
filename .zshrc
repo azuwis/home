@@ -104,7 +104,6 @@ alias ls='ls --color'
 alias au='sudo aptitude -u'
 alias se='sudoedit'
 alias eg='GIT_DIR=${HOME}/.eg GIT_WORK_TREE=${HOME} git'
-alias p='ps aux | grep -v grep | grep'
 alias cdg='cd "$(git rev-parse --show-toplevel)"'
 alias dmesg='sudo dmesg'
 # alias vi=$EDITOR
@@ -135,6 +134,14 @@ sa() {
     #     GPG_AGENT_INFO="${HOME}/.gnupg/S.gpg-agent:0:1"
     #     export GPG_AGENT_INFO
     # fi
+}
+
+p() {
+    if [ -z "$1" ]; then
+        ps auxf
+    else
+        ps aux | grep -v grep | grep "$@"
+    fi
 }
 
 export ENHANCD_COMMAND=f
