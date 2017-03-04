@@ -10,9 +10,11 @@ if [ x"$1" = x"-a" ]; then
         . "$conf"
         if [ -n "$essid" ] && [ -x /sbin/iwgetid ]; then
             current_essid="$(/sbin/iwgetid -r)"
-            if [ x"$current_essid" = x"$essid" ]; then
-                exit
-            fi
+            for i in $essid; do
+                if [ x"$current_essid" = x"$i" ]; then
+                    exit
+                fi
+            done
         fi
         if [ -n "$bluetooth_mac" ] && [ -x /usr/bin/l2ping ]; then
             for i in $bluetooth_mac; do
