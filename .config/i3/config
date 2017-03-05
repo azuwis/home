@@ -277,7 +277,7 @@ bindsym $mod+Shift+u $exec x-terminal-emulator --title 'Floating: pum' --geometr
 # bindsym $mod+Shift+p $exec assword gui
 bindsym $mod+Shift+p $exec $scripts/passmenu --type
 bindsym XF86MenuKB $exec $scripts/quick-menu
-bindsym XF86Tools $exec $scripts/quick-run
+bindsym --release XF86Tools $exec $scripts/quick-run
 bindsym Menu $exec $scripts/quick-menu
 bindsym $mod+Escape $exec $scripts/focus-back -e
 # volume
