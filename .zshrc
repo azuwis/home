@@ -71,6 +71,28 @@ if [ -n "$TMUX" ]; then
     }
 fi
 
+ssh_config_hosts() {
+    local -a config_hosts
+    local config
+    for config in ~/.ssh/config.d/*; do
+        if [[ -r $config ]]; then
+            local key hosts host
+            while IFS=$'=\t ' read -r key hosts; do
+            if [[ "$key" == Host ]]; then
+                for host in ${(z)hosts}; do
+                    case $host in
+                    (*[*?]*) ;;
+                    (*) config_hosts+=("$host") ;;
+                    esac
+                done
+            fi
+            done < "$config"
+        fi
+    done
+    zstyle ':completion:*:*:*' hosts $config_hosts
+}
+ssh_config_hosts
+
 # Pager
 export PAGER="less"
 export LESS="-isFMRX# 10"
