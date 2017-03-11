@@ -136,14 +136,6 @@ sa() {
     # fi
 }
 
-p() {
-    if [ -z "$1" ]; then
-        ps auxf
-    else
-        ps aux | grep -v grep | grep "$@"
-    fi
-}
-
 export ENHANCD_COMMAND=f
 
 # Zgen
