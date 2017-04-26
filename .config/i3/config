@@ -237,6 +237,7 @@ for_window [class="^Goldendict$"] floating enable
 for_window [class="^Gpick$"] floating enable
 for_window [class="^Key-mon$"] floating enable
 for_window [class="^Lilyterm$"] border 1pixel
+for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^Pqiv$"] floating enable
 for_window [class="^Screenkey$"] floating enable
 for_window [class="^X-terminal-emulator$"] border 1pixel
