@@ -158,8 +158,6 @@ sa() {
     # fi
 }
 
-export ENHANCD_COMMAND=f
-
 # Zgen
 source /usr/share/zgen/zgen.zsh
 
@@ -173,8 +171,6 @@ if ! zgen saved; then
     # Pure prompt
     zgen load mafredri/zsh-async
     zgen load sindresorhus/pure
-    # enhanCD
-    zgen load b4b4r07/enhancd
     # Syntax highlight
     zgen load /usr/share/zsh-syntax-highlighting
     # Auto suggestions
