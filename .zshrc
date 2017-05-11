@@ -192,3 +192,9 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 # Pure prompt
 PURE_GIT_PULL=0
+
+# Fasd
+if command -v fasd >/dev/null 2>&1; then
+    eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
+    alias c='fasd_cd -d'
+fi
