@@ -35,11 +35,13 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # local -a ansible_hostfiles_new
 # for hostfile in $ansible_hostfiles
 # do
-#     if [ ! -e $hosts_cache -o "$hostfile" -nt $hosts_cache ]; then
+#     if [ ! -e $hosts_cache -o "$hostfile" -nt $hosts_cache ]
+#     then
 #         ansible_hostfiles_new=( $ansible_hostfiles_new $hostfile )
 #     fi
 # done
-# if [ "$#ansible_hostfiles_new" -gt 0 ]; then
+# if [ "$#ansible_hostfiles_new" -gt 0 ]
+# then
 #     echo -n > $hosts_cache
 #     for hostfile in $ansible_hostfiles
 #     do
@@ -63,7 +65,8 @@ kas() {
 }
 
 # Set title for ssh in tmux
-if [ -n "$TMUX" ]; then
+if [ -n "$TMUX" ]
+then
     ssh() {
         tmux rename-window "$*"
         command ssh "$@"
@@ -74,18 +77,23 @@ fi
 ssh_config_hosts() {
     local -a config_hosts
     local config
-    for config in ~/.ssh/config.d/*; do
-        if [[ -r $config ]]; then
+    for config in ~/.ssh/config.d/*
+    do
+        if [[ -r $config ]]
+        then
             local key hosts host
-            while IFS=$'=\t ' read -r key hosts; do
-            if [[ "$key" == Host ]]; then
-                for host in ${(z)hosts}; do
-                    case $host in
-                    (*[*?]*) ;;
-                    (*) config_hosts+=("$host") ;;
-                    esac
-                done
-            fi
+            while IFS=$'=\t ' read -r key hosts
+            do
+                if [[ "$key" == Host ]]
+                then
+                    for host in ${(z)hosts}
+                    do
+                        case $host in
+                            (*[*?]*) ;;
+                            (*) config_hosts+=("$host") ;;
+                        esac
+                    done
+                fi
             done < "$config"
         fi
     done
@@ -102,9 +110,11 @@ export LESS="-isFMRX# 10"
 #export ALTERNATE_EDITOR="vim"
 #export GIT_EDITOR=$EDITOR
 vi() {
-    if [ ! -e /usr/bin/emacs ]; then
+    if [ ! -e /usr/bin/emacs ]
+    then
         vim "$@"
-    elif [ ! -e /tmp/emacs$(id -u)/server ]; then
+    elif [ ! -e /tmp/emacs$(id -u)/server ]
+    then
         if [ x"$DISPLAY" = x ]; then
             emacs "$@"
         else
@@ -134,25 +144,30 @@ alias dmesg='sudo dmesg'
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
 
-test $TERM = "xterm" -o $TERM = "linux" && {
+if [ $TERM = "xterm" -o $TERM = "linux" ]
+then
     # Workaround for lilyterm/lxterminal
     export TERM="xterm-256color"
-}
+fi
 
 # SSH agent
 sa() {
-    if [ x"$SSH_AUTH_SOCK" = x ]; then
+    if [ x"$SSH_AUTH_SOCK" = x ]
+    then
         SSH_AUTH_SOCK="$(find /tmp/ssh-*/ -maxdepth 1 -type s -name 'agent.*' -user "$USER" -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2)"
-        if [ x"$SSH_AUTH_SOCK" != x ]; then
+        if [ x"$SSH_AUTH_SOCK" != x ]
+        then
             export SSH_AUTH_SOCK
         else
             eval "$(ssh-agent -s)"
         fi
     fi
-    if ! ssh-add -l >/dev/null; then
+    if ! ssh-add -l >/dev/null
+    then
         ssh-add
     fi
-    # if [ -S ${HOME}/.gnupg/S.gpg-agent ]; then
+    # if [ -S ${HOME}/.gnupg/S.gpg-agent ]
+    # then
     #     GPG_AGENT_INFO="${HOME}/.gnupg/S.gpg-agent:0:1"
     #     export GPG_AGENT_INFO
     # fi
@@ -161,7 +176,8 @@ sa() {
 # Zgen
 source /usr/share/zgen/zgen.zsh
 
-if ! zgen saved; then
+if ! zgen saved
+then
     echo "Creating a zgen save"
 
     # Substring search
@@ -194,7 +210,8 @@ bindkey -M vicmd 'j' history-substring-search-down
 PURE_GIT_PULL=0
 
 # Fasd
-if command -v fasd >/dev/null 2>&1; then
+if command -v fasd >/dev/null 2>&1
+then
     eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
     alias c='fasd_cd -d'
 fi
