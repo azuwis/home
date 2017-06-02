@@ -252,6 +252,9 @@ for_window [class="^Chromium$" window_role="^bubble$"] floating enable
 # emacs
 # assign [class="^Emacs"] $ws4
 # for_window [class="^Emacs"] floating enable
+# sony-rx100
+assign [title="^sony-rx100$"] $ws10
+assign [class="^Chromium$" instance="^chromium \(.+\.gphotos/chromedriver\)$"] $ws10
 
 # Key binding
 set $run_mode Ansible, Chromium, Emacs, Firefox, Wallpaper
