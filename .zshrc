@@ -215,3 +215,8 @@ then
     eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
     alias c='fasd_cd -d'
 fi
+
+#if [ -f /etc/profile.d/vte-2.91.sh ]
+#then
+#    source /etc/profile.d/vte-2.91.sh
+#fi
