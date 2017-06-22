@@ -11,5 +11,6 @@ cd ~/wallpapers
 ls -1 *.jpg *.png *.JPG *.PNG 2>/dev/null | $DMENU | (
     read file
     hsetroot -cover "$file"
+    # set-wallpaper --fade-secs 2 --image "$file"
     ln -sf "$file" current
 )
