@@ -47,3 +47,9 @@
     summary = :Adjust:
     format = "<i>%I %p</i>"
     timeout = 1
+
+[backup]
+    appname = notify-send
+    summary = :Backup:
+    format = "<i>Backup %I</i>"
+    timeout = 0
