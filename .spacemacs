@@ -500,8 +500,6 @@ before packages are loaded."
     ;; (when (fboundp 'imagemagick-register-types)
     ;;   (imagemagick-register-types))
 
-    ;; Desktop notification
-
     ;; Toggle plain text and html
     ;; https://groups.google.com/forum/#!msg/mu-discuss/u3Fy86-N-rg/zcdvIlnV0L8J
     (defun my-mu4e-view-toggle-html ()
@@ -516,6 +514,7 @@ before packages are loaded."
     (add-to-list 'mu4e-view-actions
                  '("toggle html" . (lambda (MSG) (my-mu4e-view-toggle-html))) t)
 
+    ;; Webkit inside emacs
     (add-to-list 'mu4e-view-actions
                  '("xWidget" . mu4e-action-view-with-xwidget) t)
 
