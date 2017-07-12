@@ -452,20 +452,28 @@ before packages are loaded."
   ;; Mu4e
   (with-eval-after-load 'mu4e
     ;; Accounts
-    (setq mu4e-account-alist
-          '(("gmail"
-             (user-full-name "Zhong Jianxin")
-             (user-mail-address "azuwis@gmail.com")
-             (mu4e-sent-folder "/gmail/sent")
-             (mu4e-drafts-folder "/gmail/drafts"))
-            ))
+    (setq mu4e-contexts
+          `(,(make-mu4e-context
+             :name "gmail"
+             :enter-func (lambda () (mu4e-message "Entering gmail context"))
+             :leave-func (lambda () (mu4e-message "Leaving gmail context"))
+             :match-func (lambda (msg)
+                           (when msg
+                             (mu4e-message-contact-field-matches msg
+                                                                 :to "azuwis@gmail.com")))
+             :vars '((user-mail-address . "azuwis@gmail.com")
+                     (user-full-name . "Zhong Jianxin")
+                     (mu4e-sent-folder . "/gmail/sent")
+                     (mu4e-drafts-folder . "/gmail/drafts")
+                     ))))
     (let ((mu4erc (concat user-home-directory ".mu4e.local")))
       (if (file-exists-p mu4erc) (load mu4erc)))
-    (mu4e/mail-account-reset)
-    ;; My Email addresses
-    ;; https://github.com/jonEbird/dotfiles/blob/master/.emacs.d/my_configs/email_config.el
-    (setq mu4e-user-mail-address-list (mapcar (lambda (account) (cadr (assq 'user-mail-address account)))
-                                              mu4e-account-alist))
+    (setq mu4e-user-mail-address-list
+          (delq nil
+                (mapcar (lambda (context)
+                          (when (mu4e-context-vars context)
+                            (cdr (assq 'user-mail-address (mu4e-context-vars context)))))
+                        mu4e-contexts)))
 
     (setenv "XAPIAN_CJK_NGRAM" "1")
     (require 'mu4e-contrib)
