@@ -379,6 +379,10 @@ before packages are loaded."
   ;; Auto complete
   (global-company-mode)
 
+  ;; Spell
+  (setq ispell-program-name "aspell"
+        ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
+
   ;; Smooth scrolling
   ;; (setq smooth-scroll-margin 3)
 
