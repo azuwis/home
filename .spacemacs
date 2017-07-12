@@ -525,6 +525,9 @@ before packages are loaded."
     (add-to-list 'mu4e-view-actions
                  '("xWidget" . mu4e-action-view-with-xwidget) t)
     )
+
+  (with-eval-after-load 'mu4e-alert
+    (mu4e-alert-set-default-style 'notifications))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
