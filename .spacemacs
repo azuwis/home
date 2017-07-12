@@ -466,6 +466,7 @@ before packages are loaded."
                      (mu4e-sent-folder . "/gmail/sent")
                      (mu4e-drafts-folder . "/gmail/drafts")
                      ))))
+    (setq mu4e-enable-notifications t)
     (let ((mu4erc (concat user-home-directory ".mu4e.local")))
       (if (file-exists-p mu4erc) (load mu4erc)))
     (setq mu4e-user-mail-address-list
@@ -499,13 +500,6 @@ before packages are loaded."
     ;;   (imagemagick-register-types))
 
     ;; Desktop notification
-    ;; http://www.tokle.us/tools/2014/06/28/taking-email-offline-ii/
-    (defun my-mu4e-notify-new-mail ()
-      (call-process-shell-command (concat "subject=\"$(mu find flag:unread --fields s --after="
-                                          (number-to-string (- (truncate (float-time)) mu4e-update-interval))
-                                          " 2>/dev/null)\"; test -n \"$subject\" && notify-send \"New Mail\" \"$subject\" &")
-                                  nil 0))
-    (add-hook 'mu4e-index-updated-hook 'my-mu4e-notify-new-mail)
 
     ;; Toggle plain text and html
     ;; https://groups.google.com/forum/#!msg/mu-discuss/u3Fy86-N-rg/zcdvIlnV0L8J
@@ -530,6 +524,10 @@ before packages are loaded."
     (setq org-mu4e-convert-to-html t)
     (defalias 'org-mail 'org-mu4e-compose-org-mode)
     )
+
+  (with-eval-after-load 'mu4e-alert
+    (mu4e-alert-set-default-style 'notifications))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
