@@ -466,6 +466,7 @@ before packages are loaded."
                      (mu4e-sent-folder . "/gmail/sent")
                      (mu4e-drafts-folder . "/gmail/drafts")
                      ))))
+    (setq mu4e-context-policy 'pick-first)
     (setq mu4e-enable-notifications t)
     (let ((mu4erc (concat user-home-directory ".mu4e.local")))
       (if (file-exists-p mu4erc) (load mu4erc)))
