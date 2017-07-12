@@ -451,34 +451,16 @@ before packages are loaded."
 
   ;; Mu4e
   (with-eval-after-load 'mu4e
-    ;; Accounts
-    (setq mu4e-contexts
-          `(,(make-mu4e-context
-             :name "gmail"
-             :enter-func (lambda () (mu4e-message "Entering gmail context"))
-             :leave-func (lambda () (mu4e-message "Leaving gmail context"))
-             :match-func (lambda (msg)
-                           (when msg
-                             (mu4e-message-contact-field-matches msg
-                                                                 :to "azuwis@gmail.com")))
-             :vars '((user-mail-address . "azuwis@gmail.com")
-                     (user-full-name . "Zhong Jianxin")
-                     (mu4e-sent-folder . "/gmail/sent")
-                     (mu4e-drafts-folder . "/gmail/drafts")
-                     ))))
-    (setq mu4e-context-policy 'pick-first)
-    (setq mu4e-enable-notifications t)
-    (let ((mu4erc (concat user-home-directory ".mu4e.local")))
-      (if (file-exists-p mu4erc) (load mu4erc)))
-    (setq mu4e-user-mail-address-list
-          (delq nil
-                (mapcar (lambda (context)
-                          (when (mu4e-context-vars context)
-                            (cdr (assq 'user-mail-address (mu4e-context-vars context)))))
-                        mu4e-contexts)))
-
     (setenv "XAPIAN_CJK_NGRAM" "1")
     (require 'mu4e-contrib)
+    (defun mu4e-message-maildir-matches (msg rx)
+      (when rx
+        (if (listp rx)
+            ;; if rx is a list, try each one for a match
+            (or (mu4e-message-maildir-matches msg (car rx))
+                (mu4e-message-maildir-matches msg (cdr rx)))
+          ;; not a list, check rx
+          (string-match rx (mu4e-message-field msg :maildir)))))
     (setq mu4e-get-mail-command "mbsync -a"
           mu4e-update-interval 300
           mu4e-sent-messages-behavior 'delete
@@ -496,7 +478,32 @@ before packages are loaded."
           ;;                       (:subject))
           mu4e-compose-dont-reply-to-self t
           mu4e-compose-signature-auto-include nil
-          message-kill-buffer-on-exit t)
+          message-kill-buffer-on-exit t
+          mu4e-enable-notifications t
+          org-mu4e-convert-to-html t
+          ;; Accounts
+          mu4e-context-policy 'pick-first
+          mu4e-contexts
+          `(,(make-mu4e-context
+              :name "gmail"
+              :match-func (lambda (msg)
+                            (when msg
+                              (mu4e-message-maildir-matches msg "^/gmail/")))
+              :vars '((user-mail-address . "azuwis@gmail.com")
+                      (user-full-name . "Zhong Jianxin")
+                      (mu4e-sent-folder . "/gmail/sent")
+                      (mu4e-drafts-folder . "/gmail/drafts")
+                      )))
+          mu4e-user-mail-address-list
+          (delq nil
+                (mapcar (lambda (context)
+                          (when (mu4e-context-vars context)
+                            (cdr (assq 'user-mail-address (mu4e-context-vars context)))))
+                        mu4e-contexts))
+          )
+    (let ((mu4erc (concat user-home-directory ".mu4e.local")))
+      (if (file-exists-p mu4erc) (load mu4erc)))
+
     ;; (when (fboundp 'imagemagick-register-types)
     ;;   (imagemagick-register-types))
 
@@ -517,17 +524,7 @@ before packages are loaded."
     ;; Webkit inside emacs
     (add-to-list 'mu4e-view-actions
                  '("xWidget" . mu4e-action-view-with-xwidget) t)
-
-    ;; Org-mu4e
-    ;; http://www.brool.com/index.php/using-mu4e
-    ;; (require 'org-mu4e)
-    (setq org-mu4e-convert-to-html t)
-    (defalias 'org-mail 'org-mu4e-compose-org-mode)
     )
-
-  (with-eval-after-load 'mu4e-alert
-    (mu4e-alert-set-default-style 'notifications))
-
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
