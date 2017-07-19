@@ -250,6 +250,8 @@ for_window [class="^Chromium$" window_role="^bubble$"] floating enable
 # emacs
 # assign [class="^Emacs"] $ws4
 # for_window [class="^Emacs"] floating enable
+# xfreerdp
+assign [class="^xfreerdp$"] $ws5
 # sony-rx100
 assign [title="^sony-rx100$"] $ws10
 # google chrome
@@ -257,13 +259,14 @@ assign [class="^Chromium$" instance="^chromium \(.+\.gphotos/chromedriver\)$"] $
 assign [class="^Chromium$"] $ws2
 
 # Key binding
-set $run_mode Ansible, Chromium, Emacs, Firefox, Wallpaper
+set $run_mode Ansible, Chromium, Emacs, Firefox, Office, Wallpaper
 set $nexec mode "default"; exec --no-startup-id exec sh -c 'notify-send --urgency=low "Starting $(basename "$1")..." && exec "$1" 2>/dev/null' --
 mode "$run_mode" {
         bindsym a $nexec $scripts/ansible-menu
         bindsym c $nexec chromium
         bindsym e $nexec emacs
         bindsym f $nexec firefox
+        bindsym o $nexec office
         bindsym w $nexec $scripts/wallpaper
 
         bindsym Return mode "default"
