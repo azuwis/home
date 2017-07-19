@@ -39,24 +39,11 @@
 #ifaces="eth0 wlan0"
 
 # Auto detect
-ifaces=$(ls /sys/class/net | grep -Ev '^(lo|usb)')
-
-# Interval must be the same as in i3status.conf
-#interval=5
-
-# Auto detect
-if [ -f ~/.i3status.conf ]; then
-  i3status_conf=~/.i3status.conf
-else
-  i3status_conf="/etc/i3status.conf"
-fi
-interval=$(grep -o '^[[:space:]]*interval[[:space:]]*=[[:space:]]*[[:digit:]]\+' $i3status_conf | grep -o '[[:digit:]]\+')
-if [ x"$interval" = x ]; then
-  interval=5
-fi
+ifaces=$(ls /sys/class/net | grep -E '^(en|wl)')
 
 last_rx=0
 last_tx=0
+last_ts=0
 rate=""
 
 readable() {
@@ -75,6 +62,7 @@ readable() {
 }
 
 update_rate() {
+    local ts="$(date +%s)"
     local rx=0
     local tx=0
     for iface in $ifaces; do
@@ -86,15 +74,20 @@ update_rate() {
         rx=$(( rx + tmp_rx ))
         tx=$(( tx + tmp_tx ))
     done
-    rate="$(readable $(( (rx - last_rx) / interval )))↓ $(readable $(( (tx - last_tx) / interval )))↑"
+    local delta="$((ts - last_ts))"
+    if [ "$delta" -gt 0 ]
+    then
+        rate="$(readable $(( (rx - last_rx) / delta )))↓ $(readable $(( (tx - last_tx) / delta )))↑"
+    fi
     last_rx=$rx
     last_tx=$tx
+    last_ts=$ts
 }
 
 # while :; do
 #     update_rate
 #     echo "$rate"
-#     sleep "$interval"
+#     sleep 5
 # done
 
 "$(dirname "$0")"/config.sh
