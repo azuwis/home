@@ -38,7 +38,7 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return $exec x-terminal-emulator
+bindsym $mod+Return $exec tilix
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -280,7 +280,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym Print $exec $scripts/lockx
 bindsym $mod+XF86Eject $exec $scripts/lockx
 bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
-bindsym $mod+Shift+u $exec x-terminal-emulator --title 'Floating: pum' --geometry 48x13 --execute pum
+bindsym $mod+Shift+u $exec tilix --title 'Floating: pum' --geometry 48x13 --command pum
 # bindsym $mod+Shift+p $exec assword gui
 bindsym $mod+Shift+p $exec $scripts/passmenu --type
 bindsym XF86MenuKB $exec $scripts/quick-menu
