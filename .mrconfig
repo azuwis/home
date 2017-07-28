@@ -17,6 +17,8 @@ fixups =
 	   mkdir -p "${MR_REPO}/Maildir/gmail/"
 	   mkdir -p "${MR_REPO}/Maildir/corp/"
 	   chmod 700 "${MR_REPO}/Maildir/"
+	   dconf reset -f /com/gexperts/Tilix/
+	   dconf load /com/gexperts/Tilix/ < "${MR_REPO}/.config/tilix/dconf"
 
 [bin]
 checkout = git clone 'https://github.com/azuwis/bin.git' 'bin'
