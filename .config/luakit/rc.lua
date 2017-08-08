@@ -23,6 +23,9 @@ end
 -- Set the number of web processes to use. A value of 0 means 'no limit'.
 luakit.process_limit = 4
 
+-- Add userconf_early
+local userconf_early = require "userconf_early"
+
 -- Load library of useful functions for luakit
 local lousy = require "lousy"
 
@@ -176,6 +179,9 @@ local tab_favicons = require "tab_favicons"
 
 -- Add :view-source command
 local view_source = require "view_source"
+
+-- Add userconf_late
+local userconf_late = require "userconf_late"
 
 -----------------------------
 -- End user script loading --
