@@ -17,3 +17,7 @@ modes.add_binds("normal", {
     { "zz", [[Set current page zoom to `[count]` percent with `[count]zz`, use `[count]zZ` to set full zoom percent.]],
       function (w, _, m) w:zoom_set(m.count/100*globals.default_zoom_level) end, {count=100} },
 })
+
+-- Form filler
+local formfiller = require "formfiller"
+formfiller.extend({pass = function(s) return io.popen("pass " .. s):read() end})
