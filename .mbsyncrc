@@ -8,6 +8,7 @@ IMAPAccount gmail
 Host imap.gmail.com
 User azuwis@gmail.com
 SSLType IMAPS
+SSLVersions TLSv1.2
 AuthMechs LOGIN
 PassCmd "pass show email/azuwis@gmail.com"
 
