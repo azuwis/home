@@ -2,7 +2,6 @@
 local vertical_tabs = require("vertical_tabs")
 
 -- Keybindings
-local globals = require("globals")
 local modes = require("modes")
 modes.add_binds("normal", {
     -- Tabs
@@ -11,13 +10,14 @@ modes.add_binds("normal", {
       function (w, _, m)
         if not w:goto_tab(m.count) then w:next_tab() end
       end, {count=0} },
-
-    -- Zoom
-    { "=", "Reset zoom level.", function (w, _) w:zoom_set(globals.default_zoom_level) end },
-    { "zz", [[Set current page zoom to `[count]` percent with `[count]zz`, use `[count]zZ` to set full zoom percent.]],
-      function (w, _, m) w:zoom_set(m.count/100*globals.default_zoom_level) end, {count=100} },
 })
 
 -- Form filler
 local formfiller = require "formfiller"
 formfiller.extend({pass = function(s) return io.popen("pass " .. s):read() end})
+
+-- Settings
+local settings = require "settings"
+
+settings.webview.zoom_level = 170
+settings.window.home_page = "luakit://newtab"

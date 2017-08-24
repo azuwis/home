@@ -4,34 +4,15 @@
 
 require "lfs"
 
-if unique then
-    unique.new("org.luakit")
-    -- Check for a running luakit instance
-    if unique.is_running() then
-        if uris[1] then
-            for _, uri in ipairs(uris) do
-                if lfs.attributes(uri) then uri = os.abspath(uri) end
-                unique.send_message("tabopen " .. uri)
-            end
-        else
-            unique.send_message("winopen")
-        end
-        luakit.quit()
-    end
-end
+require "unique_instance"
 
 -- Set the number of web processes to use. A value of 0 means 'no limit'.
 luakit.process_limit = 4
-
--- Add userconf_early
-local userconf_early = require "userconf_early"
+-- Set the cookie storage location
+soup.cookies_storage = luakit.data_dir .. "/cookies.db"
 
 -- Load library of useful functions for luakit
 local lousy = require "lousy"
-
--- Load users global config
--- ("$XDG_CONFIG_HOME/luakit/globals.lua" or "/etc/xdg/luakit/globals.lua")
-local globals = require "globals"
 
 -- Load users theme
 -- ("$XDG_CONFIG_HOME/luakit/theme.lua" or "/etc/xdg/luakit/theme.lua")
@@ -68,6 +49,8 @@ end)
 -- Load luakit binds and modes
 local modes = require "modes"
 local binds = require "binds"
+
+local settings = require "settings"
 
 ----------------------------------
 -- Optional user script loading --
@@ -145,8 +128,8 @@ local open_editor = require "open_editor"
 
 -- NoScript plugin, toggle scripts and or plugins on a per-domain basis.
 -- `,ts` to toggle scripts, `,tp` to toggle plugins, `,tr` to reset.
--- Remove all "enable_scripts" & "enable_plugins" lines from your
--- domain_props table (in config/globals.lua) as this module will conflict.
+-- If you use this module, don't use any site-specific `enable_scripts` or
+-- `enable_plugins` settings, as these will conflict.
 --require "noscript"
 
 local follow_selected = require "follow_selected"
@@ -165,9 +148,6 @@ local styles = require "styles"
 -- Hide scrollbars on all pages
 local hide_scrollbars = require "hide_scrollbars"
 
--- Automatically apply per-domain webview properties
-local domain_props = require "domain_props"
-
 -- Add a stylesheet when showing images
 local image_css = require "image_css"
 
@@ -180,8 +160,8 @@ local tab_favicons = require "tab_favicons"
 -- Add :view-source command
 local view_source = require "view_source"
 
--- Add userconf_late
-local userconf_late = require "userconf_late"
+-- Add userconf
+local userconf = require "userconf"
 
 -----------------------------
 -- End user script loading --
@@ -196,24 +176,6 @@ if w then
 else
     -- Or open new window
     window.new(uris)
-end
-
--------------------------------------------
--- Open URIs from other luakit instances --
--------------------------------------------
-
-if unique then
-    unique.add_signal("message", function (msg, screen)
-        local cmd, arg = string.match(msg, "^(%S+)%s*(.*)")
-        local ww = lousy.util.table.values(window.bywidget)[1]
-        if cmd == "tabopen" then
-            ww:new_tab(arg)
-        elseif cmd == "winopen" then
-            ww = window.new((arg ~= "") and { arg } or {})
-        end
-        ww.win.screen = screen
-        ww.win.urgency_hint = true
-    end)
 end
 
 -- vim: et:sw=4:ts=8:sts=4:tw=80
