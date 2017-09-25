@@ -1,6 +1,6 @@
-----------------------------------------------------------------------------------------
--- luakit configuration file, more information at http://luakit.org/ --
-----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+-- luakit configuration file, more information at https://luakit.github.io/ --
+------------------------------------------------------------------------------
 
 require "lfs"
 
@@ -51,6 +51,7 @@ local modes = require "modes"
 local binds = require "binds"
 
 local settings = require "settings"
+require "settings_chrome"
 
 ----------------------------------
 -- Optional user script loading --
@@ -117,7 +118,7 @@ local history = require "history"
 local history_chrome = require "history_chrome"
 
 local help_chrome = require "help_chrome"
-local introspector_chrome = require "introspector_chrome"
+local binds_chrome = require "binds_chrome"
 
 -- Add command completion
 local completion = require "completion"
