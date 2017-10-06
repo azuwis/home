@@ -1,5 +1,5 @@
 [global]
-    font = "sans 18"
+    font = "sans 10"
     geometry = "360x5-10+46"
     alignment = left
     word_wrap = yes
