@@ -40,7 +40,7 @@ skip = no_cmd firefox
 
 # spacemacs
 [.emacs.d]
-checkout = git clone --branch develop https://github.com/syl20bnr/spacemacs .emacs.d
+checkout = git clone https://github.com/syl20bnr/spacemacs .emacs.d
 skip = no_cmd emacs
 
 # misc
