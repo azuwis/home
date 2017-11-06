@@ -34,10 +34,6 @@ fixups =
 	   chmod 700 "${MR_REPO}/default/" "${MR_REPO}/" "${MR_REPO}/../"
 skip = no_cmd firefox
 
-[.vimfx]
-checkout = git clone 'https://github.com/azuwis/.vimfx.git' '.vimfx'
-skip = no_cmd firefox
-
 # spacemacs
 [.emacs.d]
 checkout = git clone https://github.com/syl20bnr/spacemacs .emacs.d
