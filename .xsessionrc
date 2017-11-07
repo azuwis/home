@@ -28,6 +28,7 @@ fi
 #run syndaemon -R -t -k -i 1
 
 # Auto start
+run fbautostart
 run qlipper
 run devmon --exec-on-label Sony_RX100 'lilyterm -H -T sony-rx100 -e sony-rx100'
 run goldendict >/dev/null 2>&1
