@@ -38,7 +38,7 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return $exec tilix
+bindsym $mod+Return $exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -233,6 +233,8 @@ hide_edge_borders both
 
 # Per app settings
 for_window [class="^Fcitx-config-gtk3$"] floating enable
+for_window [class="^Gnome-terminal$" window_role="^floating$"] floating enable
+for_window [class="^Gnome-terminal$"] border 1pixel
 for_window [class="^GoldenDict$"] floating enable
 for_window [class="^Gpick$"] floating enable
 for_window [class="^Key-mon$"] floating enable
@@ -255,6 +257,7 @@ for_window [class="^Chromium$" window_role="^bubble$"] floating enable
 assign [class="^xfreerdp$"] $ws5
 # sony-rx100
 assign [title="^sony-rx100$"] $ws10
+assign [class="^Gnome-terminal$" window_role="^sony-rx100$"] $ws10
 # google chrome
 assign [class="^Chromium$" instance="^chromium \(.+\.gphotos/chromedriver\)$"] $ws10
 assign [class="^Chromium$"] $ws2
@@ -281,7 +284,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym Print $exec $scripts/lockx
 bindsym $mod+XF86Eject $exec $scripts/lockx
 bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
-bindsym $mod+Shift+u $exec tilix --title 'Floating: pum' --geometry 48x13 --command pum
+bindsym $mod+Shift+u $exec gnome-terminal --window-with-profile pum --role floating
 # bindsym $mod+Shift+p $exec assword gui
 bindsym $mod+Shift+p $exec $scripts/passmenu --type
 bindsym XF86MenuKB $exec $scripts/quick-menu

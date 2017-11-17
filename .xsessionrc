@@ -30,7 +30,7 @@ fi
 # Auto start
 run fbautostart
 run qlipper
-run devmon --exec-on-label Sony_RX100 'lilyterm -H -T sony-rx100 -e sony-rx100'
+run devmon --exec-on-label Sony_RX100 'gnome-terminal --window-with-profile sony-rx100 --role sony-rx100'
 run goldendict >/dev/null 2>&1
 if [ -d ~/src/cross-notify ]; then
     if ! tmux -L autostart ls >/dev/null 2>&1; then
