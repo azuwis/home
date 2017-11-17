@@ -1,0 +1,13 @@
+[legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+background-color='rgb(32,34,39)'
+scrollbar-policy='never'
+palette=['rgb(32,34,39)', 'rgb(112,80,80)', 'rgb(96,180,138)', 'rgb(240,223,175)', 'rgb(80,96,112)', 'rgb(220,140,195)', 'rgb(140,208,211)', 'rgb(220,220,204)', 'rgb(112,144,128)', 'rgb(220,163,163)', 'rgb(195,191,159)', 'rgb(224,207,159)', 'rgb(148,191,243)', 'rgb(236,147,211)', 'rgb(147,224,227)', 'rgb(255,255,255)']
+cursor-blink-mode='off'
+foreground-color='rgb(205,205,195)'
+visible-name='default'
+use-theme-colors=false
+
+[legacy]
+schema-version=uint32 3
+theme-variant='system'
+default-show-menubar=false

@@ -19,6 +19,8 @@ fixups =
 	   chmod 700 "${MR_REPO}/Maildir/"
 	   dconf reset -f /com/gexperts/Tilix/
 	   dconf load /com/gexperts/Tilix/ < "${MR_REPO}/.config/tilix/dconf"
+	   dconf reset -f /org/gnome/terminal/
+	   dconf load /org/gnome/terminal/ < "${MR_REPO}/.config/dconf-dump/gnome-terminal"
 
 [bin]
 checkout = git clone 'https://github.com/azuwis/bin.git' 'bin'
