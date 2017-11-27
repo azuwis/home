@@ -1,3 +1,5 @@
+map('ob', 'b');
+map('b', 'T');
 map('q', 'E');
 map('w', 'R');
 settings.focusFirstCandidate = true;
