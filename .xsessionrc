@@ -32,7 +32,7 @@ run fbautostart
 run qlipper
 run devmon --exec-on-label Sony_RX100 'gnome-terminal --window-with-profile sony-rx100 --role sony-rx100'
 run goldendict >/dev/null 2>&1
-if [ -d ~/src/cross-notify ]; then
+if [ -d ~/src/cross-notify ] && [ -x /usr/bin/laptop-detect ] && /usr/bin/laptop-detect; then
     if ! tmux -L autostart ls >/dev/null 2>&1; then
         tmux -L autostart new-session -d ~/src/cross-notify/server.py
     fi
