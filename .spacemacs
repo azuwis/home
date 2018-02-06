@@ -548,6 +548,15 @@ before packages are loaded."
 
   (with-eval-after-load 'mu4e-alert
     (mu4e-alert-set-default-style 'notifications))
+
+  ;; (defun my-run-after-save ()
+  ;;   "Run script to sync on save"
+  ;;   (if (and (projectile-project-p)
+  ;;            (file-executable-p (projectile-file-truename "run_after_save")))
+  ;;       (shell-command (projectile-file-truename "run_after_save"))
+  ;;     )
+  ;;   )
+  ;; (add-hook 'after-save-hook 'my-run-after-save)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
