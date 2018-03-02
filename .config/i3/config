@@ -260,7 +260,7 @@ assign [title="^sony-rx100$"] $ws10
 assign [class="^Gnome-terminal$" window_role="^sony-rx100$"] $ws10
 # google chrome
 assign [class="^Chromium$" instance="^chromium \(.+\.gphotos/chromedriver\)$"] $ws10
-assign [class="^Chromium$"] $ws2
+# assign [class="^Chromium$"] $ws2
 
 # Key binding
 set $run_mode Ansible, Chromium, Emacs, Firefox, Office, Wallpaper
