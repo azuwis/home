@@ -4,6 +4,8 @@
 
 # setcap cap_net_raw+ep /usr/bin/l2ping
 
+pgrep -x i3lock >& /dev/null && exit
+
 if [ x"$1" = x"-a" ]; then
     conf=$(dirname "$0")/lockx.conf
     if [ -e "$conf" ]; then
