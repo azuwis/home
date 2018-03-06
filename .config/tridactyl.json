@@ -1,0 +1,17 @@
+{
+  "userconfig": {
+    "nmaps": {
+      "w": "tabnext",
+      "q": "tabprev",
+      "x": "buffer #"
+    },
+    "searchurls": {
+      "g": "https://www.google.com/search?safe=off&lr=lang_zh-CN|lang_zh-TW|lang_en&q=",
+      "d": "https://packages.debian.org/search?keywords=",
+      "df": "https://packages.debian.org/search?searchon=contents&mode=filename&keywords=",
+      "db": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug="
+    },
+    "hintfiltermode": "vimperator-reflow",
+    "hintchars": "1234567890"
+  }
+}
