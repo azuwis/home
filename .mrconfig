@@ -11,14 +11,14 @@ lib =
 checkout = git clone 'https://github.com/azuwis/home.git' '.'
 fixups = 
 	   git --version | grep -qF 'git version 2.' && git config --file=$HOME/.gitconfig.local push.default simple
-	   download https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua .config/mpv/scripts/autoload.lua
+	   # download https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua .config/mpv/scripts/autoload.lua
 	   cat "${MR_REPO}/.msmtprc.in" "${MR_REPO}/.msmtprc.local" > "${MR_REPO}/.msmtprc"
 	   chmod 700 "${MR_REPO}/" "${MR_REPO}/.config/" "${MR_REPO}/.config/fcitx/" "${MR_REPO}/.gnupg/"
 	   mkdir -p "${MR_REPO}/Maildir/gmail/"
 	   mkdir -p "${MR_REPO}/Maildir/corp/"
 	   chmod 700 "${MR_REPO}/Maildir/"
-	   dconf reset -f /com/gexperts/Tilix/
-	   dconf load /com/gexperts/Tilix/ < "${MR_REPO}/.config/dconf-dump/tilix"
+	   # dconf reset -f /com/gexperts/Tilix/
+	   # dconf load /com/gexperts/Tilix/ < "${MR_REPO}/.config/dconf-dump/tilix"
 	   dconf reset -f /org/gnome/terminal/
 	   dconf load /org/gnome/terminal/ < "${MR_REPO}/.config/dconf-dump/gnome-terminal"
 
