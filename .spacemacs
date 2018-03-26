@@ -357,6 +357,8 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  ;; Custom settings
+  (setq custom-file (concat spacemacs-cache-directory "custom-settings.el"))
   ;; manually set tramp-ssh-controlmaster-options to avoid hanging
   ;; https://github.com/emacs-helm/helm/issues/1000#issuecomment-119487649
   (setq tramp-ssh-controlmaster-options
