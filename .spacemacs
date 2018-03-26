@@ -63,7 +63,7 @@ This function should only modify configuration layer settings."
      python
      ranger
      ruby
-     spacemacs-purpose
+     ;; spacemacs-purpose
      terraform
      yaml
      )
