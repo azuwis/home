@@ -26,7 +26,7 @@ pre_push =
 	   git commit -am 'Auto commit' || true
 
 # rime
-[Application Data/PIME/Rime]
+[Application Data/Rime]
 checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'Rime'
 fixups = 
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.cn_en.dict.yaml
