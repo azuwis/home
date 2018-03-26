@@ -2,6 +2,10 @@ map('ob', 'b');
 map('b', 'T');
 map('q', 'E');
 map('w', 'R');
+// mapkey('ga', '#3Open new tab', 'RUNTIME("tabOpenLink", {url: "http://www.gentoo.org/"})');
+// mapkey('ga', '#11Edit Settings', function() {
+// 	chrome.tabs.create({url: "about:newtab"});
+// });
 settings.focusFirstCandidate = true;
 settings.hintAlign = 'left';
 settings.interceptedErrors = ['*'];
