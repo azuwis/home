@@ -12,9 +12,6 @@ fixups =
 	   git read-tree -mu HEAD
 
 # firefox
-[.vimfx]
-checkout = git clone 'https://github.com/azuwis/.vimfx.git' '.vimfx'
-
 [Application Data/Mozilla/Firefox]
 checkout = git clone 'https://github.com/azuwis/.mozilla_firefox.git' 'Firefox'
 
