@@ -65,6 +65,7 @@ This function should only modify configuration layer settings."
      ruby
      ;; spacemacs-purpose
      terraform
+     typescript
      yaml
      )
    ;; List of additional packages that will be installed without being
