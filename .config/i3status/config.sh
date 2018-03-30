@@ -27,7 +27,7 @@ general {
     markup = pango
     color_good = "#859900"
     color_bad = "#DC322F"
-    color_degraded = "#b58900"
+    color_degraded = "#B58900"
 }
 
 disk "/" {
@@ -55,6 +55,7 @@ battery 0 {
 cpu_temperature 0 {
     format = "<span style='normal'></span> %degrees°"
     path = "/sys/devices/platform/coretemp.0/hwmon/hwmon?/temp?_input"
+    max_threshold = 60
     separator_block_width = 1
 }
 
