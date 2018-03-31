@@ -1,0 +1,137 @@
+# Core
+poll_method		epoll
+
+# SIP
+sip_trans_bsize		128
+#sip_listen		0.0.0.0:5060
+#sip_certificate	cert.pem
+
+# Audio
+audio_player		pulse
+audio_source		pulse
+audio_alert		pulse
+audio_srate		8000-48000
+audio_channels		1-2
+
+# Video
+video_source		v4l2,/dev/video0
+#video_display		x11,nil
+video_display		sdl2
+video_size		640x480
+video_bitrate		800000
+video_fps		15
+video_fullscreen	no
+
+
+#------------------------------------------------------------------------------
+
+# Modules
+
+module_path		/usr/lib/baresip/modules
+
+# UI Modules
+module			stdio.so
+
+# Audio codec Modules (in order)
+#module			opus.so
+module			g711.so
+#module			speex.so
+
+# Audio filter Modules (in encoding order)
+#module			vumeter.so
+module			speex_aec.so
+#module			speex_pp.so
+module			plc.so
+
+# Audio driver Modules
+#module			alsa.so
+module			pulse.so
+
+# Video codec Modules (in order)
+#module			avcodec.so
+module			vp8.so
+
+# Video filter Modules (in encoding order)
+module			selfview.so
+module			swscale.so
+#module			vidinfo.so
+
+# Video source modules
+module			v4l2.so
+#module			v4l2_codec.so
+#module			avformat.so
+#module			x11grab.so
+
+# Video display modules
+#module			x11.so
+module			sdl2.so
+
+# Media NAT modules
+module			stun.so
+module			turn.so
+module			ice.so
+#module			natpmp.so
+
+# Media encryption modules
+#module			srtp.so
+#module			dtls_srtp.so
+#module			zrtp.so
+
+
+#------------------------------------------------------------------------------
+# Temporary Modules (loaded then unloaded)
+
+module_tmp		uuid.so
+module_tmp		account.so
+
+
+#------------------------------------------------------------------------------
+# Application Modules
+
+module_app		auloop.so
+#module_app		contact.so
+module_app		debug_cmd.so
+#module_app		dtmfio.so
+#module_app		echo.so
+#module_app		gtk.so
+module_app		menu.so
+#module_app		mwi.so
+#module_app		natbd.so
+#module_app		presence.so
+#module_app		syslog.so
+#module_app		mqtt.so
+module_app		vidloop.so
+
+
+#------------------------------------------------------------------------------
+# Module parameters
+
+# Speex codec parameters
+speex_quality		7 # 0-10
+speex_complexity	7 # 0-10
+speex_enhancement	0 # 0-1
+speex_mode_nb		3 # 1-6
+speex_mode_wb		6 # 1-6
+speex_vbr		0 # Variable Bit Rate 0-1
+speex_vad		0 # Voice Activity Detection 0-1
+speex_agc_level		8000
+
+# Opus codec parameters
+opus_bitrate		28000 # 6000-510000
+
+# Selfview
+video_selfview		pip # {window,pip}
+#selfview_size		64x64
+
+# ICE
+ice_turn		no
+ice_debug		no
+ice_nomination		regular	# {regular,aggressive}
+ice_mode		full	# {full,lite}
+
+# ZRTP
+#zrtp_hash		no  # Disable SDP zrtp-hash (not recommended)
+
+# Menu
+#redial_attempts	3 # Num or <inf>
+#redial_delay		5 # Delay in seconds
