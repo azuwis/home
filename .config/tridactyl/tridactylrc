@@ -1,0 +1,14 @@
+bind q tabprev
+bind w tabnext
+bind x buffer #
+
+set hintfiltermode vimperator-reflow
+set hintchars 4327895610
+
+set theme dark
+set modeindicator false
+
+set searchurls.g https://www.google.com/search?safe=off&lr=lang_zh-CN|lang_zh-TW|lang_en&q=
+set searchurls.d https://packages.debian.org/search?keywords=
+set searchurls.df https://packages.debian.org/search?searchon=contents&mode=filename&keywords=
+set searchurls.db https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=
