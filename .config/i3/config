@@ -214,7 +214,7 @@ bar {
         # mode hide
         # strip_workspace_numbers yes
         i3bar_command exec i3bar
-        status_command exec ~/.config/i3status/net-speed
+        status_command exec ~/.config/i3status/config.sh
         colors {
                 background          $bg
                 statusline          $fg

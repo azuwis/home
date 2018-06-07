@@ -3,16 +3,13 @@
 config_sh="$0"
 config_file="${0%.sh}"
 
-if [ -e "$config_file" -a "$config_file" -nt "$config_sh" ]; then
-    exit 0
-fi
-
-(
-# Wireless
-test -e /sbin/iwconfig -a x"$(/sbin/iwconfig 2>/dev/null)" != x && echo 'order += "wireless _first_"'
-# Battery
-test -e /sys/class/power_supply/BAT0 && echo 'order += "battery 0"'
-cat <<EOF
+if [ ! -e "$config_file" ] || [ "$config_file" -ot "$config_sh" ]; then
+  (
+  # Wireless
+  test -e /sbin/iwconfig -a x"$(/sbin/iwconfig 2>/dev/null)" != x && echo 'order += "wireless _first_"'
+  # Battery
+  test -e /sys/class/power_supply/BAT0 && echo 'order += "battery 0"'
+  cat <<EOF
 order += "cpu_temperature 0"
 order += "cpu_usage"
 order += "tztime local"
@@ -80,3 +77,6 @@ volume Master {
 }
 EOF
 ) >"$config_file"
+fi
+
+exec "$(dirname "$0")"/net-speed
