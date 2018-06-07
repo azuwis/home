@@ -136,7 +136,7 @@ alias ls='ls --color'
 alias au='sudo aptitude -u'
 alias se='sudoedit'
 alias eg='GIT_DIR=${HOME}/.eg GIT_WORK_TREE=${HOME} git'
-alias cdg='cd "$(git rev-parse --show-toplevel)"'
+alias croot='cd "$(git rev-parse --show-toplevel)"'
 alias dmesg='sudo dmesg'
 # alias vi=$EDITOR
 
