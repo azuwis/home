@@ -364,6 +364,8 @@ you should place your code here."
   (setq-default require-final-newline t)
   ;; faster tramp
   (setq tramp-default-method "ssh")
+  ;; disable evil-escape-key-sequence
+  (setq-default evil-escape-key-sequence nil)
 
   ;; Auto complete
   (global-company-mode)
