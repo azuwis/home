@@ -204,8 +204,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(spacemacs-light
+                         spacemacs-dark)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `vim-powerline' and `vanilla'. The first three
@@ -214,7 +214,7 @@ It should only modify the values of Spacemacs settings."
    ;; to create your own spaceline theme. Value can be a symbol or list with\
    ;; additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(spacemacs :separator nil :separator-scale 1.0)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -225,8 +225,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-default-font '("Monospace"
                                :size 22
                                :weight normal
-                               :width normal
-                               :powerline-scale 1.1)
+                               :width normal)
+
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
 
@@ -306,7 +306,7 @@ It should only modify the values of Spacemacs settings."
    ;; another same-purpose window is available. If non-nil, `switch-to-buffer'
    ;; displays the buffer in a same-purpose window even if the buffer can be
    ;; displayed in the current window. (default nil)
-   dotspacemacs-switch-to-buffer-prefers-purpose nil
+   dotspacemacs-switch-to-buffer-prefers-purpose t
 
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
@@ -442,7 +442,7 @@ It should only modify the values of Spacemacs settings."
    ;; Run `spacemacs/prettify-org-buffer' when
    ;; visiting README.org files of Spacemacs.
    ;; (default nil)
-   dotspacemacs-pretty-docs nil))
+   dotspacemacs-pretty-docs t))
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
@@ -458,28 +458,6 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  ;; Custom settings
-  (setq custom-file (concat spacemacs-cache-directory "custom-settings.el"))
-  ;; manually set tramp-ssh-controlmaster-options to avoid hanging
-  ;; https://github.com/emacs-helm/helm/issues/1000#issuecomment-119487649
-  (setq tramp-ssh-controlmaster-options
-        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
-  ;; Magit
-  ;; (setq-default git-magit-status-fullscreen t)
-  ;; Indent
-  (setq-default
-   ;; js2-mode
-   js-indent-level 2
-   js2-basic-offset 2
-   js2-strict-missing-semi-warning nil
-   ;; web-mode
-   css-indent-offset 2
-   indent-tabs-mode nil
-   web-mode-attr-indent-offset 2
-   web-mode-code-indent-offset 2
-   web-mode-css-indent-offset 2
-   web-mode-markup-indent-offset 2
-   )
   )
 
 (defun dotspacemacs/user-load ()
@@ -508,6 +486,21 @@ before packages are loaded."
   (setq tramp-default-method "ssh")
   ;; disable evil-escape-key-sequence
   (setq-default evil-escape-key-sequence nil)
+
+  ;; Indent
+  (setq-default
+   ;; js2-mode
+   js-indent-level 2
+   js2-basic-offset 2
+   js2-strict-missing-semi-warning nil
+   ;; web-mode
+   css-indent-offset 2
+   indent-tabs-mode nil
+   web-mode-attr-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   )
 
   ;; Auto complete
   (global-company-mode)
@@ -558,6 +551,7 @@ before packages are loaded."
   (global-git-commit-mode t)
   (setq magit-repository-directories '("~/src/"))
   (setq magit-log-auto-more t)
+  (setq-default git-magit-status-fullscreen t)
 
   ;; Howdoi
   (use-package howdoi
