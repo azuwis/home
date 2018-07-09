@@ -52,6 +52,11 @@ update_rate() {
   local time=$(date +%s)
   local rx=0 tx=0 tmp_rx tmp_tx
 
+  if [ -z "$ifaces" ]; then
+    ifaces=$(ls /sys/class/net | grep -E '^(eth|wlan|enp|wlp)')
+    return
+  fi
+
   for iface in $ifaces; do
     read tmp_rx < "/sys/class/net/${iface}/statistics/rx_bytes"
     read tmp_tx < "/sys/class/net/${iface}/statistics/tx_bytes"
