@@ -99,7 +99,7 @@ ssh_config_hosts() {
     done
     zstyle ':completion:*:*:*' hosts $config_hosts
 }
-ssh_config_hosts
+test -d ~/.ssh/config.d/ && ssh_config_hosts
 
 # Pager
 export PAGER="less"
