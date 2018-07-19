@@ -5,7 +5,7 @@ bind x buffer #
 set hintfiltermode vimperator-reflow
 set hintchars 4327895610
 
-set theme dark
+set theme quake
 set modeindicator false
 set allowautofocus false
 set tabopencontaineraware true
