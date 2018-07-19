@@ -4,6 +4,10 @@ lib =
     no_cmd() {
         ! which "$1" >/dev/null 2>&1
     }
+    run() {
+        cmd=$1
+        test -x "/usr/bin/${cmd}" && "$@" &
+    }
     eg() {
         cd ${HOME} && GIT_DIR=${HOME}/.eg GIT_WORK_TREE=${HOME} git "$@"
     }
