@@ -73,3 +73,6 @@ skip = ! workstation
 
 # include ~/.mrconfig.local
 include = test -e ~/.mrconfig.local && cat ~/.mrconfig.local || true
+
+# include ~/.mrconfig.windows
+include = uname -a | grep -q Microsoft && cat ~/.mrconfig.windows || true
