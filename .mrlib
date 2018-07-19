@@ -15,7 +15,7 @@ lib =
         test -e ~/.ssh/id_rsa
     }
     laptop() {
-        laptop-detect
+        test -x /usr/bin/laptop-detect && laptop-detect
     }
     download() {
         # download <url> <file> <mode>
