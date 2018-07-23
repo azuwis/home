@@ -1,3 +1,5 @@
+# -*- mode: conf -*-
+
 # firefox
 [/mnt/c/Users/${USER}/AppData/Roaming/Mozilla/Firefox/]
 checkout = git clone 'https://github.com/azuwis/.mozilla_firefox.git' 'Firefox'
@@ -10,4 +12,6 @@ fixups =
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.extended.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.hanyu.dict.yaml
 	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.poetry.dict.yaml
+	   download https://github.com/rime/rime-pinyin-simp/raw/master/pinyin_simp.dict.yaml
+	   download https://github.com/rime/rime-pinyin-simp/raw/master/pinyin_simp.schema.yaml
 	   /mnt/c/Program\ Files\ \(x86\)/Rime/weasel-*/WeaselDeployer.exe /deploy
