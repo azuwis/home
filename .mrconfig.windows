@@ -1,5 +1,10 @@
 # -*- mode: conf -*-
 
+# cross-notify
+[/mnt/c/Programs/cross-notify]
+checkout = git clone 'https://github.com/azuwis/cross-notify.git' cross-notify
+fixups = /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "C:\Programs\cross-notify\client.ps1"
+
 # firefox
 [/mnt/c/Users/${USER}/AppData/Roaming/Mozilla/Firefox/]
 checkout = git clone 'https://github.com/azuwis/.mozilla_firefox.git' 'Firefox'
