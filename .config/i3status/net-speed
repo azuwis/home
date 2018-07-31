@@ -24,7 +24,7 @@
 #
 
 # Auto detect interfaces
-ifaces=$(ls /sys/class/net | grep -E '^(eth|wlan|enp|wlp)')
+ifaces=$(ls /sys/class/net | grep -E '^(eth|wlan|en|wl)')
 
 last_time=0
 last_rx=0
@@ -53,7 +53,7 @@ update_rate() {
   local rx=0 tx=0 tmp_rx tmp_tx
 
   if [ -z "$ifaces" ]; then
-    ifaces=$(ls /sys/class/net | grep -E '^(eth|wlan|enp|wlp)')
+    ifaces=$(ls /sys/class/net | grep -E '^(eth|wlan|en|wl)')
     return
   fi
 
