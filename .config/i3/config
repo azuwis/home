@@ -289,7 +289,8 @@ bindsym $mod+Shift+u $exec gnome-terminal --window-with-profile pum --role float
 # bindsym $mod+Shift+p $exec assword gui
 bindsym $mod+Shift+p $exec $scripts/passmenu --type
 bindsym XF86MenuKB $exec $scripts/quick-menu
-bindsym --release XF86Tools $exec $scripts/quick-run
+bindsym XF86AudioPlay $exec $scripts/quick-run
+bindsym XF86Tools $exec hass-api services/media_player/toggle '{"entity_id": "media_player.tv"}'
 bindsym Menu $exec $scripts/quick-menu
 bindsym $mod+Escape $exec $scripts/focus-back -e
 # volume
