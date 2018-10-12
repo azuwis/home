@@ -29,11 +29,15 @@ if [ x"$1" = x"-a" ]; then
 fi
 
 lock_image=$(dirname "$0")/lock.png
+image="${XDG_RUNTIME_DIR:-/tmp}/lockx.png"
 
 revert() {
     xset dpms 600 600 600
+    rm "$image"
 }
 trap revert SIGHUP SIGINT SIGTERM
 xset +dpms dpms 5 5 5
-i3lock --nofork --image=<(convert x:root -scale 10% -scale 1000% "$lock_image" -gravity center -composite -matte png:-)
+umask 027
+convert x:root -scale 10% -scale 1000% "$lock_image" -gravity center -composite -matte "$image"
+i3lock --nofork --color=000000 --image="$image"
 revert
