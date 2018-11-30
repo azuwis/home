@@ -3,20 +3,18 @@
 volume() {
     local action="$1"
 
-    local item="PCM"
-    amixer sget Master > /dev/null 2>&1 && item="Master"
+    if [ "$action" = "toggle" ]
+    then
+      pulsemixer --toggle-mute
+    else
+      pulsemixer --change-volume "$action"
+    fi
 
-    local result
-    result="$(amixer sset "$item" "$action")"
-
-    local volume="${result#*\[}"
-    volume="${volume%%\%\]*}"
-
-    local status="${result##*\[}"
-    status="${status%\]}"
+    local volume="$(pulsemixer --get-volume)"
+    volume="${volume% *}"
 
     local icon
-    if [ x"$status" = x"off" ]; then
+    if [ "$(pulsemixer --get-mute)" -eq 1 ]; then
         icon="  Mute"
     else
         icon=""
