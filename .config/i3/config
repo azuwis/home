@@ -246,6 +246,7 @@ for_window [class="^Screenkey$"] floating enable
 for_window [class="^Tilix$"] border 1pixel
 for_window [class="^X-terminal-emulator$"] border 1pixel
 for_window [class="^mpv$"] floating enable
+for_window [class="^xfreerdp$"] floating disable border none
 for_window [title="^Floating: "] floating enable
 # firefox
 assign [class="^Firefox$"] $ws2
