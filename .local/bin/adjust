@@ -5,16 +5,18 @@ volume() {
 
     if [ "$action" = "toggle" ]
     then
-      pulsemixer --toggle-mute
+      result="$(pulsemixer --toggle-mute --get-mute --get-volume)"
     else
-      pulsemixer --change-volume "$action"
+      result="$(pulsemixer --change-volume "$action" --get-mute --get-volume)"
     fi
 
-    local volume="$(pulsemixer --get-volume)"
-    volume="${volume% *}"
+    local mute="${result%
+*}"
+    local volume="${result#* }"
 
     local icon
-    if [ "$(pulsemixer --get-mute)" -eq 1 ]; then
+    if [ "$mute" -eq 1 ]
+    then
         icon="  Mute"
     else
         icon=""
