@@ -190,7 +190,7 @@ then
     # Syntax highlight
     zgen load /usr/share/zsh-syntax-highlighting
     # Auto suggestions
-    zgen load zsh-users/zsh-autosuggestions
+    zgen load /usr/share/zsh-autosuggestions
 
     zgen save
 fi
