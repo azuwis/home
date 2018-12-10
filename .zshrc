@@ -103,7 +103,7 @@ test -d ~/.ssh/config.d/ && ssh_config_hosts
 
 # Pager
 export PAGER="less"
-export LESS="-isFMRX# 10"
+export LESS="-isFMRX# 2"
 
 # Editor
 #export EDITOR="emacsclient"
