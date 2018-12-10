@@ -1,0 +1,345 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term gnome-terminal
+# Your preferred application launcher
+# Note: it's recommended that you pass the final command to sway
+set $menu dmenu_path | dmenu | xargs swaymsg exec
+
+### Custom vars
+set $exec exec --no-startup-id exec
+set $scripts ~/.local/bin
+
+### Font
+font pango:fontawesome italic 15
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output * bg ~/wallpapers/current fit '#202227'
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+#exec swayidle \
+#    timeout 300 'swaylock -c 000000' \
+#    timeout 600 'swaymsg "output * dpms off"' \
+#       resume 'swaymsg "output * dpms on"' \
+#    before-sleep 'swaylock -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
+    dwt enabled
+    tap enabled
+    accel_profile adaptive
+    pointer_accel 0.3
+}
+
+### Key bindings
+#
+# Basics:
+#
+    # start a terminal
+    bindsym $mod+Return $exec $term
+
+    # kill focused window
+    bindsym $mod+Shift+q kill
+
+    # start your launcher
+    bindsym $mod+d $exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # _move_ the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # switch to workspace
+    bindsym $mod+1 workspace 1
+    bindsym $mod+2 workspace 2
+    bindsym $mod+3 workspace 3
+    bindsym $mod+4 workspace 4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
+    bindsym $mod+7 workspace 7
+    bindsym $mod+8 workspace 8
+    bindsym $mod+9 workspace 9
+    bindsym $mod+0 workspace 10
+    # move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+x mode "resize"
+
+### Zenburn color
+# https://github.com/andreatta/config/blob/master/i3/config
+set $bg #202227
+set $bd #2f343f
+set $fg #9f9f9f
+set $hi #efef8f
+set $ac #a0afa0
+set $tx #040404
+set $ia #606060
+set $be #8faf9f
+set $yw #ccdc90
+set $gn #88b090
+set $rd #e89393
+
+# client.focused           $bd  $bd  $fg
+# client.unfocused         $bd  $bd  $ia
+# client.focused_inactive  $bd  $bd  $ia
+# client.urgent            $rd  $rd  $tx
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    swaybar_command exec swaybar
+    position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command exec ~/.config/i3status/config.sh
+
+    colors {
+        statusline          $fg
+        background          $bg
+        separator           $bg
+        focused_workspace   $bg  $bg  $hi
+        active_workspace    $gn  $ac  $tx
+        inactive_workspace  $bg  $bg  $fg
+        urgent_workspace    $bg  $bg  $rd
+        binding_mode        $bg  $bg  $fg
+    }
+}
+
+### Window border
+new_window none
+hide_edge_borders both
+
+### Per app settings
+for_window [class="^Fcitx-config-gtk3$"] floating enable
+for_window [class="^Gnome-terminal$" window_role="^floating$"] floating enable
+for_window [class="^Gnome-terminal$"] border 1pixel
+for_window [class="^GoldenDict$"] floating enable
+for_window [class="^Gpick$"] floating enable
+for_window [class="^Key-mon$"] floating enable
+for_window [class="^Lilyterm$"] border 1pixel
+for_window [class="^Linphone$"] floating enable
+for_window [class="^Pavucontrol$"] floating enable
+for_window [class="^Pqiv$"] floating enable
+for_window [class="^Screenkey$"] floating enable
+for_window [class="^Tilix$"] border 1pixel
+for_window [class="^X-terminal-emulator$"] border 1pixel
+for_window [class="^mpv$"] floating enable
+for_window [class="^xfreerdp$"] floating disable border none
+for_window [title="^Floating: "] floating enable
+# firefox
+assign [class="^Firefox$"] 2
+for_window [class="^Firefox$" instance="^Places$"] floating enable
+for_window [class="^Chromium$" window_role="^bubble$"] floating enable
+# emacs
+# assign [class="^Emacs"] 4
+# for_window [class="^Emacs"] floating enable
+# xfreerdp
+assign [class="^xfreerdp$"] 5
+# sony-rx100
+assign [title="^sony-rx100$"] 10
+assign [class="^Gnome-terminal$" window_role="^sony-rx100$"] 10
+# google chrome
+assign [class="^Chromium$" instance="^chromium \(.+\.gphotos/chromedriver\)$"] 10
+# assign [class="^Chromium$"] 2
+
+### Key binding
+set $run_mode Ansible, Chromium, Emacs, Firefox, Office, Wallpaper
+set $nexec mode "default"; exec --no-startup-id exec sh -c 'notify-send --urgency=low "Starting $(basename "$1")..." && unset GDK_BACKEND && exec "$1" 2>/dev/null' --
+mode "$run_mode" {
+        bindsym a $nexec $scripts/ansible-menu
+        bindsym c $nexec chromium
+        bindsym e $nexec emacs
+        bindsym f $nexec firefox
+        bindsym o $nexec office
+        bindsym w $nexec $scripts/wallpaper
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "$run_mode"
+
+bindsym $mod+c move absolute position center
+bindsym $mod+u [urgent="oldest"] focus
+bindsym $mod+Tab workspace back_and_forth
+bindsym Print $exec swaylock
+bindsym $mod+XF86Eject $exec $scripts/lockx
+bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
+bindsym $mod+Shift+u $exec gnome-terminal --window-with-profile pum --role floating
+# bindsym $mod+Shift+p $exec assword gui
+bindsym $mod+Shift+p $exec $scripts/passmenu --type
+bindsym XF86MenuKB $exec $scripts/quick-menu
+bindsym XF86AudioPlay $exec $scripts/quick-run
+bindsym XF86Tools $exec hass-api services/media_player/toggle '{"entity_id": "media_player.tv"}'
+bindsym Menu $exec $scripts/quick-menu
+bindsym $mod+Escape $exec $scripts/focus-back -e
+# volume
+bindsym XF86AudioMute $exec $scripts/adjust volume toggle
+bindsym XF86AudioLowerVolume $exec $scripts/adjust volume -3
+bindsym XF86AudioRaiseVolume $exec $scripts/adjust volume +3
+# backlight
+bindsym XF86MonBrightnessDown $exec $scripts/adjust backlight -8
+bindsym XF86MonBrightnessUp $exec $scripts/adjust backlight +8
+# kbdlight
+bindsym XF86KbdBrightnessDown $exec $scripts/adjust kbdlight -10
+bindsym XF86KbdBrightnessUp $exec $scripts/adjust kbdlight +10
+# --release is needed or xdotool will not work
+bindsym --release $mod+m $exec $scripts/focus-back
+bindsym --release XF86HomePage $exec $scripts/focus-back
+bindsym --release XF86Back $exec xdotool key Shift+Insert
+
+### autostart
+exec {
+    fcitx
+    exec mako
+    # gsettings set org.gnome.desktop.interface gtk-theme Arc-Darker
+    # gsettings set org.gnome.desktop.interface icon-theme Papirus
+    # gsettings set org.gnome.desktop.interface font-name 'Sans 16'
+}

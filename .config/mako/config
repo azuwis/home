@@ -1,0 +1,15 @@
+font=sans 18
+format=<i>%s</i>\n%b
+background-color=#202227e5
+text-color=#dcdccc
+border-color=#5f5f5fe5
+padding=5,12
+
+[urgency=low]
+default-timeout=2000
+
+[urgency=normal]
+default-timeout=10000
+
+[urgency=high]
+text-color=#f9a299

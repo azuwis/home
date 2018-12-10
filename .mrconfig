@@ -21,6 +21,7 @@ fixups =
 	   then
 	       dconf reset -f /org/gnome/terminal/
 	       dconf load /org/gnome/terminal/ < "${MR_REPO}/.config/dconf-dump/gnome-terminal"
+	       dconf load /org/gnome/desktop/interface/ < "${MR_REPO}/.config/dconf-dump/gtk"
 	   fi
 
 [bin]
