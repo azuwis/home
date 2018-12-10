@@ -12,10 +12,10 @@ if [ ! -e "$config_file" ] || [ "$config_file" -ot "$config_sh" ]; then
   cat <<EOF
 order += "cpu_temperature 0"
 order += "cpu_usage"
+order += "volume master"
 order += "tztime local"
 # order += "disk /"
 # order += "load"
-# order += "volume Master"
 
 general {
     colors = true
@@ -60,6 +60,13 @@ cpu_usage {
     format = "%usage"
 }
 
+volume master {
+    format = "<span style='normal'></span> %volume"
+    format_muted = "<span style='normal'></span> %volume"
+    device = "pulse"
+    color_degraded = "#9F9F9F"
+}
+
 tztime local {
     format = "<span style='normal'></span> %time"
     format_time = "%b %d %H:%M:%S"
@@ -70,11 +77,6 @@ load {
     max_threshold = "1.5"
 }
 
-volume Master {
-    format = "<span style='normal'></span> %volume"
-    format_muted = "<span style='normal'></span> %volume"
-    mixer = "Master"
-}
 EOF
 ) >"$config_file"
 fi

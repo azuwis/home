@@ -21,7 +21,7 @@ volume() {
     else
         icon=""
     fi
-    notify-send ":Adjust:" -i "${icon}" -h int:value:"${volume}"
+    # notify-send ":Adjust:" -i "${icon}" -h int:value:"${volume}"
 }
 
 brightness() {
