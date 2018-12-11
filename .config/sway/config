@@ -17,14 +17,18 @@ set $right l
 set $term gnome-terminal
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | dmenu | xargs swaymsg exec
+set $menu rofi -show run
 
 ### Custom vars
-set $exec exec --no-startup-id exec
+set $exec exec exec
 set $scripts ~/.local/bin
 
 ### Font
 font pango:fontawesome italic 15
+
+### Gaps
+smart_gaps on
+gaps inner 1
 
 ### Output configuration
 #
@@ -83,7 +87,7 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
     bindsym $mod+Shift+q kill
 
     # start your launcher
-    bindsym $mod+d $exec $menu
+    bindsym $mod+space $exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -169,7 +173,7 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+d focus mode_toggle
 
     # move focus to the parent container
     bindsym $mod+a focus parent
@@ -254,25 +258,25 @@ bar {
 }
 
 ### Window border
-new_window none
-hide_edge_borders both
+default_border none
+# hide_edge_borders both
 
 ### Per app settings
-for_window [class="^Fcitx-config-gtk3$"] floating enable
-for_window [class="^Gnome-terminal$" window_role="^floating$"] floating enable
-for_window [class="^Gnome-terminal$"] border 1pixel
+for_window [app_id="^fcitx-config-gtk3$"] floating enable
+# for_window [app_id="^gnome-terminal-server$"] border pixel 1
+# for_window [app_id="^gnome-terminal-server$" title="^Terminal$"] floating enable
+for_window [app_id="^mpv$"] floating enable
 for_window [class="^GoldenDict$"] floating enable
 for_window [class="^Gpick$"] floating enable
 for_window [class="^Key-mon$"] floating enable
-for_window [class="^Lilyterm$"] border 1pixel
+for_window [class="^Lilyterm$"] border pixel 1
 for_window [class="^Linphone$"] floating enable
 for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^Pqiv$"] floating enable
 for_window [class="^Screenkey$"] floating enable
-for_window [class="^Tilix$"] border 1pixel
-for_window [class="^X-terminal-emulator$"] border 1pixel
-for_window [class="^mpv$"] floating enable
-for_window [class="^xfreerdp$"] floating disable border none
+for_window [class="^Tilix$"] border pixel 1
+for_window [class="^X-terminal-emulator$"] border pixel 1
+for_window [class="xfreerdp"] floating disable, border none
 for_window [title="^Floating: "] floating enable
 # firefox
 assign [class="^Firefox$"] 2
@@ -309,8 +313,8 @@ bindsym $mod+r mode "$run_mode"
 bindsym $mod+c move absolute position center
 bindsym $mod+u [urgent="oldest"] focus
 bindsym $mod+Tab workspace back_and_forth
-bindsym Print $exec swaylock
-bindsym $mod+XF86Eject $exec $scripts/lockx
+bindsym Print $exec pkill -USR1 -x swayidle
+bindsym $mod+XF86Eject $exec pkill -USR1 -x swayidle
 bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
 bindsym $mod+Shift+u $exec gnome-terminal --window-with-profile pum --role floating
 # bindsym $mod+Shift+p $exec assword gui
@@ -337,8 +341,13 @@ bindsym --release XF86Back $exec xdotool key Shift+Insert
 
 ### autostart
 exec {
-    fcitx
+    exec fcitx
     exec mako
+    exec swayidle \
+        timeout 300 'swaylock' \
+        timeout 600 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+        before-sleep 'swaylock'
     # gsettings set org.gnome.desktop.interface gtk-theme Arc-Darker
     # gsettings set org.gnome.desktop.interface icon-theme Papirus
     # gsettings set org.gnome.desktop.interface font-name 'Sans 16'
