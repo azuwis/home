@@ -6,7 +6,7 @@
   background-color: #202227;
   border-color: White;
   text-color: #e5e5e5;
-  font: "Sans Italic 14";
+  font: "Sans Italic 16";
 }
 
 configuration {
@@ -17,7 +17,7 @@ configuration {
   location: north west;
   width: 50%;
   x-offset: 13%;
-  padding: 4px;
+  padding: 1px;
   children: [ horibox ];
 }
 
