@@ -1,13 +1,29 @@
 #!/bin/sh
 
+notify() {
+    summary="$1"
+    gdbus call --session \
+          --dest org.freedesktop.Notifications \
+          --object-path /org/freedesktop/Notifications \
+          --method org.freedesktop.Notifications.Notify \
+          Adjust \
+          1 \
+          '' \
+          "$summary" \
+          '' \
+          '[]' \
+          '{}' \
+          1200
+}
+
 volume() {
     local action="$1"
 
     if [ "$action" = "toggle" ]
     then
-      result="$(pulsemixer --toggle-mute --get-mute --get-volume)"
+        result="$(pulsemixer --toggle-mute --get-mute --get-volume)"
     else
-      result="$(pulsemixer --change-volume "$action" --get-mute --get-volume)"
+        result="$(pulsemixer --change-volume "$action" --get-mute --get-volume)"
     fi
 
     local mute="${result%
@@ -21,7 +37,7 @@ volume() {
     else
         icon=""
     fi
-    # notify-send ":Adjust:" -i "${icon}" -h int:value:"${volume}"
+    notify "${icon} ${volume}"
 }
 
 brightness() {
@@ -56,7 +72,7 @@ brightness() {
 
     echo "${wanted_brightness}" > "${brightness_file}"
 
-    notify-send ":Adjust:" -i "$icon" -h int:value:"$(( wanted_brightness * 100 / max_brightness ))"
+    notify "${icon} $(( wanted_brightness * 100 / max_brightness ))"
 }
 
 backlight() {
