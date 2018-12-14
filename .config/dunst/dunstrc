@@ -36,20 +36,3 @@
     background = "#202227"
     foreground = "#f9a299"
     timeout = 0
-
-[popo]
-    appname = notify-send
-    summary = POPO*
-    timeout = 30
-
-[adjust]
-    appname = notify-send
-    summary = :Adjust:
-    format = "<i>%I %p</i>"
-    timeout = 1
-
-[backup]
-    appname = notify-send
-    summary = :Backup:
-    format = "<i>%I</i>"
-    timeout = 0
