@@ -39,5 +39,5 @@ trap revert SIGHUP SIGINT SIGTERM
 xset +dpms dpms 5 5 5
 umask 027
 convert x:root -scale 10% -scale 1000% "$lock_image" -gravity center -composite -matte "$image"
-i3lock --nofork --color=000000 --image="$image"
+i3lock --nofork --ignore-empty-password --color=000000 --image="$image"
 revert
