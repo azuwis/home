@@ -73,7 +73,7 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
     dwt enabled
     tap enabled
     accel_profile adaptive
-    pointer_accel 0.3
+    pointer_accel 0.25
 }
 
 ### Key bindings
