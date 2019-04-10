@@ -1,5 +1,5 @@
 -- Vertical tabs
-local vertical_tabs = require("vertical_tabs")
+-- local vertical_tabs = require("vertical_tabs")
 
 -- Keybindings
 local modes = require("modes")
