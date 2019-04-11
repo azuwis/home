@@ -17,7 +17,7 @@ fixups =
 	   chmod 700 "${MR_REPO}/Maildir/"
 	   # run dconf reset -f /com/gexperts/Tilix/
 	   # run dconf load /com/gexperts/Tilix/ < "${MR_REPO}/.config/dconf-dump/tilix"
-	   if [ -x /usr/bin/dconf ]
+	   if [ -x /usr/bin/dconf ] && [ -n "$DISPLAY" ]
 	   then
 	       dconf reset -f /org/gnome/terminal/
 	       dconf load /org/gnome/terminal/ < "${MR_REPO}/.config/dconf-dump/gnome-terminal"
