@@ -103,7 +103,7 @@ inoremap <F5> <C-o>:update<CR>
 "nnoremap / /\v
 "vnoremap / /\v
 "nnoremap ; :
-inoremap kj <ESC>
+"inoremap fd <ESC>
 " man
 "runtime ftplugin/man.vim
 "nmap K <Leader>K
