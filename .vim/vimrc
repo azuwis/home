@@ -245,9 +245,11 @@ endfunction
 " General plugins {{{1
 
 " airline
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-Plug 'bling/vim-airline'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch = '⎇'
+Plug 'vim-airline/vim-airline'
 
 " gruvbox
 " let g:gruvbox_contrast_light = 'soft'
