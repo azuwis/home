@@ -6,7 +6,7 @@
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-setopt histignorealldups histignorespace sharehistory
+setopt histignorealldups histignorespace extendedhistory sharehistory
 
 # Completion
 zstyle ':completion:*' auto-description 'specify: %d'
