@@ -49,19 +49,19 @@ This function should only modify configuration layer settings."
      ivy
      markdown
      multiple-cursors
-     neotree
      org
      (shell :variables
             shell-default-shell 'eshell)
      spell-checking
      syntax-checking
+     treemacs
      version-control
      ;; Additional layers
      ansible
      asciidoc
-     clojure
+     ;; clojure
      csv
-     github
+     ;; github
      html
      javascript
      lua
