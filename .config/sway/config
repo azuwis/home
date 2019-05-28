@@ -70,10 +70,11 @@ gaps inner 1
 # Read `man 5 sway-input` for more information about this section.
 
 input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
-    dwt enabled
-    tap enabled
     accel_profile adaptive
-    pointer_accel 0.25
+    drag_lock enabled
+    dwt enabled
+    pointer_accel 0.28
+    tap enabled
 }
 
 ### Key bindings
