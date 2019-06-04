@@ -5,7 +5,7 @@ then
 fi
 
 tty="$(tty)"
-if [ -z "$DISPLAY" ] && [ "$tty" = "/dev/tty1" ]
+if [ -z "$DISPLAY" ] && [ "$tty" = "/dev/tty1" ] && [ -x /usr/bin/startx ]
 then
     # Start X if at tty1, extra args are copied from startx code
     if [ -f /etc/X11/Xresources/ansible-managed ]
@@ -18,7 +18,7 @@ then
     else
         exec startx
     fi
-elif [ -z "$WAYLAND_DISPLAY" ] && [ "$tty" = "/dev/tty2" ]
+elif [ -z "$WAYLAND_DISPLAY" ] && [ "$tty" = "/dev/tty2" ] && [ -x /usr/bin/sway ]
 then
     # Start sway if at tty2
     ### gtk
