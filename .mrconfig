@@ -11,6 +11,8 @@ fixups =
 	   # download https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua .config/mpv/scripts/autoload.lua
 	   test -e "${MR_REPO}/.msmtprc.local" || touch "${MR_REPO}/.msmtprc.local"
 	   cat "${MR_REPO}/.msmtprc.in" "${MR_REPO}/.msmtprc.local" > "${MR_REPO}/.msmtprc"
+	   test -e "${MR_REPO}/.mbsyncrc.local" || touch "${MR_REPO}/.mbsyncrc.local"
+	   cat "${MR_REPO}/.mbsyncrc.in" "${MR_REPO}/.mbsyncrc.local" > "${MR_REPO}/.mbsyncrc"
 	   chmod 700 "${MR_REPO}/" "${MR_REPO}/.config/" "${MR_REPO}/.config/fcitx/" "${MR_REPO}/.gnupg/"
 	   mkdir -p "${MR_REPO}/Maildir/gmail/"
 	   mkdir -p "${MR_REPO}/Maildir/corp/"
