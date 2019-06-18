@@ -15,14 +15,6 @@ PassCmd "pass show email/azuwis@gmail.com"
 IMAPStore gmail
 Account gmail
 
-MaildirStore corp-local
-Path ~/Maildir/corp/
-Inbox ~/Maildir/corp/inbox/
-
-Channel gmail-corp
-Master :gmail:corp
-Slave :corp-local:
-
 MaildirStore gmail-local
 Path ~/Maildir/gmail/
 Inbox ~/Maildir/gmail/inbox/
@@ -48,6 +40,5 @@ MaxMessages 100
 
 Group gmail
 Channel gmail-inbox
-Channel gmail-corp
 Channel gmail-sent
 Channel gmail-drafts
