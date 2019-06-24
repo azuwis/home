@@ -23,15 +23,24 @@ function dsp_run (_, _, n_samples)
   local mapx = {0, 41, 63, 81, 102, 127}
   local mapy = {0, 38, 61, 86, 117, 127}
   function map_velocity (v)
-    local i = 1
-    for index, value in ipairs(mapx) do
-      if v > value then
-        i = index
+    local i = v // (127 // (#mapx - 1)) + 1
+    while true do
+      if i <= 0 then
+        return mapy[1]
+      end
+      if v >= mapx[i] then
+        if i >= #mapx then
+          return mapy[i]
+        end
+        if v < mapx[i+1] then
+          return mapy[i] + (v - mapx[i]) * (mapy[i+1] - mapy[i]) // (mapx[i+1] - mapx[i])
+        else
+          i = i + 1
+        end
       else
-        break
+        i = i - 1
       end
     end
-    return mapy[i] + math.floor((v - mapx[i]) * (mapy[i+1] - mapy[i]) / (mapx[i+1] - mapx[i]))
   end
 
   -- for each incoming midi event
