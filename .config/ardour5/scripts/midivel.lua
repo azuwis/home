@@ -30,7 +30,7 @@ function dsp_run (_, _, n_samples)
       end
       if v >= mapx[i] then
         if i >= #mapx then
-          return mapy[i]
+          return mapy[#mapy]
         end
         if v < mapx[i+1] then
           return mapy[i] + math.floor((v - mapx[i]) * (mapy[i+1] - mapy[i]) / (mapx[i+1] - mapx[i]))
