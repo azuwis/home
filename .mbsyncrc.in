@@ -39,6 +39,4 @@ MaxMessages 100
 # Patterns *
 
 Group gmail
-Channel gmail-inbox
-Channel gmail-sent
-Channel gmail-drafts
+Channels gmail-inbox gmail-sent gmail-drafts
