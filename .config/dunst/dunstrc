@@ -13,6 +13,7 @@
     transparency = 20
     idle_threshold = 30
     follow = keyboard
+    corner_radius = 8
 
 [frame]
     width = 2
