@@ -24,7 +24,7 @@ function dsp_params ()
     }
 end
 
-local velocity_curves =
+local curves =
   {
     {
       {10, 95, 105, 116, 127},
@@ -35,9 +35,9 @@ local velocity_curves =
       {0, 38, 61, 86, 117, 127}
     }
   }
-local selected_velocity_curve = -1
-local mapx = {0, 127}
-local mapy = {0, 127}
+local curve_i = -1
+local curve_x = {0, 127}
+local curve_y = {0, 127}
 
 function dsp_run (_, _, n_samples)
   local cnt = 1;
@@ -49,23 +49,23 @@ function dsp_run (_, _, n_samples)
   end
 
   local ctrl = CtrlPorts:array ()
-  if selected_velocity_curve ~= ctrl[1] then
-    selected_velocity_curve = ctrl[1]
-    mapx = velocity_curves[selected_velocity_curve][1]
-    mapy = velocity_curves[selected_velocity_curve][2]
+  if curve_i ~= ctrl[1] then
+    curve_i = ctrl[1]
+    curve_x = curves[curve_i][1]
+    curve_y = curves[curve_i][2]
   end
   function map_velocity (v)
-    local i = v // (127 // (#mapx - 1)) + 1
+    local i = v // (127 // (#curve_x - 1)) + 1
     while true do
       if i <= 0 then
-        return mapy[1]
+        return curve_y[1]
       end
-      if v >= mapx[i] then
-        if i >= #mapx then
-          return mapy[#mapy]
+      if v >= curve_x[i] then
+        if i >= #curve_x then
+          return curve_y[#curve_y]
         end
-        if v < mapx[i+1] then
-          return mapy[i] + math.floor ((v - mapx[i]) * (mapy[i+1] - mapy[i]) / (mapx[i+1] - mapx[i]))
+        if v < curve_x[i+1] then
+          return curve_y[i] + math.floor ((v - curve_x[i]) * (curve_y[i+1] - curve_y[i]) / (curve_x[i+1] - curve_x[i]))
         else
           i = i + 1
         end
