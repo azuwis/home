@@ -35,9 +35,11 @@ local velocity_curves =
       {0, 38, 61, 86, 117, 127}
     }
   }
+local selected_velocity_curve = -1
+local mapx = {0, 127}
+local mapy = {0, 127}
 
 function dsp_run (_, _, n_samples)
-
   local cnt = 1;
   function tx_midi (time, data)
     midiout[cnt] = {}
@@ -47,9 +49,11 @@ function dsp_run (_, _, n_samples)
   end
 
   local ctrl = CtrlPorts:array ()
-  local selected = ctrl[1]
-  local mapx = velocity_curves[selected][1]
-  local mapy = velocity_curves[selected][2]
+  if selected_velocity_curve ~= ctrl[1] then
+    selected_velocity_curve = ctrl[1]
+    mapx = velocity_curves[selected_velocity_curve][1]
+    mapy = velocity_curves[selected_velocity_curve][2]
+  end
   function map_velocity (v)
     local i = v // (127 // (#mapx - 1)) + 1
     while true do
