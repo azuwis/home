@@ -40,9 +40,9 @@ fixups =
 	   chmod 700 "${MR_REPO}/default/" "${MR_REPO}/" "${MR_REPO}/../"
 skip = no_cmd firefox
 
-# spacemacs
+# doom-emacs
 [.emacs.d]
-checkout = git clone https://github.com/syl20bnr/spacemacs .emacs.d
+checkout = git clone -b straight https://github.com/hlissner/doom-emacs .emacs.d
 skip = no_cmd emacs
 
 # misc
