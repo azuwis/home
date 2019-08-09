@@ -248,6 +248,7 @@ for_window [class="^Tilix$"] border pixel 1
 for_window [class="^X-terminal-emulator$"] border pixel 1
 for_window [class="^mpv$"] floating enable
 for_window [class="^qBittorrent$"] floating enable
+for_window [class="^qjackctl$"] floating enable
 for_window [class="^xfreerdp$"] floating disable, border none
 for_window [title="^Floating: "] floating enable
 # firefox
