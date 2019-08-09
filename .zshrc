@@ -113,7 +113,7 @@ vi() {
     if [ ! -e /usr/bin/emacs ]
     then
         vim "$@"
-    elif [ ! -e /tmp/emacs$(id -u)/server ]
+    elif [ ! -e "/tmp/emacs$(id -u)/server" ]
     then
         if [ x"$DISPLAY" = x ]; then
             emacs "$@"
@@ -144,7 +144,7 @@ alias dmesg='sudo dmesg'
 export DEBEMAIL="azuwis@gmail.com"
 export DEBFULLNAME="Zhong Jianxin"
 
-if [ $TERM = "xterm" -o $TERM = "linux" ]
+if [ "$TERM" = "xterm" -o "$TERM" = "linux" ]
 then
     # Workaround for lilyterm/lxterminal
     export TERM="xterm-256color"
