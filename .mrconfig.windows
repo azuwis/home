@@ -14,6 +14,10 @@ fixups = /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "C:\Progr
 [/mnt/c/Users/${USER}/AppData/Roaming/Mozilla/Firefox/]
 checkout = git clone 'https://github.com/azuwis/.mozilla_firefox.git' 'Firefox'
 
+# vimfx
+[/mnt/c/Users/${USER}/.vimfx/]
+checkout = git clone 'https://github.com/azuwis/.vimfx.git' '.vimfx'
+
 # rime
 [/mnt/c/Users/${USER}/AppData/Roaming/Rime]
 checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'Rime'
