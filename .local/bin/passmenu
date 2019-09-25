@@ -17,8 +17,15 @@ password=$(printf '%s\n' "${password_files[@]}" | dmenu "$@")
 
 [[ -n $password ]] || exit
 
-if [[ $typeit -eq 0 ]]; then
-	pass show -c "$password" 2>/dev/null
+if [[ $password == otp/* ]]
+then
+  pass="pass otp"
 else
-	xdotool - <<<"type --clearmodifiers -- $(sleep 1; pass show "$password" | head -n 1)"
+  pass="pass"
+fi
+
+if [[ $typeit -eq 0 ]]; then
+	$pass show -c "$password" 2>/dev/null
+else
+	xdotool - <<<"type --clearmodifiers -- $(sleep 1; $pass show "$password" | head -n 1)"
 fi
