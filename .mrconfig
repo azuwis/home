@@ -42,7 +42,7 @@ skip = no_cmd firefox
 
 # doom-emacs
 [.emacs.d]
-checkout = git clone -b straight https://github.com/hlissner/doom-emacs .emacs.d
+checkout = git clone -b develop https://github.com/hlissner/doom-emacs .emacs.d
 skip = no_cmd emacs
 
 # misc
