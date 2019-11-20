@@ -9,9 +9,6 @@
   font: "Sans Italic 16";
 }
 
-configuration {
-}
-
 #window {
   anchor: north west;
   location: north west;
