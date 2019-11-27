@@ -3,7 +3,7 @@ debug 4
 set bmk:save-passwords true
 set dns:order "inet inet6"
 #set file:charset "utf-8"
-set ftp:charset "gbk"
+#set ftp:charset "gbk"
 set ftp:anon-pass "mozilla@"
 set ftp:client ""
 set ftp:fix-pasv-address false
