@@ -183,7 +183,7 @@ function ev_file_loaded()
       mp.add_key_binding(opt.redraw_key, 'redraw', ev_redraw, {repeatable=false})
       mp.add_key_binding(opt.toggle_key, 'toggle', ev_toggle, {repeatable=false})
 
-      local danmu_script = mp.find_config_file('scripts/danmu')
+      local danmu_script = mp.find_config_file('scripts/danmu.disable')
       if danmu_script ~= nil then
         utils.subprocess_detached({args={danmu_script}})
         danmu_script_running = true
@@ -208,7 +208,7 @@ function ev_end_file()
     file:close()
     local pid = line:match('(%d+) ')
     if pid ~= nil then
-      utils.subprocess_detached({args={'pkill', '--signal', 'SIGINT', '--parent', pid, 'danmu'}})
+      utils.subprocess_detached({args={'pkill', '--signal', 'SIGINT', '--parent', pid, 'danmu.disable'}})
       danmu_script_running = false
     end
   end
