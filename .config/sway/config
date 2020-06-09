@@ -34,7 +34,7 @@ gaps inner 1
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg ~/wallpapers/current fit '#202227'
+output * bg ~/wallpapers/current fit '#202227'
 #
 # Example configuration:
 #
