@@ -31,7 +31,10 @@
 	ui = auto
 [core]
 	pager = less
+	attributesfile = ~/.gitattributes
 	#autocrlf = input
+[diff "image"]
+	command = git_diff_image
 [url "ssh://git@codeberg.org:22/"]
 	pushInsteadOf = https://codeberg.org/
 [url "ssh://git@github.com:22/"]
