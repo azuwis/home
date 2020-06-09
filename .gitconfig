@@ -34,6 +34,8 @@
 	#autocrlf = input
 [url "ssh://git@github.com:22/"]
 	pushInsteadOf = git://github.com/
+[url "ssh://git@codeberg.org:22/"]
+	pushInsteadOf = https://codeberg.org/
 [url "ssh://git@github.com:22/"]
 	pushInsteadOf = https://github.com/
 [url "https://github.com/"]
