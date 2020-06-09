@@ -2,5 +2,5 @@ dnew 0 "Digital Piano" wo
 dnew 1 "Midi Through" ro
 fnew curve
 fmap {any 1} {any 0}
-fvcurve {} (-25)
+fvcurve {} (-20)
 i
