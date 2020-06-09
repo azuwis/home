@@ -299,7 +299,7 @@ assign [class="^Chromium$" instance="^chromium \(.+\.gphotos/chromedriver\)$"] 1
 
 ### Key binding
 set $run_mode Ansible, Chromium, Emacs, Firefox, Office, Wallpaper
-set $nexec mode "default"; exec --no-startup-id exec sh -c 'notify-send --urgency=low "Starting $(basename "$1")..." && unset GDK_BACKEND && exec "$1" 2>/dev/null' --
+set $nexec mode "default"; exec --no-startup-id exec sh -c 'notify-send --urgency=low "Starting $(basename "$1")..." && exec "$1" 2>/dev/null' --
 mode "$run_mode" {
         bindsym a $nexec $scripts/ansible-menu
         bindsym c $nexec chromium
