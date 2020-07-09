@@ -12,6 +12,7 @@ if [ ! -e "$config_file" ] || [ "$config_file" -ot "$config_sh" ]; then
   cat <<EOF
 order += "cpu_temperature 0"
 order += "cpu_usage"
+order += "memory"
 order += "volume master"
 order += "tztime local"
 # order += "disk /"
@@ -58,6 +59,12 @@ cpu_temperature 0 {
 
 cpu_usage {
     format = "%usage"
+}
+
+memory {
+    format = "%used"
+    threshold_degraded = "10%"
+    format_degraded = "MEMORY: %free"
 }
 
 volume master {
