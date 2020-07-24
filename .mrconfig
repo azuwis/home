@@ -59,7 +59,7 @@ skip = ! workstation
 # vscode
 [.config/Code/User]
 checkout = git clone 'https://github.com/azuwis/.config_vscode.git' 'User'
-skip = ! workstation
+skip = no_cmd code
 
 # rime
 [.config/fcitx/rime]
