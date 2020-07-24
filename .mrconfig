@@ -52,6 +52,11 @@ pre_push =
 	   git commit -am 'Auto commit' || true
 skip = ! workstation
 
+# vscode
+[.config/Code/User]
+checkout = git clone 'https://github.com/azuwis/.config_vscode.git' 'User'
+skip = ! workstation
+
 # rime
 [.config/fcitx/rime]
 checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'rime'

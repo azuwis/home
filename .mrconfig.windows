@@ -18,6 +18,10 @@ checkout = git clone 'https://github.com/azuwis/.mozilla_firefox.git' 'Firefox'
 [/mnt/c/Users/${USER}/.vimfx/]
 checkout = git clone 'https://github.com/azuwis/.vimfx.git' '.vimfx'
 
+# vscode
+[/mnt/c/Users/${USER}/AppData/Roaming/Code/User]
+checkout = git clone 'https://github.com/azuwis/.config_vscode.git' 'User'
+
 # rime
 [/mnt/c/Users/${USER}/AppData/Roaming/Rime]
 checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'Rime'
