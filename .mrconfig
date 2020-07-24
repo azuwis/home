@@ -40,6 +40,10 @@ fixups =
 	   chmod 700 "${MR_REPO}/default/" "${MR_REPO}/" "${MR_REPO}/../"
 skip = no_cmd firefox
 
+[.vimfx]
+checkout = git clone 'https://github.com/azuwis/.vimfx.git' '.vimfx'
+skip = no_cmd firefox
+
 # doom-emacs
 [.emacs.d]
 checkout = git clone -b develop https://github.com/hlissner/doom-emacs .emacs.d
