@@ -12,9 +12,9 @@ fixups =
 	   merge_local .msmtprc
 	   merge_local .mbsyncrc
 	   chmod 700 "${MR_REPO}/" "${MR_REPO}/.config/" "${MR_REPO}/.config/fcitx/" "${MR_REPO}/.gnupg/"
-	   mkdir -p "${MR_REPO}/Maildir/gmail/"
-	   mkdir -p "${MR_REPO}/Maildir/corp/"
-	   chmod 700 "${MR_REPO}/Maildir/"
+	   mkdir -p "${MR_REPO}/Mail/Work/"
+	   mkdir -p "${MR_REPO}/Mail/Personal/"
+	   chmod 700 "${MR_REPO}/Mail/"
 	   # run dconf reset -f /com/gexperts/Tilix/
 	   # run dconf load /com/gexperts/Tilix/ < "${MR_REPO}/.config/dconf-dump/tilix"
 	   if [ -x /usr/bin/dconf ] && [ -n "$DISPLAY" ]

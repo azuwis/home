@@ -16,8 +16,8 @@ IMAPStore gmail
 Account gmail
 
 MaildirStore gmail-local
-Path ~/Maildir/gmail/
-Inbox ~/Maildir/gmail/inbox/
+Path ~/Mail/Personal/
+Inbox ~/Mail/Personal/inbox/
 
 Channel gmail-inbox
 Master :gmail:
