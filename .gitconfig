@@ -41,3 +41,5 @@
 	pushInsteadOf = https://github.com/
 [include]
 	path = ~/.gitconfig.local
+[pull]
+	rebase = false
