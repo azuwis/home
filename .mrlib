@@ -17,6 +17,11 @@ lib =
     laptop() {
         test -x /usr/bin/laptop-detect && laptop-detect
     }
+    merge_local() {
+        base="$1"
+	      test -e "${MR_REPO}/${base}.local" || touch "${MR_REPO}/${base}.local"
+	      cat "${MR_REPO}/${base}.in" "${MR_REPO}/${base}.local" > "${MR_REPO}/${base}"
+    }
     download() {
         # download <url> <file> <mode>
         set -eu
