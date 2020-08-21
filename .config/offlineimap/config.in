@@ -1,0 +1,21 @@
+[general]
+accounts = Work
+fsync = false
+pythonfile = ~/.config/offlineimap/helper.py
+
+[Account Personal]
+localrepository = PersonalLocal
+remoterepository = PersonalRemote
+maxage = 30
+
+[Repository PersonalLocal]
+type = Maildir
+localfolders = ~/Mail/Personal
+sync_deletes = no
+
+[Repository PersonalRemote]
+type = Gmail
+ipv6 = False
+remoteuser = azuwis@gmail.com
+remotepasseval = password('email/azuwis@gmail.com')
+sslcacertfile = OS-DEFAULT
