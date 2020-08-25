@@ -6,6 +6,8 @@
 (setq doom-theme 'doom-gruvbox)
 (setq projectile-project-search-path '("~/src/"))
 (setq which-key-idle-delay 0.3)
+(setq +notmuch-sync-backend 'custom)
+(setq +notmuch-sync-command "offlineimap && XAPIAN_CJK_NGRAM=1 notmuch new")
 (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
 (after! web-mode
   (setq web-mode-markup-indent-offset 2)
