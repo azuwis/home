@@ -7,7 +7,7 @@
 (setq projectile-project-search-path '("~/src/"))
 (setq which-key-idle-delay 0.3)
 (setq +notmuch-sync-backend 'custom)
-(setq +notmuch-sync-command "offlineimap && XAPIAN_CJK_NGRAM=1 notmuch new")
+(setq +notmuch-sync-command "XAPIAN_CJK_NGRAM=1 notmuch new")
 (add-to-list 'auto-mode-alist '("astroid@xps.none" . notmuch-message-mode))
 (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
 (after! web-mode
