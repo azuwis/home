@@ -4,6 +4,12 @@ then
     export PATH="$HOME/bin:$PATH"
 fi
 
+# Add ~/go/bin to PATH
+if [ -d "$HOME/go/bin" ]
+then
+    export PATH="$HOME/go/bin:$PATH"
+fi
+
 tty="$(tty)"
 if [ -z "$DISPLAY" ] && [ "$tty" = "/dev/tty1" ] && [ -x /usr/bin/startx ]
 then
