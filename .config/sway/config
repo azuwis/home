@@ -318,7 +318,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym Print $exec pkill -USR1 -x swayidle
 bindsym $mod+XF86Eject $exec pkill -USR1 -x swayidle
 bindsym $mod+Shift+XF86Eject $exec sudo systemctl suspend
-bindsym $mod+Shift+u $exec gnome-terminal --window-with-profile pum --role floating
+bindsym $mod+Shift+u $exec um
 # bindsym $mod+Shift+p $exec assword gui
 bindsym $mod+Shift+p $exec $scripts/passmenu --type
 bindsym XF86MenuKB $exec $scripts/quick-menu
