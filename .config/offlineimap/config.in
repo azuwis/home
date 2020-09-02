@@ -1,6 +1,7 @@
 [general]
 accounts = Work
 fsync = false
+socktimeout = 60
 pythonfile = ~/.config/offlineimap/helper.py
 
 [Account Personal]
