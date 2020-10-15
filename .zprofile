@@ -43,6 +43,7 @@ then
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     ### firefox
+    export MOZ_ENABLE_WAYLAND=1
     export MOZ_USE_XINPUT2=1
     ### sway
     exec ssh-agent sway
