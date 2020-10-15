@@ -75,6 +75,7 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
     dwt enabled
     pointer_accel 0.28
     tap enabled
+    scroll_method edge
     scroll_factor 0.6
 }
 
