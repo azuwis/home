@@ -217,11 +217,11 @@ bindkey '^H' backward-kill-dir
 # Pure prompt
 PURE_GIT_PULL=0
 
-# Fasd
-if command -v fasd >/dev/null 2>&1
+# Zoxide
+if command -v zoxide >/dev/null 2>&1
 then
-    eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
-    alias c='fasd_cd -d'
+    eval "$(zoxide init zsh)"
+    alias c=z
 fi
 
 #if [ -f /etc/profile.d/vte-2.91.sh ]
