@@ -26,10 +26,7 @@ checkout = git clone 'https://github.com/azuwis/.config_vscode.git' 'User'
 [/mnt/c/Users/${USER}/AppData/Roaming/Rime]
 checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'Rime'
 fixups = 
-	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.cn_en.dict.yaml
-	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.extended.dict.yaml
-	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.hanyu.dict.yaml
-	   download https://github.com/rime-aca/dictionaries/raw/master/luna_pinyin.dict/luna_pinyin.poetry.dict.yaml
-	   download https://github.com/rime/rime-pinyin-simp/raw/master/pinyin_simp.dict.yaml
-	   download https://github.com/rime/rime-pinyin-simp/raw/master/pinyin_simp.schema.yaml
+	   download https://github.com/hosxy/rime-aurora-pinyin/raw/master/aurora_pinyin.dict.yaml
+	   download https://github.com/hosxy/rime-aurora-pinyin/raw/master/aurora_pinyin.schema.yaml
+	   download https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.1/zhwiki-20201101.dict.yaml zhwiki.dict.yaml
 	   /mnt/c/Program\ Files\ \(x86\)/Rime/weasel-*/WeaselDeployer.exe /deploy
