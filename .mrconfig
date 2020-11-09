@@ -68,6 +68,7 @@ checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'rime'
 fixups = 
 	   chmod 700 "${MR_REPO}"
 	   download https://github.com/hosxy/rime-aurora-pinyin/raw/master/aurora_pinyin.dict.yaml
+	   sed -i '/^sort:/a \import_tables:\n  - zhwiki' aurora_pinyin.dict.yaml
 	   download https://github.com/hosxy/rime-aurora-pinyin/raw/master/aurora_pinyin.schema.yaml
 	   download https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.1/zhwiki-20201101.dict.yaml zhwiki.dict.yaml
 skip = ! test -d /usr/share/doc/fcitx-rime
