@@ -63,7 +63,7 @@ checkout = git clone 'https://github.com/azuwis/.config_vscode.git' 'User'
 skip = no_cmd code
 
 # rime
-[.config/fcitx/rime]
+[.local/share/fcitx5/rime]
 checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'rime'
 fixups = 
 	   chmod 700 "${MR_REPO}"
