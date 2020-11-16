@@ -15,8 +15,10 @@ fixups =
 	   mkdir -p "${MR_REPO}/Mail/Work/"
 	   mkdir -p "${MR_REPO}/Mail/Personal/"
 	   chmod 700 "${MR_REPO}/Mail/"
-	   mkdir -p "${MR_REPO}/.local/share/fcitx5/pinyin/dictionaries/"
-	   download https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.1/zhwiki-20201101.dict .local/share/fcitx5/pinyin/dictionaries/zhwiki.dict
+	   if [ -d /usr/share/fcitx5/pinyin ]; then
+	       mkdir -p "${MR_REPO}/.local/share/fcitx5/pinyin/dictionaries/"
+	       download https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.1/zhwiki-20201101.dict .local/share/fcitx5/pinyin/dictionaries/zhwiki.dict
+	   fi
 	   # run dconf reset -f /com/gexperts/Tilix/
 	   # run dconf load /com/gexperts/Tilix/ < "${MR_REPO}/.config/dconf-dump/tilix"
 	   if [ -x /usr/bin/dconf ] && [ -n "$DISPLAY" ]
