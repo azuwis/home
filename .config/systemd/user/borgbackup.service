@@ -1,0 +1,10 @@
+[Unit]
+Description=BorgBackup
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c '~/bin/bb'
+
+[Install]
+WantedBy=default.target
