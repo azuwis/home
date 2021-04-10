@@ -27,6 +27,7 @@ checkout = git clone 'https://github.com/azuwis/.config_vscode.git' 'User'
 checkout = git clone 'https://github.com/azuwis/.config_fcitx_rime.git' 'Rime'
 fixups = 
 	   download https://github.com/lotem/rime-octagram-data/raw/master/grammar.yaml
-	   download https://github.com/lotem/rime-octagram-data/raw/hant/zh-hant-t-essay-bgw.gram
-	   download https://github.com/ipcjs/fcitx5-pinyin-zhwiki/releases/download/20200901/zhwiki.dict.yaml zhwiki.dict.yaml
+	   download https://github.com/lotem/rime-octagram-data/raw/hans/zh-hans-t-essay-bgw.gram
+	   download https://github.com/fkxxyz/rime-cloverpinyin/releases/download/1.1.4/clover.schema-1.1.4.zip clover.zip
+	   unzip -u -o clover.zip '*.dict.yaml'
 	   /mnt/c/Program\ Files\ \(x86\)/Rime/weasel-*/WeaselDeployer.exe /deploy
