@@ -11,7 +11,7 @@ fixups =
 	   # download https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua .config/mpv/scripts/autoload.lua
 	   merge_local .config/msmtp/config
 	   merge_local .config/offlineimap/config
-	   chmod 700 "${MR_REPO}/" "${MR_REPO}/.config/" "${MR_REPO}/.config/fcitx/" "${MR_REPO}/.gnupg/"
+	   chmod 700 "${MR_REPO}/" "${MR_REPO}/.config/" "${MR_REPO}/.config/fcitx5/" "${MR_REPO}/.gnupg/"
 	   mkdir -p "${MR_REPO}/Mail/Work/"
 	   mkdir -p "${MR_REPO}/Mail/Personal/"
 	   chmod 700 "${MR_REPO}/Mail/"
