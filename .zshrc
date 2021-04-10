@@ -224,6 +224,20 @@ then
     alias c=z
 fi
 
+# k8s
+if command -v kubectl >/dev/null 2>&1
+then
+    source <(kubectl completion zsh)
+    alias k=kubectl
+fi
+
+# helm
+if command -v helm >/dev/null 2>&1
+then
+    source <(helm completion zsh)
+    alias h=helm
+fi
+
 #if [ -f /etc/profile.d/vte-2.91.sh ]
 #then
 #    source /etc/profile.d/vte-2.91.sh
