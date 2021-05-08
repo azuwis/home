@@ -225,6 +225,7 @@ then
 fi
 
 # k8s
+export KUBECONFIG='artifacts/admin.conf'
 if command -v kubectl >/dev/null 2>&1
 then
     source <(kubectl completion zsh)
@@ -234,8 +235,34 @@ fi
 # helm
 if command -v helm >/dev/null 2>&1
 then
-    source <(helm completion zsh)
+    source <(helm completion zsh 2>/dev/null)
     alias h=helm
+fi
+
+# helmfile
+if command -v helmfile >/dev/null 2>&1
+then
+  _helmfile_zsh_autocomplete() {
+
+    local -a opts
+    local cur
+    cur=${words[-1]}
+    if [[ "$cur" == "-"* ]]; then
+      opts=("${(@f)$(_CLI_ZSH_AUTOCOMPLETE_HACK=1 ${words[@]:0:#words[@]-1} ${cur} --generate-bash-completion)}")
+    else
+      opts=("${(@f)$(_CLI_ZSH_AUTOCOMPLETE_HACK=1 ${words[@]:0:#words[@]-1} --generate-bash-completion)}")
+    fi
+
+    if [[ "${opts[1]}" != "" ]]; then
+      _describe 'values' opts
+    else
+      _files
+    fi
+
+    return
+  }
+
+  compdef _helmfile_zsh_autocomplete helmfile
 fi
 
 #if [ -f /etc/profile.d/vte-2.91.sh ]
