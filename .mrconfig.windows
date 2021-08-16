@@ -30,5 +30,5 @@ fixups =
 	   download https://github.com/lotem/rime-octagram-data/raw/hans/zh-hans-t-essay-bgw.gram
 	   download https://github.com/fkxxyz/rime-cloverpinyin/releases/download/1.1.4/clover.schema-1.1.4.zip clover.zip
 	   unzip -u -o clover.zip '*.dict.yaml'
-	   echo "...\n；	;" >> clover.dict.yaml
+	   grep -q '^；' clover.dict.yaml || echo "...\n；	;" >> clover.dict.yaml
 	   /mnt/c/Program\ Files\ \(x86\)/Rime/weasel-*/WeaselDeployer.exe /deploy
