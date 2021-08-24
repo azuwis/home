@@ -224,6 +224,12 @@ then
     alias c=z
 fi
 
+# direnv
+if command -v direnv >/dev/null 2>&1
+then
+    eval "$(direnv hook zsh)"
+fi
+
 # k8s
 export KUBECONFIG='artifacts/admin.conf'
 if command -v kubectl >/dev/null 2>&1
